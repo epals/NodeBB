@@ -1,0 +1,2 @@
+"use strict";define("admin/settings/notifications",["autocomplete"],function(i){var t={};t.init=function(){var t=$('[data-field="welcomeUid"]');i.user(t,function(i,e){setTimeout(function(){t.val(e.item.user.uid)})})};return t});
+//# sourceMappingURL=notifications.js.map
