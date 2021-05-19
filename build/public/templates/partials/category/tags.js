@@ -10,9 +10,9 @@
     var __escape = helpers.__escape;
     var value = context;
     return (guard((context != null && context['topics'] != null && context['topics']['tags'] != null) ? context['topics']['tags']['length'] : null) ?
-        "\n\t" + 
+        "\r\n\t" + 
           compiled.blocks['tags'](helpers, context, guard, iter, helper) + 
-          "\n" :
+          "\r\n" :
         "");
   }
 
@@ -22,7 +22,7 @@
       var value = context;
       return iter(guard((context != null) ? context['tags'] : null), function each(key0, index, length, value) {
         var key = key0;
-        return "\n\t\t<a href=\"" + 
+        return "\r\n\t\t<a href=\"" + 
           __escape(guard((context != null && context['config'] != null) ? context['config']['relative_path'] : null)) + 
           "/tags/" + 
           __escape(guard((context != null && context['topics'] != null && context['topics']['tags'] != null) ? context['topics']['tags']['value'] : null)) + 
@@ -45,7 +45,7 @@
           __escape(guard((context != null && context['topics'] != null && context['topics']['tags'] != null) ? context['topics']['tags']['score'] : null)) + 
           "\">" + 
           __escape(guard((context != null && context['topics'] != null && context['topics']['tags'] != null) ? context['topics']['tags']['score'] : null)) + 
-          "</span></a>\n\t";
+          "</span></a>\r\n\t";
       }, function alt() {
         return "";
       });

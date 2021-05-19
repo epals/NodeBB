@@ -13,19 +13,19 @@
       (guard((context != null) ? context['deleted'] : null) ?
         "" :
         " hidden") + 
-      " clearfix\">\n    <span class=\"pull-left\">[[topic:deleted_message]]</span>\n    <span class=\"pull-right\">\n        " + 
+      " clearfix\">\r\n    <span class=\"pull-left\">[[topic:deleted_message]]</span>\r\n    <span class=\"pull-right\">\r\n        " + 
       (guard((context != null) ? context['deleter'] : null) ?
-        "\n        <a href=\"" + 
+        "\r\n        <a href=\"" + 
           __escape(guard((context != null && context['config'] != null) ? context['config']['relative_path'] : null)) + 
           "/user/" + 
           __escape(guard((context != null && context['deleter'] != null) ? context['deleter']['userslug'] : null)) + 
-          "\">\n            <strong>" + 
+          "\">\r\n            <strong>" + 
           __escape(guard((context != null && context['deleter'] != null) ? context['deleter']['username'] : null)) + 
-          "</strong>\n        </a>\n        <small class=\"timeago\" title=\"" + 
+          "</strong>\r\n        </a>\r\n        <small class=\"timeago\" title=\"" + 
           __escape(guard((context != null) ? context['deletedTimestampISO'] : null)) + 
-          "\"></small>\n        " :
+          "\"></small>\r\n        " :
         "") + 
-      "\n    </span>\n</div>";
+      "\r\n    </span>\r\n</div>";
   }
 
   compiled.blocks = {

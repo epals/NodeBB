@@ -1,4 +1,4 @@
-<!-- IF showTopicTools -->
+<!-- IF privileges.editable -->
 <div class="btn-group thread-tools bottom-sheet">
 	<button class="btn btn-default dropdown-toggle" data-toggle="dropdown" type="button">
 		<span class="visible-sm-inline visible-md-inline visible-lg-inline">[[topic:thread_tools.title]]</span>
@@ -40,13 +40,11 @@
 				<i class="fa fa-fw fa-arrows"></i> [[topic:thread_tools.move]]
 			</a>
 		</li>
-		{{{if template.category}}}
 		<li>
 			<a component="topic/move-all" href="#">
 				<i class="fa fa-fw fa-arrows"></i> [[topic:thread_tools.move_all]]
 			</a>
 		</li>
-		{{{end}}}
 		<li>
 			<a component="topic/merge" href="#">
 				<i class="fa fa-fw fa-code-fork"></i> [[topic:thread_tools.merge]]
@@ -71,11 +69,11 @@
 			</a>
 		</li>
 
-		{{{each thread_tools}}}
+		<!-- BEGIN thread_tools -->
 		<li>
 			<a href="#" class="{thread_tools.class}"><i class="fa fa-fw {thread_tools.icon}"></i> {thread_tools.title}</a>
 		</li>
-		{{{end}}}
+		<!-- END thread_tools -->
 	</ul>
 </div>
-<!-- ENDIF showTopicTools -->
+<!-- ENDIF privileges.editable -->

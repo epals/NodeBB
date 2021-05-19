@@ -9,229 +9,255 @@
   function compiled(helpers, context, guard, iter, helper) {
     var __escape = helpers.__escape;
     var value = context;
-    return "<div class=\"account\">\n\t\n" + 
+    return "<div class=\"account\">\r\n\t" + 
       (guard((context != null && context['breadcrumbs'] != null) ? context['breadcrumbs']['length'] : null) ?
         "\n<ol class=\"breadcrumb\" itemscope=\"itemscope\" itemprop=\"breadcrumb\" itemtype=\"http://schema.org/BreadcrumbList\">\n\t" + 
           compiled.blocks['breadcrumbs'](helpers, context, guard, iter, helper) + 
           "\n</ol>\n" :
         "") + 
-      "\n\n\n<div class=\"cover\" component=\"account/cover\" style=\"background-image: url(" + 
-      __escape(guard((context != null) ? context['cover:url'] : null)) + 
-      "); background-position: " + 
-      __escape(guard((context != null) ? context['cover:position'] : null)) + 
-      ";\">\n\t" + 
-      (guard((context != null) ? context['allowCoverPicture'] : null) ?
-        "\n\t<div class=\"controls\">\n\t\t<span class=\"upload\"><i class=\"fa fa-fw fa-4x fa-upload\"></i></span>\n\t\t<span class=\"resize\"><i class=\"fa fa-fw fa-4x fa-arrows-alt\"></i></span>\n\t\t<span class=\"remove\"><i class=\"fa fa-fw fa-4x fa-times\"></i></span>\n\t</div>\n\t<div class=\"save\">[[groups:cover-save]] <i class=\"fa fa-fw fa-floppy-o\"></i></div>\n\t<div class=\"indicator\">[[groups:cover-saving]] <i class=\"fa fa-fw fa-refresh fa-spin\"></i></div>\n\t" :
-        "") + 
-      "\n</div>\n\n<div class=\"account-username-box\" data-userslug=\"" + 
+      "\n\r\n\r\n\t<div class=\"row account-menu\">\r\n\t<div class=\"col-xs-12\">\r\n\t\t<ul class=\"nav nav-pills pull-right\">\r\n\t\t\t<li>\r\n\t\t\t\t<a href=\"" + 
+      __escape(guard((context != null && context['config'] != null) ? context['config']['relative_path'] : null)) + 
+      "/user/" + 
       __escape(guard((context != null) ? context['userslug'] : null)) + 
-      "\" data-uid=\"" + 
-      __escape(guard((context != null) ? context['uid'] : null)) + 
-      "\">\n\t<ul class=\"nav nav-pills account-sub-links\">\n\t\t<li>\n\t\t\t<a href=\"#\" type=\"button\" class=\"dropdown-toggle inline-block\" data-toggle=\"dropdown\">\n\t\t\t\t[[user:more]]\n\t\t\t\t<span class=\"caret\"></span>\n\t\t\t\t<span class=\"sr-only\">Toggle Dropdown</span>\n\t\t\t</a>\n\t\t\t<ul class=\"dropdown-menu pull-right\" role=\"menu\">\n\t\t\t\t" + 
+      "\" class=\"inline-block\" id=\"profile\">[[user:profile]]</a>\r\n\t\t\t</li>\r\n\t\t\t" + 
+      (guard((context != null) ? context['showHidden'] : null) ?
+        "\r\n\t\t\t<li><a href=\"" + 
+          __escape(guard((context != null && context['config'] != null) ? context['config']['relative_path'] : null)) + 
+          "/user/" + 
+          __escape(guard((context != null) ? context['userslug'] : null)) + 
+          "/edit\">[[user:edit]]</a></li>\r\n\t\t\t<li><a href=\"" + 
+          __escape(guard((context != null && context['config'] != null) ? context['config']['relative_path'] : null)) + 
+          "/user/" + 
+          __escape(guard((context != null) ? context['userslug'] : null)) + 
+          "/settings\">[[user:settings]]</a></li>\r\n\t\t\t" :
+        "") + 
+      "\r\n\t\t\t<li class=\"dropdown bottom-sheet\">\r\n\t\t\t\t<a class=\"dropdown-toggle\" data-toggle=\"dropdown\" href=\"#\" role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\">\r\n\t\t\t      [[user:more]] <span class=\"caret\"></span>\r\n\t\t\t    </a>\r\n\t\t\t\t<ul class=\"dropdown-menu dropdown-menu-right\">\r\n\t\t\t\t\t" + 
+      (guard((context != null) ? context['loggedIn'] : null) ?
+        "\r\n\t\t\t\t\t" + 
+          (guard((context != null) ? context['isSelf'] : null) ?
+            "" :
+            "\r\n\t\t\t\t\t" + 
+              (guard((context != null) ? context['banned'] : null) ?
+                "" :
+                "\r\n\t\t\t\t\t" + 
+                  (guard((context != null && context['config'] != null) ? context['config']['disableChat'] : null) ?
+                    "" :
+                    "\r\n\t\t\t\t\t<li><a component=\"account/chat\" href=\"#\">[[user:chat_with, " + 
+                      __escape(guard((context != null) ? context['username'] : null)) + 
+                      "]]</a></li>\r\n\t\t\t\t\t") + 
+                  "\r\n\r\n\t\t\t\t\t<li><a component=\"account/flag\" href=\"#\">[[user:flag-profile]]</a></li>\r\n\t\t\t\t\t<li>\r\n\t\t\t\t\t\t<a component=\"account/block\" href=\"#\">" + 
+                  (guard((context != null) ? context['isBlocked'] : null) ?
+                    "[[user:unblock_user]]" :
+                    "[[user:block_user]]") + 
+                  "</a>\r\n\t\t\t\t\t</li>\r\n\t\t\t\t\t<li class=\"divider\"></li>\r\n\t\t\t\t\t") + 
+              "\r\n\t\t\t\t\t") + 
+          "\r\n\t\t\t\t\t" :
+        "") + 
+      "\r\n\r\n\r\n\t\t\t\t\t" + 
       (guard((context != null) ? context['isSelf'] : null) ?
         "" :
-        "\n\t\t\t\t<li>\n\t\t\t\t\t<a component=\"account/flag\" href=\"#\">[[user:flag-profile]]</a>\n\t\t\t\t</li>\n\t\t\t\t<li>\n\t\t\t\t\t<a component=\"account/block\" href=\"#\">" + 
-          (guard((context != null) ? context['isBlocked'] : null) ?
-            "[[user:unblock_user]]" :
-            "[[user:block_user]]") + 
-          "</a>\n\t\t\t\t</li>\n\t\t\t\t") + 
-      "\n\t\t\t\t<li><a href=\"" + 
+        "\r\n\t\t\t\t\t" + 
+          (guard((context != null) ? context['canBan'] : null) ?
+            "\r\n\t\t\t\t\t<li class=\"" + 
+              (guard((context != null) ? context['banned'] : null) ?
+                "hide" :
+                "") + 
+              "\">\r\n\t\t\t\t\t\t<a component=\"account/ban\" href=\"#\">[[user:ban_account]]</a>\r\n\t\t\t\t\t</li>\r\n\t\t\t\t\t<li class=\"" + 
+              (guard((context != null) ? context['banned'] : null) ?
+                "" :
+                "hide") + 
+              "\">\r\n\t\t\t\t\t\t<a component=\"account/unban\" href=\"#\">[[user:unban_account]]</a>\r\n\t\t\t\t\t</li>\r\n\t\t\t\t\t" :
+            "") + 
+          "\r\n\t\t\t\t\t" + 
+          (guard((context != null) ? context['isAdmin'] : null) ?
+            "\r\n\t\t\t\t\t<li><a component=\"account/delete\" href=\"#\" class=\"\">[[user:delete_account]]</a></li>\r\n\t\t\t\t\t" :
+            "") + 
+          "\r\n\t\t\t\t\t<li class=\"divider\"></li>\r\n\t\t\t\t\t") + 
+      "\r\n\r\n\r\n\t\t\t\t\t<li><a href=\"" + 
       __escape(guard((context != null && context['config'] != null) ? context['config']['relative_path'] : null)) + 
       "/user/" + 
       __escape(guard((context != null) ? context['userslug'] : null)) + 
-      "/following\"><i class=\"fa fa-fw fa-users\"></i> [[user:following]]</a></li>\n\t\t\t\t<li><a href=\"" + 
+      "/following\">[[user:following]]</a></li>\r\n\t\t\t\t\t<li><a href=\"" + 
       __escape(guard((context != null && context['config'] != null) ? context['config']['relative_path'] : null)) + 
       "/user/" + 
       __escape(guard((context != null) ? context['userslug'] : null)) + 
-      "/followers\"><i class=\"fa fa-fw fa-users\"></i> [[user:followers]]</a></li>\n\t\t\t\t" + 
+      "/followers\">[[user:followers]]</a></li>\r\n\t\t\t\t\t" + 
       (guard((context != null) ? context['showHidden'] : null) ?
-        "\n\t\t\t\t<li><a href=\"" + 
+        "\r\n\t\t\t\t\t<li><a href=\"" + 
           __escape(guard((context != null && context['config'] != null) ? context['config']['relative_path'] : null)) + 
           "/user/" + 
           __escape(guard((context != null) ? context['userslug'] : null)) + 
-          "/blocks\"><i class=\"fa fa-fw fa-ban\"></i> [[user:blocks]]</a></li>\n\t\t\t\t" :
+          "/blocks\">[[user:blocks]]</a></li>\r\n\t\t\t\t\t" :
         "") + 
-      "\n\t\t\t\t<li class=\"divider\"></li>\n\t\t\t\t<li><a href=\"" + 
+      "\r\n\t\t\t\t\t<li class=\"divider\"></li>\r\n\t\t\t\t\t<li><a href=\"" + 
       __escape(guard((context != null && context['config'] != null) ? context['config']['relative_path'] : null)) + 
       "/user/" + 
       __escape(guard((context != null) ? context['userslug'] : null)) + 
-      "/topics\"><i class=\"fa fa-fw fa-book\"></i> [[global:topics]]</a></li>\n\t\t\t\t<li><a href=\"" + 
+      "/topics\">[[global:topics]]</a></li>\r\n\t\t\t\t\t<li><a href=\"" + 
       __escape(guard((context != null && context['config'] != null) ? context['config']['relative_path'] : null)) + 
       "/user/" + 
       __escape(guard((context != null) ? context['userslug'] : null)) + 
-      "/posts\"><i class=\"fa fa-fw fa-pencil\"></i> [[global:posts]]</a></li>\n\t\t\t\t" + 
+      "/posts\">[[global:posts]]</a></li>\r\n\t\t\t\t\t" + 
       (guard((context != null) ? context['reputation:disabled'] : null) ?
         "" :
-        "\n\t\t\t\t<li><a href=\"" + 
+        "\r\n\t\t\t\t\t<li><a href=\"" + 
           __escape(guard((context != null && context['config'] != null) ? context['config']['relative_path'] : null)) + 
           "/user/" + 
           __escape(guard((context != null) ? context['userslug'] : null)) + 
-          "/best\"><i class=\"fa fa-fw fa-star\"></i> [[global:best]]</a></li>\n\t\t\t\t") + 
-      "\n\t\t\t\t<li><a href=\"" + 
+          "/best\">[[global:best]]</a></li>\r\n\t\t\t\t\t") + 
+      "\r\n\t\t\t\t\t<li><a href=\"" + 
       __escape(guard((context != null && context['config'] != null) ? context['config']['relative_path'] : null)) + 
       "/user/" + 
       __escape(guard((context != null) ? context['userslug'] : null)) + 
-      "/groups\"><i class=\"fa fa-fw fa-users\"></i> [[global:header.groups]]</a></li>\n\t\t\t\t" + 
+      "/groups\">[[global:header.groups]]</a></li>\r\n\r\n\t\t\t\t\t" + 
       (guard((context != null) ? context['showHidden'] : null) ?
-        "\n\t\t\t\t<li><a href=\"" + 
+        "\r\n\t\t\t\t\t<li><a href=\"" + 
           __escape(guard((context != null && context['config'] != null) ? context['config']['relative_path'] : null)) + 
           "/user/" + 
           __escape(guard((context != null) ? context['userslug'] : null)) + 
-          "/bookmarks\"><i class=\"fa fa-fw fa-heart\"></i> [[user:bookmarks]]</a></li>\n\t\t\t\t<li><a href=\"" + 
+          "/bookmarks\">[[user:bookmarks]]</a></li>\r\n\t\t\t\t\t<li><a href=\"" + 
           __escape(guard((context != null && context['config'] != null) ? context['config']['relative_path'] : null)) + 
           "/user/" + 
           __escape(guard((context != null) ? context['userslug'] : null)) + 
-          "/watched\"><i class=\"fa fa-fw fa-eye\"></i> [[user:watched]]</a></li>\n\t\t\t\t<li><a href=\"" + 
+          "/watched\">[[user:watched]]</a></li>\r\n\t\t\t\t\t<li><a href=\"" + 
           __escape(guard((context != null && context['config'] != null) ? context['config']['relative_path'] : null)) + 
           "/user/" + 
           __escape(guard((context != null) ? context['userslug'] : null)) + 
-          "/ignored\"><i class=\"fa fa-fw fa-eye\"></i> [[user:ignored]]</a></li>\n\n\t\t\t\t" + 
+          "/ignored\">[[user:ignored]]</a></li>\r\n\t\t\t\t\t" + 
           (guard((context != null) ? context['reputation:disabled'] : null) ?
             "" :
-            "\n\t\t\t\t<li><a href=\"" + 
+            "\r\n\t\t\t\t\t<li><a href=\"" + 
               __escape(guard((context != null && context['config'] != null) ? context['config']['relative_path'] : null)) + 
               "/user/" + 
               __escape(guard((context != null) ? context['userslug'] : null)) + 
-              "/upvoted\"><i class=\"fa fa-fw fa-chevron-up\"></i> [[global:upvoted]]</a></li>\n\t\t\t\t" + 
+              "/upvoted\">[[global:upvoted]]</a></li>\r\n\t\t\t\t\t" + 
               (guard((context != null) ? context['downvote:disabled'] : null) ?
                 "" :
-                "\n\t\t\t\t<li><a href=\"" + 
+                "\r\n\t\t\t\t\t<li><a href=\"" + 
                   __escape(guard((context != null && context['config'] != null) ? context['config']['relative_path'] : null)) + 
                   "/user/" + 
                   __escape(guard((context != null) ? context['userslug'] : null)) + 
-                  "/downvoted\"><i class=\"fa fa-fw fa-chevron-down\"></i> [[global:downvoted]]</a></li>\n\t\t\t\t") + 
-              "\n\t\t\t\t") + 
-          "\n\n\t\t\t\t" :
+                  "/downvoted\">[[global:downvoted]]</a></li>\r\n\t\t\t\t\t") + 
+              "\r\n\t\t\t\t\t") + 
+          "\r\n\t\t\t\t\t<li><a href=\"" + 
+          __escape(guard((context != null && context['config'] != null) ? context['config']['relative_path'] : null)) + 
+          "/user/" + 
+          __escape(guard((context != null) ? context['userslug'] : null)) + 
+          "/uploads\">[[global:uploads]]</a></li>\r\n\t\t\t\t\t" :
         "") + 
-      "\n\t\t\t\t" + 
+      "\r\n\r\n\t\t\t\t\t" + 
       compiled.blocks['profile_links'](helpers, context, guard, iter, helper) + 
-      "\n\t\t\t</ul>\n\t\t</li>\n\t\t<li>\n\t\t\t<a href=\"" + 
-      __escape(guard((context != null && context['config'] != null) ? context['config']['relative_path'] : null)) + 
-      "/user/" + 
-      __escape(guard((context != null) ? context['userslug'] : null)) + 
-      "\" class=\"inline-block\" id=\"profile\"><i class=\"fa fa-user\"></i> [[user:profile]]</a>\n\t\t</li>\n\t\t" + 
-      (guard((context != null) ? context['showHidden'] : null) ?
-        "\n\t\t<li><a href=\"" + 
-          __escape(guard((context != null && context['config'] != null) ? context['config']['relative_path'] : null)) + 
-          "/user/" + 
-          __escape(guard((context != null) ? context['userslug'] : null)) + 
-          "/edit\"><i class=\"fa fa-pencil-square-o\"></i> [[user:edit]]</a></li>\n\t\t<li><a href=\"" + 
-          __escape(guard((context != null && context['config'] != null) ? context['config']['relative_path'] : null)) + 
-          "/user/" + 
-          __escape(guard((context != null) ? context['userslug'] : null)) + 
-          "/settings\"><i class=\"fa fa-gear\"></i> [[user:settings]]</a></li>\n\t\t" :
-        "") + 
-      "\n\t</ul>\n</div>\n\n\n\t<div class=\"row\">\n\t\t<div class=\"col-md-2 col-sm-4\">\n\t\t\t<div class=\"account-picture-block text-center\">\n\t\t\t\t" + 
+      "\r\n\t\t\t\t</ul>\r\n\t\t\t</li>\r\n\t\t</ul>\r\n\t</div>\r\n</div>\r\n\r\n\r\n\t<div class=\"row\">\r\n\t\t<div class=\"col-md-2 col-sm-4\">\r\n\t\t\t<div class=\"account-picture-block text-center\">\r\n\t\t\t\t<div class=\"row\">\r\n\t\t\t\t\t<div class=\"col-xs-12\">\r\n\t\t\t\t\t\t" + 
       (guard((context != null) ? context['picture'] : null) ?
-        "\n\t\t\t\t<img id=\"user-current-picture\" class=\"user-profile-picture\" src=\"" + 
+        "\r\n\t\t\t\t\t\t<img id=\"user-current-picture\" class=\"user-avatar\" src=\"" + 
           __escape(guard((context != null) ? context['picture'] : null)) + 
-          "\" />\n\t\t\t\t" :
-        "\n\t\t\t\t<div class=\"user-icon user-profile-picture\" style=\"background-color: " + 
+          "\" />\r\n\t\t\t\t\t\t" :
+        "\r\n\t\t\t\t\t\t<div class=\"user-icon\" style=\"background-color: " + 
           __escape(guard((context != null) ? context['icon:bgColor'] : null)) + 
           ";\">" + 
           __escape(guard((context != null) ? context['icon:text'] : null)) + 
-          "</div>\n\t\t\t\t") + 
-      "\n\t\t\t\t<ul class=\"list-group\">\n\t\t\t\t\t" + 
+          "</div>\r\n\t\t\t\t\t\t") + 
+      "\r\n\t\t\t\t\t</div>\r\n\t\t\t\t</div>\r\n\t\t\t\t<ul class=\"list-group\">\r\n\t\t\t\t\t" + 
       (guard((context != null) ? context['allowProfilePicture'] : null) ?
-        "\n\t\t\t\t\t<a id=\"changePictureBtn\" href=\"#\" class=\"list-group-item\">[[user:change_picture]]</a>\n\t\t\t\t\t" :
+        "\r\n\t\t\t\t\t<a id=\"changePictureBtn\" href=\"#\" class=\"list-group-item\">[[user:change_picture]]</a>\r\n\t\t\t\t\t" :
         "") + 
-      "\n\t\t\t\t\t" + 
+      "\r\n\t\t\t\t\t" + 
       (guard((context != null) ? context['username:disableEdit'] : null) ?
         "" :
-        "\n\t\t\t\t\t<a href=\"" + 
+        "\r\n\t\t\t\t\t<a href=\"" + 
           __escape(guard((context != null && context['config'] != null) ? context['config']['relative_path'] : null)) + 
           "/user/" + 
           __escape(guard((context != null) ? context['userslug'] : null)) + 
-          "/edit/username\" class=\"list-group-item\">[[user:change_username]]</a>\n\t\t\t\t\t") + 
-      "\n\t\t\t\t\t" + 
+          "/edit/username\" class=\"list-group-item\">[[user:change_username]]</a>\r\n\t\t\t\t\t") + 
+      "\r\n\t\t\t\t\t" + 
       (guard((context != null) ? context['email:disableEdit'] : null) ?
         "" :
-        "\n\t\t\t\t\t<a href=\"" + 
+        "\r\n\t\t\t\t\t<a href=\"" + 
           __escape(guard((context != null && context['config'] != null) ? context['config']['relative_path'] : null)) + 
           "/user/" + 
           __escape(guard((context != null) ? context['userslug'] : null)) + 
-          "/edit/email\" class=\"list-group-item\">[[user:change_email]]</a>\n\t\t\t\t\t") + 
-      "\n\t\t\t\t\t" + 
+          "/edit/email\" class=\"list-group-item\">[[user:change_email]]</a>\r\n\t\t\t\t\t") + 
+      "\r\n\t\t\t\t\t" + 
       (guard((context != null) ? context['canChangePassword'] : null) ?
-        "\n\t\t\t\t\t<a href=\"" + 
+        "\r\n\t\t\t\t\t<a href=\"" + 
           __escape(guard((context != null && context['config'] != null) ? context['config']['relative_path'] : null)) + 
           "/user/" + 
           __escape(guard((context != null) ? context['userslug'] : null)) + 
-          "/edit/password\" class=\"list-group-item\">[[user:change_password]]</a>\n\t\t\t\t\t" :
+          "/edit/password\" class=\"list-group-item\">[[user:change_password]]</a>\r\n\t\t\t\t\t" :
         "") + 
-      "\n\t\t\t\t\t" + 
+      "\r\n\t\t\t\t\t" + 
       compiled.blocks['editButtons'](helpers, context, guard, iter, helper) + 
-      "\n\t\t\t\t</ul>\n\n\t\t\t\t" + 
+      "\r\n\t\t\t\t</ul>\r\n\r\n\t\t\t\t" + 
       (guard((context != null && context['config'] != null) ? context['config']['requireEmailConfirmation'] : null) ?
-        "\n\t\t\t\t" + 
+        "\r\n\t\t\t\t" + 
           (guard((context != null) ? context['email'] : null) ?
-            "\n\t\t\t\t" + 
+            "\r\n\t\t\t\t" + 
               (guard((context != null) ? context['isSelf'] : null) ?
-                "\n\t\t\t\t<a id=\"confirm-email\" href=\"#\" class=\"btn btn-warning " + 
+                "\r\n\t\t\t\t<a id=\"confirm-email\" href=\"#\" class=\"btn btn-warning " + 
                   (guard((context != null) ? context['email:confirmed'] : null) ?
                     "hide" :
                     "") + 
-                  "\">[[user:confirm_email]]</a><br/><br/>\n\t\t\t\t" :
+                  "\">[[user:confirm_email]]</a><br/><br/>\r\n\t\t\t\t" :
                 "") + 
-              "\n\t\t\t\t" :
+              "\r\n\t\t\t\t" :
             "") + 
-          "\n\t\t\t\t" :
+          "\r\n\t\t\t\t" :
         "") + 
-      "\n\n\t\t\t\t" + 
+      "\r\n\r\n\t\t\t\t" + 
       (guard((context != null) ? context['allowAccountDelete'] : null) ?
-        "\n\t\t\t\t" + 
+        "\r\n\t\t\t\t" + 
           (guard((context != null) ? context['isSelf'] : null) ?
-            "\n\t\t\t\t<a id=\"deleteAccountBtn\" href=\"#\" class=\"btn btn-danger\">[[user:delete_account]]</a><br/><br/>\n\t\t\t\t" :
+            "\r\n\t\t\t\t<a id=\"deleteAccountBtn\" href=\"#\" class=\"btn btn-danger\">[[user:delete_account]]</a><br/><br/>\r\n\t\t\t\t" :
             "") + 
-          "\n\t\t\t\t" :
+          "\r\n\t\t\t\t" :
         "") + 
-      "\n\n\t\t\t</div>\n\t\t</div>\n\n\t\t<div class=\"col-md-5 col-sm-4\">\n\t\t\t<form role=\"form\" component=\"profile/edit/form\">\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label for=\"fullname\">[[user:fullname]]</label>\n\t\t\t\t\t<input class=\"form-control\" type=\"text\" id=\"fullname\" name=\"fullname\" placeholder=\"[[user:fullname]]\" value=\"" + 
+      "\r\n\r\n\t\t\t</div>\r\n\t\t</div>\r\n\r\n\t\t<div class=\"col-md-10 col-sm-8\">\r\n\t\t\t<div class=\"row\">\r\n\t\t\t\t<div class=\"" + 
+      (guard((context != null && context['sso'] != null) ? context['sso']['length'] : null) ?
+        "col-md-7 col-sm-12" :
+        "col-md-12 col-sm-12") + 
+      "\">\r\n\t\t\t\t\t<form>\r\n\r\n\t\t\t\t\t\t<div class=\"form-group\">\r\n\t\t\t\t\t\t\t<label class=\"control-label\" for=\"inputFullname\">[[user:fullname]]</label>\r\n\t\t\t\t\t\t\t<div class=\"controls\">\r\n\t\t\t\t\t\t\t\t<input class=\"form-control\" type=\"text\" id=\"inputFullname\" placeholder=\"[[user:fullname]]\" value=\"" + 
       __escape(guard((context != null) ? context['fullname'] : null)) + 
-      "\">\n\t\t\t\t</div>\n\t\t\t\t" + 
+      "\">\r\n\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t" + 
       (guard((context != null) ? context['allowWebsite'] : null) ?
-        "\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label for=\"website\">[[user:website]]</label>\n\t\t\t\t\t<input class=\"form-control\" type=\"text\" id=\"website\" name=\"website\" placeholder=\"http://...\" value=\"" + 
+        "\r\n\t\t\t\t\t\t<div class=\"form-group\">\r\n\t\t\t\t\t\t\t<label class=\"control-label\" for=\"inputWebsite\">[[user:website]]</label>\r\n\t\t\t\t\t\t\t<div class=\"controls\">\r\n\t\t\t\t\t\t\t\t<input class=\"form-control\" type=\"text\" id=\"inputWebsite\" placeholder=\"http://...\" value=\"" + 
           __escape(guard((context != null) ? context['website'] : null)) + 
-          "\">\n\t\t\t\t</div>\n\t\t\t\t" :
+          "\">\r\n\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t" :
         "") + 
-      "\n\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label for=\"location\">[[user:location]]</label>\n\t\t\t\t\t<input class=\"form-control\" type=\"text\" id=\"location\" name=\"location\" placeholder=\"[[user:location]]\" value=\"" + 
+      "\r\n\r\n\t\t\t\t\t\t<div class=\"form-group\">\r\n\t\t\t\t\t\t\t<label class=\"control-label\" for=\"inputLocation\">[[user:location]]</label>\r\n\t\t\t\t\t\t\t<div class=\"controls\">\r\n\t\t\t\t\t\t\t\t<input class=\"form-control\" type=\"text\" id=\"inputLocation\" placeholder=\"[[user:location]]\" value=\"" + 
       __escape(guard((context != null) ? context['location'] : null)) + 
-      "\">\n\t\t\t\t</div>\n\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label for=\"birthday\">[[user:birthday]]</label>\n\t\t\t\t\t<input class=\"form-control\" type=\"date\" id=\"birthday\" name=\"birthday\" value=\"" + 
+      "\">\r\n\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t\t<div class=\"form-group\">\r\n\t\t\t\t\t\t\t<label class=\"control-label\" for=\"inputBirthday\">[[user:birthday]]</label>\r\n\t\t\t\t\t\t\t<div class=\"controls\">\r\n\t\t\t\t\t\t\t\t<input class=\"form-control\" id=\"inputBirthday\" value=\"" + 
       __escape(guard((context != null) ? context['birthday'] : null)) + 
-      "\" placeholder=\"mm/dd/yyyy\">\n\t\t\t\t</div>\n\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label for=\"groupTitle\">[[user:grouptitle]]</label>\n\n\t\t\t\t\t<select class=\"form-control\" id=\"groupTitle\" name=\"groupTitle\" " + 
+      "\" placeholder=\"mm/dd/yyyy\">\r\n\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t\t<div class=\"form-group\">\r\n\t\t\t\t\t\t\t<label class=\"control-label\" for=\"grouptitle\">[[user:grouptitle]]</label>\r\n\t\t\t\t\t\t\t<div class=\"controls\">\r\n\t\t\t\t\t\t\t\t<select class=\"form-control\" id=\"groupTitle\" data-property=\"groupTitle\" " + 
       (guard((context != null) ? context['allowMultipleBadges'] : null) ?
-        " size=\"" + 
-          __escape(guard((context != null) ? context['groupSelectSize'] : null)) + 
-          "\" multiple" :
+        " multiple" :
         "") + 
-      ">\n\t\t\t\t\t\t<option value=\"\">[[user:no-group-title]]</option>\n\t\t\t\t\t\t" + 
+      ">\r\n\t\t\t\t\t\t\t\t\t<option value=\"\">[[user:no-group-title]]</option>\r\n\t\t\t\t\t\t\t\t\t" + 
       compiled.blocks['groups'](helpers, context, guard, iter, helper) + 
-      "\n\t\t\t\t\t</select>\n\t\t\t\t\t" + 
-      (guard((context != null) ? context['allowMultipleBadges'] : null) ?
-        "\n\t\t\t\t\t<span>[[user:group-order-help]]</span>\n\t\t\t\t\t<i role=\"button\" component=\"group/order/up\" class=\"fa fa-chevron-up\"></i> <i role=\"button\" component=\"group/order/down\" class=\"fa fa-chevron-down\"></i>\n\t\t\t\t\t" :
-        "") + 
-      "\n\t\t\t\t</div>\n\n\t\t\t\t" + 
+      "\r\n\t\t\t\t\t\t\t\t</select>\r\n\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t" + 
       (guard((context != null) ? context['allowAboutMe'] : null) ?
-        "\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label for=\"aboutme\">[[user:aboutme]]</label> <small><label id=\"aboutMeCharCountLeft\"></label></small>\n\t\t\t\t\t<textarea class=\"form-control\" id=\"aboutme\" name=\"aboutme\" rows=\"5\">" + 
+        "\r\n\t\t\t\t\t\t<div class=\"form-group\">\r\n\t\t\t\t\t\t\t<label class=\"control-label\" for=\"inputAboutMe\">[[user:aboutme]]</label> <small><label id=\"aboutMeCharCountLeft\"></label></small>\r\n\t\t\t\t\t\t\t<div class=\"controls\">\r\n\t\t\t\t\t\t\t\t<textarea class=\"form-control\" id=\"inputAboutMe\" rows=\"5\">" + 
           __escape(guard((context != null) ? context['aboutme'] : null)) + 
-          "</textarea>\n\t\t\t\t</div>\n\t\t\t\t" :
+          "</textarea>\r\n\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t" :
         "") + 
-      "\n\n\t\t\t\t" + 
+      "\r\n\r\n\t\t\t\t\t\t" + 
       (guard((context != null) ? context['allowSignature'] : null) ?
-        "\n\t\t\t\t" + 
+        "\r\n\t\t\t\t\t\t" + 
           (guard((context != null) ? context['disableSignatures'] : null) ?
             "" :
-            "\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<label for=\"signature\">[[user:signature]]</label> <small><label id=\"signatureCharCountLeft\"></label></small>\n\t\t\t\t\t<textarea class=\"form-control\" id=\"signature\" name=\"signature\" rows=\"5\">" + 
+            "\r\n\t\t\t\t\t\t<div class=\"form-group\">\r\n\t\t\t\t\t\t\t<label class=\"control-label\" for=\"inputSignature\">[[user:signature]]</label> <small><label id=\"signatureCharCountLeft\"></label></small>\r\n\t\t\t\t\t\t\t<div class=\"controls\">\r\n\t\t\t\t\t\t\t\t<textarea class=\"form-control\" id=\"inputSignature\" rows=\"5\">" + 
               __escape(guard((context != null) ? context['signature'] : null)) + 
-              "</textarea>\n\t\t\t\t</div>\n\t\t\t\t") + 
-          "\n\t\t\t\t" :
+              "</textarea>\r\n\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t") + 
+          "\r\n\t\t\t\t\t\t" :
         "") + 
-      "\n\n\t\t\t\t<a id=\"submitBtn\" href=\"#\" class=\"btn btn-primary\">[[global:save_changes]]</a>\n\t\t\t</form>\n\n\t\t\t<hr class=\"visible-xs visible-sm\"/>\n\t\t</div>\n\n\t\t<div class=\"col-md-5 col-sm-4\">\n\t\t\t" + 
+      "\r\n\r\n\t\t\t\t\t\t<input type=\"hidden\" id=\"inputUID\" value=\"" + 
+      __escape(guard((context != null) ? context['uid'] : null)) + 
+      "\"><br />\r\n\r\n\t\t\t\t\t\t<div class=\"form-actions\">\r\n\t\t\t\t\t\t\t<a id=\"submitBtn\" href=\"#\" class=\"btn btn-primary\">[[global:save_changes]]</a>\r\n\t\t\t\t\t\t</div>\r\n\r\n\t\t\t\t\t</form>\r\n\t\t\t\t</div>\r\n\r\n\t\t\t\t" + 
       (guard((context != null && context['sso'] != null) ? context['sso']['length'] : null) ?
-        "\n\t\t\t<label class=\"control-label\">[[user:sso.title]]</label>\n\t\t\t<div class=\"list-group\">\n\t\t\t\t" + 
+        "\r\n\t\t\t\t<div class=\"col-md-5 col-sm-12\">\r\n\t\t\t\t\t<hr class=\"visible-xs visible-sm\" />\r\n\t\t\t\t\t<label class=\"control-label\">[[user:sso.title]]</label>\r\n\t\t\t\t\t<div class=\"list-group\">\r\n\t\t\t\t\t\t" + 
           compiled.blocks['sso'](helpers, context, guard, iter, helper) + 
-          "\n\t\t\t</div>\n\t\t\t" :
+          "\r\n\t\t\t\t\t</div>\r\n\t\t\t\t</div>\r\n\t\t\t\t" :
         "") + 
-      "\n\t\t</div>\n\t</div>\n</div>\n\n";
+      "\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t</div>\r\n</div>\r\n\r\n";
   }
 
   compiled.blocks = {
@@ -285,11 +311,11 @@
       var value = context;
       return iter(guard((context != null) ? context['profile_links'] : null), function each(key0, index, length, value) {
         var key = key0;
-        return "\n\t\t\t\t" + 
+        return "\r\n\t\t\t\t\t" + 
           (index === 0 ?
-            "\n\t\t\t\t<li class=\"divider\"></li>\n\t\t\t\t" :
+            "\r\n\t\t\t\t\t<li class=\"divider\"></li>\r\n\t\t\t\t\t" :
             "") + 
-          "\n\t\t\t\t<li id=\"" + 
+          "\r\n\t\t\t\t\t<li id=\"" + 
           __escape(guard((context != null && context['profile_links'] != null && context['profile_links'][key0] != null) ? context['profile_links'][key0]['id'] : null)) + 
           "\" class=\"plugin-link " + 
           (guard((context != null && context['profile_links'] != null && context['profile_links'][key0] != null) ? context['profile_links'][key0]['public'] : null) ?
@@ -308,7 +334,7 @@
               "\"></i> " :
             "") + 
           __escape(guard((context != null && context['profile_links'] != null && context['profile_links'][key0] != null) ? context['profile_links'][key0]['name'] : null)) + 
-          "</a></li>\n\t\t\t\t";
+          "</a></li>\r\n\t\t\t\t\t";
       }, function alt() {
         return "";
       });
@@ -318,12 +344,12 @@
       var value = context;
       return iter(guard((context != null) ? context['editButtons'] : null), function each(key0, index, length, value) {
         var key = key0;
-        return "\n\t\t\t\t\t<a href=\"" + 
+        return "\r\n\t\t\t\t\t<a href=\"" + 
           __escape(guard((context != null && context['config'] != null) ? context['config']['relative_path'] : null)) + 
           __escape(guard((context != null && context['editButtons'] != null && context['editButtons'][key0] != null) ? context['editButtons'][key0]['link'] : null)) + 
           "\" class=\"list-group-item\">" + 
           __escape(guard((context != null && context['editButtons'] != null && context['editButtons'][key0] != null) ? context['editButtons'][key0]['text'] : null)) + 
-          "</a>\n\t\t\t\t\t";
+          "</a>\r\n\t\t\t\t\t";
       }, function alt() {
         return "";
       });
@@ -333,19 +359,19 @@
       var value = context;
       return iter(guard((context != null) ? context['groups'] : null), function each(key0, index, length, value) {
         var key = key0;
-        return "\n\t\t\t\t\t\t" + 
+        return "\r\n\t\t\t\t\t\t\t\t\t" + 
           (guard((context != null && context['groups'] != null && context['groups'][key0] != null) ? context['groups'][key0]['userTitleEnabled'] : null) ?
-            "\n\t\t\t\t\t\t<option value=\"" + 
-              __escape(guard((context != null && context['groups'] != null && context['groups'][key0] != null) ? context['groups'][key0]['displayName'] : null)) + 
+            "\r\n\t\t\t\t\t\t\t\t\t<option value=\"" + 
+              __escape(guard((context != null && context['groups'] != null && context['groups'][key0] != null) ? context['groups'][key0]['name'] : null)) + 
               "\" " + 
               (guard((context != null && context['groups'] != null && context['groups'][key0] != null) ? context['groups'][key0]['selected'] : null) ?
                 "selected" :
                 "") + 
               ">" + 
               __escape(guard((context != null && context['groups'] != null && context['groups'][key0] != null) ? context['groups'][key0]['userTitle'] : null)) + 
-              "</option>\n\t\t\t\t\t\t" :
+              "</option>\r\n\t\t\t\t\t\t\t\t\t" :
             "") + 
-          "\n\t\t\t\t\t\t";
+          "\r\n\t\t\t\t\t\t\t\t\t";
       }, function alt() {
         return "";
       });
@@ -355,31 +381,31 @@
       var value = context;
       return iter(guard((context != null) ? context['sso'] : null), function each(key0, index, length, value) {
         var key = key0;
-        return "\n\t\t\t\t<div class=\"list-group-item\">\n\t\t\t\t\t" + 
+        return "\r\n\t\t\t\t\t\t<div class=\"list-group-item\">\r\n\t\t\t\t\t\t\t" + 
           (guard((context != null && context['sso'] != null && context['sso'][key0] != null) ? context['sso'][key0]['deauthUrl'] : null) ?
-            "\n\t\t\t\t\t<a class=\"btn btn-default btn-xs pull-right\" href=\"" + 
+            "\r\n\t\t\t\t\t\t\t<a class=\"btn btn-default btn-xs pull-right\" href=\"" + 
               __escape(guard((context != null && context['sso'] != null && context['sso'][key0] != null) ? context['sso'][key0]['deauthUrl'] : null)) + 
-              "\">[[user:sso.dissociate]]</a>\n\t\t\t\t\t" :
+              "\">[[user:sso.dissociate]]</a>\r\n\t\t\t\t\t\t\t" :
             "") + 
-          "\n\t\t\t\t\t<a href=\"" + 
+          "\r\n\t\t\t\t\t\t\t<a href=\"" + 
           __escape(guard((context != null && context['sso'] != null && context['sso'][key0] != null) ? context['sso'][key0]['url'] : null)) + 
           "\" target=\"" + 
           (guard((context != null && context['sso'] != null && context['sso'][key0] != null) ? context['sso'][key0]['associated'] : null) ?
             "_blank" :
             "_top") + 
-          "\">\n\t\t\t\t\t\t" + 
+          "\">\r\n\t\t\t\t\t\t\t\t" + 
           (guard((context != null && context['sso'] != null && context['sso'][key0] != null) ? context['sso'][key0]['icon'] : null) ?
             "<i class=\"fa " + 
               __escape(guard((context != null && context['sso'] != null && context['sso'][key0] != null) ? context['sso'][key0]['icon'] : null)) + 
               "\"></i>" :
             "") + 
-          "\n\t\t\t\t\t\t" + 
+          "\r\n\t\t\t\t\t\t\t\t" + 
           (guard((context != null && context['sso'] != null && context['sso'][key0] != null) ? context['sso'][key0]['associated'] : null) ?
             "[[user:sso.associated]]" :
             "[[user:sso.not-associated]]") + 
-          "\n\t\t\t\t\t\t" + 
+          "\r\n\t\t\t\t\t\t\t\t" + 
           __escape(guard((context != null && context['sso'] != null && context['sso'][key0] != null) ? context['sso'][key0]['name'] : null)) + 
-          "\n\t\t\t\t\t</a>\n\t\t\t\t</div>\n\t\t\t\t";
+          "\r\n\t\t\t\t\t\t\t</a>\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t";
       }, function alt() {
         return "";
       });

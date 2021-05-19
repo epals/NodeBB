@@ -2,7 +2,7 @@
 <ol class="breadcrumb" itemscope="itemscope" itemprop="breadcrumb" itemtype="http://schema.org/BreadcrumbList">
 	{{{each breadcrumbs}}}
 	<li<!-- IF @last --> component="breadcrumb/current"<!-- ENDIF @last --> itemscope="itemscope" itemprop="itemListElement" itemtype="http://schema.org/ListItem" <!-- IF @last -->class="active"<!-- ENDIF @last -->>
-		<meta itemprop="position" content="@index" />
+		<meta itemprop="position" content="{@index}" />
 		<!-- IF !@last --><a href="{breadcrumbs.url}" itemprop="item"><!-- ENDIF !@last -->
 			<span itemprop="name">
 				{breadcrumbs.text}
@@ -111,7 +111,7 @@
 					<div class="alert alert-success text-center">[[flags:no-notes]]</div>
 					<!-- ENDIF !notes.length -->
 					{{{each notes}}}
-					<div class="media" data-datetime="{../datetime}" data-index="@index">
+					<div class="media" data-datetime="{../datetime}" data-index="{@index}">
 						<div class="media-left">
 							<a href="{config.relative_path}/user/{../user.userslug}">{buildAvatar(notes.user, "md", false, "media-object")}</a>
 						</div>
@@ -161,7 +161,9 @@
 					</button>
 					<ul class="dropdown-menu">
 						<li><a href="{config.relative_path}/uid/{target.uid}">[[flags:view-profile]]</a></li>
-						<li><a href="#" data-action="chat">[[flags:start-new-chat]]</a></li>
+						{{{ if !config.disableChat }}}
+							<li><a href="#" data-action="chat">[[flags:start-new-chat]]</a></li>
+						{{{ end }}}
 						<li role="separator" class="divider"></li>
 						{{{ if privileges.ban }}}<li><a href="#" data-action="ban">[[user:ban_account]]</a></li>{{{ end }}}
 						{{{ if privileges.admin:users }}}
@@ -193,7 +195,7 @@
 							<ul>
 								{{{each ./fields}}}
 								<li>
-									<span class="label label-primary">[[flags:@key]]</span><!-- IF @value --> &rarr; <span class="label label-default">@value</span><!-- ENDIF @value -->
+									<span class="label label-primary">[[flags:{@key}]]</span><!-- IF @value --> &rarr; <span class="label label-default">{@value}</span><!-- ENDIF @value -->
 								</li>
 								{{{end}}}
 								{{{ each ./meta }}}

@@ -10,9 +10,9 @@
     var __escape = helpers.__escape;
     var value = context;
     return (guard((context != null && context['children'] != null) ? context['children']['length'] : null) ?
-        "\n<div class=\"subcategory\">\n\t" + 
+        "\r\n<div class=\"subcategory\">\r\n\t" + 
           (guard((context != null) ? context['hasMoreSubCategories'] : null) ?
-            "\n\t<div><div component=\"category-selector\" class=\"btn-group bottom-sheet\">\n<button type=\"button\" class=\"btn btn-default dropdown-toggle\" data-toggle=\"dropdown\">\n    <span component=\"category-selector-selected\">" + 
+            "\r\n\t<div><div component=\"category-selector\" class=\"btn-group bottom-sheet\">\n<button type=\"button\" class=\"btn btn-default dropdown-toggle\" data-toggle=\"dropdown\">\n    <span component=\"category-selector-selected\">" + 
               (guard((context != null) ? context['selectedCategory'] : null) ?
                 "<span class=\"fa-stack\" style=\"" + 
                   __escape(helper(context, helpers, 'generateCategoryBackground', [guard((context != null) ? context['selectedCategory'] : null)])) + 
@@ -28,17 +28,17 @@
                     "[[topic:thread_tools.select_category]]")) + 
               "</span> <span class=\"caret\"></span>\n</button>\n<div component=\"category-selector-search\" class=\"hidden\">\n    <input type=\"text\" class=\"form-control\" autocomplete=\"off\">\n</div>\n<ul component=\"category/list\" class=\"dropdown-menu category-dropdown-menu\" role=\"menu\">\n    <li component=\"category/no-matches\" role=\"presentation\" class=\"category hidden\">\n        <a role=\"menu-item\">[[search:no-matches]]</a>\n    </li>\n    " + 
               compiled.blocks['categoryItems'](helpers, context, guard, iter, helper) + 
-              "\n</ul>\n</div></div>\n\t" :
-            "\n\t<p>[[category:subcategories]]</p>\n\t") + 
-          "\n\n\t<ul component=\"category/subcategory/container\" class=\"categories\" itemscope itemtype=\"http://www.schema.org/ItemList\">\n\t\t" + 
+              "\n</ul>\n</div></div>\r\n\t" :
+            "\r\n\t<p>[[category:subcategories]]</p>\r\n\t") + 
+          "\r\n\r\n\t<div component=\"category/subcategory/container\" class=\"categories\" itemscope itemtype=\"http://www.schema.org/ItemList\">\r\n\t\t" + 
           compiled.blocks['children'](helpers, context, guard, iter, helper) + 
-          "\n\t</ul>\n\t" + 
+          "\r\n\t</div>\r\n\t" + 
           (guard((context != null) ? context['hasMoreSubCategories'] : null) ?
-            "\n\t<button class=\"btn btn-default\" component=\"category/load-more-subcategories\">[[category:x-more-categories, " + 
+            "\r\n\t<button class=\"btn btn-default\" component=\"category/load-more-subcategories\">[[category:x-more-categories, " + 
               __escape(guard((context != null) ? context['subCategoriesLeft'] : null)) + 
-              "]]</button>\n\t" :
+              "]]</button>\r\n\t" :
             "") + 
-          "\n</div>\n" :
+          "\r\n</div>\r\n" :
         "");
   }
 
@@ -86,122 +86,123 @@
       var value = context;
       return iter(guard((context != null) ? context['children'] : null), function each(key0, index, length, value) {
         var key = key0;
-        return "\n\t\t<li component=\"categories/category\" data-cid=\"" + 
+        return "\r\n\t\t<div class=\"row\" component=\"categories/category\" data-cid=\"" + 
           __escape(guard((context != null && context['children'] != null && context['children'][key0] != null) ? context['children'][key0]['cid'] : null)) + 
-          "\" data-numRecentReplies=\"1\" class=\"row clearfix category-" + 
-          __escape(guard((context != null && context['children'] != null && context['children'][key0] != null) ? context['children'][key0]['cid'] : null)) + 
-          "\">\n\t<meta itemprop=\"name\" content=\"" + 
-          __escape(guard((context != null && context['children'] != null && context['children'][key0] != null) ? context['children'][key0]['name'] : null)) + 
-          "\">\n\n\t<div class=\"content col-xs-12 " + 
-          (guard((context != null && context['config'] != null) ? context['config']['hideCategoryLastPost'] : null) ?
-            "col-md-10 col-sm-12" :
-            "col-md-7 col-sm-9") + 
-          "\">\n\t\t<div class=\"icon pull-left\" style=\"" + 
-          __escape(helper(context, helpers, 'generateCategoryBackground', [guard(value)])) + 
-          "\">\n\t\t\t<i class=\"fa fa-fw " + 
+          "\" data-numRecentReplies=\"1\">\r\n\t\t    <div class=\"col-md-8 col-xs-12\">\r\n\t\t        <div class=\"category-info\">\r\n\t\t            <div class=\"category-info-content\">\r\n\t\t            \t<div class=\"category-icon\">\r\n\t\t                \t<i class=\"fa fa-fw " + 
           __escape(guard((context != null && context['children'] != null && context['children'][key0] != null) ? context['children'][key0]['icon'] : null)) + 
-          "\"></i>\n\t\t</div>\n\n\t\t<h2 class=\"title\">\n\t\t\t" + 
-          (guard((context != null && context['children'] != null && context['children'][key0] != null) ? context['children'][key0]['isSection'] : null) ?
-            "\n" + 
-              __escape(guard((context != null && context['children'] != null && context['children'][key0] != null) ? context['children'][key0]['name'] : null)) + 
-              "\n" :
-            "\n" + 
-              (guard((context != null && context['children'] != null && context['children'][key0] != null) ? context['children'][key0]['link'] : null) ?
-                "\n<a href=\"" + 
-                  __escape(guard((context != null && context['children'] != null && context['children'][key0] != null) ? context['children'][key0]['link'] : null)) + 
-                  "\" itemprop=\"url\">\n" :
-                "\n<a href=\"" + 
-                  __escape(guard((context != null && context['config'] != null) ? context['config']['relative_path'] : null)) + 
-                  "/category/" + 
-                  __escape(guard((context != null && context['children'] != null && context['children'][key0] != null) ? context['children'][key0]['slug'] : null)) + 
-                  "\" itemprop=\"url\">\n") + 
-              "\n" + 
-              __escape(guard((context != null && context['children'] != null && context['children'][key0] != null) ? context['children'][key0]['name'] : null)) + 
-              "\n</a>\n") + 
-          "\n\t\t</h2>\n\t\t<div>\n\t\t\t" + 
-          (guard((context != null && context['children'] != null && context['children'][key0] != null) ? context['children'][key0]['descriptionParsed'] : null) ?
-            "\n\t\t\t<div class=\"description\">\n\t\t\t\t" + 
-              __escape(guard((context != null && context['children'] != null && context['children'][key0] != null) ? context['children'][key0]['descriptionParsed'] : null)) + 
-              "\n\t\t\t</div>\n\t\t\t" :
-            "") + 
-          "\n\t\t\t" + 
-          (guard((context != null && context['config'] != null) ? context['config']['hideSubCategories'] : null) ?
-            "" :
-            "\n\t\t\t" + 
-              __escape(helper(context, helpers, 'generateChildrenCategories', [guard(value)])) + 
-              "\n\t\t\t") + 
-          "\n\t\t</div>\n\t\t<span class=\"visible-xs pull-right\">\n\t\t\t" + 
-          (guard((context != null && context['children'] != null && context['children'][key0] != null && context['children'][key0]['teaser'] != null) ? context['children'][key0]['teaser']['timestampISO'] : null) ?
-            "\n\t\t\t<a class=\"permalink\" href=\"" + 
-              __escape(guard((context != null && context['children'] != null && context['children'][key0] != null && context['children'][key0]['teaser'] != null) ? context['children'][key0]['teaser']['url'] : null)) + 
-              "\">\n\t\t\t\t<small class=\"timeago\" title=\"" + 
-              __escape(guard((context != null && context['children'] != null && context['children'][key0] != null && context['children'][key0]['teaser'] != null) ? context['children'][key0]['teaser']['timestampISO'] : null)) + 
-              "\"></small>\n\t\t\t</a>\n\t\t\t" :
-            "") + 
-          "\n\t\t</span>\n\t</div>\n\n\t" + 
-          (guard((context != null && context['children'] != null && context['children'][key0] != null) ? context['children'][key0]['link'] : null) ?
-            "" :
-            "\n\t<div class=\"col-md-1 hidden-sm hidden-xs stats\">\n\t\t<span class=\"" + 
-              __escape(guard((context != null && context['children'] != null && context['children'][key0] != null) ? context['children'][key0]['unread-class'] : null)) + 
-              " human-readable-number\" title=\"" + 
-              __escape(guard((context != null && context['children'] != null && context['children'][key0] != null) ? context['children'][key0]['totalTopicCount'] : null)) + 
-              "\">" + 
-              __escape(guard((context != null && context['children'] != null && context['children'][key0] != null) ? context['children'][key0]['totalTopicCount'] : null)) + 
-              "</span><br />\n\t\t<small>[[global:topics]]</small>\n\t</div>\n\t<div class=\"col-md-1 hidden-sm hidden-xs stats\">\n\t\t<span class=\"" + 
-              __escape(guard((context != null && context['children'] != null && context['children'][key0] != null) ? context['children'][key0]['unread-class'] : null)) + 
-              " human-readable-number\" title=\"" + 
-              __escape(guard((context != null && context['children'] != null && context['children'][key0] != null) ? context['children'][key0]['totalPostCount'] : null)) + 
-              "\">" + 
-              __escape(guard((context != null && context['children'] != null && context['children'][key0] != null) ? context['children'][key0]['totalPostCount'] : null)) + 
-              "</span><br />\n\t\t<small>[[global:posts]]</small>\n\t</div>\n\t" + 
-              (guard((context != null && context['config'] != null) ? context['config']['hideCategoryLastPost'] : null) ?
-                "" :
-                "\n\t<div class=\"col-md-3 col-sm-3 teaser hidden-xs\" component=\"topic/teaser\">\n\t\t<div class=\"card background-link-container\" style=\"border-color: " + 
-                  __escape(guard((context != null && context['children'] != null && context['children'][key0] != null) ? context['children'][key0]['bgColor'] : null)) + 
-                  "\">\n\t" + 
-                  iter(guard((context != null && context['children'] != null && context['children'][key0] != null) ? context['children'][key0]['posts'] : null), function each(key1, index, length, value) {
-                    var key = key1;
-                    return "\n\t" + 
-                      (index === 0 ?
-                        "\n\t<div component=\"category/posts\">\n\t\t<a class=\"background-link\" href=\"" + 
-                          __escape(guard((context != null && context['config'] != null) ? context['config']['relative_path'] : null)) + 
-                          "/topic/" + 
-                          __escape(guard((context != null && context['children'] != null && context['children'][key0] != null && context['children'][key0]['posts'] != null && context['children'][key0]['posts'][key1] != null && context['children'][key0]['posts'][key1]['topic'] != null) ? context['children'][key0]['posts'][key1]['topic']['slug'] : null)) + 
-                          (guard((context != null && context['children'] != null && context['children'][key0] != null && context['children'][key0]['posts'] != null && context['children'][key0]['posts'][key1] != null) ? context['children'][key0]['posts'][key1]['index'] : null) ?
-                            "/" + 
-                              __escape(guard((context != null && context['children'] != null && context['children'][key0] != null && context['children'][key0]['posts'] != null && context['children'][key0]['posts'][key1] != null) ? context['children'][key0]['posts'][key1]['index'] : null)) :
-                            "") + 
-                          "\"></a>\n\t\t<p>\n\t\t\t<a href=\"" + 
-                          __escape(guard((context != null && context['config'] != null) ? context['config']['relative_path'] : null)) + 
-                          "/user/" + 
-                          __escape(guard((context != null && context['children'] != null && context['children'][key0] != null && context['children'][key0]['posts'] != null && context['children'][key0]['posts'][key1] != null && context['children'][key0]['posts'][key1]['user'] != null) ? context['children'][key0]['posts'][key1]['user']['userslug'] : null)) + 
-                          "\">" + 
-                          __escape(helper(context, helpers, 'buildAvatar', [guard((context != null && context['children'] != null && context['children'][key0] != null && context['children'][key0]['posts'] != null && context['children'][key0]['posts'][key1] != null) ? context['children'][key0]['posts'][key1]['user'] : null), "sm", guard((context != null) ? context['true'] : null)])) + 
-                          "</a>\n\t\t\t<a class=\"permalink\" href=\"" + 
-                          __escape(guard((context != null && context['config'] != null) ? context['config']['relative_path'] : null)) + 
-                          "/topic/" + 
-                          __escape(guard((context != null && context['children'] != null && context['children'][key0] != null && context['children'][key0]['posts'] != null && context['children'][key0]['posts'][key1] != null && context['children'][key0]['posts'][key1]['topic'] != null) ? context['children'][key0]['posts'][key1]['topic']['slug'] : null)) + 
-                          (guard((context != null && context['children'] != null && context['children'][key0] != null && context['children'][key0]['posts'] != null && context['children'][key0]['posts'][key1] != null) ? context['children'][key0]['posts'][key1]['index'] : null) ?
-                            "/" + 
-                              __escape(guard((context != null && context['children'] != null && context['children'][key0] != null && context['children'][key0]['posts'] != null && context['children'][key0]['posts'][key1] != null) ? context['children'][key0]['posts'][key1]['index'] : null)) :
-                            "") + 
-                          "\">\n\t\t\t\t<small class=\"timeago\" title=\"" + 
-                          __escape(guard((context != null && context['children'] != null && context['children'][key0] != null && context['children'][key0]['posts'] != null && context['children'][key0]['posts'][key1] != null) ? context['children'][key0]['posts'][key1]['timestampISO'] : null)) + 
-                          "\"></small>\n\t\t\t</a>\n\t\t</p>\n\t\t<div class=\"post-content\">\n\t\t\t" + 
-                          __escape(guard((context != null && context['children'] != null && context['children'][key0] != null && context['children'][key0]['posts'] != null && context['children'][key0]['posts'][key1] != null) ? context['children'][key0]['posts'][key1]['content'] : null)) + 
-                          "\n\t\t</div>\n\t</div>\n\t" :
+          "\"></i>\r\n\t\t                </div>\r\n\t\t                <a class=\"category-title\" href=\"" + 
+          __escape(guard((context != null && context['config'] != null) ? context['config']['relative_path'] : null)) + 
+          "/category/" + 
+          __escape(guard((context != null && context['children'] != null && context['children'][key0] != null) ? context['children'][key0]['slug'] : null)) + 
+          "\" title=\"" + 
+          __escape(guard((context != null && context['children'] != null && context['children'][key0] != null) ? context['children'][key0]['name'] : null)) + 
+          "\">" + 
+          __escape(guard((context != null && context['children'] != null && context['children'][key0] != null) ? context['children'][key0]['name'] : null)) + 
+          "</a>\r\n\r\n\t\t                <div class=\"category-description\">\r\n\t\t                    " + 
+          __escape(guard((context != null && context['children'] != null && context['children'][key0] != null) ? context['children'][key0]['descriptionParsed'] : null)) + 
+          "\r\n\t\t                </div>\r\n\t\t            </div>\r\n\t\t        </div>\r\n\t\t    </div>\r\n\t\t    <div class=\"col-md-1 hidden-xs hidden-sm\">\r\n\t\t        <div class=\"total-topic-count human-readable-number\" title=\"" + 
+          __escape(guard((context != null && context['children'] != null && context['children'][key0] != null) ? context['children'][key0]['totalTopicCount'] : null)) + 
+          "\">\r\n\t\t            " + 
+          __escape(guard((context != null && context['children'] != null && context['children'][key0] != null) ? context['children'][key0]['totalTopicCount'] : null)) + 
+          "\r\n\t\t        </div>\r\n\t\t    </div>\r\n\t\t    <div class=\"col-md-1 hidden-xs hidden-sm\">\r\n\t\t        <div class=\"total-post-count human-readable-number\" title=\"" + 
+          __escape(guard((context != null && context['children'] != null && context['children'][key0] != null) ? context['children'][key0]['totalPostCount'] : null)) + 
+          "\">\r\n\t\t            " + 
+          __escape(guard((context != null && context['children'] != null && context['children'][key0] != null) ? context['children'][key0]['totalPostCount'] : null)) + 
+          "\r\n\t\t        </div>\r\n\t\t    </div>\r\n\t\t    <div class=\"col-md-2 hidden-xs hidden-sm\">\r\n\t\t        <div class=\"teaser\" component=\"topic/teaser\">\r\n\t\t            " + 
+          (guard((context != null && context['children'] != null && context['children'][key0] != null) ? context['children'][key0]['posts'] : null) ?
+            iter(guard((context != null && context['children'] != null && context['children'][key0] != null) ? context['children'][key0]['posts'] : null), function each(key1, index, length, value) {
+                var key = key1;
+                return "\r\n\t\t    \t    " + 
+                  (index === 0 ?
+                    "\r\n\r\n\t\t    \t\t" + 
+                      (guard((context != null && context['children'] != null && context['children'][key0] != null && context['children'][key0]['posts'] != null && context['children'][key0]['posts'][key1] != null && context['children'][key0]['posts'][key1]['user'] != null) ? context['children'][key0]['posts'][key1]['user']['picture'] : null) ?
+                        "\r\n\t\t    \t\t<img class=\"user-avatar\" title=\"" + 
+                          __escape(guard((context != null && context['children'] != null && context['children'][key0] != null && context['children'][key0]['posts'] != null && context['children'][key0]['posts'][key1] != null && context['children'][key0]['posts'][key1]['user'] != null) ? context['children'][key0]['posts'][key1]['user']['username'] : null)) + 
+                          "\" alt=\"" + 
+                          __escape(guard((context != null && context['children'] != null && context['children'][key0] != null && context['children'][key0]['posts'] != null && context['children'][key0]['posts'][key1] != null && context['children'][key0]['posts'][key1]['user'] != null) ? context['children'][key0]['posts'][key1]['user']['username'] : null)) + 
+                          "\" src=\"" + 
+                          __escape(guard((context != null && context['children'] != null && context['children'][key0] != null && context['children'][key0]['posts'] != null && context['children'][key0]['posts'][key1] != null && context['children'][key0]['posts'][key1]['user'] != null) ? context['children'][key0]['posts'][key1]['user']['picture'] : null)) + 
+                          "\" title=\"" + 
+                          __escape(guard((context != null && context['children'] != null && context['children'][key0] != null && context['children'][key0]['posts'] != null && context['children'][key0]['posts'][key1] != null && context['children'][key0]['posts'][key1]['user'] != null) ? context['children'][key0]['posts'][key1]['user']['username'] : null)) + 
+                          "\"/>\r\n\t\t    \t\t" :
+                        "\r\n\t\t    \t\t<div class=\"user-icon\" title=\"" + 
+                          __escape(guard((context != null && context['children'] != null && context['children'][key0] != null && context['children'][key0]['posts'] != null && context['children'][key0]['posts'][key1] != null && context['children'][key0]['posts'][key1]['user'] != null) ? context['children'][key0]['posts'][key1]['user']['username'] : null)) + 
+                          "\" style=\"background-color: " + 
+                          __escape(guard((context != null && context['children'] != null && context['children'][key0] != null && context['children'][key0]['posts'] != null && context['children'][key0]['posts'][key1] != null && context['children'][key0]['posts'][key1]['user'] != null) ? context['children'][key0]['posts'][key1]['user']['icon:bgColor'] : null)) + 
+                          ";\">" + 
+                          __escape(guard((context != null && context['children'] != null && context['children'][key0] != null && context['children'][key0]['posts'] != null && context['children'][key0]['posts'][key1] != null && context['children'][key0]['posts'][key1]['user'] != null) ? context['children'][key0]['posts'][key1]['user']['icon:text'] : null)) + 
+                          "</div>\r\n\t\t    \t\t") + 
+                      "\r\n\r\n\t\t    \t\t<a href=\"" + 
+                      __escape(guard((context != null && context['config'] != null) ? context['config']['relative_path'] : null)) + 
+                      "/user/" + 
+                      __escape(guard((context != null && context['children'] != null && context['children'][key0] != null && context['children'][key0]['posts'] != null && context['children'][key0]['posts'][key1] != null && context['children'][key0]['posts'][key1]['user'] != null) ? context['children'][key0]['posts'][key1]['user']['userslug'] : null)) + 
+                      "\">" + 
+                      __escape(guard((context != null && context['children'] != null && context['children'][key0] != null && context['children'][key0]['posts'] != null && context['children'][key0]['posts'][key1] != null && context['children'][key0]['posts'][key1]['user'] != null) ? context['children'][key0]['posts'][key1]['user']['username'] : null)) + 
+                      "</a>\r\n\r\n\t\t    \t\t<a class=\"permalink\" href=\"" + 
+                      __escape(guard((context != null && context['config'] != null) ? context['config']['relative_path'] : null)) + 
+                      "/topic/" + 
+                      __escape(guard((context != null && context['children'] != null && context['children'][key0] != null && context['children'][key0]['posts'] != null && context['children'][key0]['posts'][key1] != null && context['children'][key0]['posts'][key1]['topic'] != null) ? context['children'][key0]['posts'][key1]['topic']['slug'] : null)) + 
+                      (guard((context != null && context['children'] != null && context['children'][key0] != null && context['children'][key0]['posts'] != null && context['children'][key0]['posts'][key1] != null) ? context['children'][key0]['posts'][key1]['index'] : null) ?
+                        "/" + 
+                          __escape(guard((context != null && context['children'] != null && context['children'][key0] != null && context['children'][key0]['posts'] != null && context['children'][key0]['posts'][key1] != null) ? context['children'][key0]['posts'][key1]['index'] : null)) :
                         "") + 
-                      "\n\t";
-                  }, function alt() {
-                    return "";
-                  }) + 
-                  "\n\n\t" + 
-                  (guard((context != null && context['children'] != null && context['children'][key0] != null && context['children'][key0]['posts'] != null) ? context['children'][key0]['posts']['length'] : null) ?
-                    "" :
-                    "\n\t<div component=\"category/posts\">\n\t\t<div class=\"post-content\">\n\t\t\t[[category:no_new_posts]]\n\t\t</div>\n\t</div>\n\t") + 
-                  "\n</div>\n\n\t</div>\n\t") + 
-              "\n\t") + 
-          "\n</li>\n\n\t\t";
+                      "\">\r\n\t\t    \t\t\t<small class=\"timeago\" title=\"" + 
+                      __escape(guard((context != null && context['children'] != null && context['children'][key0] != null && context['children'][key0]['posts'] != null && context['children'][key0]['posts'][key1] != null) ? context['children'][key0]['posts'][key1]['timestampISO'] : null)) + 
+                      "\"></small>\r\n\t\t    \t\t</a>\r\n\t\t    \t\t" :
+                    "") + 
+                  "\r\n\t\t    \t    ";
+              }, function alt() {
+                return "";
+              }) :
+            iter(guard((context != null) ? context['posts'] : null), function each(key1, index, length, value) {
+                var key = key1;
+                return "\r\n\t\t    \t    " + 
+                  (index === 0 ?
+                    "\r\n\r\n\t\t    \t\t" + 
+                      (guard((context != null && context['posts'] != null && context['posts'][key1] != null && context['posts'][key1]['user'] != null) ? context['posts'][key1]['user']['picture'] : null) ?
+                        "\r\n\t\t    \t\t<img class=\"user-avatar\" title=\"" + 
+                          __escape(guard((context != null && context['posts'] != null && context['posts'][key1] != null && context['posts'][key1]['user'] != null) ? context['posts'][key1]['user']['username'] : null)) + 
+                          "\" alt=\"" + 
+                          __escape(guard((context != null && context['posts'] != null && context['posts'][key1] != null && context['posts'][key1]['user'] != null) ? context['posts'][key1]['user']['username'] : null)) + 
+                          "\" src=\"" + 
+                          __escape(guard((context != null && context['posts'] != null && context['posts'][key1] != null && context['posts'][key1]['user'] != null) ? context['posts'][key1]['user']['picture'] : null)) + 
+                          "\" title=\"" + 
+                          __escape(guard((context != null && context['posts'] != null && context['posts'][key1] != null && context['posts'][key1]['user'] != null) ? context['posts'][key1]['user']['username'] : null)) + 
+                          "\"/>\r\n\t\t    \t\t" :
+                        "\r\n\t\t    \t\t<div class=\"user-icon\" title=\"" + 
+                          __escape(guard((context != null && context['posts'] != null && context['posts'][key1] != null && context['posts'][key1]['user'] != null) ? context['posts'][key1]['user']['username'] : null)) + 
+                          "\" style=\"background-color: " + 
+                          __escape(guard((context != null && context['posts'] != null && context['posts'][key1] != null && context['posts'][key1]['user'] != null) ? context['posts'][key1]['user']['icon:bgColor'] : null)) + 
+                          ";\">" + 
+                          __escape(guard((context != null && context['posts'] != null && context['posts'][key1] != null && context['posts'][key1]['user'] != null) ? context['posts'][key1]['user']['icon:text'] : null)) + 
+                          "</div>\r\n\t\t    \t\t") + 
+                      "\r\n\r\n\t\t    \t\t<a href=\"" + 
+                      __escape(guard((context != null && context['config'] != null) ? context['config']['relative_path'] : null)) + 
+                      "/user/" + 
+                      __escape(guard((context != null && context['posts'] != null && context['posts'][key1] != null && context['posts'][key1]['user'] != null) ? context['posts'][key1]['user']['userslug'] : null)) + 
+                      "\">" + 
+                      __escape(guard((context != null && context['posts'] != null && context['posts'][key1] != null && context['posts'][key1]['user'] != null) ? context['posts'][key1]['user']['username'] : null)) + 
+                      "</a>\r\n\r\n\t\t    \t\t<a class=\"permalink\" href=\"" + 
+                      __escape(guard((context != null && context['config'] != null) ? context['config']['relative_path'] : null)) + 
+                      "/topic/" + 
+                      __escape(guard((context != null && context['posts'] != null && context['posts'][key1] != null && context['posts'][key1]['topic'] != null) ? context['posts'][key1]['topic']['slug'] : null)) + 
+                      (guard((context != null && context['posts'] != null && context['posts'][key1] != null) ? context['posts'][key1]['index'] : null) ?
+                        "/" + 
+                          __escape(guard((context != null && context['posts'] != null && context['posts'][key1] != null) ? context['posts'][key1]['index'] : null)) :
+                        "") + 
+                      "\">\r\n\t\t    \t\t\t<small class=\"timeago\" title=\"" + 
+                      __escape(guard((context != null && context['posts'] != null && context['posts'][key1] != null) ? context['posts'][key1]['timestampISO'] : null)) + 
+                      "\"></small>\r\n\t\t    \t\t</a>\r\n\t\t    \t\t" :
+                    "") + 
+                  "\r\n\t\t    \t    ";
+              }, function alt() {
+                return "";
+              })) + 
+          "\r\n\r\n\t\t    \t    " + 
+          (guard((context != null && context['children'] != null && context['children'][key0] != null && context['children'][key0]['posts'] != null) ? context['children'][key0]['posts']['length'] : null) ?
+            "" :
+            "\r\n\t\t\t\t\t[[category:no_new_posts]]\r\n\t\t\t        ") + 
+          "\r\n\t\t\t    </div>\r\n\t\t    </div>\r\n\t\t</div>\r\n\t\t";
       }, function alt() {
         return "";
       });

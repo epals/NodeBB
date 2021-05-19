@@ -9,25 +9,29 @@
   function compiled(helpers, context, guard, iter, helper) {
     var __escape = helpers.__escape;
     var value = context;
-    return "<div class=\"tags\">\n\t" + 
+    return "<div class=\"tags\">\r\n\t" + 
       (guard((context != null && context['breadcrumbs'] != null) ? context['breadcrumbs']['length'] : null) ?
         "\n<ol class=\"breadcrumb\" itemscope=\"itemscope\" itemprop=\"breadcrumb\" itemtype=\"http://schema.org/BreadcrumbList\">\n\t" + 
           compiled.blocks['breadcrumbs'](helpers, context, guard, iter, helper) + 
           "\n</ol>\n" :
         "") + 
-      "\n\n\n\t" + 
+      "\n\r\n\r\n\t" + 
+      (guard((context != null) ? context['displayTagSearch'] : null) ?
+        "\r\n\t" + 
+          (guard((context != null && context['tags'] != null) ? context['tags']['length'] : null) ?
+            "\r\n\t<div class=\"row\">\r\n\t\t<div class=\"col-lg-12\">\r\n\t\t\t<div class=\"input-group\">\r\n\t\t\t\t<input type=\"text\" class=\"form-control\" placeholder=\"[[global:search]]\" id=\"tag-search\">\r\n\t\t\t\t<span class=\"input-group-addon search-button\"><i class=\"fa fa-search\"></i></span>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t</div>\r\n\t" :
+            "") + 
+          "\r\n\t" :
+        "") + 
+      "\r\n\r\n\t" + 
       (guard((context != null && context['tags'] != null) ? context['tags']['length'] : null) ?
         "" :
-        "\n\t<div class=\"alert alert-warning\">\n\t\t<strong>[[tags:no_tags]]</strong>\n\t</div>\n\t") + 
-      "\n\n\t" + 
-      (guard((context != null) ? context['displayTagSearch'] : null) ?
-        "\n\t<input class=\"form-control\" type=\"text\" id=\"tag-search\" placeholder=\"[[global:search]]\"/>\n\t<br/>\n\t" :
-        "") + 
-      "\n\n\t<div class=\"category row\">\n\t\t<div class=\"col-md-12 clearfix tag-list\" data-nextstart=\"" + 
+        "\r\n\t<div class=\"alert alert-warning\">[[tags:no_tags]]</div>\r\n\t") + 
+      "\r\n\r\n\t<div class=\"category row\">\r\n\t\t<div class=\"col-md-12 clearfix tag-list\" data-nextstart=\"" + 
       __escape(guard((context != null) ? context['nextStart'] : null)) + 
-      "\">\n\t\t\t" + 
+      "\">\r\n\t\t\t" + 
       compiled.blocks['tags'](helpers, context, guard, iter, helper) + 
-      "\n\t\t</div>\n\t</div>\n</div>";
+      "\r\n\t\t</div>\r\n\t</div>\r\n</div>\r\n";
   }
 
   compiled.blocks = {
@@ -81,7 +85,7 @@
       var value = context;
       return iter(guard((context != null) ? context['tags'] : null), function each(key0, index, length, value) {
         var key = key0;
-        return "\n<h3 class=\"pull-left tag-container\">\n\t<a href=\"" + 
+        return "\r\n<h4 class=\"pull-left tag-container\">\r\n\t<a href=\"" + 
           __escape(guard((context != null && context['config'] != null) ? context['config']['relative_path'] : null)) + 
           "/tags/" + 
           __escape(guard((context != null && context['tags'] != null && context['tags'][key0] != null) ? context['tags'][key0]['valueEscaped'] : null)) + 
@@ -102,9 +106,11 @@
             "") + 
           "\">" + 
           __escape(guard((context != null && context['tags'] != null && context['tags'][key0] != null) ? context['tags'][key0]['valueEscaped'] : null)) + 
-          "</span><span class=\"tag-topic-count\">" + 
+          "</span><span class=\"tag-topic-count human-readable-number\" title=\"" + 
           __escape(guard((context != null && context['tags'] != null && context['tags'][key0] != null) ? context['tags'][key0]['score'] : null)) + 
-          "</span></a>\n</h3>\n";
+          "\">" + 
+          __escape(guard((context != null && context['tags'] != null && context['tags'][key0] != null) ? context['tags'][key0]['score'] : null)) + 
+          "</span></a>\r\n</h4>\r\n";
       }, function alt() {
         return "";
       });

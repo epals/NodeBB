@@ -1,18 +1,26 @@
 <!-- IF rooms.length -->
-{{{each rooms}}}
-<li class="<!-- IF ../unread -->unread<!-- ENDIF ../unread -->" data-roomid="{rooms.roomId}">
-	<a data-ajaxify="false"><!-- IF rooms.roomName -->{rooms.roomName}<!-- ELSE -->{rooms.usernames}<!-- ENDIF rooms.roomName --></a>
+<!-- BEGIN rooms -->
+<a data-ajaxify="false" data-roomid="{rooms.roomId}" class="<!-- IF ../unread -->unread<!-- ENDIF ../unread -->">
+	<!-- IF rooms.lastUser -->
+	<div class="chat-image">
+		<!-- IF rooms.lastUser.picture -->
+		<img class="user-avatar" src="{rooms.lastUser.picture}" title="{rooms.lastUser.username}" />
+		<!-- ELSE -->
+		<div class="user-icon" style="background-color: {rooms.lastUser.icon:bgColor}">{rooms.lastUser.icon:text}</div>
+		<!-- ENDIF rooms.lastUser.picture -->
+	</div>
 
-	<ul class="members">
-		{{{each rooms.users}}}<li><a href="{config.relative_path}/user/{rooms.users.userslug}" class="user-link">{buildAvatar(rooms.users, "sm")}</a></li>{{{end}}}
-		<!-- IF !rooms.lastUser.uid -->
-		<li>[[modules:chat.no-users-in-room]]</li>
-		<!-- ENDIF !rooms.lastUser.uid -->
-	</ul>
-
-
-</li>
-{{{end}}}
+	<div class="chat-room-name">
+		<!-- IF rooms.groupChat -->
+		<!-- IF rooms.roomName -->{rooms.roomName}<!-- ELSE -->{rooms.usernames}<!-- ENDIF rooms.roomName -->
+		<!-- ENDIF rooms.groupChat -->
+		<!-- IF !rooms.groupChat -->
+		{rooms.usernames}
+		<!-- ENDIF !rooms.groupChat -->
+	</div>
+	<!-- ENDIF rooms.lastUser -->
+</a>
+<!-- END rooms -->
 <!-- ELSE -->
-<li class="no_active"><a href="#">No active chats</a></li>
+<a href="#" class="no_active">[[modules:chat.no_active]]</a>
 <!-- ENDIF rooms.length -->

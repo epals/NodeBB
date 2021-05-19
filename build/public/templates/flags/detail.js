@@ -96,7 +96,11 @@
           __escape(guard((context != null && context['config'] != null) ? context['config']['relative_path'] : null)) + 
           "/uid/" + 
           __escape(guard((context != null && context['target'] != null) ? context['target']['uid'] : null)) + 
-          "\">[[flags:view-profile]]</a></li>\n\t\t\t\t\t\t<li><a href=\"#\" data-action=\"chat\">[[flags:start-new-chat]]</a></li>\n\t\t\t\t\t\t<li role=\"separator\" class=\"divider\"></li>\n\t\t\t\t\t\t" + 
+          "\">[[flags:view-profile]]</a></li>\n\t\t\t\t\t\t" + 
+          (guard((context != null && context['config'] != null) ? context['config']['disableChat'] : null) ?
+            "" :
+            "\n\t\t\t\t\t\t\t<li><a href=\"#\" data-action=\"chat\">[[flags:start-new-chat]]</a></li>\n\t\t\t\t\t\t") + 
+          "\n\t\t\t\t\t\t<li role=\"separator\" class=\"divider\"></li>\n\t\t\t\t\t\t" + 
           (guard((context != null && context['privileges'] != null) ? context['privileges']['ban'] : null) ?
             "<li><a href=\"#\" data-action=\"ban\">[[user:ban_account]]</a></li>" :
             "") + 

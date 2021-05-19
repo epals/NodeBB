@@ -1,10 +1,10 @@
 <!-- IF ../isSection -->
-{../name}
+<span class="category-title">{../name}</span>
 <!-- ELSE -->
 <!-- IF ../link -->
-<a href="{../link}" itemprop="url">
+<a class="category-title" href="{../link}" itemprop="url" title="{../name}">
 <!-- ELSE -->
-<a href="{config.relative_path}/category/{../slug}" itemprop="url">
+<a class="category-title" href="{config.relative_path}/category/{../slug}" itemprop="url" title="{../name}">
 <!-- ENDIF ../link -->
 {../name}
 </a>

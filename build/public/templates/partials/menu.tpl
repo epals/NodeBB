@@ -1,78 +1,44 @@
 			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+				<button type="button" class="navbar-toggle" id="mobile-menu">
+					<span component="notifications/icon" class="notification-icon fa fa-fw fa-bell-o" data-content="0"></span>
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<div>
-					<a href="<!-- IF brand:logo:url -->{brand:logo:url}<!-- ELSE -->{relative_path}/<!-- ENDIF brand:logo:url -->">
-						<img alt="{brand:logo:alt}" class="{brand:logo:display} forum-logo" src="{brand:logo}" />
-					</a>
-					<!-- IF config.showSiteTitle -->
-					<a href="<!-- IF title:url -->{title:url}<!-- ELSE -->{relative_path}/<!-- ENDIF title:url -->">
-						<h1 class="navbar-brand forum-title">{title}</h1>
-					</a>
-					<!-- ENDIF config.showSiteTitle -->
 
-					<div component="navbar/title" class="visible-xs">
-						<span></span>
-					</div>
-				</div>
+				<!-- IF brand:logo -->
+				<a href="<!-- IF brand:logo:url -->{brand:logo:url}<!-- ELSE -->{relative_path}/<!-- ENDIF brand:logo:url -->">
+					<img alt="{brand:logo:alt}" class="{brand:logo:display} forum-logo" src="{brand:logo}" />
+				</a>
+				<!-- ENDIF brand:logo -->
+
+				<!-- IF config.showSiteTitle -->
+				<a href="<!-- IF title:url -->{title:url}<!-- ELSE -->{relative_path}/<!-- ENDIF title:url -->">
+					<span class="navbar-brand forum-title">{title}</span>
+				</a>
+				<!-- ENDIF config.showSiteTitle -->
+
 			</div>
 
-			<div class="navbar-collapse collapse navbar-ex1-collapse" id="nav-dropdown">
+			<div id="nav-dropdown" class="hidden-xs">
 				<!-- IF !maintenanceHeader -->
-				<ul id="main-nav" class="nav navbar-nav pull-left">
-					{{{each navigation}}}
-					<!-- IF function.displayMenuItem, @index -->
-					<li class="{navigation.class}">
-						<a class="navigation-link" href="{navigation.route}" title="{navigation.title}" id="{navigation.id}"<!-- IF navigation.properties.targetBlank --> target="_blank"<!-- ENDIF navigation.properties.targetBlank -->>
-							<!-- IF navigation.iconClass -->
-							<i class="fa fa-fw {navigation.iconClass}" data-content="{navigation.content}"></i>
-							<!-- ENDIF navigation.iconClass -->
-
-							<!-- IF navigation.text -->
-							<span class="{navigation.textClass}">{navigation.text}</span>
-							<!-- ENDIF navigation.text -->
-						</a>
-					</li>
-					<!-- ENDIF function.displayMenuItem -->
-					{{{end}}}
-				</ul>
-
 				<!-- IF config.loggedIn -->
-				<ul id="logged-in-menu" class="nav navbar-nav navbar-right pull-right">
+
+				<ul id="logged-in-menu" class="nav navbar-nav navbar-right">
 					<li class="notifications dropdown text-center hidden-xs" component="notifications">
 						<a href="#" title="[[global:header.notifications]]" class="dropdown-toggle" data-toggle="dropdown" id="notif_dropdown">
-							<i component="notifications/icon" class="notification-icon fa fa-fw fa-bell-o" data-content="0"></i>
+							<i component="notifications/icon" class="fa fa-fw fa-bell-o" data-content="{unreadCount.notification}"></i>
 						</a>
 						<ul class="dropdown-menu" aria-labelledby="notif_dropdown">
 							<li>
-								<ul id="notif-list" component="notifications/list">
-									<li class="loading-text">
-										<a href="#"><i class="fa fa-refresh fa-spin"></i> [[global:notifications.loading]]</a>
-									</li>
+								<ul component="notifications/list" class="notification-list">
+									<li class="loading-text"><i class="fa fa-refresh fa-spin"></i> [[global:notifications.loading]]</li>
 								</ul>
 							</li>
 							<li class="notif-dropdown-link"><a href="#" class="mark-all-read">[[notifications:mark_all_read]]</a></li>
 							<li class="notif-dropdown-link"><a href="{relative_path}/notifications">[[notifications:see_all]]</a></li>
 						</ul>
 					</li>
-
-					<!-- IF config.searchEnabled -->
-					<li class="visible-xs">
-						<a href="{relative_path}/search">
-							<i class="fa fa-search fa-fw"></i> [[global:search]]
-						</a>
-					</li>
-					<!-- ENDIF config.searchEnabled -->
-
-					<li class="visible-xs">
-						<a href="{relative_path}/notifications" title="[[notifications:title]]">
-							<i component="notifications/icon" class="notification-icon fa fa-bell-o fa-fw" data-content="0"></i> [[notifications:title]]
-						</a>
-					</li>
-
 
 					<!-- IF !config.disableChat -->
 					<li class="chats dropdown">
@@ -81,24 +47,28 @@
 						</a>
 						<ul class="dropdown-menu" aria-labelledby="chat_dropdown">
 							<li>
-								<ul id="chat-list" component="chat/list">
-									<li class="loading-text">
-										<a href="#"><i class="fa fa-refresh fa-spin"></i> [[global:chats.loading]]</a>
-									</li>
-								</ul>
+								<div component="chat/list" class="chat-list">
+									<span>
+										<i class="fa fa-refresh fa-spin"></i> [[global:chats.loading]]
+									</span>
+								</div>
 							</li>
-							<li class="notif-dropdown-link"><a href="#" class="mark-all-read" component="chats/mark-all-read">[[modules:chat.mark_all_read]]</a></li>
-							<li class="notif-dropdown-link"><a href="{relative_path}/user/{user.userslug}/chats">[[modules:chat.see_all]]</a></li>
+							<li class="chat-dropdown-link"><a href="#" class="mark-all-read" component="chats/mark-all-read">[[modules:chat.mark_all_read]]</a></li>
+							<li class="chat-dropdown-link"><a href="{relative_path}/user/{user.userslug}/chats">[[modules:chat.see_all]]</a></li>
 						</ul>
 					</li>
 					<!-- ENDIF !config.disableChat -->
 
 					<li id="user_label" class="dropdown">
-						<a class="dropdown-toggle" data-toggle="dropdown" href="#" id="user_dropdown" title="[[global:header.profile]]">{buildAvatar(user, "sm", true)}</a>
-						<ul component="header/usercontrol" id="user-control-list" class="dropdown-menu" aria-labelledby="user_dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#" id="user_dropdown" title="[[global:header.profile]]">
+							<img component="header/userpicture" class="user-avatar" src="{user.picture}" alt="{user.username}"<!-- IF !user.picture --> style="display: none;"<!-- ENDIF !user.picture --> />
+							<div component="header/usericon" class="user-icon" style="background-color: {user.icon:bgColor};<!-- IF user.picture --> display: none;"<!-- ENDIF user.picture -->">{user.icon:text}</div>
+							<span id="user-header-name" class="visible-xs-inline">{user.username}</span>
+						</a>
+						<ul id="user-control-list" component="header/usercontrol" class="dropdown-menu" aria-labelledby="user_dropdown">
 							<li>
 								<a component="header/profilelink" href="{relative_path}/user/{user.userslug}">
-									<i class="fa fa-fw fa-circle status {user.status}"></i> <span component="header/username">{user.username}</span>
+									<i component="user/status" class="fa fa-fw fa-circle status {user.status}"></i> <span component="header/username">{user.username}</span>
 								</a>
 							</li>
 							<li role="presentation" class="divider"></li>
@@ -122,6 +92,17 @@
 									<i class="fa fa-fw fa-circle status offline"></i><span> [[global:invisible]]</span>
 								</a>
 							</li>
+							<li role="presentation" class="divider"></li>
+							<li>
+								<a component="header/profilelink/edit" href="{relative_path}/user/{user.userslug}/edit">
+									<i class="fa fa-fw fa-edit"></i> <span>[[user:edit-profile]]</span>
+								</a>
+							</li>
+							<li>
+								<a component="header/profilelink/settings" href="{relative_path}/user/{user.userslug}/settings">
+									<i class="fa fa-fw fa-gear"></i> <span>[[user:settings]]</span>
+								</a>
+							</li>
 							<!-- IF showModMenu -->
 							<li role="presentation" class="divider"></li>
 							<li class="dropdown-header">[[pages:moderator-tools]]</li>
@@ -135,23 +116,30 @@
 									<i class="fa fa-fw fa-list-alt"></i> <span>[[pages:post-queue]]</span>
 								</a>
 							</li>
-							<!-- IF isAdmin -->
+
 							<li>
 								<a href="{relative_path}/ip-blacklist">
 									<i class="fa fa-fw fa-ban"></i> <span>[[pages:ip-blacklist]]</span>
 								</a>
 							</li>
-							<!-- ENDIF isAdmin -->
+
 							<!-- ENDIF showModMenu -->
 							<li role="presentation" class="divider"></li>
 							<li component="user/logout">
-								<a href="#"><i class="fa fa-fw fa-sign-out"></i><span> [[global:logout]]</span></a>
+								<form method="post" action="{relative_path}/logout">
+									<input type="hidden" name="_csrf" value="{config.csrf_token}">
+									<input type="hidden" name="noscript" value="true">
+									<button type="submit" class="btn btn-link">
+										<i class="fa fa-fw fa-sign-out"></i><span> [[global:logout]]</span>
+									</button>
+								</form>
 							</li>
 						</ul>
 					</li>
+
 				</ul>
 				<!-- ELSE -->
-				<ul id="logged-out-menu" class="nav navbar-nav navbar-right pull-right">
+				<ul id="logged-out-menu" class="nav navbar-nav navbar-right">
 					<!-- IF allowRegistration -->
 					<li>
 						<a href="{relative_path}/register">
@@ -169,26 +157,61 @@
 				</ul>
 				<!-- ENDIF config.loggedIn -->
 				<!-- IF config.searchEnabled -->
-				<ul class="nav navbar-nav navbar-right">
+				<ul class="nav navbar-nav navbar-right search-menu">
 					<li>
-						<form id="search-form" class="navbar-form navbar-right hidden-xs" role="search" method="GET" action="">
+						<form id="search-form" class="navbar-form navbar-right hidden-xs" role="search" method="GET">
 							<button id="search-button" type="button" class="btn btn-link"><i class="fa fa-search fa-fw" title="[[global:header.search]]"></i></button>
 							<div class="hidden" id="search-fields">
 								<div class="form-group">
-									<input autocomplete="off" type="text" class="form-control" placeholder="[[global:search]]" name="query" value="">
+									<input type="text" class="form-control" placeholder="[[global:search]]" name="query" value="">
 									<a href="#"><i class="fa fa-gears fa-fw advanced-search-link"></i></a>
 								</div>
 								<button type="submit" class="btn btn-default hide">[[global:search]]</button>
 							</div>
 						</form>
-						<div id="quick-search-container" class="quick-search-container hidden">
-							<div class="quick-search-results-container"></div>
-						</div>
+						<ul id="quick-search-results" class="dropdown-menu quick-search-results hidden">
+							<ul id="quick-search-results" class="quick-search-results">
+{{{each posts}}}
+<li data-tid="{posts.topic.tid}" data-pid="{posts.pid}">
+	<a href="{config.relative_path}/post/{posts.pid}">
+		{buildAvatar(posts.user, "sm", true)}
+		<span class="quick-search-title">{posts.topic.title}</span>
+		<br/>
+		<p class="snippet">
+		{posts.snippet}
+		</p>
+		<small class="post-info pull-right">
+			<span class="fa-stack" style="{function.generateCategoryBackground, posts.category}"><i style="color:{posts.category.color};" class="fa {posts.category.icon} fa-stack-1x"></i></span> {posts.category.name} &bull;
+			<span class="timeago" title="{posts.timestampISO}"></span>
+		</small>
+	 </a>
+</li>
+<!-- IF !@last -->
+<li role="separator" class="divider"></li>
+<!-- ENDIF -->
+{{{end}}}
+</ul>
+<!-- IF multiplePages -->
+<div class="text-center">
+	<a href="{url}">
+		[[search:see-more-results, {matchCount}]]
+	</a>
+</div>
+<!-- ENDIF multiplePages -->
+{{{if !posts.length}}}
+<div class="text-center no-results">[[search:no-matches]]</li>
+{{{end}}}
+						</ul>
+					</li>
+					<li class="visible-xs" id="search-menu">
+						<a href="{relative_path}/search">
+							<i class="fa fa-search fa-fw"></i> [[global:search]]
+						</a>
 					</li>
 				</ul>
 				<!-- ENDIF config.searchEnabled -->
 
-				<ul class="nav navbar-nav navbar-right pull-right">
+				<ul class="nav navbar-nav navbar-right hidden-xs">
 					<li>
 						<a href="#" id="reconnect" class="hide" title="Connection to {title} has been lost, attempting to reconnect...">
 							<i class="fa fa-check"></i>
@@ -196,11 +219,26 @@
 					</li>
 				</ul>
 
-				<div class="header-topic-title hidden-xs">
-					<span></span>
-				</div>
+				<ul id="main-nav" class="nav navbar-nav">
+					<!-- BEGIN navigation -->
+					<!-- IF function.displayMenuItem, @index -->
+					<li class="{navigation.class}">
+						<a class="navigation-link" href="{navigation.route}" title="{navigation.title}" <!-- IF navigation.id -->id="{navigation.id}"<!-- ENDIF navigation.id --><!-- IF navigation.properties.targetBlank --> target="_blank"<!-- ENDIF navigation.properties.targetBlank -->>
+							<!-- IF navigation.iconClass -->
+							<i class="fa fa-fw {navigation.iconClass}" data-content="{navigation.content}"></i>
+							<!-- ENDIF navigation.iconClass -->
+
+							<!-- IF navigation.text -->
+							<span class="{navigation.textClass}">{navigation.text}</span>
+							<!-- ENDIF navigation.text -->
+						</a>
+					</li>
+					<!-- ENDIF function.displayMenuItem -->
+					<!-- END navigation -->
+				</ul>
+
 				<!-- ELSE -->
-				<ul class="nav navbar-nav navbar-right pull-right">
+				<ul class="nav navbar-nav navbar-right">
 					<li>
 						<a href="{relative_path}/login">
 							<i class="fa fa-sign-in visible-xs-inline"></i>

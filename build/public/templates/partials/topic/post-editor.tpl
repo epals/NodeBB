@@ -1,1 +1,1 @@
-<span component="post/editor" class="<!-- IF !editor.username --> hidden<!-- ENDIF !editor.username -->">, [[global:last_edited_by, {editor.username}]] <span class="timeago" title="{editedISO}"></span></span>
+<small data-editor="{editor.userslug}" component="post/editor" class="hidden">[[global:last_edited_by, {editor.username}]] <span class="timeago" title="{editedISO}"></span></small>

@@ -30,11 +30,11 @@
             "[[topic:thread_tools.select_category]]")) + 
       "</span> <span class=\"caret\"></span>\n</button>\n<div component=\"category-selector-search\" class=\"hidden\">\n    <input type=\"text\" class=\"form-control\" autocomplete=\"off\">\n</div>\n<ul component=\"category/list\" class=\"dropdown-menu category-dropdown-menu\" role=\"menu\">\n    <li component=\"category/no-matches\" role=\"presentation\" class=\"category hidden\">\n        <a role=\"menu-item\">[[search:no-matches]]</a>\n    </li>\n    " + 
       compiled.blocks['categoryItems'](helpers, context, guard, iter, helper) + 
-      "\n</ul>\n</div>\n        </div>\n        <div class=\"btn-group\">\n            <button id=\"collapse-all\" class=\"btn btn-default\">[[admin/manage/categories:collapse-all]]</button>\n        </div>\n        <div class=\"btn-group\">\n            <button id=\"expand-all\" class=\"btn btn-default\">[[admin/manage/categories:expand-all]]</button>\n        </div>\n    </div>\n</div>\n\n\n<hr/>\n<div component=\"category/no-matches\" class=\"hidden\">[[admin/manage/categories:no-matches]]</div>\n<div class=\"categories\"></div>\n<div>\n    \n<div component=\"pagination\" class=\"text-center pagination-container" + 
+      "\n</ul>\n</div>\n        </div>\n        <div class=\"btn-group\">\n            <button id=\"collapse-all\" class=\"btn btn-default\">[[admin/manage/categories:collapse-all]]</button>\n        </div>\n        <div class=\"btn-group\">\n            <button id=\"expand-all\" class=\"btn btn-default\">[[admin/manage/categories:expand-all]]</button>\n        </div>\n    </div>\n</div>\n\n\n<hr/>\n<div component=\"category/no-matches\" class=\"hidden\">[[admin/manage/categories:no-matches]]</div>\n<div class=\"categories\"></div>\n<div>\n    <div component=\"pagination\" class=\"text-center pagination-container" + 
       (guard((context != null && context['pagination'] != null && context['pagination']['pages'] != null) ? context['pagination']['pages']['length'] : null) ?
         "" :
         " hidden") + 
-      "\">\n\t<ul class=\"pagination\">\n\t\t<li class=\"previous pull-left" + 
+      "\">\n\t<ul class=\"pagination hidden-xs\">\n\t\t<li class=\"previous pull-left" + 
       (guard((context != null && context['pagination'] != null && context['pagination']['prev'] != null) ? context['pagination']['prev']['active'] : null) ?
         "" :
         " disabled") + 
@@ -52,7 +52,41 @@
       __escape(guard((context != null && context['pagination'] != null && context['pagination']['next'] != null) ? context['pagination']['next']['qs'] : null)) + 
       "\" data-page=\"" + 
       __escape(guard((context != null && context['pagination'] != null && context['pagination']['next'] != null) ? context['pagination']['next']['page'] : null)) + 
-      "\"> <i class=\"fa fa-chevron-right\"></i></a>\n\t\t</li>\n\t</ul>\n</div>\n\n</div>\n<button data-action=\"create\" class=\"floating-button mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored\">\n    <i class=\"material-icons\">add</i>\n</button>";
+      "\"> <i class=\"fa fa-chevron-right\"></i></a>\n\t\t</li>\n\t</ul>\n\n\t<ul class=\"pagination hidden-sm hidden-md hidden-lg\">\n\t\t<li class=\"first" + 
+      (guard((context != null && context['pagination'] != null && context['pagination']['prev'] != null) ? context['pagination']['prev']['active'] : null) ?
+        "" :
+        " disabled") + 
+      "\">\n\t\t\t<a href=\"?" + 
+      __escape(guard((context != null && context['pagination'] != null && context['pagination']['first'] != null) ? context['pagination']['first']['qs'] : null)) + 
+      "\" data-page=\"1\"><i class=\"fa fa-fast-backward\"></i> </a>\n\t\t</li>\n\n\t\t<li class=\"previous" + 
+      (guard((context != null && context['pagination'] != null && context['pagination']['prev'] != null) ? context['pagination']['prev']['active'] : null) ?
+        "" :
+        " disabled") + 
+      "\">\n\t\t\t<a href=\"?" + 
+      __escape(guard((context != null && context['pagination'] != null && context['pagination']['prev'] != null) ? context['pagination']['prev']['qs'] : null)) + 
+      "\" data-page=\"" + 
+      __escape(guard((context != null && context['pagination'] != null && context['pagination']['prev'] != null) ? context['pagination']['prev']['page'] : null)) + 
+      "\"><i class=\"fa fa-chevron-left\"></i> </a>\n\t\t</li>\n\n\t\t<li component=\"pagination/select-page\" class=\"page select-page\">\n\t\t\t<a href=\"#\">" + 
+      __escape(guard((context != null && context['pagination'] != null) ? context['pagination']['currentPage'] : null)) + 
+      " / " + 
+      __escape(guard((context != null && context['pagination'] != null) ? context['pagination']['pageCount'] : null)) + 
+      "</a>\n\t\t</li>\n\n\t\t<li class=\"next" + 
+      (guard((context != null && context['pagination'] != null && context['pagination']['next'] != null) ? context['pagination']['next']['active'] : null) ?
+        "" :
+        " disabled") + 
+      "\">\n\t\t\t<a href=\"?" + 
+      __escape(guard((context != null && context['pagination'] != null && context['pagination']['next'] != null) ? context['pagination']['next']['qs'] : null)) + 
+      "\" data-page=\"" + 
+      __escape(guard((context != null && context['pagination'] != null && context['pagination']['next'] != null) ? context['pagination']['next']['page'] : null)) + 
+      "\"> <i class=\"fa fa-chevron-right\"></i></a>\n\t\t</li>\n\n\t\t<li class=\"last" + 
+      (guard((context != null && context['pagination'] != null && context['pagination']['next'] != null) ? context['pagination']['next']['active'] : null) ?
+        "" :
+        " disabled") + 
+      "\">\n\t\t\t<a href=\"?" + 
+      __escape(guard((context != null && context['pagination'] != null && context['pagination']['last'] != null) ? context['pagination']['last']['qs'] : null)) + 
+      "\" data-page=\"" + 
+      __escape(guard((context != null && context['pagination'] != null) ? context['pagination']['pageCount'] : null)) + 
+      "\"><i class=\"fa fa-fast-forward\"></i> </a>\n\t\t</li>\n\t</ul>\n</div>\n</div>\n<button data-action=\"create\" class=\"floating-button mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored\">\n    <i class=\"material-icons\">add</i>\n</button>";
   }
 
   compiled.blocks = {
@@ -150,7 +184,7 @@
             "\n\t\t\t<li class=\"page" + 
               (guard((context != null && context['pagination'] != null && context['pagination']['pages'] != null && context['pagination']['pages'][key0] != null) ? context['pagination']['pages'][key0]['active'] : null) ?
                 " active" :
-                " hidden-xs") + 
+                "") + 
               "\" >\n\t\t\t\t<a href=\"?" + 
               __escape(guard((context != null && context['pagination'] != null && context['pagination']['pages'] != null && context['pagination']['pages'][key0] != null) ? context['pagination']['pages'][key0]['qs'] : null)) + 
               "\" data-page=\"" + 

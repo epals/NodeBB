@@ -2,7 +2,7 @@
 <ol class="breadcrumb" itemscope="itemscope" itemprop="breadcrumb" itemtype="http://schema.org/BreadcrumbList">
 	{{{each breadcrumbs}}}
 	<li<!-- IF @last --> component="breadcrumb/current"<!-- ENDIF @last --> itemscope="itemscope" itemprop="itemListElement" itemtype="http://schema.org/ListItem" <!-- IF @last -->class="active"<!-- ENDIF @last -->>
-		<meta itemprop="position" content="@index" />
+		<meta itemprop="position" content="{@index}" />
 		<!-- IF !@last --><a href="{breadcrumbs.url}" itemprop="item"><!-- ENDIF !@last -->
 			<span itemprop="name">
 				{breadcrumbs.text}
@@ -31,7 +31,7 @@
 			</p>
 			<ul>
 				{{{each errors}}}
-				<li>@value</li>
+				<li>{@value}</li>
 				{{{end}}}
 			</ul>
 		</div>
@@ -45,7 +45,7 @@
 		<div class="col-xs-12 col-sm-8 col-sm-offset-2">
 			<div class="panel panel-default">
 				<div class="panel-body">
-					@value
+					{@value}
 				</div>
 			</div>
 		</div>
@@ -53,13 +53,13 @@
 	{{{end}}}
 
 	<div class="row">
-		<input type="hidden" name="_csrf" value="{config.csrf_token}" />
 		<div class="col-xs-12 col-sm-8 col-sm-offset-2">
-			<button class="btn btn-primary btn-block">Submit</button>
-			<p class="text-center">
-				<br />
-				<a target="_top" href="{config.relative_path}/register/abort">[[register:cancel_registration]]</a>
-			</p>
+			<button class="btn btn-primary btn-block">[[topic:composer.submit]]</button>
 		</div>
 	</div>
+</form>
+<form role="form" method="post" action="{config.relative_path}/register/abort">
+	<p class="text-center">
+		<button class="btn btn-link">[[register:cancel_registration]]</button>
+	</p>
 </form>

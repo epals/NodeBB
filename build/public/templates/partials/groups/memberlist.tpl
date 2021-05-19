@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row member-search">
 	<!-- IF group.isOwner -->
 	<div class="col-lg-2">
 		<button component="groups/members/add" type="button" class="btn btn-primary" title="[[groups:details.add-member]]"><i class="fa fa-user-plus"></i></button>
@@ -14,10 +14,16 @@
 
 <table component="groups/members" class="table table-striped table-hover" data-nextstart="{group.membersNextStart}">
 	<tbody>
-	{{{each group.members}}}
+	<!-- BEGIN group.members -->
 	<tr data-uid="{group.members.uid}">
 		<td>
-			<a href="{config.relative_path}/user/{group.members.userslug}">{buildAvatar(group.members, "sm", true)}</a>
+			<a href="{config.relative_path}/user/{group.members.userslug}">
+				<!-- IF group.members.picture -->
+				<img class="user-avatar" src="{group.members.picture}" alt="{group.members.username}" />
+				<!-- ELSE -->
+				<div class="user-icon" style="background-color: {group.members.icon:bgColor};">{group.members.icon:text}</div>
+				<!-- ENDIF group.members.picture -->
+			</a>
 		</td>
 		<td class="member-name">
 			<a href="{config.relative_path}/user/{group.members.userslug}">{group.members.username}</a> <i title="[[groups:owner]]" class="fa fa-star text-warning <!-- IF !group.members.isOwner -->invisible<!-- ENDIF !group.members.isOwner -->"></i>
@@ -35,6 +41,6 @@
 			<!-- ENDIF group.isOwner -->
 		</td>
 	</tr>
-	{{{end}}}
+	<!-- END group.members -->
 	</tbody>
 </table>

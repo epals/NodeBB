@@ -1,8 +1,9 @@
-<!-- IF breadcrumbs.length -->
+<div class="users">
+	<!-- IF breadcrumbs.length -->
 <ol class="breadcrumb" itemscope="itemscope" itemprop="breadcrumb" itemtype="http://schema.org/BreadcrumbList">
 	{{{each breadcrumbs}}}
 	<li<!-- IF @last --> component="breadcrumb/current"<!-- ENDIF @last --> itemscope="itemscope" itemprop="itemListElement" itemtype="http://schema.org/ListItem" <!-- IF @last -->class="active"<!-- ENDIF @last -->>
-		<meta itemprop="position" content="@index" />
+		<meta itemprop="position" content="{@index}" />
 		<!-- IF !@last --><a href="{breadcrumbs.url}" itemprop="item"><!-- ENDIF !@last -->
 			<span itemprop="name">
 				{breadcrumbs.text}
@@ -17,19 +18,23 @@
 </ol>
 <!-- ENDIF breadcrumbs.length -->
 
-<div class="users">
 
 	<ul id="users-container" class="users-container">
-		{{{each users}}}
+		<!-- BEGIN users -->
 <li class="users-box registered-user" data-uid="{users.uid}">
-	<a href="{config.relative_path}/user/{users.userslug}">{buildAvatar(users, "80", true)}</a>
-	<br/>
+	<a href="{config.relative_path}/user/{users.userslug}">
+		<!-- IF users.picture -->
+		<img class="user-avatar" src="{users.picture}" alt="{users.username}" />
+		<!-- ELSE -->
+		<div class="user-icon" style="background-color: {users.icon:bgColor};">{users.icon:text}</div>
+		<!-- ENDIF users.picture -->
+	</a>
+
 	<div class="user-info">
-		<span>
+		<span class="username">
 			<i component="user/status" class="fa fa-circle status {users.status}" title="[[global:{users.status}]]"></i>
 			<a href="{config.relative_path}/user/{users.userslug}">{users.username}</a>
 		</span>
-		<br/>
 
 		<!-- IF section_joindate -->
 		<div title="joindate" class="joindate">
@@ -54,17 +59,16 @@
 		<!-- IF section_flagged -->
 		<div title="flag count" class="flag-count">
 			<i class="fa fa-flag"></i>
-			<span><a class="formatted-number" href="{config.relative_path}/flags?targetUid={users.uid}">{users.flags}</a></span>
+			<span class="formatted-number"><a href="{config.relative_path}/posts/flags?byUsername={users.username}">{users.flags}</a></span>
 		</div>
 		<!-- ENDIF section_flagged -->
 	</div>
 </li>
-{{{end}}}
+<!-- END users -->
 	</ul>
 
-	
-<div component="pagination" class="text-center pagination-container<!-- IF !pagination.pages.length --> hidden<!-- ENDIF !pagination.pages.length -->">
-	<ul class="pagination">
+	<div component="pagination" class="text-center pagination-container<!-- IF !pagination.pages.length --> hidden<!-- ENDIF !pagination.pages.length -->">
+	<ul class="pagination hidden-xs">
 		<li class="previous pull-left<!-- IF !pagination.prev.active --> disabled<!-- ENDIF !pagination.prev.active -->">
 			<a href="?{pagination.prev.qs}" data-page="{pagination.prev.page}"><i class="fa fa-chevron-left"></i> </a>
 		</li>
@@ -75,7 +79,7 @@
 				<a href="#"><i class="fa fa-ellipsis-h"></i></a>
 			</li>
 			<!-- ELSE -->
-			<li class="page<!-- IF pagination.pages.active --> active<!-- ELSE --> hidden-xs<!-- ENDIF pagination.pages.active -->" >
+			<li class="page<!-- IF pagination.pages.active --> active<!-- ENDIF pagination.pages.active -->" >
 				<a href="?{pagination.pages.qs}" data-page="{pagination.pages.page}">{pagination.pages.page}</a>
 			</li>
 			<!-- ENDIF pagination.pages.separator -->
@@ -85,6 +89,27 @@
 			<a href="?{pagination.next.qs}" data-page="{pagination.next.page}"> <i class="fa fa-chevron-right"></i></a>
 		</li>
 	</ul>
-</div>
 
+	<ul class="pagination hidden-sm hidden-md hidden-lg">
+		<li class="first<!-- IF !pagination.prev.active --> disabled<!-- ENDIF !pagination.prev.active -->">
+			<a href="?{pagination.first.qs}" data-page="1"><i class="fa fa-fast-backward"></i> </a>
+		</li>
+
+		<li class="previous<!-- IF !pagination.prev.active --> disabled<!-- ENDIF !pagination.prev.active -->">
+			<a href="?{pagination.prev.qs}" data-page="{pagination.prev.page}"><i class="fa fa-chevron-left"></i> </a>
+		</li>
+
+		<li component="pagination/select-page" class="page select-page">
+			<a href="#">{pagination.currentPage} / {pagination.pageCount}</a>
+		</li>
+
+		<li class="next<!-- IF !pagination.next.active --> disabled<!-- ENDIF !pagination.next.active -->">
+			<a href="?{pagination.next.qs}" data-page="{pagination.next.page}"> <i class="fa fa-chevron-right"></i></a>
+		</li>
+
+		<li class="last<!-- IF !pagination.next.active --> disabled<!-- ENDIF !pagination.next.active -->">
+			<a href="?{pagination.last.qs}" data-page="{pagination.pageCount}"><i class="fa fa-fast-forward"></i> </a>
+		</li>
+	</ul>
+</div>
 </div>

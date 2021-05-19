@@ -10,22 +10,26 @@
     var __escape = helpers.__escape;
     var value = context;
     return (guard((context != null) ? context['isSection'] : null) ?
-        "\n" + 
+        "\r\n<span class=\"category-title\">" + 
           __escape(guard((context != null) ? context['name'] : null)) + 
-          "\n" :
-        "\n" + 
+          "</span>\r\n" :
+        "\r\n" + 
           (guard((context != null) ? context['link'] : null) ?
-            "\n<a href=\"" + 
+            "\r\n<a class=\"category-title\" href=\"" + 
               __escape(guard((context != null) ? context['link'] : null)) + 
-              "\" itemprop=\"url\">\n" :
-            "\n<a href=\"" + 
+              "\" itemprop=\"url\" title=\"" + 
+              __escape(guard((context != null) ? context['name'] : null)) + 
+              "\">\r\n" :
+            "\r\n<a class=\"category-title\" href=\"" + 
               __escape(guard((context != null && context['config'] != null) ? context['config']['relative_path'] : null)) + 
               "/category/" + 
               __escape(guard((context != null) ? context['slug'] : null)) + 
-              "\" itemprop=\"url\">\n") + 
-          "\n" + 
+              "\" itemprop=\"url\" title=\"" + 
+              __escape(guard((context != null) ? context['name'] : null)) + 
+              "\">\r\n") + 
+          "\r\n" + 
           __escape(guard((context != null) ? context['name'] : null)) + 
-          "\n</a>\n");
+          "\r\n</a>\r\n");
   }
 
   compiled.blocks = {

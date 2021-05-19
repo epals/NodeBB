@@ -1,10 +1,8 @@
-<div class="top">
-
-	<!-- IF breadcrumbs.length -->
+<!-- IF breadcrumbs.length -->
 <ol class="breadcrumb" itemscope="itemscope" itemprop="breadcrumb" itemtype="http://schema.org/BreadcrumbList">
 	{{{each breadcrumbs}}}
 	<li<!-- IF @last --> component="breadcrumb/current"<!-- ENDIF @last --> itemscope="itemscope" itemprop="itemListElement" itemtype="http://schema.org/ListItem" <!-- IF @last -->class="active"<!-- ENDIF @last -->>
-		<meta itemprop="position" content="@index" />
+		<meta itemprop="position" content="{@index}" />
 		<!-- IF !@last --><a href="{breadcrumbs.url}" itemprop="item"><!-- ENDIF !@last -->
 			<span itemprop="name">
 				{breadcrumbs.text}
@@ -19,14 +17,116 @@
 </ol>
 <!-- ENDIF breadcrumbs.length -->
 
-
-	<div class="btn-toolbar">
+<div data-widget-area="header">
+	{{{each widgets.header}}}
+	{{widgets.header.html}}
+	{{{end}}}
+</div>
+<div class="top">
+	<div class="topic-list-header btn-toolbar">
 		<div class="pull-left">
 			<!-- IF loggedIn -->
-			<button component="category/post" id="new_topic" class="btn btn-primary">[[category:new_topic_button]]</button>
+			<noscript><div class="dropdown" component="category-selector"></noscript>
+<label component="category/post" for="category-dropdown-check" class="btn btn-primary" id="new_topic" role="button">
+	[[category:new_topic_button]]
+</label>
+<noscript>
+	<input type="checkbox" class="hidden" id="category-dropdown-check" aria-hidden="true">
+	<ul component="category/list" class="dropdown-menu category-dropdown-menu" role="menu">
+		{{{each categories}}}
+		<li role="presentation" class="category {{{if categories.disabledClass}}}disabled{{{end}}}">
+			<a role="menu-item" href="{config.relative_path}/compose?cid={categories.cid}">{categories.level}<span component="category-markup">{{{if categories.icon}}}<span class="fa-stack" style="{function.generateCategoryBackground}"><i style="color: {categories.color};" class="fa fa-stack-1x fa-fw {categories.icon}"></i></span>{{{end}}} {categories.name}</span></a>
+		</li>
+		{{{end}}}
+	</ul>
+</div>
+</noscript>
+
 			<!-- ELSE -->
 			<a component="category/post/guest" href="{config.relative_path}/login" class="btn btn-primary">[[category:guest-login-post]]</a>
 			<!-- ENDIF loggedIn -->
+		</div>
+
+		<div class="btn-group pull-right">
+		<!-- IF privileges.editable -->
+<div class="btn-group thread-tools bottom-sheet">
+	<button class="btn btn-default dropdown-toggle" data-toggle="dropdown" type="button">
+		<span class="visible-sm-inline visible-md-inline visible-lg-inline">[[topic:thread_tools.title]]</span>
+		<span class="visible-xs-inline"><i class="fa fa-fw fa-gear"></i></span>
+		<span class="caret"></span>
+	</button>
+	<ul class="dropdown-menu pull-right">
+		<li>
+			<a component="topic/mark-unread-for-all" href="#">
+				<i class="fa fa-fw fa-inbox"></i> [[topic:thread_tools.markAsUnreadForAll]]
+			</a>
+		</li>
+		<li>
+			<a component="topic/pin" href="#">
+				<i class="fa fa-fw fa-thumb-tack"></i> [[topic:thread_tools.pin]]
+			</a>
+		</li>
+		<li>
+			<a component="topic/unpin" href="#" class="hidden">
+				<i class="fa fa-fw fa-thumb-tack fa-rotate-90"></i> [[topic:thread_tools.unpin]]
+			</a>
+		</li>
+
+		<li>
+			<a component="topic/lock" href="#">
+				<i class="fa fa-fw fa-lock"></i> [[topic:thread_tools.lock]]
+			</a>
+		</li>
+		<li>
+			<a component="topic/unlock" href="#" class="hidden">
+				<i class="fa fa-fw fa-unlock"></i> [[topic:thread_tools.unlock]]
+			</a>
+		</li>
+
+		<li class="divider"></li>
+
+		<li>
+			<a component="topic/move" href="#">
+				<i class="fa fa-fw fa-arrows"></i> [[topic:thread_tools.move]]
+			</a>
+		</li>
+		<li>
+			<a component="topic/move-all" href="#">
+				<i class="fa fa-fw fa-arrows"></i> [[topic:thread_tools.move_all]]
+			</a>
+		</li>
+		<li>
+			<a component="topic/merge" href="#">
+				<i class="fa fa-fw fa-code-fork"></i> [[topic:thread_tools.merge]]
+			</a>
+		</li>
+
+		<li class="divider"></li>
+
+		<li>
+			<a component="topic/delete" href="#">
+				<i class="fa fa-fw fa-trash-o"></i> [[topic:thread_tools.delete]]
+			</a>
+		</li>
+		<li>
+			<a component="topic/restore" href="#" class="hidden">
+				<i class="fa fa-fw fa-history"></i> [[topic:thread_tools.restore]]
+			</a>
+		</li>
+		<li>
+			<a component="topic/purge" href="#" class="hidden">
+				<i class="fa fa-fw fa-eraser"></i> [[topic:thread_tools.purge]]
+			</a>
+		</li>
+
+		<!-- BEGIN thread_tools -->
+		<li>
+			<a href="#" class="{thread_tools.class}"><i class="fa fa-fw {thread_tools.icon}"></i> {thread_tools.title}</a>
+		</li>
+		<!-- END thread_tools -->
+	</ul>
+</div>
+<!-- ENDIF privileges.editable -->
 		</div>
 
 		<div component="category/dropdown" class="btn-group pull-right category-dropdown-container bottom-sheet">
@@ -51,9 +151,9 @@
 </ul>
 </div>
 
-		<div class="btn-group pull-right">
+		<div class="btn-group pull-right bottom-sheet <!-- IF !filters.length -->hidden<!-- ENDIF !filters.length -->">
 			<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-			{selectedFilter.name} <span class="caret"></span>
+				<span class="visible-sm-inline visible-md-inline visible-lg-inline">{selectedFilter.name}</span><span class="visible-xs-inline"><i class="fa fa-fw {selectedFilter.icon}"></i></span> <span class="caret"></span>
 			</button>
 			<ul class="dropdown-menu" role="menu">
 				{{{each filters}}}
@@ -63,122 +163,116 @@
 				{{{end}}}
 			</ul>
 		</div>
-	</div>
 
-	<br/><br/>
-
-	<a href="{config.relative_path}/{selectedFilter.url}">
-		<div class="alert alert-warning hide" id="new-topics-alert"></div>
-	</a>
-
-	<!-- IF !topics.length -->
-	<div class="alert alert-warning" id="category-no-topics">
-		<strong>[[top:no_top_topics]]</strong>
-	</div>
-	<!-- ENDIF !topics.length -->
-
-	<div class="category row">
-		<div class="col-md-12">
-					<ul component="category" id="topics-container" data-nextstart="{nextStart}">
-			<meta itemprop="itemListOrder" content="descending">
-			<!-- BEGIN topics -->
-			<li component="category/topic" class="category-item {function.generateTopicClass}" itemprop="itemListElement" data-tid="{topics.tid}" data-index="{topics.index}" data-cid="{topics.cid}" itemprop="itemListElement">
-				<a id="{../index}" data-index="{../index}" component="topic/anchor"></a>
-				<meta itemprop="name" content="{function.stripTags, title}">
-
-				<div class="category-body">
-					<div class="row">
-
-						<div class="col-md-7 col-sm-8">
-
-							<!-- IF showSelect -->
-							<i class="fa fa-fw fa-square-o pull-left select pointer" component="topic/select"></i>
-							<!-- ENDIF showSelect -->
-
-							<div class="category-profile-pic">
-								<a href="<!-- IF topics.user.userslug -->{config.relative_path}/user/{topics.user.userslug}<!-- ELSE -->#<!-- ENDIF topics.user.userslug -->">
-									<!-- IF topics.thumb -->
-									<img src="{topics.thumb}" class="user-img" title="{topics.user.username}" />
-									<!-- ELSE -->
-									<!-- IF topics.user.picture -->
-									<img component="user/picture" data-uid="{topics.user.uid}" src="{topics.user.picture}" class="user-img" title="{topics.user.username}" />
-									<!-- ELSE -->
-									<div class="user-icon" style="background-color: {topics.user.icon:bgColor};" title="{topics.user.username}">{topics.user.icon:text}</div>
-									<!-- ENDIF topics.user.picture -->
-									<!-- ENDIF topics.thumb -->
-								</a>
-							</div>
-							<div class="category-text">
-								<p><strong><i component="topic/pinned" class="fa fa-thumb-tack<!-- IF !topics.pinned --> hide<!-- ENDIF !topics.pinned -->"></i> <i component="topic/locked" class="fa fa-lock<!-- IF !topics.locked --> hide<!-- ENDIF !topics.locked -->"></i></strong>
-									<!-- IF !topics.noAnchor -->
-									<a component="topic/header" href="{config.relative_path}/topic/{topics.slug}" itemprop="url" class="topic-title">{topics.title}</a><br />
-									<!-- ELSE -->
-									<a component="topic/header" itemprop="url" class="topic-title">{topics.title}</a><br />
-									<!-- ENDIF !topics.noAnchor -->
-
-									<small>
-									<a href="{config.relative_path}/category/{topics.category.slug}"><span class="fa-stack" style="{function.generateCategoryBackground, topics.category}"><i style="color:{topics.category.color};" class="fa {topics.category.icon} fa-stack-1x"></i></span> {topics.category.name}</a> &bull; <span class="timeago" title="{topics.timestampISO}"></span>
-									<!-- IF !topics.unreplied -->
-									<span class="hidden-md hidden-lg" component="topic/teaser">
-									<br/>
-									<a href="{config.relative_path}/topic/{topics.slug}/{topics.teaser.index}"><span class="timeago" title="{topics.teaser.timestampISO}"></span></a>
-									</span>
-									<!-- ENDIF !topics.unreplied -->
-									<br/>
-									<!-- IF topics.tags.length -->
-	{{{each tags}}}
-		<a href="{config.relative_path}/tags/{topics.tags.valueEscaped}"><span class="tag-item" data-tag="{topics.tags.valueEscaped}" style="<!-- IF topics.tags.color -->color: {topics.tags.color};<!-- ENDIF topics.tags.color --><!-- IF topics.tags.bgColor -->background-color: {topics.tags.bgColor};<!-- ENDIF topics.tags.bgColor -->">{topics.tags.valueEscaped}</span><span class="tag-topic-count">{topics.tags.score}</span></a>
-	{{{end}}}
-<!-- ENDIF topics.tags.length -->
-									</small>
-								</p>
-							</div>
-						</div>
-
-						<div class="col-xs-1 category-stat hidden-xs stats-votes">
-							<strong class="human-readable-number" title="{topics.votes}">{topics.votes}</strong><br />
-							<small>[[global:votes]]</small>
-						</div>
-
-						<div class="col-xs-1 category-stat hidden-xs stats-postcount">
-							<strong class="human-readable-number" title="{topics.postcount}">{topics.postcount}</strong><br />
-							<small>[[global:posts]]</small>
-						</div>
-
-						<div class="col-xs-1 category-stat hidden-xs stats-viewcount">
-							<strong class="human-readable-number" title="{topics.viewcount}">{topics.viewcount}</strong><br />
-							<small>[[global:views]]</small>
-						</div>
-
-						<div class="col-xs-2 category-stat replies hidden-sm hidden-xs" component="topic/teaser">
-							<!-- IF topics.unreplied -->
-							<p class="no-replies"><a href="{config.relative_path}/topic/{topics.slug}" itemprop="url">[[category:no_replies]]</a></p>
-							<!-- ELSE -->
-							<a href="<!-- IF topics.teaser.user.userslug -->{config.relative_path}/user/{topics.teaser.user.userslug}<!-- ELSE -->#<!-- ENDIF topics.teaser.user.userslug -->">
-								<!-- IF topics.teaser.user.picture -->
-								<img class="teaser-pic" src="{topics.teaser.user.picture}" title="{topics.teaser.user.username}"/>
-								<!-- ELSE -->
-								<div class="teaser-pic user-icon" style="background-color: {topics.teaser.user.icon:bgColor};" title="{topics.teaser.user.username}">{topics.teaser.user.icon:text}</div>
-								<!-- ENDIF topics.teaser.user.picture -->
-							</a>
-							<a href="{config.relative_path}/topic/{topics.slug}/{topics.teaser.index}">
-								<span class="timeago" title="{topics.teaser.timestampISO}"></span>
-							</a>
-
-							<!-- ENDIF topics.unreplied -->
-						</div>
-					</div>
-				</div>
-
-			</li>
-			<!-- END topics -->
-		</ul>
-
+		<div class="btn-group pull-right <!-- IF !terms.length -->hidden<!-- ENDIF !terms.length -->">
+			<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+			{selectedTerm.name} <span class="caret"></span>
+			</button>
+			<ul class="dropdown-menu" role="menu">
+				{{{each terms}}}
+				<li role="presentation" class="category">
+					<a role="menu-item" href="{config.relative_path}/{terms.url}"><i class="fa fa-fw <!-- IF terms.selected -->fa-check<!-- ENDIF terms.selected -->"></i>{terms.name}</a>
+				</li>
+				{{{end}}}
+			</ul>
 		</div>
+	</div>
+
+	<div class="category">
+		<!-- IF !topics.length -->
+		<div class="alert alert-warning" id="category-no-topics">[[top:no_top_topics]]</div>
+		<!-- ENDIF !topics.length -->
+
+		<div component="category" class="topic-list" itemscope itemtype="http://www.schema.org/ItemList" data-nextstart="{nextStart}" data-set="{set}">
+	<meta itemprop="itemListOrder" content="descending">
+	<!-- IF topics.length -->
+	<div class="row topics-header hidden-xs hidden-sm">
+		<div class="col-md-8 col-xs-12"><div class="header-title">[[global:topics]]</div></div>
+		<div class="col-md-1"><div class="header-title">[[global:posts]]</div></div>
+		<div class="col-md-1"><div class="header-title">[[global:views]]</div></div>
+		<div class="col-md-2"><div class="header-title">Last Reply</div></div>
+	</div>
+	<!-- ENDIF topics.length -->
+	<!-- BEGIN topics -->
+	<div component="category/topic" class="row category-item {function.generateTopicClass}" data-tid="{topics.tid}" data-index="{topics.index}" data-cid="{topics.cid}" itemprop="itemListElement">
+		<a id="{../index}" data-index="{../index}" component="topic/anchor"></a>
+		<meta itemprop="name" content="{function.stripTags, title}">
+		<div class="col-md-8 col-xs-12">
+			<!-- IF showSelect -->
+			<div class="checkbox pull-left" component="topic/select">
+				<label>
+					<div class="select"></div>
+					<i class="input-helper"></i>
+				</label>
+			</div>
+			<!-- ENDIF showSelect -->
+			<div class="topic-author">
+				<a href="<!-- IF topics.user.userslug -->{config.relative_path}/user/{topics.user.userslug}<!-- ELSE -->#<!-- ENDIF topics.user.userslug -->" class="pull-left">
+					<!-- IF topics.thumb -->
+					<img src="{topics.thumb}" class="user-img" alt="{topics.user.username}" />
+					<!-- ELSE -->
+					<!-- IF topics.user.picture -->
+					<img class="user-avatar" component="user/picture" data-uid="{topics.user.uid}" src="{topics.user.picture}" alt="{topics.user.username}" />
+					<!-- ELSE -->
+					<div class="user-icon" style="background-color: {topics.user.icon:bgColor};">{topics.user.icon:text}</div>
+					<!-- ENDIF topics.user.picture -->
+					<!-- ENDIF topics.thumb -->
+				</a>
+			</div>
+			<div component="topic/header" class="title">
+				<i component="topic/pinned" class="fa fa-thumb-tack <!-- IF !topics.pinned -->hide<!-- ENDIF !topics.pinned -->" title="{{{ if !../pinExpiry }}}[[topic:pinned]]{{{ else }}}[[topic:pinned-with-expiry, {../pinExpiryISO}]]{{{ end }}}"></i>
+				<i component="topic/locked" class="fa fa-lock <!-- IF !topics.locked -->hide<!-- ENDIF !topics.locked -->" title="[[topic:locked]]"></i>
+				<i component="topic/moved" class="fa fa-arrow-circle-right <!-- IF !topics.oldCid -->hide<!-- ENDIF !topics.oldCid -->" title="[[topic:moved]]"></i>
+				<!-- IF !topics.noAnchor -->
+				<a href="{config.relative_path}/topic/{topics.slug}<!-- IF topics.bookmark -->/{topics.bookmark}<!-- ENDIF topics.bookmark -->" itemprop="url">{topics.title}</a>
+				<!-- ELSE -->
+				<span>{topics.title}</span>
+				<!-- ENDIF !topics.noAnchor -->
+
+				<small>
+					<a href="<!-- IF topics.user.userslug -->{config.relative_path}/user/{topics.user.userslug}<!-- ELSE -->#<!-- ENDIF topics.user.userslug -->">{topics.user.displayname}</a> &bull; <span class="timeago" title="{topics.timestampISO}"></span>
+				</small>
+			</div>
+		</div>
+		<div class="col-md-1 hidden-xs hidden-sm">
+			<div class="total-post-count human-readable-number" title="{topics.postcount}">
+				{topics.postcount}
+			</div>
+		</div>
+		<div class="col-md-1 hidden-xs hidden-sm">
+			<div class="total-view-count human-readable-number" title="{topics.viewcount}">
+				{topics.viewcount}
+			</div>
+		</div>
+		<div class="col-md-2 hidden-xs hidden-sm">
+			<div class="teaser" component="topic/teaser">
+				<!-- IF topics.unreplied -->
+				<p>
+					[[category:no_replies]]
+				</p>
+				<!-- ELSE -->
+				<!-- IF topics.teaser.pid -->
+				<!-- IF topics.teaser.user.picture -->
+				<img title="{topics.teaser.user.username}" class="user-avatar" src="{topics.teaser.user.picture}" alt="{topics.teaser.user.username}" />
+				<!-- ELSE -->
+				<div title="{topics.teaser.user.username}" class="user-icon" style="background-color: {topics.teaser.user.icon:bgColor};">{topics.teaser.user.icon:text}</div>
+				<!-- ENDIF topics.teaser.user.picture -->
+
+				<a href="{config.relative_path}/user/{topics.teaser.user.userslug}">{topics.teaser.user.displayname}</a>
+				<a class="permalink" href="{config.relative_path}/topic/{topics.slug}/{topics.teaser.index}">
+					<span class="timeago" title="{topics.teaser.timestampISO}"></span>
+				</a>
+				<!-- ENDIF topics.teaser.pid -->
+				<!-- ENDIF topics.unreplied -->
+			</div>
+		</div>
+	</div>
+	<!-- END topics -->
+</div>
+
 		<!-- IF config.usePagination -->
-			
-<div component="pagination" class="text-center pagination-container<!-- IF !pagination.pages.length --> hidden<!-- ENDIF !pagination.pages.length -->">
-	<ul class="pagination">
+			<div component="pagination" class="text-center pagination-container<!-- IF !pagination.pages.length --> hidden<!-- ENDIF !pagination.pages.length -->">
+	<ul class="pagination hidden-xs">
 		<li class="previous pull-left<!-- IF !pagination.prev.active --> disabled<!-- ENDIF !pagination.prev.active -->">
 			<a href="?{pagination.prev.qs}" data-page="{pagination.prev.page}"><i class="fa fa-chevron-left"></i> </a>
 		</li>
@@ -189,7 +283,7 @@
 				<a href="#"><i class="fa fa-ellipsis-h"></i></a>
 			</li>
 			<!-- ELSE -->
-			<li class="page<!-- IF pagination.pages.active --> active<!-- ELSE --> hidden-xs<!-- ENDIF pagination.pages.active -->" >
+			<li class="page<!-- IF pagination.pages.active --> active<!-- ENDIF pagination.pages.active -->" >
 				<a href="?{pagination.pages.qs}" data-page="{pagination.pages.page}">{pagination.pages.page}</a>
 			</li>
 			<!-- ENDIF pagination.pages.separator -->
@@ -199,8 +293,29 @@
 			<a href="?{pagination.next.qs}" data-page="{pagination.next.page}"> <i class="fa fa-chevron-right"></i></a>
 		</li>
 	</ul>
-</div>
 
+	<ul class="pagination hidden-sm hidden-md hidden-lg">
+		<li class="first<!-- IF !pagination.prev.active --> disabled<!-- ENDIF !pagination.prev.active -->">
+			<a href="?{pagination.first.qs}" data-page="1"><i class="fa fa-fast-backward"></i> </a>
+		</li>
+
+		<li class="previous<!-- IF !pagination.prev.active --> disabled<!-- ENDIF !pagination.prev.active -->">
+			<a href="?{pagination.prev.qs}" data-page="{pagination.prev.page}"><i class="fa fa-chevron-left"></i> </a>
+		</li>
+
+		<li component="pagination/select-page" class="page select-page">
+			<a href="#">{pagination.currentPage} / {pagination.pageCount}</a>
+		</li>
+
+		<li class="next<!-- IF !pagination.next.active --> disabled<!-- ENDIF !pagination.next.active -->">
+			<a href="?{pagination.next.qs}" data-page="{pagination.next.page}"> <i class="fa fa-chevron-right"></i></a>
+		</li>
+
+		<li class="last<!-- IF !pagination.next.active --> disabled<!-- ENDIF !pagination.next.active -->">
+			<a href="?{pagination.last.qs}" data-page="{pagination.pageCount}"><i class="fa fa-fast-forward"></i> </a>
+		</li>
+	</ul>
+</div>
 		<!-- ENDIF config.usePagination -->
 	</div>
 </div>

@@ -25,22 +25,26 @@
       __escape(guard((context != null) ? context['icon'] : null)) + 
       "\"></i>\n\t\t</div>\n\n\t\t<h2 class=\"title\">\n\t\t\t" + 
       (guard((context != null) ? context['isSection'] : null) ?
-        "\n" + 
+        "\r\n<span class=\"category-title\">" + 
           __escape(guard((context != null) ? context['name'] : null)) + 
-          "\n" :
-        "\n" + 
+          "</span>\r\n" :
+        "\r\n" + 
           (guard((context != null) ? context['link'] : null) ?
-            "\n<a href=\"" + 
+            "\r\n<a class=\"category-title\" href=\"" + 
               __escape(guard((context != null) ? context['link'] : null)) + 
-              "\" itemprop=\"url\">\n" :
-            "\n<a href=\"" + 
+              "\" itemprop=\"url\" title=\"" + 
+              __escape(guard((context != null) ? context['name'] : null)) + 
+              "\">\r\n" :
+            "\r\n<a class=\"category-title\" href=\"" + 
               __escape(guard((context != null && context['config'] != null) ? context['config']['relative_path'] : null)) + 
               "/category/" + 
               __escape(guard((context != null) ? context['slug'] : null)) + 
-              "\" itemprop=\"url\">\n") + 
-          "\n" + 
+              "\" itemprop=\"url\" title=\"" + 
+              __escape(guard((context != null) ? context['name'] : null)) + 
+              "\">\r\n") + 
+          "\r\n" + 
           __escape(guard((context != null) ? context['name'] : null)) + 
-          "\n</a>\n") + 
+          "\r\n</a>\r\n") + 
       "\n\t\t</h2>\n\t\t<div>\n\t\t\t" + 
       (guard((context != null) ? context['descriptionParsed'] : null) ?
         "\n\t\t\t<div class=\"description\">\n\t\t\t\t" + 

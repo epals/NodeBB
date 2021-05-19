@@ -3,7 +3,7 @@
 <ol class="breadcrumb" itemscope="itemscope" itemprop="breadcrumb" itemtype="http://schema.org/BreadcrumbList">
 	{{{each breadcrumbs}}}
 	<li<!-- IF @last --> component="breadcrumb/current"<!-- ENDIF @last --> itemscope="itemscope" itemprop="itemListElement" itemtype="http://schema.org/ListItem" <!-- IF @last -->class="active"<!-- ENDIF @last -->>
-		<meta itemprop="position" content="@index" />
+		<meta itemprop="position" content="{@index}" />
 		<!-- IF !@last --><a href="{breadcrumbs.url}" itemprop="item"><!-- ENDIF !@last -->
 			<span itemprop="name">
 				{breadcrumbs.text}
@@ -19,24 +19,30 @@
 <!-- ENDIF breadcrumbs.length -->
 
 
-	<!-- IF !tags.length -->
-	<div class="alert alert-warning">
-		<strong>[[tags:no_tags]]</strong>
-	</div>
-	<!-- ENDIF !tags.length -->
-
 	<!-- IF displayTagSearch -->
-	<input class="form-control" type="text" id="tag-search" placeholder="[[global:search]]"/>
-	<br/>
+	<!-- IF tags.length -->
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="input-group">
+				<input type="text" class="form-control" placeholder="[[global:search]]" id="tag-search">
+				<span class="input-group-addon search-button"><i class="fa fa-search"></i></span>
+			</div>
+		</div>
+	</div>
+	<!-- ENDIF tags.length -->
 	<!-- ENDIF displayTagSearch -->
+
+	<!-- IF !tags.length -->
+	<div class="alert alert-warning">[[tags:no_tags]]</div>
+	<!-- ENDIF !tags.length -->
 
 	<div class="category row">
 		<div class="col-md-12 clearfix tag-list" data-nextstart="{nextStart}">
-			{{{each tags}}}
-<h3 class="pull-left tag-container">
-	<a href="{config.relative_path}/tags/{tags.valueEscaped}" data-value="{tags.valueEscaped}"><span class="tag-item" data-tag="{tags.valueEscaped}" style="<!-- IF tags.color -->color: {tags.color};<!-- ENDIF tags.color --><!-- IF tags.bgColor -->background-color: {tags.bgColor};<!-- ENDIF tags.bgColor -->">{tags.valueEscaped}</span><span class="tag-topic-count">{tags.score}</span></a>
-</h3>
-{{{end}}}
+			<!-- BEGIN tags -->
+<h4 class="pull-left tag-container">
+	<a href="{config.relative_path}/tags/{tags.valueEscaped}" data-value="{tags.valueEscaped}"><span class="tag-item" data-tag="{tags.valueEscaped}" style="<!-- IF tags.color -->color: {tags.color};<!-- ENDIF tags.color --><!-- IF tags.bgColor -->background-color: {tags.bgColor};<!-- ENDIF tags.bgColor -->">{tags.valueEscaped}</span><span class="tag-topic-count human-readable-number" title="{tags.score}">{tags.score}</span></a>
+</h4>
+<!-- END tags -->
 		</div>
 	</div>
 </div>

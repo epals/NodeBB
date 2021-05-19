@@ -9,18 +9,19 @@
   function compiled(helpers, context, guard, iter, helper) {
     var __escape = helpers.__escape;
     var value = context;
-    return (guard((context != null && context['breadcrumbs'] != null) ? context['breadcrumbs']['length'] : null) ?
+    return "<div class=\"users\">\r\n\t" + 
+      (guard((context != null && context['breadcrumbs'] != null) ? context['breadcrumbs']['length'] : null) ?
         "\n<ol class=\"breadcrumb\" itemscope=\"itemscope\" itemprop=\"breadcrumb\" itemtype=\"http://schema.org/BreadcrumbList\">\n\t" + 
           compiled.blocks['breadcrumbs'](helpers, context, guard, iter, helper) + 
           "\n</ol>\n" :
         "") + 
-      "\n\n<div class=\"users\">\n\n\t<ul id=\"users-container\" class=\"users-container\">\n\t\t" + 
+      "\n\r\n\r\n\t<ul id=\"users-container\" class=\"users-container\">\r\n\t\t" + 
       compiled.blocks['users'](helpers, context, guard, iter, helper) + 
-      "\n\t</ul>\n\n\t\n<div component=\"pagination\" class=\"text-center pagination-container" + 
+      "\r\n\t</ul>\r\n\r\n\t<div component=\"pagination\" class=\"text-center pagination-container" + 
       (guard((context != null && context['pagination'] != null && context['pagination']['pages'] != null) ? context['pagination']['pages']['length'] : null) ?
         "" :
         " hidden") + 
-      "\">\n\t<ul class=\"pagination\">\n\t\t<li class=\"previous pull-left" + 
+      "\">\n\t<ul class=\"pagination hidden-xs\">\n\t\t<li class=\"previous pull-left" + 
       (guard((context != null && context['pagination'] != null && context['pagination']['prev'] != null) ? context['pagination']['prev']['active'] : null) ?
         "" :
         " disabled") + 
@@ -38,7 +39,41 @@
       __escape(guard((context != null && context['pagination'] != null && context['pagination']['next'] != null) ? context['pagination']['next']['qs'] : null)) + 
       "\" data-page=\"" + 
       __escape(guard((context != null && context['pagination'] != null && context['pagination']['next'] != null) ? context['pagination']['next']['page'] : null)) + 
-      "\"> <i class=\"fa fa-chevron-right\"></i></a>\n\t\t</li>\n\t</ul>\n</div>\n\n</div>";
+      "\"> <i class=\"fa fa-chevron-right\"></i></a>\n\t\t</li>\n\t</ul>\n\n\t<ul class=\"pagination hidden-sm hidden-md hidden-lg\">\n\t\t<li class=\"first" + 
+      (guard((context != null && context['pagination'] != null && context['pagination']['prev'] != null) ? context['pagination']['prev']['active'] : null) ?
+        "" :
+        " disabled") + 
+      "\">\n\t\t\t<a href=\"?" + 
+      __escape(guard((context != null && context['pagination'] != null && context['pagination']['first'] != null) ? context['pagination']['first']['qs'] : null)) + 
+      "\" data-page=\"1\"><i class=\"fa fa-fast-backward\"></i> </a>\n\t\t</li>\n\n\t\t<li class=\"previous" + 
+      (guard((context != null && context['pagination'] != null && context['pagination']['prev'] != null) ? context['pagination']['prev']['active'] : null) ?
+        "" :
+        " disabled") + 
+      "\">\n\t\t\t<a href=\"?" + 
+      __escape(guard((context != null && context['pagination'] != null && context['pagination']['prev'] != null) ? context['pagination']['prev']['qs'] : null)) + 
+      "\" data-page=\"" + 
+      __escape(guard((context != null && context['pagination'] != null && context['pagination']['prev'] != null) ? context['pagination']['prev']['page'] : null)) + 
+      "\"><i class=\"fa fa-chevron-left\"></i> </a>\n\t\t</li>\n\n\t\t<li component=\"pagination/select-page\" class=\"page select-page\">\n\t\t\t<a href=\"#\">" + 
+      __escape(guard((context != null && context['pagination'] != null) ? context['pagination']['currentPage'] : null)) + 
+      " / " + 
+      __escape(guard((context != null && context['pagination'] != null) ? context['pagination']['pageCount'] : null)) + 
+      "</a>\n\t\t</li>\n\n\t\t<li class=\"next" + 
+      (guard((context != null && context['pagination'] != null && context['pagination']['next'] != null) ? context['pagination']['next']['active'] : null) ?
+        "" :
+        " disabled") + 
+      "\">\n\t\t\t<a href=\"?" + 
+      __escape(guard((context != null && context['pagination'] != null && context['pagination']['next'] != null) ? context['pagination']['next']['qs'] : null)) + 
+      "\" data-page=\"" + 
+      __escape(guard((context != null && context['pagination'] != null && context['pagination']['next'] != null) ? context['pagination']['next']['page'] : null)) + 
+      "\"> <i class=\"fa fa-chevron-right\"></i></a>\n\t\t</li>\n\n\t\t<li class=\"last" + 
+      (guard((context != null && context['pagination'] != null && context['pagination']['next'] != null) ? context['pagination']['next']['active'] : null) ?
+        "" :
+        " disabled") + 
+      "\">\n\t\t\t<a href=\"?" + 
+      __escape(guard((context != null && context['pagination'] != null && context['pagination']['last'] != null) ? context['pagination']['last']['qs'] : null)) + 
+      "\" data-page=\"" + 
+      __escape(guard((context != null && context['pagination'] != null) ? context['pagination']['pageCount'] : null)) + 
+      "\"><i class=\"fa fa-fast-forward\"></i> </a>\n\t\t</li>\n\t</ul>\n</div>\r\n</div>";
   }
 
   compiled.blocks = {
@@ -92,53 +127,63 @@
       var value = context;
       return iter(guard((context != null) ? context['users'] : null), function each(key0, index, length, value) {
         var key = key0;
-        return "\n<li class=\"users-box registered-user\" data-uid=\"" + 
+        return "\r\n<li class=\"users-box registered-user\" data-uid=\"" + 
           __escape(guard((context != null && context['users'] != null && context['users'][key0] != null) ? context['users'][key0]['uid'] : null)) + 
-          "\">\n\t<a href=\"" + 
+          "\">\r\n\t<a href=\"" + 
           __escape(guard((context != null && context['config'] != null) ? context['config']['relative_path'] : null)) + 
           "/user/" + 
           __escape(guard((context != null && context['users'] != null && context['users'][key0] != null) ? context['users'][key0]['userslug'] : null)) + 
-          "\">" + 
-          __escape(helper(context, helpers, 'buildAvatar', [guard((context != null && context['users'] != null) ? context['users'][key0] : null), "80", guard((context != null) ? context['true'] : null)])) + 
-          "</a>\n\t<br/>\n\t<div class=\"user-info\">\n\t\t<span>\n\t\t\t<i component=\"user/status\" class=\"fa fa-circle status " + 
+          "\">\r\n\t\t" + 
+          (guard((context != null && context['users'] != null && context['users'][key0] != null) ? context['users'][key0]['picture'] : null) ?
+            "\r\n\t\t<img class=\"user-avatar\" src=\"" + 
+              __escape(guard((context != null && context['users'] != null && context['users'][key0] != null) ? context['users'][key0]['picture'] : null)) + 
+              "\" alt=\"" + 
+              __escape(guard((context != null && context['users'] != null && context['users'][key0] != null) ? context['users'][key0]['username'] : null)) + 
+              "\" />\r\n\t\t" :
+            "\r\n\t\t<div class=\"user-icon\" style=\"background-color: " + 
+              __escape(guard((context != null && context['users'] != null && context['users'][key0] != null) ? context['users'][key0]['icon:bgColor'] : null)) + 
+              ";\">" + 
+              __escape(guard((context != null && context['users'] != null && context['users'][key0] != null) ? context['users'][key0]['icon:text'] : null)) + 
+              "</div>\r\n\t\t") + 
+          "\r\n\t</a>\r\n\r\n\t<div class=\"user-info\">\r\n\t\t<span class=\"username\">\r\n\t\t\t<i component=\"user/status\" class=\"fa fa-circle status " + 
           __escape(guard((context != null && context['users'] != null && context['users'][key0] != null) ? context['users'][key0]['status'] : null)) + 
           "\" title=\"[[global:" + 
           __escape(guard((context != null && context['users'] != null && context['users'][key0] != null) ? context['users'][key0]['status'] : null)) + 
-          "]]\"></i>\n\t\t\t<a href=\"" + 
+          "]]\"></i>\r\n\t\t\t<a href=\"" + 
           __escape(guard((context != null && context['config'] != null) ? context['config']['relative_path'] : null)) + 
           "/user/" + 
           __escape(guard((context != null && context['users'] != null && context['users'][key0] != null) ? context['users'][key0]['userslug'] : null)) + 
           "\">" + 
           __escape(guard((context != null && context['users'] != null && context['users'][key0] != null) ? context['users'][key0]['username'] : null)) + 
-          "</a>\n\t\t</span>\n\t\t<br/>\n\n\t\t" + 
+          "</a>\r\n\t\t</span>\r\n\r\n\t\t" + 
           (guard((context != null) ? context['section_joindate'] : null) ?
-            "\n\t\t<div title=\"joindate\" class=\"joindate\">\n\t\t\t<span class=\"timeago\" title=\"" + 
+            "\r\n\t\t<div title=\"joindate\" class=\"joindate\">\r\n\t\t\t<span class=\"timeago\" title=\"" + 
               __escape(guard((context != null && context['users'] != null && context['users'][key0] != null) ? context['users'][key0]['joindateISO'] : null)) + 
-              "\"></span>\n\t\t</div>\n\t\t" :
+              "\"></span>\r\n\t\t</div>\r\n\t\t" :
             "") + 
-          "\n\n\t\t" + 
+          "\r\n\r\n\t\t" + 
           (guard((context != null) ? context['section_sort-reputation'] : null) ?
-            "\n\t\t<div title=\"reputation\" class=\"reputation\">\n\t\t\t<i class=\"fa fa-star\"></i>\n\t\t\t<span class=\"formatted-number\">" + 
+            "\r\n\t\t<div title=\"reputation\" class=\"reputation\">\r\n\t\t\t<i class=\"fa fa-star\"></i>\r\n\t\t\t<span class=\"formatted-number\">" + 
               __escape(guard((context != null && context['users'] != null && context['users'][key0] != null) ? context['users'][key0]['reputation'] : null)) + 
-              "</span>\n\t\t</div>\n\t\t" :
+              "</span>\r\n\t\t</div>\r\n\t\t" :
             "") + 
-          "\n\n\t\t" + 
+          "\r\n\r\n\t\t" + 
           (guard((context != null) ? context['section_sort-posts'] : null) ?
-            "\n\t\t<div title=\"post count\" class=\"post-count\">\n\t\t\t<i class=\"fa fa-pencil\"></i>\n\t\t\t<span class=\"formatted-number\">" + 
+            "\r\n\t\t<div title=\"post count\" class=\"post-count\">\r\n\t\t\t<i class=\"fa fa-pencil\"></i>\r\n\t\t\t<span class=\"formatted-number\">" + 
               __escape(guard((context != null && context['users'] != null && context['users'][key0] != null) ? context['users'][key0]['postcount'] : null)) + 
-              "</span>\n\t\t</div>\n\t\t" :
+              "</span>\r\n\t\t</div>\r\n\t\t" :
             "") + 
-          "\n\n\t\t" + 
+          "\r\n\r\n\t\t" + 
           (guard((context != null) ? context['section_flagged'] : null) ?
-            "\n\t\t<div title=\"flag count\" class=\"flag-count\">\n\t\t\t<i class=\"fa fa-flag\"></i>\n\t\t\t<span><a class=\"formatted-number\" href=\"" + 
+            "\r\n\t\t<div title=\"flag count\" class=\"flag-count\">\r\n\t\t\t<i class=\"fa fa-flag\"></i>\r\n\t\t\t<span class=\"formatted-number\"><a href=\"" + 
               __escape(guard((context != null && context['config'] != null) ? context['config']['relative_path'] : null)) + 
-              "/flags?targetUid=" + 
-              __escape(guard((context != null && context['users'] != null && context['users'][key0] != null) ? context['users'][key0]['uid'] : null)) + 
+              "/posts/flags?byUsername=" + 
+              __escape(guard((context != null && context['users'] != null && context['users'][key0] != null) ? context['users'][key0]['username'] : null)) + 
               "\">" + 
               __escape(guard((context != null && context['users'] != null && context['users'][key0] != null) ? context['users'][key0]['flags'] : null)) + 
-              "</a></span>\n\t\t</div>\n\t\t" :
+              "</a></span>\r\n\t\t</div>\r\n\t\t" :
             "") + 
-          "\n\t</div>\n</li>\n";
+          "\r\n\t</div>\r\n</li>\r\n";
       }, function alt() {
         return "";
       });
@@ -154,7 +199,7 @@
             "\n\t\t\t<li class=\"page" + 
               (guard((context != null && context['pagination'] != null && context['pagination']['pages'] != null && context['pagination']['pages'][key0] != null) ? context['pagination']['pages'][key0]['active'] : null) ?
                 " active" :
-                " hidden-xs") + 
+                "") + 
               "\" >\n\t\t\t\t<a href=\"?" + 
               __escape(guard((context != null && context['pagination'] != null && context['pagination']['pages'] != null && context['pagination']['pages'][key0] != null) ? context['pagination']['pages'][key0]['qs'] : null)) + 
               "\" data-page=\"" + 

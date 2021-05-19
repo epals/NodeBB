@@ -3,7 +3,7 @@
 <ol class="breadcrumb" itemscope="itemscope" itemprop="breadcrumb" itemtype="http://schema.org/BreadcrumbList">
 	{{{each breadcrumbs}}}
 	<li<!-- IF @last --> component="breadcrumb/current"<!-- ENDIF @last --> itemscope="itemscope" itemprop="itemListElement" itemtype="http://schema.org/ListItem" <!-- IF @last -->class="active"<!-- ENDIF @last -->>
-		<meta itemprop="position" content="@index" />
+		<meta itemprop="position" content="{@index}" />
 		<!-- IF !@last --><a href="{breadcrumbs.url}" itemprop="item"><!-- ENDIF !@last -->
 			<span itemprop="name">
 				{breadcrumbs.text}
@@ -27,14 +27,14 @@
 		</div>
 		<div class="col-lg-8">
 			<div class="row">
-				<div class="col-xs-3 text-left pull-right">
+				<div class="col-xs-5 col-md-3 text-left pull-right">
 					<select class="form-control" id="search-sort">
 						<option value="alpha">[[groups:details.group_name]]</option>
 						<option value="count">[[groups:details.member_count]]</option>
 						<option value="date">[[groups:details.creation_date]]</option>
 					</select>
 				</div>
-				<div class="col-xs-5 text-left pull-right">
+				<div class="col-xs-7 col-md-5 text-left pull-right">
 					<div class="input-group">
 						<input type="text" class="form-control" placeholder="[[global:search]]" name="query" value="" id="search-text">
 						<span id="search-button" class="input-group-addon search-button"><i class="fa fa-search"></i></span>
@@ -44,11 +44,9 @@
 		</div>
 	</div>
 
-	<hr />
-
 	<div component="groups/container" class="row" id="groups-list" data-nextstart={nextStart}>
 		<!-- IF groups.length -->
-			{{{each groups}}}
+			<!-- BEGIN groups -->
 	<div class="col-lg-4 col-md-6 col-sm-12" component="groups/summary" data-slug="{groups.slug}">
 		<div class="panel panel-default">
 			<a href="{config.relative_path}/groups/{groups.slug}" class="panel-heading list-cover" style="<!-- IF groups.cover:thumb:url -->background-image: url({groups.cover:thumb:url});<!-- ENDIF groups.cover:thumb:url -->">
@@ -56,11 +54,17 @@
 			</a>
 			<div class="panel-body">
 				<ul class="members">
-					{{{each members}}}
+					<!-- BEGIN members -->
 					<li>
-						<a href="{config.relative_path}/user/{groups.members.userslug}">{buildAvatar(groups.members, "sm", true)}</a>
+						<a href="{config.relative_path}/user/{groups.members.userslug}">
+							<!-- IF groups.members.picture -->
+							<img class="user-avatar" src="{groups.members.picture}" alt="{groups.members.username}" title="{groups.members.username}" />
+							<!-- ELSE -->
+							<div class="user-icon" style="background-color: {groups.members.icon:bgColor};" title="{groups.members.username}">{groups.members.icon:text}</div>
+							<!-- ENDIF groups.members.picture -->
+						</a>
 					</li>
-					{{{end}}}
+					<!-- END members -->
 					<!-- IF groups.truncated -->
 					<li class="truncated"><i class="fa fa-ellipsis-h"></i></li>
 					<!-- ENDIF groups.truncated -->
@@ -68,7 +72,7 @@
 			</div>
 		</div>
 	</div>
-	{{{end}}}
+	<!-- END groups -->
 		<!-- ELSE -->
 		<div class="col-xs-12">
 			<div class="alert alert-warning">

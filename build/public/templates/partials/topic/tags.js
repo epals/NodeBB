@@ -22,7 +22,7 @@
           __escape(guard((context != null && context['config'] != null) ? context['config']['relative_path'] : null)) + 
           "/tags/" + 
           __escape(guard((context != null && context['tags'] != null && context['tags'][key0] != null) ? context['tags'][key0]['value'] : null)) + 
-          "\"><span class=\"tag-item\" data-tag=\"" + 
+          "\">\n    <span class=\"tag tag-item\" data-tag=\"" + 
           __escape(guard((context != null && context['tags'] != null && context['tags'][key0] != null) ? context['tags'][key0]['value'] : null)) + 
           "\" style=\"" + 
           (guard((context != null && context['tags'] != null && context['tags'][key0] != null) ? context['tags'][key0]['color'] : null) ?
@@ -37,9 +37,7 @@
             "") + 
           "\">" + 
           __escape(guard((context != null && context['tags'] != null && context['tags'][key0] != null) ? context['tags'][key0]['valueEscaped'] : null)) + 
-          "</span><span class=\"tag-topic-count\">" + 
-          __escape(guard((context != null && context['tags'] != null && context['tags'][key0] != null) ? context['tags'][key0]['score'] : null)) + 
-          "</span></a>\n";
+          "</span>\n</a>\n";
       }, function alt() {
         return "";
       });

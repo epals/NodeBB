@@ -2,7 +2,7 @@
 <ol class="breadcrumb" itemscope="itemscope" itemprop="breadcrumb" itemtype="http://schema.org/BreadcrumbList">
 	{{{each breadcrumbs}}}
 	<li<!-- IF @last --> component="breadcrumb/current"<!-- ENDIF @last --> itemscope="itemscope" itemprop="itemListElement" itemtype="http://schema.org/ListItem" <!-- IF @last -->class="active"<!-- ENDIF @last -->>
-		<meta itemprop="position" content="@index" />
+		<meta itemprop="position" content="{@index}" />
 		<!-- IF !@last --><a href="{breadcrumbs.url}" itemprop="item"><!-- ENDIF !@last -->
 			<span itemprop="name">
 				{breadcrumbs.text}
@@ -19,7 +19,7 @@
 
 
 <!-- IF valid -->
-<div class="well">
+<div>
 	<!-- IF displayExpiryNotice -->
 	<div class="alert alert-warning">
 		[[reset_password:password_expired]]
@@ -43,7 +43,6 @@
 			<label for="repeat">[[reset_password:repeat_password]]</label>
 			<input class="form-control" type="password" placeholder="[[reset_password:repeat_password]]" id="repeat" /><br />
 		</div>
-
 		<div class="col-xs-12">
 			<button class="btn btn-primary btn-block" id="reset" type="submit">[[reset_password:reset_password]]</button>
 		</div>

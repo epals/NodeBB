@@ -1,39 +1,57 @@
+<!-- IF breadcrumbs.length -->
+<ol class="breadcrumb" itemscope="itemscope" itemprop="breadcrumb" itemtype="http://schema.org/BreadcrumbList">
+	{{{each breadcrumbs}}}
+	<li<!-- IF @last --> component="breadcrumb/current"<!-- ENDIF @last --> itemscope="itemscope" itemprop="itemListElement" itemtype="http://schema.org/ListItem" <!-- IF @last -->class="active"<!-- ENDIF @last -->>
+		<meta itemprop="position" content="{@index}" />
+		<!-- IF !@last --><a href="{breadcrumbs.url}" itemprop="item"><!-- ENDIF !@last -->
+			<span itemprop="name">
+				{breadcrumbs.text}
+				<!-- IF @last -->
+				<!-- IF !feeds:disableRSS -->
+				<!-- IF rssFeedUrl --><a target="_blank" href="{rssFeedUrl}" itemprop="item"><i class="fa fa-rss-square"></i></a><!-- ENDIF rssFeedUrl --><!-- ENDIF !feeds:disableRSS -->
+				<!-- ENDIF @last -->
+			</span>
+		<!-- IF !@last --></a><!-- ENDIF !@last -->
+	</li>
+	{{{end}}}
+</ol>
+<!-- ENDIF breadcrumbs.length -->
+
+
 <div class="chats-full">
 	<div component="chat/nav-wrapper" data-loaded="<!-- IF roomId -->1<!-- ELSE -->0<!-- END -->">
 		<div class="chat-search dropdown">
 			<input class="form-control" type="text" component="chat/search" placeholder="[[users:enter_username]]" data-toggle="dropdown" />
 			<ul component="chat/search/list" class="dropdown-menu"></ul>
 		</div>
-		<ul component="chat/recent" class="chats-list" data-nextstart="{nextStart}">
-			{{{each rooms}}}
-			<li component="chat/recent/room" data-roomid="{rooms.roomId}" class="<!-- IF rooms.unread -->unread<!-- ENDIF rooms.unread -->">
-	<strong class="room-name">
-		<!-- IF !rooms.lastUser.uid -->
-		<span>[[modules:chat.no-users-in-room]]</span>
-		<!-- ELSE -->
-		<span component="chat/title"><!-- IF rooms.roomName -->{rooms.roomName}<!-- ELSE -->{rooms.usernames}<!-- ENDIF rooms.roomName --></span>
-		<!-- ENDIF !rooms.lastUser.uid -->
-	</strong>
-	<div class="avatar-placeholder"></div>
-	{{{each rooms.users}}}
-	<!-- IF @first -->
-	<div class="main-avatar">
-		<a href="{config.relative_path}/user/{rooms.users.userslug}">{buildAvatar(rooms.users, "sm", true)}</a>
-	</div>
-	<!-- ENDIF @first -->
-	{{{end}}}
 
-	<ul class="members">
-		{{{each rooms.users}}}
-		<li>
-			<a href="{config.relative_path}/user/{rooms.users.userslug}">{buildAvatar(rooms.users, "sm", true)}</a>
-		</li>
-		{{{end}}}
-	</ul>
+		<ul component="chat/recent" class="chats-list" data-nextstart="{nextStart}">
+			<!-- BEGIN rooms -->
+			<li component="chat/recent/room" data-roomid="{rooms.roomId}" class="<!-- IF rooms.unread -->unread<!-- ENDIF rooms.unread -->">
+	<!-- IF rooms.lastUser.uid -->
+	<div class="chat-image" data-username="{rooms.lastUser.username}" data-uid="{rooms.lastUser.uid}">
+		<!-- IF rooms.lastUser.picture -->
+		<img class="user-avatar" src="{rooms.lastUser.picture}" title="{rooms.lastUser.username}">
+		<!-- ELSE -->
+		<div class="user-icon" style="background-color: {rooms.lastUser.icon:bgColor};" title="{rooms.lastUser.username}">{rooms.lastUser.icon:text}</div>
+		<!-- ENDIF rooms.lastUser.picture -->
+	</div>
+	<!-- ELSE -->
+	[[modules:chat.no-users-in-room]]
+	<!-- ENDIF rooms.lastUser.uid -->
+	<div class="chat-body">
+		<div class="chat-main">
+			<div class="chat-room-name">
+				<span component="chat/title"><!-- IF rooms.roomName -->{rooms.roomName}<!-- ELSE -->{rooms.usernames}<!-- ENDIF rooms.roomName --></span>
+			</div>
+		</div>
+
+	</div>
 </li>
-			{{{end}}}
+			<!-- END rooms -->
 		</ul>
 	</div>
+
 	<div component="chat/main-wrapper">
 		<!-- IF roomId -->
 <div component="chat/messages" class="expanded-chat" data-roomid="{roomId}">
@@ -44,15 +62,6 @@
 		<div class="dropdown pull-right">
 			<button class="close" data-toggle="dropdown" component="chat/controlsToggle"><i class="fa fa-gear"></i></button>
 			<ul class="dropdown-menu dropdown-menu-right pull-right" component="chat/controls">
-				<!-- IF users.length -->
-				<li class="dropdown-header">[[modules:chat.in-room]]</li>
-				{{{each users}}}
-				<li>
-					<a href="{config.relative_path}/uid/{../uid}">{buildAvatar(users, "sm", true)} {../username}</a>
-				</li>
-				{{{end}}}
-				<li role="separator" class="divider"></li>
-				<!-- END -->
 				<li class="dropdown-header">[[modules:chat.options]]</li>
 				<li>
 					<a href="#" data-action="members"><i class="fa fa-fw fa-cog"></i> [[modules:chat.manage-room]]</a>
@@ -63,6 +72,15 @@
 				<li>
 					<a href="#" data-action="leave"><i class="fa fa-fw fa-sign-out"></i> [[modules:chat.leave]]</a>
 				</li>
+				<!-- IF users.length -->
+				<li role="separator" class="divider"></li>
+				<li class="dropdown-header">[[modules:chat.in-room]]</li>
+				{{{each users}}}
+				<li>
+					<a href="{config.relative_path}/uid/{../uid}">{buildAvatar(users, "sm", true)} {../username}</a>
+				</li>
+				{{{end}}}
+				<!-- END -->
 			</ul>
 		</div>
 		<span class="members">
@@ -72,19 +90,35 @@
 			{{{end}}}
 		</span>
 	</div>
+	<div component="chat/messages/scroll-up-alert" class="scroll-up-alert alert alert-info" role="button">[[modules:chat.scroll-up-alert]]</div>
 	<ul class="chat-content">
-		{{{each messages}}}
-	{{{ if !./system }}}
-	<li component="chat/message" class="chat-message clear<!-- IF ../deleted --> deleted<!-- END -->" data-index="{messages.index}" data-mid="{messages.messageId}" data-uid="{messages.fromuid}" data-self="{messages.self}" data-break="{messages.newSet}" data-timestamp="{messages.timestamp}">
+		<!-- BEGIN messages -->
+<li component="chat/message" class="chat-message clear<!-- IF ../deleted --> deleted<!-- END -->" data-index="{messages.index}" data-mid="{messages.messageId}" data-uid="{messages.fromuid}" data-self="{messages.self}" data-break="{messages.newSet}" data-timestamp="{messages.timestamp}">
 	<div class="message-header">
-		<a href="{config.relative_path}/user/{messages.fromUser.userslug}">{buildAvatar(messages.fromUser, "md", true, "not-responsive")}</a>
-		<strong><span class="chat-user">{messages.fromUser.displayname}</span></strong>
+		<a class="chat-avatar" href="{config.relative_path}/user/{messages.fromUser.userslug}">
+			<!-- IF messages.fromUser.picture -->
+			<img class="user-avatar" src="{messages.fromUser.picture}">
+			<!-- ELSE -->
+			<div class="user-icon" style="background-color: {messages.fromUser.icon:bgColor};">{messages.fromUser.icon:text}</div>
+			<!-- ENDIF messages.fromUser.picture -->
+		</a>
+		<strong><span class="chat-user"><a href="{config.relative_path}/user/{messages.fromUser.userslug}">{messages.fromUser.displayname}</a></span></strong>
+		<!-- IF ../fromUser.banned -->
+		<span class="label label-danger">[[user:banned]]</span>
+		<!-- END -->
+		<!-- IF ../fromUser.deleted -->
+		<span class="label label-danger">[[user:deleted]]</span>
+		<!-- END -->
 		<span class="chat-timestamp timeago" title="{messages.timestampISO}"></span>
+		<!-- IF isAdminOrGlobalMod -->
+		<small class="chat-ip pull-right" title="[[modules:chat.show-ip]]"><i class="fa fa-info-circle chat-ip-button"></i></small>
+		<!-- ENDIF isAdminOrGlobalMod -->
 	</div>
 	<div component="chat/message/body" class="message-body">
 		<!-- IF messages.edited -->
 		<small class="text-muted pull-right" title="[[global:edited]] {messages.editedISO}"><i class="fa fa-edit"></i></span></small>
 		<!-- ENDIF messages.edited -->
+
 		<!-- IF !config.disableChatMessageEditing -->
 		<!-- IF messages.self -->
 		<div class="pull-right btn-group controls">
@@ -94,15 +128,11 @@
 		</div>
 		<!-- ENDIF messages.self -->
 		<!-- ENDIF !config.disableChatMessageEditing -->
+
 		{messages.content}
 	</div>
 </li>
-	{{{ else }}}
-	<li component="chat/system-message" class="system-message clear" data-index="{messages.index}" data-mid="{messages.messageId}" data-uid="{messages.fromuid}" data-self="{messages.self}" data-break="0" data-timestamp="{messages.timestamp}">
-	[[modules:chat.system.{messages.content}, {messages.fromUser.username}]]
-</li>
-	{{{ end }}}
-{{{end}}}
+<!-- END messages -->
 	</ul>
 	<div component="chat/composer">
 		<textarea component="chat/input" placeholder="[[modules:chat.placeholder]]" class="form-control chat-input mousetrap" rows="2"></textarea>

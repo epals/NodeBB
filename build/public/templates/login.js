@@ -9,58 +9,47 @@
   function compiled(helpers, context, guard, iter, helper) {
     var __escape = helpers.__escape;
     var value = context;
-    return (guard((context != null && context['breadcrumbs'] != null) ? context['breadcrumbs']['length'] : null) ?
+    return "<div class=\"login\">\r\n" + 
+      (guard((context != null && context['breadcrumbs'] != null) ? context['breadcrumbs']['length'] : null) ?
         "\n<ol class=\"breadcrumb\" itemscope=\"itemscope\" itemprop=\"breadcrumb\" itemtype=\"http://schema.org/BreadcrumbList\">\n\t" + 
           compiled.blocks['breadcrumbs'](helpers, context, guard, iter, helper) + 
           "\n</ol>\n" :
         "") + 
-      "\n\n\n<div class=\"row\">\n\t" + 
+      "\n\r\n\r\n\t<div class=\"row\">\r\n\t\t" + 
       (guard((context != null) ? context['allowLocalLogin'] : null) ?
-        "\n\t<div class=\"" + 
-          (guard((context != null) ? context['alternate_logins'] : null) ?
-            "col-md-6" :
-            "col-md-12") + 
-          "\">\n\t\t<div class=\"login-block\">\n\t\t\t<div class=\"alert alert-danger\" id=\"login-error-notify\" " + 
+        "\r\n\t\t<div class=\"col-md-12\">\r\n\t\t\t<div class=\"login-block\">\r\n\t\t\t\t<div class=\"alert alert-danger\" id=\"login-error-notify\" " + 
           (guard((context != null) ? context['error'] : null) ?
             "style=\"display:block\"" :
             "style=\"display: none;\"") + 
-          ">\n\t\t\t\t<button type=\"button\" class=\"close\" data-dismiss=\"alert\">&times;</button>\n\t\t\t\t<strong>[[login:failed_login_attempt]]</strong>\n\t\t\t\t<p>" + 
+          ">\r\n\t\t\t\t\t<button type=\"button\" class=\"close\" data-dismiss=\"alert\">&times;</button>\r\n\t\t\t\t\t<strong>[[login:failed_login_attempt]]</strong>\r\n\t\t\t\t\t<p>" + 
           __escape(guard((context != null) ? context['error'] : null)) + 
-          "</p>\n\t\t\t</div>\n\n\t\t\t<form class=\"form-horizontal\" role=\"form\" method=\"post\" target=\"login\" id=\"login-form\">\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<div class=\"col-lg-offset-2 col-lg-10\">\n\t\t\t\t\t\t<label for=\"username\" class=\"control-label\">" + 
+          "</p>\r\n\t\t\t\t</div>\r\n\r\n\t\t\t\t<form class=\"form-horizontal\" method=\"post\" target=\"login\" id=\"login-form\">\r\n\t\t\t\t\t<div class=\"form-group\">\r\n\t\t\t\t\t\t<label for=\"username\" class=\"col-lg-2 control-label\">" + 
           __escape(guard((context != null) ? context['allowLoginWith'] : null)) + 
-          "</label>\n\t\t\t\t\t\t<input class=\"form-control\" type=\"text\" placeholder=\"" + 
+          "</label>\r\n\t\t\t\t\t\t<div class=\"col-lg-10\">\r\n\t\t\t\t\t\t\t<input class=\"form-control\" type=\"text\" placeholder=\"" + 
           __escape(guard((context != null) ? context['allowLoginWith'] : null)) + 
           "\" name=\"username\" id=\"username\" autocorrect=\"off\" autocapitalize=\"off\" value=\"" + 
           __escape(guard((context != null) ? context['username'] : null)) + 
-          "\"/>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<div class=\"col-lg-offset-2 col-lg-10\">\n\t\t\t\t\t\t<label for=\"password\" class=\"control-label\">[[user:password]]</label>\n\t\t\t\t\t\t<input class=\"form-control\" type=\"password\" placeholder=\"[[user:password]]\" name=\"password\" id=\"password\" " + 
+          "\"/>\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div class=\"form-group\">\r\n\t\t\t\t\t\t<label for=\"password\" class=\"col-lg-2 control-label\">[[user:password]]</label>\r\n\t\t\t\t\t\t<div class=\"col-lg-10\">\r\n\t\t\t\t\t\t\t<input class=\"form-control\" type=\"password\" placeholder=\"[[user:password]]\" name=\"password\" id=\"password\" " + 
           (guard((context != null) ? context['username'] : null) ?
             "autocomplete=\"off\"" :
             "") + 
-          "/>\n\t\t\t\t\t\t<p id=\"caps-lock-warning\" class=\"text-danger hidden\">\n\t\t\t\t\t\t\t<i class=\"fa fa-exclamation-triangle\"></i> [[login:caps-lock-enabled]]\n\t\t\t\t\t\t</p>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<div class=\"col-lg-offset-2 col-lg-10\">\n\t\t\t\t\t\t<div class=\"checkbox\">\n\t\t\t\t\t\t\t<label>\n\t\t\t\t\t\t\t\t<input type=\"checkbox\" name=\"remember\" id=\"remember\" checked /> [[login:remember_me]]\n\t\t\t\t\t\t\t</label>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t<div class=\"col-lg-offset-2 col-lg-10\">\n\t\t\t\t\t\t<hr />\n\t\t\t\t\t\t<button class=\"btn btn-primary btn-lg btn-block\" id=\"login\" type=\"submit\">[[global:login]]</button>\n\t\t\t\t\t\t" + 
+          "/>\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div class=\"form-group\">\r\n\t\t\t\t\t\t<div class=\"col-lg-offset-2 col-lg-10\">\r\n\t\t\t\t\t\t\t<div class=\"checkbox\">\r\n\t\t\t\t\t\t\t\t<label>\r\n\t\t\t\t\t\t\t\t\t<input type=\"checkbox\" name=\"remember\" id=\"remember\" checked /> [[login:remember_me]]\r\n\t\t\t\t\t\t\t\t\t<i class=\"input-helper\"></i>\r\n\t\t\t\t\t\t\t\t</label>\r\n\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div class=\"form-group\">\r\n\t\t\t\t\t\t<div class=\"col-lg-offset-2 col-lg-10\">\r\n\t\t\t\t\t\t\t<button class=\"btn btn-primary btn-lg btn-block\" id=\"login\" type=\"submit\">[[global:login]]</button>\r\n\r\n\t\t\t\t\t\t\t<div class=\"register-forgot-pwd\">\r\n\t\t\t\t\t\t\t" + 
           (guard((context != null) ? context['allowRegistration'] : null) ?
-            "\n\t\t\t\t\t\t<span>[[login:dont_have_account]] <a href=\"" + 
+            "\r\n\t\t\t\t\t\t\t<span>[[login:dont_have_account]] <a href=\"" + 
               __escape(guard((context != null && context['config'] != null) ? context['config']['relative_path'] : null)) + 
-              "/register\">[[register:register]]</a></span>\n\t\t\t\t\t\t" :
+              "/register\">[[register:register]]</a></span>\r\n\t\t\t\t\t\t\t" :
             "") + 
-          "\n\t\t\t\t\t\t" + 
-          (guard((context != null) ? context['allowPasswordReset'] : null) ?
-            "\n\t\t\t\t\t\t&nbsp; <a id=\"reset-link\" href=\"" + 
-              __escape(guard((context != null && context['config'] != null) ? context['config']['relative_path'] : null)) + 
-              "/reset\">[[login:forgot_password]]</a>\n\t\t\t\t\t\t" :
-            "") + 
-          "\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</form>\n\n\t\t</div>\n\t</div>\n\t" :
+          "\r\n\t\t\t\t\t\t\t&nbsp; <a id=\"reset-link\" href=\"" + 
+          __escape(guard((context != null && context['config'] != null) ? context['config']['relative_path'] : null)) + 
+          "/reset\">[[login:forgot_password]]</a>\r\n\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t</div>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t</form>\r\n\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t\t" :
         "") + 
-      "\n\n\t" + 
+      "\r\n\r\n\t\t" + 
       (guard((context != null) ? context['alternate_logins'] : null) ?
-        "\n\t<div class=\"" + 
-          (guard((context != null) ? context['allowLocalLogin'] : null) ?
-            "col-md-6" :
-            "col-md-12") + 
-          "\">\n\t\t<div class=\"alt-login-block\">\n\t\t\t<h4>[[login:alternative_logins]]</h4>\n\t\t\t<ul class=\"alt-logins\">\n\t\t\t\t" + 
+        "\r\n\t\t<div class=\"col-lg-offset-2 col-lg-10\">\r\n\t\t\t<div class=\"alt-logins\">\r\n\t\t\t\t" + 
           compiled.blocks['authentication'](helpers, context, guard, iter, helper) + 
-          "\n\t\t\t</ul>\n\t\t</div>\n\t</div>\n\t" :
+          "\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t\t" :
         "") + 
-      "\n</div>\n";
+      "\r\n\t</div>\r\n</div>\r\n";
   }
 
   compiled.blocks = {
@@ -114,14 +103,14 @@
       var value = context;
       return iter(guard((context != null) ? context['authentication'] : null), function each(key0, index, length, value) {
         var key = key0;
-        return "\n\t\t\t\t<li class=\"" + 
+        return "\r\n\t\t\t\t<div class=\"" + 
           __escape(guard((context != null && context['authentication'] != null && context['authentication'][key0] != null) ? context['authentication'][key0]['name'] : null)) + 
           "\"><a rel=\"nofollow noopener noreferrer\" target=\"_top\" href=\"" + 
           __escape(guard((context != null && context['config'] != null) ? context['config']['relative_path'] : null)) + 
           __escape(guard((context != null && context['authentication'] != null && context['authentication'][key0] != null) ? context['authentication'][key0]['url'] : null)) + 
           "\"><i class=\"fa " + 
           __escape(guard((context != null && context['authentication'] != null && context['authentication'][key0] != null) ? context['authentication'][key0]['icon'] : null)) + 
-          " fa-3x\"></i></a></li>\n\t\t\t\t";
+          " fa-3x\"></i></a></div>\r\n\t\t\t\t";
       }, function alt() {
         return "";
       });
