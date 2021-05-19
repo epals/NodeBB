@@ -9,13 +9,13 @@
   function compiled(helpers, context, guard, iter, helper) {
     var __escape = helpers.__escape;
     var value = context;
-    return "\r\n" + 
+    return "\n" + 
       (guard((context != null && context['notifications'] != null) ? context['notifications']['length'] : null) ?
         "" :
-        "\r\n<li class=\"no-notifs\">[[notifications:no_notifs]]</li>\r\n") + 
-      "\r\n\r\n" + 
+        "\n<li class=\"no-notifs\"><a href=\"#\">[[notifications:no_notifs]]</a></li>\n") + 
+      "\n\n" + 
       compiled.blocks['notifications'](helpers, context, guard, iter, helper) + 
-      "\r\n";
+      "\n";
   }
 
   compiled.blocks = {
@@ -24,7 +24,7 @@
       var value = context;
       return iter(guard((context != null) ? context['notifications'] : null), function each(key0, index, length, value) {
         var key = key0;
-        return "\r\n<li class=\"" + 
+        return "\n<li class=\"" + 
           __escape(guard((context != null && context['notifications'] != null && context['notifications'][key0] != null) ? context['notifications'][key0]['readClass'] : null)) + 
           "\" data-nid=\"" + 
           __escape(guard((context != null && context['notifications'] != null && context['notifications'][key0] != null) ? context['notifications'][key0]['nid'] : null)) + 
@@ -41,35 +41,39 @@
               __escape(guard((context != null && context['notifications'] != null && context['notifications'][key0] != null) ? context['notifications'][key0]['tid'] : null)) + 
               "\"" :
             "") + 
-          ">\r\n\t<div class=\"mark-read\" aria-label=\"Mark Read\"></div>\r\n\t<span class=\"relTime\">" + 
-          __escape(guard((context != null && context['notifications'] != null && context['notifications'][key0] != null) ? context['notifications'][key0]['timeago'] : null)) + 
-          "</span>\r\n\r\n\t<div class=\"notification-image\">\r\n\t\t" + 
+          ">\n\t" + 
           (guard((context != null && context['notifications'] != null && context['notifications'][key0] != null) ? context['notifications'][key0]['image'] : null) ?
-            "\r\n\t\t" + 
+            "\n\t" + 
               (guard((context != null && context['notifications'] != null && context['notifications'][key0] != null) ? context['notifications'][key0]['from'] : null) ?
-                "\r\n\t\t<a href=\"" + 
+                "\n\t<a href=\"" + 
                   __escape(guard((context != null && context['config'] != null) ? context['config']['relative_path'] : null)) + 
                   "/user/" + 
                   __escape(guard((context != null && context['notifications'] != null && context['notifications'][key0] != null && context['notifications'][key0]['user'] != null) ? context['notifications'][key0]['user']['userslug'] : null)) + 
-                  "\"><img class=\"pull-left user-avatar\"src=\"" + 
+                  "\"><img class=\"pull-left user-img avatar avatar-md avatar-rounded\"src=\"" + 
                   __escape(guard((context != null && context['notifications'] != null && context['notifications'][key0] != null) ? context['notifications'][key0]['image'] : null)) + 
-                  "\" /></a>\r\n\t\t" :
+                  "\" /></a>\n\t" :
                 "") + 
-              "\r\n\t\t" :
-            "\r\n\t\t<a href=\"" + 
+              "\n\t" :
+            "\n\t<a href=\"" + 
               __escape(guard((context != null && context['config'] != null) ? context['config']['relative_path'] : null)) + 
               "/user/" + 
               __escape(guard((context != null && context['notifications'] != null && context['notifications'][key0] != null && context['notifications'][key0]['user'] != null) ? context['notifications'][key0]['user']['userslug'] : null)) + 
-              "\"><div class=\"pull-left user-icon\" style=\"background-color: " + 
+              "\"><div class=\"pull-left avatar avatar-md avatar-rounded\" style=\"background-color: " + 
               __escape(guard((context != null && context['notifications'] != null && context['notifications'][key0] != null && context['notifications'][key0]['user'] != null) ? context['notifications'][key0]['user']['icon:bgColor'] : null)) + 
               ";\">" + 
               __escape(guard((context != null && context['notifications'] != null && context['notifications'][key0] != null && context['notifications'][key0]['user'] != null) ? context['notifications'][key0]['user']['icon:text'] : null)) + 
-              "</div></a>\r\n\t\t") + 
-          "\r\n\t</div>\r\n\r\n\t<div class=\"notification-msg\">\r\n\t\t<a href=\"" + 
+              "</div></a>\n\t") + 
+          "\n\n\t" + 
+          (guard((context != null && context['notifications'] != null && context['notifications'][key0] != null) ? context['notifications'][key0]['nid'] : null) ?
+            "<div class=\"pull-right mark-read\" aria-label=\"Mark Read\"></div>" :
+            "") + 
+          "\n\t<a href=\"" + 
           __escape(guard((context != null && context['notifications'] != null && context['notifications'][key0] != null) ? context['notifications'][key0]['path'] : null)) + 
-          "\">\r\n\t\t\t" + 
+          "\">\n\t\t<span class=\"pull-right relTime\">" + 
+          __escape(guard((context != null && context['notifications'] != null && context['notifications'][key0] != null) ? context['notifications'][key0]['timeago'] : null)) + 
+          "</span>\n\t\t<span class=\"text\">" + 
           __escape(guard((context != null && context['notifications'] != null && context['notifications'][key0] != null) ? context['notifications'][key0]['bodyShort'] : null)) + 
-          "\r\n\t\t</a>\r\n\t</div>\r\n\r\n</li>\r\n";
+          "</span>\n\t</a>\n\t<div class=\"clear\"></div>\n</li>\n";
       }, function alt() {
         return "";
       });

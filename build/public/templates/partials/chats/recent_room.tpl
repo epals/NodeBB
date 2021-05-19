@@ -1,21 +1,25 @@
 <li component="chat/recent/room" data-roomid="{rooms.roomId}" class="<!-- IF rooms.unread -->unread<!-- ENDIF rooms.unread -->">
-	<!-- IF rooms.lastUser.uid -->
-	<div class="chat-image" data-username="{rooms.lastUser.username}" data-uid="{rooms.lastUser.uid}">
-		<!-- IF rooms.lastUser.picture -->
-		<img class="user-avatar" src="{rooms.lastUser.picture}" title="{rooms.lastUser.username}">
+	<strong class="room-name">
+		<!-- IF !rooms.lastUser.uid -->
+		<span>[[modules:chat.no-users-in-room]]</span>
 		<!-- ELSE -->
-		<div class="user-icon" style="background-color: {rooms.lastUser.icon:bgColor};" title="{rooms.lastUser.username}">{rooms.lastUser.icon:text}</div>
-		<!-- ENDIF rooms.lastUser.picture -->
+		<span component="chat/title"><!-- IF rooms.roomName -->{rooms.roomName}<!-- ELSE -->{rooms.usernames}<!-- ENDIF rooms.roomName --></span>
+		<!-- ENDIF !rooms.lastUser.uid -->
+	</strong>
+	<div class="avatar-placeholder"></div>
+	{{{each rooms.users}}}
+	<!-- IF @first -->
+	<div class="main-avatar">
+		<a href="{config.relative_path}/user/{rooms.users.userslug}">{buildAvatar(rooms.users, "sm", true)}</a>
 	</div>
-	<!-- ELSE -->
-	[[modules:chat.no-users-in-room]]
-	<!-- ENDIF rooms.lastUser.uid -->
-	<div class="chat-body">
-		<div class="chat-main">
-			<div class="chat-room-name">
-				<span component="chat/title"><!-- IF rooms.roomName -->{rooms.roomName}<!-- ELSE -->{rooms.usernames}<!-- ENDIF rooms.roomName --></span>
-			</div>
-		</div>
+	<!-- ENDIF @first -->
+	{{{end}}}
 
-	</div>
+	<ul class="members">
+		{{{each rooms.users}}}
+		<li>
+			<a href="{config.relative_path}/user/{rooms.users.userslug}">{buildAvatar(rooms.users, "sm", true)}</a>
+		</li>
+		{{{end}}}
+	</ul>
 </li>

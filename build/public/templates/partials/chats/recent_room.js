@@ -15,37 +15,53 @@
       (guard((context != null && context['rooms'] != null) ? context['rooms']['unread'] : null) ?
         "unread" :
         "") + 
-      "\">\r\n\t" + 
+      "\">\n\t<strong class=\"room-name\">\n\t\t" + 
       (guard((context != null && context['rooms'] != null && context['rooms']['lastUser'] != null) ? context['rooms']['lastUser']['uid'] : null) ?
-        "\r\n\t<div class=\"chat-image\" data-username=\"" + 
-          __escape(guard((context != null && context['rooms'] != null && context['rooms']['lastUser'] != null) ? context['rooms']['lastUser']['username'] : null)) + 
-          "\" data-uid=\"" + 
-          __escape(guard((context != null && context['rooms'] != null && context['rooms']['lastUser'] != null) ? context['rooms']['lastUser']['uid'] : null)) + 
-          "\">\r\n\t\t" + 
-          (guard((context != null && context['rooms'] != null && context['rooms']['lastUser'] != null) ? context['rooms']['lastUser']['picture'] : null) ?
-            "\r\n\t\t<img class=\"user-avatar\" src=\"" + 
-              __escape(guard((context != null && context['rooms'] != null && context['rooms']['lastUser'] != null) ? context['rooms']['lastUser']['picture'] : null)) + 
-              "\" title=\"" + 
-              __escape(guard((context != null && context['rooms'] != null && context['rooms']['lastUser'] != null) ? context['rooms']['lastUser']['username'] : null)) + 
-              "\">\r\n\t\t" :
-            "\r\n\t\t<div class=\"user-icon\" style=\"background-color: " + 
-              __escape(guard((context != null && context['rooms'] != null && context['rooms']['lastUser'] != null) ? context['rooms']['lastUser']['icon:bgColor'] : null)) + 
-              ";\" title=\"" + 
-              __escape(guard((context != null && context['rooms'] != null && context['rooms']['lastUser'] != null) ? context['rooms']['lastUser']['username'] : null)) + 
-              "\">" + 
-              __escape(guard((context != null && context['rooms'] != null && context['rooms']['lastUser'] != null) ? context['rooms']['lastUser']['icon:text'] : null)) + 
-              "</div>\r\n\t\t") + 
-          "\r\n\t</div>\r\n\t" :
-        "\r\n\t[[modules:chat.no-users-in-room]]\r\n\t") + 
-      "\r\n\t<div class=\"chat-body\">\r\n\t\t<div class=\"chat-main\">\r\n\t\t\t<div class=\"chat-room-name\">\r\n\t\t\t\t<span component=\"chat/title\">" + 
-      (guard((context != null && context['rooms'] != null) ? context['rooms']['roomName'] : null) ?
-        __escape(guard((context != null && context['rooms'] != null) ? context['rooms']['roomName'] : null)) :
-        __escape(guard((context != null && context['rooms'] != null) ? context['rooms']['usernames'] : null))) + 
-      "</span>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\r\n\t</div>\r\n</li>";
+        "\n\t\t<span component=\"chat/title\">" + 
+          (guard((context != null && context['rooms'] != null) ? context['rooms']['roomName'] : null) ?
+            __escape(guard((context != null && context['rooms'] != null) ? context['rooms']['roomName'] : null)) :
+            __escape(guard((context != null && context['rooms'] != null) ? context['rooms']['usernames'] : null))) + 
+          "</span>\n\t\t" :
+        "\n\t\t<span>[[modules:chat.no-users-in-room]]</span>\n\t\t") + 
+      "\n\t</strong>\n\t<div class=\"avatar-placeholder\"></div>\n\t" + 
+      compiled.blocks['rooms.users'](helpers, context, guard, iter, helper) + 
+      "\n\n\t<ul class=\"members\">\n\t\t" + 
+      iter(guard((context != null && context['rooms'] != null) ? context['rooms']['users'] : null), function each(key0, index, length, value) {
+        var key = key0;
+        return "\n\t\t<li>\n\t\t\t<a href=\"" + 
+          __escape(guard((context != null && context['config'] != null) ? context['config']['relative_path'] : null)) + 
+          "/user/" + 
+          __escape(guard((context != null && context['rooms'] != null && context['rooms']['users'] != null && context['rooms']['users'][key0] != null) ? context['rooms']['users'][key0]['userslug'] : null)) + 
+          "\">" + 
+          __escape(helper(context, helpers, 'buildAvatar', [guard((context != null && context['rooms'] != null && context['rooms']['users'] != null) ? context['rooms']['users'][key0] : null), "sm", guard((context != null) ? context['true'] : null)])) + 
+          "</a>\n\t\t</li>\n\t\t";
+      }, function alt() {
+        return "";
+      }) + 
+      "\n\t</ul>\n</li>";
   }
 
   compiled.blocks = {
-    
+    'rooms.users': function roomsusers(helpers, context, guard, iter, helper) {
+      var __escape = helpers.__escape;
+      var value = context;
+      return iter(guard((context != null && context['rooms'] != null) ? context['rooms']['users'] : null), function each(key0, index, length, value) {
+        var key = key0;
+        return "\n\t" + 
+          (index === 0 ?
+            "\n\t<div class=\"main-avatar\">\n\t\t<a href=\"" + 
+              __escape(guard((context != null && context['config'] != null) ? context['config']['relative_path'] : null)) + 
+              "/user/" + 
+              __escape(guard((context != null && context['rooms'] != null && context['rooms']['users'] != null && context['rooms']['users'][key0] != null) ? context['rooms']['users'][key0]['userslug'] : null)) + 
+              "\">" + 
+              __escape(helper(context, helpers, 'buildAvatar', [guard((context != null && context['rooms'] != null && context['rooms']['users'] != null) ? context['rooms']['users'][key0] : null), "sm", guard((context != null) ? context['true'] : null)])) + 
+              "</a>\n\t</div>\n\t" :
+            "") + 
+          "\n\t";
+      }, function alt() {
+        return "";
+      });
+    }
   };
 
   return compiled;

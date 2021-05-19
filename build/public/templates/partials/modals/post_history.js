@@ -33,9 +33,8 @@
           (guard((context != null) ? context['editable'] : null) ?
             "\n\t<p class=\"help-block\">[[topic:diffs.restore-description]]</p>\n\t" :
             "") + 
-          "\n\n</div>\n" :
-        "") + 
-      "\n";
+          "\n</div>\n" :
+        "");
   }
 
   compiled.blocks = {
@@ -48,12 +47,6 @@
           __escape(guard((context != null && context['diffs'] != null && context['diffs'][key0] != null) ? context['diffs'][key0]['timestamp'] : null)) + 
           "\">\n\t\t\t" + 
           __escape(guard((context != null && context['diffs'] != null && context['diffs'][key0] != null) ? context['diffs'][key0]['pretty'] : null)) + 
-          "\n\t\t\t" + 
-          (guard((context != null && context['diffs'] != null && context['diffs'][key0] != null) ? context['diffs'][key0]['username'] : null) ?
-            "[" + 
-              __escape(guard((context != null && context['diffs'] != null && context['diffs'][key0] != null) ? context['diffs'][key0]['username'] : null)) + 
-              "]" :
-            "") + 
           "\n\t\t\t" + 
           (index === 0 ?
             "([[topic:diffs.current-revision]])" :

@@ -1,20 +1,28 @@
-<div component="posts" class="posts-list" data-nextstart="{nextStart}">
-	{{{ each posts }}}
-	<div component="post" class="posts-list-item<!-- IF ../deleted --> deleted<!-- ELSE --><!-- IF ../topic.deleted --> deleted<!-- ENDIF ../topic.deleted --><!-- ENDIF ../deleted -->" data-pid="{../pid}" data-uid="{../uid}">
-    <div class="post-body">
-        <a class="topic-title" href="{config.relative_path}/post/{../pid}">
-            <!-- IF !../isMainPost -->RE: <!-- ENDIF !../isMainPost -->{../topic.title}
-        </a>
+<ul component="posts" class="posts-list" data-nextstart="{nextStart}">
+	{{{each posts}}}
+	<li component="post" class="posts-list-item" data-pid="{../pid}" data-uid="{../uid}">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <a href="{config.relative_path}/user/{../user.userslug}">{buildAvatar(../user, "sm", true)}</a>
 
-        <div component="post/content" class="content">
-            {../content}
+            <a href="{config.relative_path}/user/{../user.userslug}">
+                <strong><span>{../user.displayname}</span></strong>
+            </a>
+            <div component="post/content" class="content">
+                <p>{../content}</p>
+                <p class="fade-out"></p>
+            </div>
+            <small>
+                <span class="pull-right">
+                    <a href="{config.relative_path}/category/{../category.slug}">[[global:posted_in, {../category.name}]] <i class="fa {../category.icon}"></i> <span class="timeago" title="{../timestampISO}"></span></a> &bull;
+                    <a href="{config.relative_path}/post/{../pid}">[[global:read_more]]</a>
+                </span>
+            </small>
         </div>
-
-        <span class="topic-category"><a href="{config.relative_path}/category/{../category.slug}">[[global:posted_in, {../category.name}]]</a></span> &bull; <span class="timeago" title="{../timestampISO}"></span>
     </div>
-</div>
-	{{{ end}}}
-</div>
+</li>
+	{{{end}}}
+</ul>
 <div component="posts/loading" class="loading-indicator text-center hidden">
 	<i class="fa fa-refresh fa-spin"></i>
 </div>

@@ -26,9 +26,11 @@
       __escape(guard((context != null && context['config'] != null) ? context['config']['csrf_token'] : null)) + 
       "\" enctype=\"multipart/form-data\">\n\t" + 
       compiled.blocks['sections'](helpers, context, guard, iter, helper) + 
-      "\n\n\t<div class=\"row\">\n\t\t<div class=\"col-xs-12 col-sm-8 col-sm-offset-2\">\n\t\t\t<button class=\"btn btn-primary btn-block\">[[topic:composer.submit]]</button>\n\t\t</div>\n\t</div>\n</form>\n<form role=\"form\" method=\"post\" action=\"" + 
+      "\n\n\t<div class=\"row\">\n\t\t<input type=\"hidden\" name=\"_csrf\" value=\"" + 
+      __escape(guard((context != null && context['config'] != null) ? context['config']['csrf_token'] : null)) + 
+      "\" />\n\t\t<div class=\"col-xs-12 col-sm-8 col-sm-offset-2\">\n\t\t\t<button class=\"btn btn-primary btn-block\">Submit</button>\n\t\t\t<p class=\"text-center\">\n\t\t\t\t<br />\n\t\t\t\t<a target=\"_top\" href=\"" + 
       __escape(guard((context != null && context['config'] != null) ? context['config']['relative_path'] : null)) + 
-      "/register/abort\">\n\t<p class=\"text-center\">\n\t\t<button class=\"btn btn-link\">[[register:cancel_registration]]</button>\n\t</p>\n</form>";
+      "/register/abort\">[[register:cancel_registration]]</a>\n\t\t\t</p>\n\t\t</div>\n\t</div>\n</form>";
   }
 
   compiled.blocks = {

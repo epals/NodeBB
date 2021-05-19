@@ -11,7 +11,6 @@
 		{{{each diffs}}}
 		<option value="{../timestamp}">
 			{../pretty}
-			{{{ if ../username }}}[{../username}]{{{ end }}}
 			<!-- IF @first -->([[topic:diffs.current-revision]])<!-- END -->
 			<!-- IF @last -->([[topic:diffs.original-revision]])<!-- END -->
 		</option>
@@ -31,6 +30,5 @@
 	{{{ if editable }}}
 	<p class="help-block">[[topic:diffs.restore-description]]</p>
 	{{{ end }}}
-
 </div>
 <!-- END -->

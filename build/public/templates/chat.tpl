@@ -1,25 +1,21 @@
+
 <div id="chat-modal" class="chat-modal hide" tabindex="-1" role="dialog" aria-labelledby="Chat" aria-hidden="true" data-backdrop="none">
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
-				<button id="chat-close-btn" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true"><i class="fa fa-times"></i></span></button>
+				<button id="chat-close-btn" type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 				<button type="button" class="close hidden-xs hidden-sm" data-action="maximize"><span aria-hidden="true"><i class="fa fa-expand"></i></span><span class="sr-only">[[modules:chat.maximize]]</span></button>
-
+				<button type="button" class="close hidden-xs hidden-sm" data-action="minimize"><span aria-hidden="true"><i class="fa fa-minus"></i></span><span class="sr-only">[[modules:chat.minimize]]</span></button>
 				<div class="dropdown pull-right">
 					<button class="close" data-toggle="dropdown" component="chat/controlsToggle"><i class="fa fa-gear"></i></button>
 					<ul class="dropdown-menu dropdown-menu-right pull-right" component="chat/controls">
 						<!-- IF users.length -->
 						<li class="dropdown-header">[[modules:chat.in-room]]</li>
-						<!-- BEGIN users -->
+						{{{each users}}}
 						<li>
-							<a href="{config.relative_path}/uid/{../uid}">
-								<!-- IF ../picture -->
-								<img class="avatar avatar-sm" component="user/picture" src="{../picture}" itemprop="image" />
-								<!-- ELSE -->
-								<div class="avatar avatar-sm" component="user/picture" style="background-color: {../icon:bgColor};">{../icon:text}</div><!-- END -->{../username}
-							</a>
+							<a href="{config.relative_path}/uid/{../uid}">{buildAvatar(users, "sm", true)} {../username}</a>
 						</li>
-						<!-- END -->
+						{{{end}}}
 						<li role="separator" class="divider"></li>
 						<!-- END -->
 						<li class="dropdown-header">[[modules:chat.options]]</li>
@@ -40,33 +36,18 @@
 
 			<div class="modal-body">
 				<ul class="chat-content" component="chat/messages">
-					<!-- BEGIN messages -->
-<li component="chat/message" class="chat-message clear<!-- IF ../deleted --> deleted<!-- END -->" data-index="{messages.index}" data-mid="{messages.messageId}" data-uid="{messages.fromuid}" data-self="{messages.self}" data-break="{messages.newSet}" data-timestamp="{messages.timestamp}">
+					{{{each messages}}}
+	{{{ if !./system }}}
+	<li component="chat/message" class="chat-message clear<!-- IF ../deleted --> deleted<!-- END -->" data-index="{messages.index}" data-mid="{messages.messageId}" data-uid="{messages.fromuid}" data-self="{messages.self}" data-break="{messages.newSet}" data-timestamp="{messages.timestamp}">
 	<div class="message-header">
-		<a class="chat-avatar" href="{config.relative_path}/user/{messages.fromUser.userslug}">
-			<!-- IF messages.fromUser.picture -->
-			<img class="user-avatar" src="{messages.fromUser.picture}">
-			<!-- ELSE -->
-			<div class="user-icon" style="background-color: {messages.fromUser.icon:bgColor};">{messages.fromUser.icon:text}</div>
-			<!-- ENDIF messages.fromUser.picture -->
-		</a>
-		<strong><span class="chat-user"><a href="{config.relative_path}/user/{messages.fromUser.userslug}">{messages.fromUser.displayname}</a></span></strong>
-		<!-- IF ../fromUser.banned -->
-		<span class="label label-danger">[[user:banned]]</span>
-		<!-- END -->
-		<!-- IF ../fromUser.deleted -->
-		<span class="label label-danger">[[user:deleted]]</span>
-		<!-- END -->
+		<a href="{config.relative_path}/user/{messages.fromUser.userslug}">{buildAvatar(messages.fromUser, "md", true, "not-responsive")}</a>
+		<strong><span class="chat-user">{messages.fromUser.displayname}</span></strong>
 		<span class="chat-timestamp timeago" title="{messages.timestampISO}"></span>
-		<!-- IF isAdminOrGlobalMod -->
-		<small class="chat-ip pull-right" title="[[modules:chat.show-ip]]"><i class="fa fa-info-circle chat-ip-button"></i></small>
-		<!-- ENDIF isAdminOrGlobalMod -->
 	</div>
 	<div component="chat/message/body" class="message-body">
 		<!-- IF messages.edited -->
 		<small class="text-muted pull-right" title="[[global:edited]] {messages.editedISO}"><i class="fa fa-edit"></i></span></small>
 		<!-- ENDIF messages.edited -->
-
 		<!-- IF !config.disableChatMessageEditing -->
 		<!-- IF messages.self -->
 		<div class="pull-right btn-group controls">
@@ -76,11 +57,15 @@
 		</div>
 		<!-- ENDIF messages.self -->
 		<!-- ENDIF !config.disableChatMessageEditing -->
-
 		{messages.content}
 	</div>
 </li>
-<!-- END messages -->
+	{{{ else }}}
+	<li component="chat/system-message" class="system-message clear" data-index="{messages.index}" data-mid="{messages.messageId}" data-uid="{messages.fromuid}" data-self="{messages.self}" data-break="0" data-timestamp="{messages.timestamp}">
+	[[modules:chat.system.{messages.content}, {messages.fromUser.username}]]
+</li>
+	{{{ end }}}
+{{{end}}}
 				</ul>
 
 				<div component="chat/composer">

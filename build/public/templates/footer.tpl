@@ -1,5 +1,4 @@
-		</div><!-- /.container#content -->
-	</main>
+	</div><!-- /.container#content -->
 	<!-- IF !isSpider -->
 	<div class="topic-search hidden">
 		<div class="btn-group">
@@ -33,7 +32,6 @@
 	});
 </script>
 	</div>
-
 	<script defer src="{relative_path}/assets/nodebb.min.js?{config.cache-buster}"></script>
 
 {{{each scripts}}}

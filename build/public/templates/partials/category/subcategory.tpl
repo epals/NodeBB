@@ -24,60 +24,93 @@
 	<p>[[category:subcategories]]</p>
 	{{{ end }}}
 
-	<div component="category/subcategory/container" class="categories" itemscope itemtype="http://www.schema.org/ItemList">
+	<ul component="category/subcategory/container" class="categories" itemscope itemtype="http://www.schema.org/ItemList">
 		{{{each children}}}
-		<div class="row" component="categories/category" data-cid="{children.cid}" data-numRecentReplies="1">
-		    <div class="col-md-8 col-xs-12">
-		        <div class="category-info">
-		            <div class="category-info-content">
-		            	<div class="category-icon">
-		                	<i class="fa fa-fw {children.icon}"></i>
-		                </div>
-		                <a class="category-title" href="{config.relative_path}/category/{children.slug}" title="{children.name}">{children.name}</a>
+		<li component="categories/category" data-cid="{../cid}" data-numRecentReplies="1" class="row clearfix category-{../cid}">
+	<meta itemprop="name" content="{../name}">
 
-		                <div class="category-description">
-		                    {children.descriptionParsed}
-		                </div>
-		            </div>
-		        </div>
-		    </div>
-		    <div class="col-md-1 hidden-xs hidden-sm">
-		        <div class="total-topic-count human-readable-number" title="{children.totalTopicCount}">
-		            {children.totalTopicCount}
-		        </div>
-		    </div>
-		    <div class="col-md-1 hidden-xs hidden-sm">
-		        <div class="total-post-count human-readable-number" title="{children.totalPostCount}">
-		            {children.totalPostCount}
-		        </div>
-		    </div>
-		    <div class="col-md-2 hidden-xs hidden-sm">
-		        <div class="teaser" component="topic/teaser">
-		            <!-- BEGIN posts -->
-		    	    <!-- IF @first -->
-
-		    		<!-- IF ../user.picture -->
-		    		<img class="user-avatar" title="{../user.username}" alt="{../user.username}" src="{../user.picture}" title="{../user.username}"/>
-		    		<!-- ELSE -->
-		    		<div class="user-icon" title="{../user.username}" style="background-color: {../user.icon:bgColor};">{../user.icon:text}</div>
-		    		<!-- ENDIF ../user.picture -->
-
-		    		<a href="{config.relative_path}/user/{../user.userslug}">{../user.username}</a>
-
-		    		<a class="permalink" href="{config.relative_path}/topic/{../topic.slug}<!-- IF ../index -->/{../index}<!-- ENDIF ../index -->">
-		    			<small class="timeago" title="{../timestampISO}"></small>
-		    		</a>
-		    		<!-- ENDIF @first -->
-		    	    <!-- END posts -->
-
-		    	    <!-- IF !../posts.length -->
-					[[category:no_new_posts]]
-			        <!-- ENDIF !../posts.length -->
-			    </div>
-		    </div>
+	<div class="content col-xs-12 <!-- IF config.hideCategoryLastPost -->col-md-10 col-sm-12<!-- ELSE -->col-md-7 col-sm-9<!-- ENDIF config.hideCategoryLastPost -->">
+		<div class="icon pull-left" style="{function.generateCategoryBackground}">
+			<i class="fa fa-fw {../icon}"></i>
 		</div>
-		{{{end}}}
+
+		<h2 class="title">
+			<!-- IF ../isSection -->
+{../name}
+<!-- ELSE -->
+<!-- IF ../link -->
+<a href="{../link}" itemprop="url">
+<!-- ELSE -->
+<a href="{config.relative_path}/category/{../slug}" itemprop="url">
+<!-- ENDIF ../link -->
+{../name}
+</a>
+<!-- ENDIF ../isSection -->
+		</h2>
+		<div>
+			<!-- IF ../descriptionParsed -->
+			<div class="description">
+				{../descriptionParsed}
+			</div>
+			<!-- ENDIF ../descriptionParsed -->
+			<!-- IF !config.hideSubCategories -->
+			{function.generateChildrenCategories}
+			<!-- ENDIF !config.hideSubCategories -->
+		</div>
+		<span class="visible-xs pull-right">
+			<!-- IF ../teaser.timestampISO -->
+			<a class="permalink" href="{../teaser.url}">
+				<small class="timeago" title="{../teaser.timestampISO}"></small>
+			</a>
+			<!-- ENDIF ../teaser.timestampISO -->
+		</span>
 	</div>
+
+	<!-- IF !../link -->
+	<div class="col-md-1 hidden-sm hidden-xs stats">
+		<span class="{../unread-class} human-readable-number" title="{../totalTopicCount}">{../totalTopicCount}</span><br />
+		<small>[[global:topics]]</small>
+	</div>
+	<div class="col-md-1 hidden-sm hidden-xs stats">
+		<span class="{../unread-class} human-readable-number" title="{../totalPostCount}">{../totalPostCount}</span><br />
+		<small>[[global:posts]]</small>
+	</div>
+	<!-- IF !config.hideCategoryLastPost -->
+	<div class="col-md-3 col-sm-3 teaser hidden-xs" component="topic/teaser">
+		<div class="card background-link-container" style="border-color: {../bgColor}">
+	{{{each ./posts}}}
+	<!-- IF @first -->
+	<div component="category/posts">
+		<a class="background-link" href="{config.relative_path}/topic/{../topic.slug}<!-- IF ../index -->/{../index}<!-- ENDIF ../index -->"></a>
+		<p>
+			<a href="{config.relative_path}/user/{../user.userslug}">{buildAvatar(posts.user, "sm", true)}</a>
+			<a class="permalink" href="{config.relative_path}/topic/{../topic.slug}<!-- IF ../index -->/{../index}<!-- ENDIF ../index -->">
+				<small class="timeago" title="{../timestampISO}"></small>
+			</a>
+		</p>
+		<div class="post-content">
+			{../content}
+		</div>
+	</div>
+	<!-- ENDIF @first -->
+	{{{end}}}
+
+	<!-- IF !../posts.length -->
+	<div component="category/posts">
+		<div class="post-content">
+			[[category:no_new_posts]]
+		</div>
+	</div>
+	<!-- ENDIF !../posts.length -->
+</div>
+
+	</div>
+	<!-- ENDIF !config.hideCategoryLastPost -->
+	<!-- ENDIF !../link -->
+</li>
+
+		{{{end}}}
+	</ul>
 	{{{ if hasMoreSubCategories}}}
 	<button class="btn btn-default" component="category/load-more-subcategories">[[category:x-more-categories, {subCategoriesLeft}]]</button>
 	{{{ end }}}

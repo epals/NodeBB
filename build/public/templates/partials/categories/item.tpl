@@ -8,12 +8,12 @@
 
 		<h2 class="title">
 			<!-- IF ../isSection -->
-<span class="category-title">{../name}</span>
+{../name}
 <!-- ELSE -->
 <!-- IF ../link -->
-<a class="category-title" href="{../link}" itemprop="url" title="{../name}">
+<a href="{../link}" itemprop="url">
 <!-- ELSE -->
-<a class="category-title" href="{config.relative_path}/category/{../slug}" itemprop="url" title="{../name}">
+<a href="{config.relative_path}/category/{../slug}" itemprop="url">
 <!-- ENDIF ../link -->
 {../name}
 </a>

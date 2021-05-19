@@ -18,7 +18,7 @@
       var value = context;
       return iter(guard((context != null) ? context['tags'] : null), function each(key0, index, length, value) {
         var key = key0;
-        return "\r\n<h4 class=\"pull-left tag-container\">\r\n\t<a href=\"" + 
+        return "\n<h3 class=\"pull-left tag-container\">\n\t<a href=\"" + 
           __escape(guard((context != null && context['config'] != null) ? context['config']['relative_path'] : null)) + 
           "/tags/" + 
           __escape(guard((context != null && context['tags'] != null && context['tags'][key0] != null) ? context['tags'][key0]['valueEscaped'] : null)) + 
@@ -39,11 +39,9 @@
             "") + 
           "\">" + 
           __escape(guard((context != null && context['tags'] != null && context['tags'][key0] != null) ? context['tags'][key0]['valueEscaped'] : null)) + 
-          "</span><span class=\"tag-topic-count human-readable-number\" title=\"" + 
+          "</span><span class=\"tag-topic-count\">" + 
           __escape(guard((context != null && context['tags'] != null && context['tags'][key0] != null) ? context['tags'][key0]['score'] : null)) + 
-          "\">" + 
-          __escape(guard((context != null && context['tags'] != null && context['tags'][key0] != null) ? context['tags'][key0]['score'] : null)) + 
-          "</span></a>\r\n</h4>\r\n";
+          "</span></a>\n</h3>\n";
       }, function alt() {
         return "";
       });

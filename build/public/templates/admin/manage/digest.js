@@ -15,11 +15,11 @@
       (guard((context != null && context['delivery'] != null) ? context['delivery']['length'] : null) ?
         "" :
         "\n\t\t<tr>\n\t\t\t<td colspan=\"4\">\n\t\t\t\t<div class=\"alert alert-success\">\n\t\t\t\t\t[[admin/manage/digest:no-delivery-data]]\n\t\t\t\t</div>\n\t\t\t</td>\n\t\t</tr>\n\t\t") + 
-      "\n\t</tbody>\n\t<tfoot>\n\t\t<tr>\n\t\t\t<td colspan=\"4\"><div component=\"pagination\" class=\"text-center pagination-container" + 
+      "\n\t</tbody>\n\t<tfoot>\n\t\t<tr>\n\t\t\t<td colspan=\"4\">\n<div component=\"pagination\" class=\"text-center pagination-container" + 
       (guard((context != null && context['pagination'] != null && context['pagination']['pages'] != null) ? context['pagination']['pages']['length'] : null) ?
         "" :
         " hidden") + 
-      "\">\n\t<ul class=\"pagination hidden-xs\">\n\t\t<li class=\"previous pull-left" + 
+      "\">\n\t<ul class=\"pagination\">\n\t\t<li class=\"previous pull-left" + 
       (guard((context != null && context['pagination'] != null && context['pagination']['prev'] != null) ? context['pagination']['prev']['active'] : null) ?
         "" :
         " disabled") + 
@@ -37,41 +37,7 @@
       __escape(guard((context != null && context['pagination'] != null && context['pagination']['next'] != null) ? context['pagination']['next']['qs'] : null)) + 
       "\" data-page=\"" + 
       __escape(guard((context != null && context['pagination'] != null && context['pagination']['next'] != null) ? context['pagination']['next']['page'] : null)) + 
-      "\"> <i class=\"fa fa-chevron-right\"></i></a>\n\t\t</li>\n\t</ul>\n\n\t<ul class=\"pagination hidden-sm hidden-md hidden-lg\">\n\t\t<li class=\"first" + 
-      (guard((context != null && context['pagination'] != null && context['pagination']['prev'] != null) ? context['pagination']['prev']['active'] : null) ?
-        "" :
-        " disabled") + 
-      "\">\n\t\t\t<a href=\"?" + 
-      __escape(guard((context != null && context['pagination'] != null && context['pagination']['first'] != null) ? context['pagination']['first']['qs'] : null)) + 
-      "\" data-page=\"1\"><i class=\"fa fa-fast-backward\"></i> </a>\n\t\t</li>\n\n\t\t<li class=\"previous" + 
-      (guard((context != null && context['pagination'] != null && context['pagination']['prev'] != null) ? context['pagination']['prev']['active'] : null) ?
-        "" :
-        " disabled") + 
-      "\">\n\t\t\t<a href=\"?" + 
-      __escape(guard((context != null && context['pagination'] != null && context['pagination']['prev'] != null) ? context['pagination']['prev']['qs'] : null)) + 
-      "\" data-page=\"" + 
-      __escape(guard((context != null && context['pagination'] != null && context['pagination']['prev'] != null) ? context['pagination']['prev']['page'] : null)) + 
-      "\"><i class=\"fa fa-chevron-left\"></i> </a>\n\t\t</li>\n\n\t\t<li component=\"pagination/select-page\" class=\"page select-page\">\n\t\t\t<a href=\"#\">" + 
-      __escape(guard((context != null && context['pagination'] != null) ? context['pagination']['currentPage'] : null)) + 
-      " / " + 
-      __escape(guard((context != null && context['pagination'] != null) ? context['pagination']['pageCount'] : null)) + 
-      "</a>\n\t\t</li>\n\n\t\t<li class=\"next" + 
-      (guard((context != null && context['pagination'] != null && context['pagination']['next'] != null) ? context['pagination']['next']['active'] : null) ?
-        "" :
-        " disabled") + 
-      "\">\n\t\t\t<a href=\"?" + 
-      __escape(guard((context != null && context['pagination'] != null && context['pagination']['next'] != null) ? context['pagination']['next']['qs'] : null)) + 
-      "\" data-page=\"" + 
-      __escape(guard((context != null && context['pagination'] != null && context['pagination']['next'] != null) ? context['pagination']['next']['page'] : null)) + 
-      "\"> <i class=\"fa fa-chevron-right\"></i></a>\n\t\t</li>\n\n\t\t<li class=\"last" + 
-      (guard((context != null && context['pagination'] != null && context['pagination']['next'] != null) ? context['pagination']['next']['active'] : null) ?
-        "" :
-        " disabled") + 
-      "\">\n\t\t\t<a href=\"?" + 
-      __escape(guard((context != null && context['pagination'] != null && context['pagination']['last'] != null) ? context['pagination']['last']['qs'] : null)) + 
-      "\" data-page=\"" + 
-      __escape(guard((context != null && context['pagination'] != null) ? context['pagination']['pageCount'] : null)) + 
-      "\"><i class=\"fa fa-fast-forward\"></i> </a>\n\t\t</li>\n\t</ul>\n</div></td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td colspan=\"4\">\n\t\t\t\t<em>[[admin/manage/digest:default-help, " + 
+      "\"> <i class=\"fa fa-chevron-right\"></i></a>\n\t\t</li>\n\t</ul>\n</div>\n</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td colspan=\"4\">\n\t\t\t\t<em>[[admin/manage/digest:default-help, " + 
       __escape(guard((context != null) ? context['default'] : null)) + 
       "]]</em>\n\t\t\t</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td colspan=\"4\">\n\t\t\t\t[[admin/manage/digest:manual-run]]\n\t\t\t\t<button class=\"btn btn-xs btn-default\" data-action=\"resend-day\">[[admin/settings/user:digest-freq.daily]]</button>\n\t\t\t\t<button class=\"btn btn-xs btn-default\" data-action=\"resend-week\">[[admin/settings/user:digest-freq.weekly]]</button>\n\t\t\t\t<button class=\"btn btn-xs btn-default\" data-action=\"resend-month\">[[admin/settings/user:digest-freq.monthly]]</button>\n\t\t\t</td>\n\t\t</tr>\n\t</tfoot>\n</table>\n";
   }
@@ -114,7 +80,7 @@
             "\n\t\t\t<li class=\"page" + 
               (guard((context != null && context['pagination'] != null && context['pagination']['pages'] != null && context['pagination']['pages'][key0] != null) ? context['pagination']['pages'][key0]['active'] : null) ?
                 " active" :
-                "") + 
+                " hidden-xs") + 
               "\" >\n\t\t\t\t<a href=\"?" + 
               __escape(guard((context != null && context['pagination'] != null && context['pagination']['pages'] != null && context['pagination']['pages'][key0] != null) ? context['pagination']['pages'][key0]['qs'] : null)) + 
               "\" data-page=\"" + 

@@ -9,25 +9,25 @@
   function compiled(helpers, context, guard, iter, helper) {
     var __escape = helpers.__escape;
     var value = context;
-    return "<div class=\"groups list\">\r\n\t" + 
+    return "<div class=\"groups list\">\n\t" + 
       (guard((context != null && context['breadcrumbs'] != null) ? context['breadcrumbs']['length'] : null) ?
         "\n<ol class=\"breadcrumb\" itemscope=\"itemscope\" itemprop=\"breadcrumb\" itemtype=\"http://schema.org/BreadcrumbList\">\n\t" + 
           compiled.blocks['breadcrumbs'](helpers, context, guard, iter, helper) + 
           "\n</ol>\n" :
         "") + 
-      "\n\r\n\r\n\t<div class=\"row\">\r\n\t\t<div class=\"col-lg-4\">\r\n\t\t\t" + 
+      "\n\n\n\t<div class=\"row\">\n\t\t<div class=\"col-lg-4\">\n\t\t\t" + 
       (guard((context != null) ? context['allowGroupCreation'] : null) ?
-        "\r\n\t\t\t<button class=\"btn btn-primary\" data-action=\"new\"><i class=\"fa fa-plus\"></i> [[groups:new_group]]</button>\r\n\t\t\t" :
+        "\n\t\t\t<button class=\"btn btn-primary\" data-action=\"new\"><i class=\"fa fa-plus\"></i> [[groups:new_group]]</button>\n\t\t\t" :
         "") + 
-      "\r\n\t\t</div>\r\n\t\t<div class=\"col-lg-8\">\r\n\t\t\t<div class=\"row\">\r\n\t\t\t\t<div class=\"col-xs-5 col-md-3 text-left pull-right\">\r\n\t\t\t\t\t<select class=\"form-control\" id=\"search-sort\">\r\n\t\t\t\t\t\t<option value=\"alpha\">[[groups:details.group_name]]</option>\r\n\t\t\t\t\t\t<option value=\"count\">[[groups:details.member_count]]</option>\r\n\t\t\t\t\t\t<option value=\"date\">[[groups:details.creation_date]]</option>\r\n\t\t\t\t\t</select>\r\n\t\t\t\t</div>\r\n\t\t\t\t<div class=\"col-xs-7 col-md-5 text-left pull-right\">\r\n\t\t\t\t\t<div class=\"input-group\">\r\n\t\t\t\t\t\t<input type=\"text\" class=\"form-control\" placeholder=\"[[global:search]]\" name=\"query\" value=\"\" id=\"search-text\">\r\n\t\t\t\t\t\t<span id=\"search-button\" class=\"input-group-addon search-button\"><i class=\"fa fa-search\"></i></span>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t</div>\r\n\r\n\t<div component=\"groups/container\" class=\"row\" id=\"groups-list\" data-nextstart=" + 
+      "\n\t\t</div>\n\t\t<div class=\"col-lg-8\">\n\t\t\t<div class=\"row\">\n\t\t\t\t<div class=\"col-xs-3 text-left pull-right\">\n\t\t\t\t\t<select class=\"form-control\" id=\"search-sort\">\n\t\t\t\t\t\t<option value=\"alpha\">[[groups:details.group_name]]</option>\n\t\t\t\t\t\t<option value=\"count\">[[groups:details.member_count]]</option>\n\t\t\t\t\t\t<option value=\"date\">[[groups:details.creation_date]]</option>\n\t\t\t\t\t</select>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"col-xs-5 text-left pull-right\">\n\t\t\t\t\t<div class=\"input-group\">\n\t\t\t\t\t\t<input type=\"text\" class=\"form-control\" placeholder=\"[[global:search]]\" name=\"query\" value=\"\" id=\"search-text\">\n\t\t\t\t\t\t<span id=\"search-button\" class=\"input-group-addon search-button\"><i class=\"fa fa-search\"></i></span>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n\n\t<hr />\n\n\t<div component=\"groups/container\" class=\"row\" id=\"groups-list\" data-nextstart=" + 
       __escape(guard((context != null) ? context['nextStart'] : null)) + 
-      ">\r\n\t\t" + 
+      ">\n\t\t" + 
       (guard((context != null && context['groups'] != null) ? context['groups']['length'] : null) ?
-        "\r\n\t\t\t" + 
+        "\n\t\t\t" + 
           compiled.blocks['groups'](helpers, context, guard, iter, helper) + 
-          "\r\n\t\t" :
-        "\r\n\t\t<div class=\"col-xs-12\">\r\n\t\t\t<div class=\"alert alert-warning\">\r\n\t\t\t[[groups:no_groups_found]]\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t\t") + 
-      "\r\n\t</div>\r\n</div>";
+          "\n\t\t" :
+        "\n\t\t<div class=\"col-xs-12\">\n\t\t\t<div class=\"alert alert-warning\">\n\t\t\t[[groups:no_groups_found]]\n\t\t\t</div>\n\t\t</div>\n\t\t") + 
+      "\n\t</div>\n</div>";
   }
 
   compiled.blocks = {
@@ -81,9 +81,9 @@
       var value = context;
       return iter(guard((context != null) ? context['groups'] : null), function each(key0, index, length, value) {
         var key = key0;
-        return "\r\n\t<div class=\"col-lg-4 col-md-6 col-sm-12\" component=\"groups/summary\" data-slug=\"" + 
+        return "\n\t<div class=\"col-lg-4 col-md-6 col-sm-12\" component=\"groups/summary\" data-slug=\"" + 
           __escape(guard((context != null && context['groups'] != null && context['groups'][key0] != null) ? context['groups'][key0]['slug'] : null)) + 
-          "\">\r\n\t\t<div class=\"panel panel-default\">\r\n\t\t\t<a href=\"" + 
+          "\">\n\t\t<div class=\"panel panel-default\">\n\t\t\t<a href=\"" + 
           __escape(guard((context != null && context['config'] != null) ? context['config']['relative_path'] : null)) + 
           "/groups/" + 
           __escape(guard((context != null && context['groups'] != null && context['groups'][key0] != null) ? context['groups'][key0]['slug'] : null)) + 
@@ -93,69 +93,28 @@
               __escape(guard((context != null && context['groups'] != null && context['groups'][key0] != null) ? context['groups'][key0]['cover:thumb:url'] : null)) + 
               ");" :
             "") + 
-          "\">\r\n\t\t\t\t<h3 class=\"panel-title\">" + 
+          "\">\n\t\t\t\t<h3 class=\"panel-title\">" + 
           __escape(guard((context != null && context['groups'] != null && context['groups'][key0] != null) ? context['groups'][key0]['displayName'] : null)) + 
           " <small>" + 
           __escape(guard((context != null && context['groups'] != null && context['groups'][key0] != null) ? context['groups'][key0]['memberCount'] : null)) + 
-          "</small></h3>\r\n\t\t\t</a>\r\n\t\t\t<div class=\"panel-body\">\r\n\t\t\t\t<ul class=\"members\">\r\n\t\t\t\t\t" + 
-          (guard((context != null && context['groups'] != null && context['groups'][key0] != null) ? context['groups'][key0]['members'] : null) ?
-            iter(guard((context != null && context['groups'] != null && context['groups'][key0] != null) ? context['groups'][key0]['members'] : null), function each(key1, index, length, value) {
-                var key = key1;
-                return "\r\n\t\t\t\t\t<li>\r\n\t\t\t\t\t\t<a href=\"" + 
-                  __escape(guard((context != null && context['config'] != null) ? context['config']['relative_path'] : null)) + 
-                  "/user/" + 
-                  __escape(guard((context != null && context['groups'] != null && context['groups'][key0] != null && context['groups'][key0]['members'] != null && context['groups'][key0]['members'][key1] != null) ? context['groups'][key0]['members'][key1]['userslug'] : null)) + 
-                  "\">\r\n\t\t\t\t\t\t\t" + 
-                  (guard((context != null && context['groups'] != null && context['groups'][key0] != null && context['groups'][key0]['members'] != null && context['groups'][key0]['members'][key1] != null) ? context['groups'][key0]['members'][key1]['picture'] : null) ?
-                    "\r\n\t\t\t\t\t\t\t<img class=\"user-avatar\" src=\"" + 
-                      __escape(guard((context != null && context['groups'] != null && context['groups'][key0] != null && context['groups'][key0]['members'] != null && context['groups'][key0]['members'][key1] != null) ? context['groups'][key0]['members'][key1]['picture'] : null)) + 
-                      "\" alt=\"" + 
-                      __escape(guard((context != null && context['groups'] != null && context['groups'][key0] != null && context['groups'][key0]['members'] != null && context['groups'][key0]['members'][key1] != null) ? context['groups'][key0]['members'][key1]['username'] : null)) + 
-                      "\" title=\"" + 
-                      __escape(guard((context != null && context['groups'] != null && context['groups'][key0] != null && context['groups'][key0]['members'] != null && context['groups'][key0]['members'][key1] != null) ? context['groups'][key0]['members'][key1]['username'] : null)) + 
-                      "\" />\r\n\t\t\t\t\t\t\t" :
-                    "\r\n\t\t\t\t\t\t\t<div class=\"user-icon\" style=\"background-color: " + 
-                      __escape(guard((context != null && context['groups'] != null && context['groups'][key0] != null && context['groups'][key0]['members'] != null && context['groups'][key0]['members'][key1] != null) ? context['groups'][key0]['members'][key1]['icon:bgColor'] : null)) + 
-                      ";\" title=\"" + 
-                      __escape(guard((context != null && context['groups'] != null && context['groups'][key0] != null && context['groups'][key0]['members'] != null && context['groups'][key0]['members'][key1] != null) ? context['groups'][key0]['members'][key1]['username'] : null)) + 
-                      "\">" + 
-                      __escape(guard((context != null && context['groups'] != null && context['groups'][key0] != null && context['groups'][key0]['members'] != null && context['groups'][key0]['members'][key1] != null) ? context['groups'][key0]['members'][key1]['icon:text'] : null)) + 
-                      "</div>\r\n\t\t\t\t\t\t\t") + 
-                  "\r\n\t\t\t\t\t\t</a>\r\n\t\t\t\t\t</li>\r\n\t\t\t\t\t";
-              }, function alt() {
-                return "";
-              }) :
-            iter(guard((context != null) ? context['members'] : null), function each(key1, index, length, value) {
-                var key = key1;
-                return "\r\n\t\t\t\t\t<li>\r\n\t\t\t\t\t\t<a href=\"" + 
-                  __escape(guard((context != null && context['config'] != null) ? context['config']['relative_path'] : null)) + 
-                  "/user/" + 
-                  __escape(guard((context != null && context['groups'] != null && context['groups']['members'] != null) ? context['groups']['members']['userslug'] : null)) + 
-                  "\">\r\n\t\t\t\t\t\t\t" + 
-                  (guard((context != null && context['groups'] != null && context['groups']['members'] != null) ? context['groups']['members']['picture'] : null) ?
-                    "\r\n\t\t\t\t\t\t\t<img class=\"user-avatar\" src=\"" + 
-                      __escape(guard((context != null && context['groups'] != null && context['groups']['members'] != null) ? context['groups']['members']['picture'] : null)) + 
-                      "\" alt=\"" + 
-                      __escape(guard((context != null && context['groups'] != null && context['groups']['members'] != null) ? context['groups']['members']['username'] : null)) + 
-                      "\" title=\"" + 
-                      __escape(guard((context != null && context['groups'] != null && context['groups']['members'] != null) ? context['groups']['members']['username'] : null)) + 
-                      "\" />\r\n\t\t\t\t\t\t\t" :
-                    "\r\n\t\t\t\t\t\t\t<div class=\"user-icon\" style=\"background-color: " + 
-                      __escape(guard((context != null && context['groups'] != null && context['groups']['members'] != null) ? context['groups']['members']['icon:bgColor'] : null)) + 
-                      ";\" title=\"" + 
-                      __escape(guard((context != null && context['groups'] != null && context['groups']['members'] != null) ? context['groups']['members']['username'] : null)) + 
-                      "\">" + 
-                      __escape(guard((context != null && context['groups'] != null && context['groups']['members'] != null) ? context['groups']['members']['icon:text'] : null)) + 
-                      "</div>\r\n\t\t\t\t\t\t\t") + 
-                  "\r\n\t\t\t\t\t\t</a>\r\n\t\t\t\t\t</li>\r\n\t\t\t\t\t";
-              }, function alt() {
-                return "";
-              })) + 
-          "\r\n\t\t\t\t\t" + 
+          "</small></h3>\n\t\t\t</a>\n\t\t\t<div class=\"panel-body\">\n\t\t\t\t<ul class=\"members\">\n\t\t\t\t\t" + 
+          iter(guard((context != null) ? context['members'] : null), function each(key1, index, length, value) {
+            var key = key1;
+            return "\n\t\t\t\t\t<li>\n\t\t\t\t\t\t<a href=\"" + 
+              __escape(guard((context != null && context['config'] != null) ? context['config']['relative_path'] : null)) + 
+              "/user/" + 
+              __escape(guard((context != null && context['groups'] != null && context['groups']['members'] != null) ? context['groups']['members']['userslug'] : null)) + 
+              "\">" + 
+              __escape(helper(context, helpers, 'buildAvatar', [guard((context != null && context['groups'] != null) ? context['groups']['members'] : null), "sm", guard((context != null) ? context['true'] : null)])) + 
+              "</a>\n\t\t\t\t\t</li>\n\t\t\t\t\t";
+          }, function alt() {
+            return "";
+          }) + 
+          "\n\t\t\t\t\t" + 
           (guard((context != null && context['groups'] != null && context['groups'][key0] != null) ? context['groups'][key0]['truncated'] : null) ?
-            "\r\n\t\t\t\t\t<li class=\"truncated\"><i class=\"fa fa-ellipsis-h\"></i></li>\r\n\t\t\t\t\t" :
+            "\n\t\t\t\t\t<li class=\"truncated\"><i class=\"fa fa-ellipsis-h\"></i></li>\n\t\t\t\t\t" :
             "") + 
-          "\r\n\t\t\t\t</ul>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t</div>\r\n\t";
+          "\n\t\t\t\t</ul>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n\t";
       }, function alt() {
         return "";
       });

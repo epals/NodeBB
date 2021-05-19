@@ -9,27 +9,49 @@
   function compiled(helpers, context, guard, iter, helper) {
     var __escape = helpers.__escape;
     var value = context;
-    return "<div class=\"notifications\">\r\n\r\n\t" + 
+    return "\n<div class=\"notifications\">\n\n\t" + 
       (guard((context != null && context['breadcrumbs'] != null) ? context['breadcrumbs']['length'] : null) ?
         "\n<ol class=\"breadcrumb\" itemscope=\"itemscope\" itemprop=\"breadcrumb\" itemtype=\"http://schema.org/BreadcrumbList\">\n\t" + 
           compiled.blocks['breadcrumbs'](helpers, context, guard, iter, helper) + 
           "\n</ol>\n" :
         "") + 
-      "\n\r\n\r\n\t<div class=\"btn-toolbar\">\r\n\t\t<div class=\"btn-group dropdown pull-right\">\r\n\t\t\t<button class=\"btn btn-default dropdown-toggle\" type=\"button\" data-toggle=\"dropdown\">\r\n\t\t\t\t" + 
+      "\n\n\n\t<div class=\"btn-toolbar\">\n\t\t<div class=\"dropdown pull-right\">\n\t\t\t<button class=\"btn btn-default dropdown-toggle\" type=\"button\" data-toggle=\"dropdown\" aria-expanded=\"true\">\n\t\t\t\t<i class=\"fa fa-eye\"></i>\n\t\t\t\t<span class=\"caret\"></span>\n\t\t\t</button>\n\t\t\t<ul class=\"dropdown-menu dropdown-menu-right\" role=\"menu\" aria-labelledby=\"dropdownMenu1\">\n\t\t\t\t<li role=\"presentation\"><a role=\"menuitem\" tabindex=\"-1\" href=\"#\" data-ajaxify=\"false\" component=\"notifications/mark_all\">[[notifications:mark_all_read]]</a></li>\n\t\t\t</ul>\n\t\t</div>\n\n\t\t<div class=\"dropdown pull-right\">\n\t\t\t<button class=\"btn btn-default dropdown-toggle\" type=\"button\" data-toggle=\"dropdown\">\n\t\t\t\t" + 
       (guard((context != null) ? context['selectedFilter'] : null) ?
         __escape(guard((context != null && context['selectedFilter'] != null) ? context['selectedFilter']['name'] : null)) :
         "") + 
-      " <span class=\"caret\"></span>\r\n\t\t\t</button>\r\n\t\t\t<ul class=\"dropdown-menu\" role=\"menu\">\r\n\t\t\t\t" + 
+      " <span class=\"caret\"></span>\n\t\t\t</button>\n\t\t\t<ul class=\"dropdown-menu\" role=\"menu\">\n\t\t\t\t" + 
       compiled.blocks['filters'](helpers, context, guard, iter, helper) + 
-      "\r\n\t\t\t</ul>\r\n\t\t</div>\r\n\t\t<div class=\"btn-group pull-right\">\r\n\t\t\t<button class=\"btn btn-default\" type=\"button\" component=\"notifications/mark_all\">\r\n\t\t\t\t[[notifications:mark_all_read]]\r\n\t\t\t</button>\r\n\t\t</div>\r\n\t</div>\r\n\r\n\t<div class=\"alert alert-info " + 
+      "\n\t\t\t</ul>\n\t\t</div>\n\t</div>\n\n\t<hr />\n\n\t<div class=\"alert alert-info " + 
       (guard((context != null && context['notifications'] != null) ? context['notifications']['length'] : null) ?
         "hidden" :
         "") + 
-      "\">\r\n\t\t[[notifications:no_notifs]]\r\n\t</div>\r\n\r\n\t<div class=\"notifications-list\" data-nextstart=\"" + 
+      "\">\n\t\t[[notifications:no_notifs]]\n\t</div>\n\n\t<ul class=\"notifications-list\" data-nextstart=\"" + 
       __escape(guard((context != null) ? context['nextStart'] : null)) + 
-      "\">\r\n\t" + 
+      "\">\n\t" + 
       compiled.blocks['notifications'](helpers, context, guard, iter, helper) + 
-      "\r\n\t</div>\r\n</div>";
+      "\n\t</ul>\n\t\n<div component=\"pagination\" class=\"text-center pagination-container" + 
+      (guard((context != null && context['pagination'] != null && context['pagination']['pages'] != null) ? context['pagination']['pages']['length'] : null) ?
+        "" :
+        " hidden") + 
+      "\">\n\t<ul class=\"pagination\">\n\t\t<li class=\"previous pull-left" + 
+      (guard((context != null && context['pagination'] != null && context['pagination']['prev'] != null) ? context['pagination']['prev']['active'] : null) ?
+        "" :
+        " disabled") + 
+      "\">\n\t\t\t<a href=\"?" + 
+      __escape(guard((context != null && context['pagination'] != null && context['pagination']['prev'] != null) ? context['pagination']['prev']['qs'] : null)) + 
+      "\" data-page=\"" + 
+      __escape(guard((context != null && context['pagination'] != null && context['pagination']['prev'] != null) ? context['pagination']['prev']['page'] : null)) + 
+      "\"><i class=\"fa fa-chevron-left\"></i> </a>\n\t\t</li>\n\n\t\t" + 
+      compiled.blocks['pagination.pages'](helpers, context, guard, iter, helper) + 
+      "\n\n\t\t<li class=\"next pull-right" + 
+      (guard((context != null && context['pagination'] != null && context['pagination']['next'] != null) ? context['pagination']['next']['active'] : null) ?
+        "" :
+        " disabled") + 
+      "\">\n\t\t\t<a href=\"?" + 
+      __escape(guard((context != null && context['pagination'] != null && context['pagination']['next'] != null) ? context['pagination']['next']['qs'] : null)) + 
+      "\" data-page=\"" + 
+      __escape(guard((context != null && context['pagination'] != null && context['pagination']['next'] != null) ? context['pagination']['next']['page'] : null)) + 
+      "\"> <i class=\"fa fa-chevron-right\"></i></a>\n\t\t</li>\n\t</ul>\n</div>\n\n</div>\n\n\n";
   }
 
   compiled.blocks = {
@@ -83,10 +105,10 @@
       var value = context;
       return iter(guard((context != null) ? context['filters'] : null), function each(key0, index, length, value) {
         var key = key0;
-        return "\r\n\t\t\t\t" + 
+        return "\n\t\t\t\t" + 
           (guard((context != null && context['filters'] != null && context['filters'][key0] != null) ? context['filters'][key0]['separator'] : null) ?
-            "\r\n\t\t\t\t<li role=\"separator\" class=\"divider\"></li>\r\n\t\t\t\t" :
-            "\r\n\t\t\t\t<li role=\"presentation\" class=\"category\">\r\n\t\t\t\t\t<a role=\"menu-item\" href=\"" + 
+            "\n\t\t\t\t<li role=\"separator\" class=\"divider\"></li>\n\t\t\t\t" :
+            "\n\t\t\t\t<li role=\"presentation\" class=\"category\">\n\t\t\t\t\t<a role=\"menu-item\" href=\"" + 
               __escape(guard((context != null && context['config'] != null) ? context['config']['relative_path'] : null)) + 
               "/notifications?filter=" + 
               __escape(guard((context != null && context['filters'] != null && context['filters'][key0] != null) ? context['filters'][key0]['filter'] : null)) + 
@@ -96,8 +118,8 @@
                 "") + 
               "\"></i> " + 
               __escape(guard((context != null && context['filters'] != null && context['filters'][key0] != null) ? context['filters'][key0]['name'] : null)) + 
-              "</a>\r\n\t\t\t\t</li>\r\n\t\t\t\t") + 
-          "\r\n\t\t\t\t";
+              "</a>\n\t\t\t\t</li>\n\t\t\t\t") + 
+          "\n\t\t\t\t";
       }, function alt() {
         return "";
       });
@@ -107,39 +129,59 @@
       var value = context;
       return iter(guard((context != null) ? context['notifications'] : null), function each(key0, index, length, value) {
         var key = key0;
-        return "\r\n\t\t<div data-nid=\"" + 
+        return "\n\t\t<li data-nid=\"" + 
           __escape(guard((context != null && context['notifications'] != null && context['notifications'][key0] != null) ? context['notifications'][key0]['nid'] : null)) + 
           "\" class=\"" + 
           __escape(guard((context != null && context['notifications'] != null && context['notifications'][key0] != null) ? context['notifications'][key0]['readClass'] : null)) + 
-          "\" component=\"notifications/item\">\r\n\t\t\t<div class=\"notification-image\">\r\n\t\t\t\t" + 
+          "\" component=\"notifications/item\">\n\t\t\t" + 
           (guard((context != null && context['notifications'] != null && context['notifications'][key0] != null) ? context['notifications'][key0]['image'] : null) ?
-            "\r\n\t\t\t\t" + 
+            "\n\t\t\t" + 
               (guard((context != null && context['notifications'] != null && context['notifications'][key0] != null) ? context['notifications'][key0]['from'] : null) ?
-                "\r\n\t\t\t\t<a class=\"pull-left\" href=\"" + 
+                "\n\t\t\t<a class=\"pull-left\" href=\"" + 
                   __escape(guard((context != null && context['config'] != null) ? context['config']['relative_path'] : null)) + 
                   "/user/" + 
                   __escape(guard((context != null && context['notifications'] != null && context['notifications'][key0] != null && context['notifications'][key0]['user'] != null) ? context['notifications'][key0]['user']['userslug'] : null)) + 
-                  "\"><img class=\"user-avatar\" src=\"" + 
+                  "\"><img class=\"user-img\" src=\"" + 
                   __escape(guard((context != null && context['notifications'] != null && context['notifications'][key0] != null) ? context['notifications'][key0]['image'] : null)) + 
-                  "\" /></a>\r\n\t\t\t\t" :
+                  "\" /></a>\n\t\t\t" :
                 "") + 
-              "\r\n\t\t\t\t" :
-            "\r\n\t\t\t\t<a class=\"pull-left\" href=\"" + 
-              __escape(guard((context != null && context['config'] != null) ? context['config']['relative_path'] : null)) + 
-              "/user/" + 
-              __escape(guard((context != null && context['notifications'] != null && context['notifications'][key0] != null && context['notifications'][key0]['user'] != null) ? context['notifications'][key0]['user']['userslug'] : null)) + 
-              "\"><div class=\"user-icon\" style=\"background-color: " + 
+              "\n\t\t\t" :
+            "\n\t\t\t<div class=\"pull-left user-icon user-img\" style=\"background-color: " + 
               __escape(guard((context != null && context['notifications'] != null && context['notifications'][key0] != null && context['notifications'][key0]['user'] != null) ? context['notifications'][key0]['user']['icon:bgColor'] : null)) + 
               ";\">" + 
               __escape(guard((context != null && context['notifications'] != null && context['notifications'][key0] != null && context['notifications'][key0]['user'] != null) ? context['notifications'][key0]['user']['icon:text'] : null)) + 
-              "</div></a>\r\n\t\t\t\t") + 
-          "\r\n\t\t\t</div>\r\n\t\t\t<div class=\"notification-msg\">\r\n\t\t\t\t<a component=\"notifications/item/link\" href=\"" + 
+              "</div>\n\t\t\t") + 
+          "\n\n\t\t\t<p>\n\t\t\t\t<a component=\"notifications/item/link\" href=\"" + 
           __escape(guard((context != null && context['notifications'] != null && context['notifications'][key0] != null) ? context['notifications'][key0]['path'] : null)) + 
           "\">" + 
           __escape(guard((context != null && context['notifications'] != null && context['notifications'][key0] != null) ? context['notifications'][key0]['bodyShort'] : null)) + 
-          "</a>\r\n\r\n\t\t\t\t<span class=\"timeago\" title=\"" + 
+          "</a>\n\t\t\t</p>\n\t\t\t<p class=\"timestamp\">\n\t\t\t\t<span class=\"timeago\" title=\"" + 
           __escape(guard((context != null && context['notifications'] != null && context['notifications'][key0] != null) ? context['notifications'][key0]['datetimeISO'] : null)) + 
-          "\"></span>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t";
+          "\"></span>\n\t\t\t</p>\n\t\t</li>\n\t";
+      }, function alt() {
+        return "";
+      });
+    },
+    'pagination.pages': function paginationpages(helpers, context, guard, iter, helper) {
+      var __escape = helpers.__escape;
+      var value = context;
+      return iter(guard((context != null && context['pagination'] != null) ? context['pagination']['pages'] : null), function each(key0, index, length, value) {
+        var key = key0;
+        return "\n\t\t\t" + 
+          (guard((context != null && context['pagination'] != null && context['pagination']['pages'] != null && context['pagination']['pages'][key0] != null) ? context['pagination']['pages'][key0]['separator'] : null) ?
+            "\n\t\t\t<li component=\"pagination/select-page\" class=\"page select-page\">\n\t\t\t\t<a href=\"#\"><i class=\"fa fa-ellipsis-h\"></i></a>\n\t\t\t</li>\n\t\t\t" :
+            "\n\t\t\t<li class=\"page" + 
+              (guard((context != null && context['pagination'] != null && context['pagination']['pages'] != null && context['pagination']['pages'][key0] != null) ? context['pagination']['pages'][key0]['active'] : null) ?
+                " active" :
+                " hidden-xs") + 
+              "\" >\n\t\t\t\t<a href=\"?" + 
+              __escape(guard((context != null && context['pagination'] != null && context['pagination']['pages'] != null && context['pagination']['pages'][key0] != null) ? context['pagination']['pages'][key0]['qs'] : null)) + 
+              "\" data-page=\"" + 
+              __escape(guard((context != null && context['pagination'] != null && context['pagination']['pages'] != null && context['pagination']['pages'][key0] != null) ? context['pagination']['pages'][key0]['page'] : null)) + 
+              "\">" + 
+              __escape(guard((context != null && context['pagination'] != null && context['pagination']['pages'] != null && context['pagination']['pages'][key0] != null) ? context['pagination']['pages'][key0]['page'] : null)) + 
+              "</a>\n\t\t\t</li>\n\t\t\t") + 
+          "\n\t\t";
       }, function alt() {
         return "";
       });

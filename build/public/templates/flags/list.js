@@ -61,14 +61,14 @@
       "\n\n\t\t<div class=\"btn-group pull-right\" component=\"flags/bulk-actions\">\n\t\t\t<button type=\"button\" class=\"btn btn-default dropdown-toggle\" data-toggle=\"dropdown\" autocomplete=\"off\" aria-haspopup=\"true\" aria-expanded=\"false\" disabled=\"disabled\">\n\t\t\t\t<i class=\"fa fa-clone\"></i> [[flags:bulk-actions]] <span class=\"caret\"></span>\n\t\t\t</button>\n\t\t\t<ul class=\"dropdown-menu\">\n\t\t\t\t<li><a href=\"#\" data-action=\"bulk-assign\">[[flags:assign-to-me]]</a></li>\n\t\t\t\t<li><a href=\"#\" data-action=\"bulk-mark-resolved\">[[flags:bulk-resolve]]</a></li>\n\t\t\t</ul>\n\t\t</div>\n\n\t\t<table class=\"table table-striped table-hover\" component=\"flags/list\">\n\t\t\t<thead>\n\t\t\t\t<tr>\n\t\t\t\t\t<th>\n\t\t\t\t\t\t<input type=\"checkbox\" data-action=\"toggle-all\" autocomplete=\"off\" />\n\t\t\t\t\t</th>\n\t\t\t\t\t<th></th>\n\t\t\t\t\t<th><span class=\"hidden-xs\">[[flags:reports]] </span><i class=\"fa fa-user-plus\"></i></th>\n\t\t\t\t\t<th><span class=\"hidden-xs\">[[flags:first-reported]] </span><i class=\"fa fa-clock-o\"></i></th>\n\t\t\t\t\t<th>[[flags:state]]</th>\n\t\t\t\t</tr>\n\t\t\t</thead>\n\t\t\t<tbody>\n\t\t\t\t" + 
       (guard((context != null && context['flags'] != null) ? context['flags']['length'] : null) ?
         "" :
-        "\n\t\t\t\t<tr>\n\t\t\t\t\t<td colspan=\"5\">\n\t\t\t\t\t\t<div class=\"alert alert-success text-center\">\n\t\t\t\t\t\t\t[[flags:no-flags]]\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</td>\n\t\t\t\t</tr>\n\t\t\t\t") + 
+        "\n\t\t\t\t<tr>\n\t\t\t\t\t<td colspan=\"4\">\n\t\t\t\t\t\t<div class=\"alert alert-success text-center\">\n\t\t\t\t\t\t\t[[flags:no-flags]]\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</td>\n\t\t\t\t</tr>\n\t\t\t\t") + 
       "\n\t\t\t\t" + 
       compiled.blocks['flags'](helpers, context, guard, iter, helper) + 
-      "\n\t\t\t</tbody>\n\t\t</table>\n\n\t\t<div component=\"pagination\" class=\"text-center pagination-container" + 
+      "\n\t\t\t</tbody>\n\t\t</table>\n\n\t\t\n<div component=\"pagination\" class=\"text-center pagination-container" + 
       (guard((context != null && context['pagination'] != null && context['pagination']['pages'] != null) ? context['pagination']['pages']['length'] : null) ?
         "" :
         " hidden") + 
-      "\">\n\t<ul class=\"pagination hidden-xs\">\n\t\t<li class=\"previous pull-left" + 
+      "\">\n\t<ul class=\"pagination\">\n\t\t<li class=\"previous pull-left" + 
       (guard((context != null && context['pagination'] != null && context['pagination']['prev'] != null) ? context['pagination']['prev']['active'] : null) ?
         "" :
         " disabled") + 
@@ -86,41 +86,7 @@
       __escape(guard((context != null && context['pagination'] != null && context['pagination']['next'] != null) ? context['pagination']['next']['qs'] : null)) + 
       "\" data-page=\"" + 
       __escape(guard((context != null && context['pagination'] != null && context['pagination']['next'] != null) ? context['pagination']['next']['page'] : null)) + 
-      "\"> <i class=\"fa fa-chevron-right\"></i></a>\n\t\t</li>\n\t</ul>\n\n\t<ul class=\"pagination hidden-sm hidden-md hidden-lg\">\n\t\t<li class=\"first" + 
-      (guard((context != null && context['pagination'] != null && context['pagination']['prev'] != null) ? context['pagination']['prev']['active'] : null) ?
-        "" :
-        " disabled") + 
-      "\">\n\t\t\t<a href=\"?" + 
-      __escape(guard((context != null && context['pagination'] != null && context['pagination']['first'] != null) ? context['pagination']['first']['qs'] : null)) + 
-      "\" data-page=\"1\"><i class=\"fa fa-fast-backward\"></i> </a>\n\t\t</li>\n\n\t\t<li class=\"previous" + 
-      (guard((context != null && context['pagination'] != null && context['pagination']['prev'] != null) ? context['pagination']['prev']['active'] : null) ?
-        "" :
-        " disabled") + 
-      "\">\n\t\t\t<a href=\"?" + 
-      __escape(guard((context != null && context['pagination'] != null && context['pagination']['prev'] != null) ? context['pagination']['prev']['qs'] : null)) + 
-      "\" data-page=\"" + 
-      __escape(guard((context != null && context['pagination'] != null && context['pagination']['prev'] != null) ? context['pagination']['prev']['page'] : null)) + 
-      "\"><i class=\"fa fa-chevron-left\"></i> </a>\n\t\t</li>\n\n\t\t<li component=\"pagination/select-page\" class=\"page select-page\">\n\t\t\t<a href=\"#\">" + 
-      __escape(guard((context != null && context['pagination'] != null) ? context['pagination']['currentPage'] : null)) + 
-      " / " + 
-      __escape(guard((context != null && context['pagination'] != null) ? context['pagination']['pageCount'] : null)) + 
-      "</a>\n\t\t</li>\n\n\t\t<li class=\"next" + 
-      (guard((context != null && context['pagination'] != null && context['pagination']['next'] != null) ? context['pagination']['next']['active'] : null) ?
-        "" :
-        " disabled") + 
-      "\">\n\t\t\t<a href=\"?" + 
-      __escape(guard((context != null && context['pagination'] != null && context['pagination']['next'] != null) ? context['pagination']['next']['qs'] : null)) + 
-      "\" data-page=\"" + 
-      __escape(guard((context != null && context['pagination'] != null && context['pagination']['next'] != null) ? context['pagination']['next']['page'] : null)) + 
-      "\"> <i class=\"fa fa-chevron-right\"></i></a>\n\t\t</li>\n\n\t\t<li class=\"last" + 
-      (guard((context != null && context['pagination'] != null && context['pagination']['next'] != null) ? context['pagination']['next']['active'] : null) ?
-        "" :
-        " disabled") + 
-      "\">\n\t\t\t<a href=\"?" + 
-      __escape(guard((context != null && context['pagination'] != null && context['pagination']['last'] != null) ? context['pagination']['last']['qs'] : null)) + 
-      "\" data-page=\"" + 
-      __escape(guard((context != null && context['pagination'] != null) ? context['pagination']['pageCount'] : null)) + 
-      "\"><i class=\"fa fa-fast-forward\"></i> </a>\n\t\t</li>\n\t</ul>\n</div>\n\t</div>\n</div>\n";
+      "\"> <i class=\"fa fa-chevron-right\"></i></a>\n\t\t</li>\n\t</ul>\n</div>\n\n\t</div>\n</div>\n";
   }
 
   compiled.blocks = {
@@ -248,7 +214,7 @@
             "\n\t\t\t<li class=\"page" + 
               (guard((context != null && context['pagination'] != null && context['pagination']['pages'] != null && context['pagination']['pages'][key0] != null) ? context['pagination']['pages'][key0]['active'] : null) ?
                 " active" :
-                "") + 
+                " hidden-xs") + 
               "\" >\n\t\t\t\t<a href=\"?" + 
               __escape(guard((context != null && context['pagination'] != null && context['pagination']['pages'] != null && context['pagination']['pages'][key0] != null) ? context['pagination']['pages'][key0]['qs'] : null)) + 
               "\" data-page=\"" + 

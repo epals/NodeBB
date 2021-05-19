@@ -40,19 +40,19 @@
         "") + 
       "\n    " + 
       compiled.blocks['categoryItems'](helpers, context, guard, iter, helper) + 
-      "\n</ul>\n</div>\n</div>\n<hr/>\n<div class=\"row\">\n\t<div class=\"col-xs-12\">\n\t\t<div class=\"post-queue preventSlideout posts-list\">\n\t\t\t" + 
+      "\n</ul>\n</div>\n</div>\n<hr/>\n<div class=\"row\">\n\t<div class=\"col-xs-12\">\n\t\t<div class=\"post-queue panel panel-primary preventSlideout\">\n\t\t\t<div class=\"panel-heading\">\n\t\t\t\t[[post-queue:post-queue]]\n\t\t\t</div>\n\n\t\t\t" + 
       (guard((context != null && context['posts'] != null) ? context['posts']['length'] : null) ?
         "" :
         "\n\t\t\t<p class=\"panel-body\">\n\t\t\t\t[[post-queue:description, " + 
           __escape(guard((context != null && context['config'] != null) ? context['config']['relative_path'] : null)) + 
           "/admin/settings/post#post-queue]]\n\t\t\t</p>\n\t\t\t") + 
-      "\n\n\t\t\t" + 
+      "\n\n\t\t\t<div class=\"table-responsive\">\n\t\t\t\t<table class=\"table table-striped posts-list\">\n\t\t\t\t\t<thead>\n\t\t\t\t\t\t<tr>\n\t\t\t\t\t\t\t<th>[[post-queue:user]]</th>\n\t\t\t\t\t\t\t<th>[[post-queue:category]]</th>\n\t\t\t\t\t\t\t<th>[[post-queue:title]]</th>\n\t\t\t\t\t\t\t<th>[[post-queue:content]] <i class=\"fa fa-info-circle\" data-toggle=\"tooltip\" title=\"[[post-queue:content-editable]]\"></i></th>\n\t\t\t\t\t\t\t<th>[[post-queue:posted]]</th>\n\t\t\t\t\t\t\t<th></th>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t</thead>\n\t\t\t\t\t<tbody>\n\t\t\t\t\t\t" + 
       compiled.blocks['posts'](helpers, context, guard, iter, helper) + 
-      "\n\t\t</div>\n\n\t\t<div component=\"pagination\" class=\"text-center pagination-container" + 
+      "\n\t\t\t\t\t</tbody>\n\t\t\t\t</table>\n\t\t\t</div>\n\n\t\t\t\n<div component=\"pagination\" class=\"text-center pagination-container" + 
       (guard((context != null && context['pagination'] != null && context['pagination']['pages'] != null) ? context['pagination']['pages']['length'] : null) ?
         "" :
         " hidden") + 
-      "\">\n\t<ul class=\"pagination hidden-xs\">\n\t\t<li class=\"previous pull-left" + 
+      "\">\n\t<ul class=\"pagination\">\n\t\t<li class=\"previous pull-left" + 
       (guard((context != null && context['pagination'] != null && context['pagination']['prev'] != null) ? context['pagination']['prev']['active'] : null) ?
         "" :
         " disabled") + 
@@ -70,41 +70,7 @@
       __escape(guard((context != null && context['pagination'] != null && context['pagination']['next'] != null) ? context['pagination']['next']['qs'] : null)) + 
       "\" data-page=\"" + 
       __escape(guard((context != null && context['pagination'] != null && context['pagination']['next'] != null) ? context['pagination']['next']['page'] : null)) + 
-      "\"> <i class=\"fa fa-chevron-right\"></i></a>\n\t\t</li>\n\t</ul>\n\n\t<ul class=\"pagination hidden-sm hidden-md hidden-lg\">\n\t\t<li class=\"first" + 
-      (guard((context != null && context['pagination'] != null && context['pagination']['prev'] != null) ? context['pagination']['prev']['active'] : null) ?
-        "" :
-        " disabled") + 
-      "\">\n\t\t\t<a href=\"?" + 
-      __escape(guard((context != null && context['pagination'] != null && context['pagination']['first'] != null) ? context['pagination']['first']['qs'] : null)) + 
-      "\" data-page=\"1\"><i class=\"fa fa-fast-backward\"></i> </a>\n\t\t</li>\n\n\t\t<li class=\"previous" + 
-      (guard((context != null && context['pagination'] != null && context['pagination']['prev'] != null) ? context['pagination']['prev']['active'] : null) ?
-        "" :
-        " disabled") + 
-      "\">\n\t\t\t<a href=\"?" + 
-      __escape(guard((context != null && context['pagination'] != null && context['pagination']['prev'] != null) ? context['pagination']['prev']['qs'] : null)) + 
-      "\" data-page=\"" + 
-      __escape(guard((context != null && context['pagination'] != null && context['pagination']['prev'] != null) ? context['pagination']['prev']['page'] : null)) + 
-      "\"><i class=\"fa fa-chevron-left\"></i> </a>\n\t\t</li>\n\n\t\t<li component=\"pagination/select-page\" class=\"page select-page\">\n\t\t\t<a href=\"#\">" + 
-      __escape(guard((context != null && context['pagination'] != null) ? context['pagination']['currentPage'] : null)) + 
-      " / " + 
-      __escape(guard((context != null && context['pagination'] != null) ? context['pagination']['pageCount'] : null)) + 
-      "</a>\n\t\t</li>\n\n\t\t<li class=\"next" + 
-      (guard((context != null && context['pagination'] != null && context['pagination']['next'] != null) ? context['pagination']['next']['active'] : null) ?
-        "" :
-        " disabled") + 
-      "\">\n\t\t\t<a href=\"?" + 
-      __escape(guard((context != null && context['pagination'] != null && context['pagination']['next'] != null) ? context['pagination']['next']['qs'] : null)) + 
-      "\" data-page=\"" + 
-      __escape(guard((context != null && context['pagination'] != null && context['pagination']['next'] != null) ? context['pagination']['next']['page'] : null)) + 
-      "\"> <i class=\"fa fa-chevron-right\"></i></a>\n\t\t</li>\n\n\t\t<li class=\"last" + 
-      (guard((context != null && context['pagination'] != null && context['pagination']['next'] != null) ? context['pagination']['next']['active'] : null) ?
-        "" :
-        " disabled") + 
-      "\">\n\t\t\t<a href=\"?" + 
-      __escape(guard((context != null && context['pagination'] != null && context['pagination']['last'] != null) ? context['pagination']['last']['qs'] : null)) + 
-      "\" data-page=\"" + 
-      __escape(guard((context != null && context['pagination'] != null) ? context['pagination']['pageCount'] : null)) + 
-      "\"><i class=\"fa fa-fast-forward\"></i> </a>\n\t\t</li>\n\t</ul>\n</div>\n\t</div>\n</div>";
+      "\"> <i class=\"fa fa-chevron-right\"></i></a>\n\t\t</li>\n\t</ul>\n</div>\n\n\t\t</div>\n\t</div>\n</div>";
   }
 
   compiled.blocks = {
@@ -200,79 +166,63 @@
       var value = context;
       return iter(guard((context != null) ? context['posts'] : null), function each(key0, index, length, value) {
         var key = key0;
-        return "\n\t\t\t<div class=\"panel panel-default\" data-id=\"" + 
+        return "\n\t\t\t\t\t\t<tr data-id=\"" + 
           __escape(guard((context != null && context['posts'] != null && context['posts'][key0] != null) ? context['posts'][key0]['id'] : null)) + 
-          "\">\n\t\t\t\t<div class=\"panel-heading\">\n\t\t\t\t\t<strong>" + 
-          (guard((context != null && context['posts'] != null && context['posts'][key0] != null && context['posts'][key0]['data'] != null) ? context['posts'][key0]['data']['tid'] : null) ?
-            "[[post-queue:reply]]" :
-            "[[post-queue:topic]]") + 
-          "</strong>\n\t\t\t\t\t<span class=\"timeago pull-right\" title=" + 
-          __escape(guard((context != null && context['posts'] != null && context['posts'][key0] != null && context['posts'][key0]['data'] != null) ? context['posts'][key0]['data']['timestampISO'] : null)) + 
-          "></span>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"panel-body\">\n\n\t\t\t\t\t<div class=\"row\">\n\t\t\t\t\t\t<div class=\"col-lg-2 col-xs-12\">\n\t\t\t\t\t\t\t<strong>[[post-queue:user]]</strong>\n\t\t\t\t\t\t\t<div>\n\t\t\t\t\t\t\t\t" + 
+          "\">\n\t\t\t\t\t\t\t<td class=\"col-md-1\">\n\t\t\t\t\t\t\t\t" + 
           (guard((context != null && context['posts'] != null && context['posts'][key0] != null && context['posts'][key0]['user'] != null) ? context['posts'][key0]['user']['userslug'] : null) ?
             "\n\t\t\t\t\t\t\t\t<a href=\"" + 
               __escape(guard((context != null && context['config'] != null) ? context['config']['relative_path'] : null)) + 
               "/uid/" + 
               __escape(guard((context != null && context['posts'] != null && context['posts'][key0] != null && context['posts'][key0]['user'] != null) ? context['posts'][key0]['user']['uid'] : null)) + 
               "\">" + 
-              __escape(helper(context, helpers, 'buildAvatar', [guard((context != null && context['posts'] != null && context['posts'][key0] != null) ? context['posts'][key0]['user'] : null), "24", guard((context != null) ? context['true'] : null), "not-responsive"])) + 
-              " " + 
               __escape(guard((context != null && context['posts'] != null && context['posts'][key0] != null && context['posts'][key0]['user'] != null) ? context['posts'][key0]['user']['username'] : null)) + 
               "</a>\n\t\t\t\t\t\t\t\t" :
             "\n\t\t\t\t\t\t\t\t" + 
               __escape(guard((context != null && context['posts'] != null && context['posts'][key0] != null && context['posts'][key0]['user'] != null) ? context['posts'][key0]['user']['username'] : null)) + 
               "\n\t\t\t\t\t\t\t\t") + 
-          "\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<div class=\"col-lg-3 col-xs-12\">\n\t\t\t\t\t\t\t<strong>[[post-queue:category]]" + 
-          (guard((context != null && context['posts'] != null && context['posts'][key0] != null && context['posts'][key0]['data'] != null) ? context['posts'][key0]['data']['cid'] : null) ?
-            " <i class=\"fa fa-fw fa-edit\" data-toggle=\"tooltip\" title=\"[[post-queue:category-editable]]\"></i>" :
-            "") + 
-          "</strong>\n\t\t\t\t\t\t\t<div class=\"topic-category\" " + 
+          "\n\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t\t<td class=\"col-md-2 topic-category\" " + 
           (guard((context != null && context['posts'] != null && context['posts'][key0] != null && context['posts'][key0]['data'] != null) ? context['posts'][key0]['data']['cid'] : null) ?
             "data-editable=\"editable\"" :
             "") + 
-          "\">\n\t\t\t\t\t\t\t\t<a href=\"" + 
+          "\">\n\t\t\t\t\t\t\t\t<i class=\"pointer fa fa-fw " + 
+          (guard((context != null && context['posts'] != null && context['posts'][key0] != null && context['posts'][key0]['data'] != null) ? context['posts'][key0]['data']['cid'] : null) ?
+            "fa-edit" :
+            "") + 
+          "\" data-toggle=\"tooltip\" title=\"[[post-queue:category-editable]]\"></i>\n\t\t\t\t\t\t\t\t<a href=\"" + 
           __escape(guard((context != null && context['config'] != null) ? context['config']['relative_path'] : null)) + 
           "/category/" + 
           __escape(guard((context != null && context['posts'] != null && context['posts'][key0] != null && context['posts'][key0]['category'] != null) ? context['posts'][key0]['category']['slug'] : null)) + 
-          "\">" + 
-          (guard((context != null && context['posts'] != null && context['posts'][key0] != null && context['posts'][key0]['category'] != null) ? context['posts'][key0]['category']['icon'] : null) ?
-            "<span class=\"fa-stack\"><i style=\"color: " + 
-              __escape(guard((context != null && context['posts'] != null && context['posts'][key0] != null && context['posts'][key0]['category'] != null) ? context['posts'][key0]['category']['bgColor'] : null)) + 
-              ";\" class=\"fa fa-circle fa-stack-2x\"></i><i style=\"color: " + 
-              __escape(guard((context != null && context['posts'] != null && context['posts'][key0] != null && context['posts'][key0]['category'] != null) ? context['posts'][key0]['category']['color'] : null)) + 
-              ";\" class=\"fa fa-stack-1x fa-fw " + 
-              __escape(guard((context != null && context['posts'] != null && context['posts'][key0] != null && context['posts'][key0]['category'] != null) ? context['posts'][key0]['category']['icon'] : null)) + 
-              "\"></i></span>" :
-            "") + 
-          " " + 
+          "\"><span class=\"category-text\">" + 
           __escape(guard((context != null && context['posts'] != null && context['posts'][key0] != null && context['posts'][key0]['category'] != null) ? context['posts'][key0]['category']['name'] : null)) + 
-          "</a>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t\t<div class=\"col-lg-7 col-xs-12\">\n\t\t\t\t\t\t\t<strong>" + 
+          "</span></a>\n\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t\t<td class=\"col-md-3 topic-title\">\n\t\t\t\t\t\t\t\t<i class=\"pointer fa fa-fw " + 
           (guard((context != null && context['posts'] != null && context['posts'][key0] != null && context['posts'][key0]['data'] != null) ? context['posts'][key0]['data']['tid'] : null) ?
-            "[[post-queue:topic]]" :
-            "[[post-queue:title]] <i class=\"fa fa-fw fa-edit\" data-toggle=\"tooltip\" title=\"[[post-queue:title-editable]]\"></i>") + 
-          "</strong>\n\t\t\t\t\t\t\t<div class=\"topic-title\">\n\t\t\t\t\t\t\t\t" + 
+            "" :
+            "fa-edit") + 
+          "\" data-toggle=\"tooltip\" title=\"[[post-queue:title-editable]]\"></i>\n\t\t\t\t\t\t\t\t" + 
           (guard((context != null && context['posts'] != null && context['posts'][key0] != null && context['posts'][key0]['data'] != null) ? context['posts'][key0]['data']['tid'] : null) ?
             "\n\t\t\t\t\t\t\t\t<a href=\"" + 
               __escape(guard((context != null && context['config'] != null) ? context['config']['relative_path'] : null)) + 
               "/topic/" + 
               __escape(guard((context != null && context['posts'] != null && context['posts'][key0] != null && context['posts'][key0]['data'] != null) ? context['posts'][key0]['data']['tid'] : null)) + 
-              "\">" + 
+              "\">[[post-queue:reply-to, " + 
               __escape(guard((context != null && context['posts'] != null && context['posts'][key0] != null && context['posts'][key0]['topic'] != null) ? context['posts'][key0]['topic']['title'] : null)) + 
-              "</a>\n\t\t\t\t\t\t\t\t" :
+              "]]</a>\n\t\t\t\t\t\t\t\t" :
             "") + 
           "\n\t\t\t\t\t\t\t\t<span class=\"title-text\">" + 
           __escape(guard((context != null && context['posts'] != null && context['posts'][key0] != null && context['posts'][key0]['data'] != null) ? context['posts'][key0]['data']['title'] : null)) + 
-          "</span>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t" + 
+          "</span>\n\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t\t" + 
           (guard((context != null && context['posts'] != null && context['posts'][key0] != null && context['posts'][key0]['data'] != null) ? context['posts'][key0]['data']['tid'] : null) ?
             "" :
-            "\n\t\t\t\t\t\t\t<div class=\"topic-title-editable hidden\">\n\t\t\t\t\t\t\t\t<input class=\"form-control\" type=\"text\" value=\"" + 
+            "\n\t\t\t\t\t\t\t<td class=\"col-md-3 topic-title-editable hidden\">\n\t\t\t\t\t\t\t\t<input class=\"form-control\" type=\"text\" value=\"" + 
               __escape(guard((context != null && context['posts'] != null && context['posts'][key0] != null && context['posts'][key0]['data'] != null) ? context['posts'][key0]['data']['title'] : null)) + 
-              "\"/>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t") + 
-          "\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t\t<hr/>\n\t\t\t\t\t<div>\n\t\t\t\t\t\t<strong>[[post-queue:content]] <i class=\"fa fa-fw fa-edit\" data-toggle=\"tooltip\" title=\"[[post-queue:content-editable]]\"></i></strong>\n\t\t\t\t\t\t<div class=\"post-content\">" + 
+              "\"/>\n\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t\t") + 
+          "\n\t\t\t\t\t\t\t<td class=\"col-md-5 post-content\">" + 
           __escape(guard((context != null && context['posts'] != null && context['posts'][key0] != null && context['posts'][key0]['data'] != null) ? context['posts'][key0]['data']['content'] : null)) + 
-          "</div>\n\t\t\t\t\t\t<div class=\"post-content-editable hidden\">\n\t\t\t\t\t\t\t<textarea class=\"form-control\">" + 
+          "</td>\n\t\t\t\t\t\t\t<td class=\"col-md-5 post-content-editable hidden\">\n\t\t\t\t\t\t\t\t<textarea class=\"form-control\">" + 
           __escape(guard((context != null && context['posts'] != null && context['posts'][key0] != null && context['posts'][key0]['data'] != null) ? context['posts'][key0]['data']['rawContent'] : null)) + 
-          "</textarea>\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"panel-footer text-right\">\n\t\t\t\t\t<div class=\"btn-group\">\n\t\t\t\t\t\t<button class=\"btn btn-success btn-xs\" data-action=\"accept\"><i class=\"fa fa-check\"></i> [[post-queue:accept]] </button>\n\t\t\t\t\t\t<button class=\"btn btn-danger btn-xs\" data-action=\"reject\"><i class=\"fa fa-times\"></i> [[post-queue:reject]]</button>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t\t";
+          "</textarea>\n\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t\t<td class=\"col-md-1\">\n\t\t\t\t\t\t\t\t<span class=\"timeago\" title=" + 
+          __escape(guard((context != null && context['posts'] != null && context['posts'][key0] != null && context['posts'][key0]['data'] != null) ? context['posts'][key0]['data']['timestampISO'] : null)) + 
+          "></span>\n\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t\t<td class=\"col-md-1\">\n\t\t\t\t\t\t\t\t<div class=\"btn-group pull-right\">\n\t\t\t\t\t\t\t\t\t<button class=\"btn btn-success btn-xs\" data-action=\"accept\"><i class=\"fa fa-check\"></i></button>\n\t\t\t\t\t\t\t\t\t<button class=\"btn btn-danger btn-xs\" data-action=\"reject\"><i class=\"fa fa-times\"></i></button>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t</td>\n\t\t\t\t\t\t</tr>\n\t\t\t\t\t\t";
       }, function alt() {
         return "";
       });
@@ -288,7 +238,7 @@
             "\n\t\t\t<li class=\"page" + 
               (guard((context != null && context['pagination'] != null && context['pagination']['pages'] != null && context['pagination']['pages'][key0] != null) ? context['pagination']['pages'][key0]['active'] : null) ?
                 " active" :
-                "") + 
+                " hidden-xs") + 
               "\" >\n\t\t\t\t<a href=\"?" + 
               __escape(guard((context != null && context['pagination'] != null && context['pagination']['pages'] != null && context['pagination']['pages'][key0] != null) ? context['pagination']['pages'][key0]['qs'] : null)) + 
               "\" data-page=\"" + 

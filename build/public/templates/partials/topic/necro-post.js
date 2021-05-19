@@ -9,7 +9,7 @@
   function compiled(helpers, context, guard, iter, helper) {
     var __escape = helpers.__escape;
     var value = context;
-    return "<li component=\"topic/necro-post\" class=\"necro-post timeline-event\">\n\t<span class=\"timeline-text\">" + 
+    return "<li component=\"topic/necro-post\" class=\"necro-post\">\n\t<span>" + 
       __escape(guard((context != null) ? context['text'] : null)) + 
       "</span>\n</li>";
   }
