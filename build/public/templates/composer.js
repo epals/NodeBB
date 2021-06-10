@@ -31,6 +31,20 @@
         "" :
         " hidden") + 
       "\">\n\t\t\t\t<i class=\"fa fa-clock-o\"></i>\n\t\t\t</div>\n\t\t\t<div class=\"btn-group\">\n\t\t\t\t<button class=\"btn btn-sm btn-primary composer-submit\" data-action=\"post\" tabindex=\"-1\"><i class=\"fa fa-chevron-right\"></i></button>\n\t\t\t</div>\n\t\t</nav>\n\t\t<div class=\"row title-container\">\n\t\t\t" + 
+      (guard((context != null) ? context['showHandleInput'] : null) ?
+        "\n\t\t\t<div data-component=\"composer/handle\">\n\t\t\t\t<input class=\"handle form-control\" type=\"text\" tabindex=\"1\" placeholder=\"[[topic:composer.handle_placeholder]]\" value=\"" + 
+          __escape(guard((context != null) ? context['handle'] : null)) + 
+          "\" />\n\t\t\t</div>\n\t\t\t" :
+        "") + 
+      "\n\t\t\t<div data-component=\"composer/title\">\n\t\t\t\t" + 
+      (guard((context != null) ? context['isTopicOrMain'] : null) ?
+        "\n\t\t\t\t<input class=\"title form-control\" type=\"text\" tabindex=\"1\" placeholder=\"[[topic:composer.title_placeholder]]\" value=\"" + 
+          __escape(guard((context != null) ? context['title'] : null)) + 
+          "\"/>\n\t\t\t\t" :
+        "\n\t\t\t\t<span class=\"title form-control\">[[topic:composer.replying_to, \"" + 
+          __escape(guard((context != null) ? context['title'] : null)) + 
+          "\"]]</span>\n\t\t\t\t") + 
+      "\n\t\t\t\t<div id=\"quick-search-container\" class=\"quick-search-container hidden\">\n\t\t\t\t\t<div class=\"quick-search-results-container\"></div>\n\t\t\t\t</div>\n\t\t\t</div>\n\n\t\t\t" + 
       (guard((context != null) ? context['isTopic'] : null) ?
         "\n\t\t\t<div class=\"category-list-container hidden-sm hidden-xs\">\n\t\t\t\t<div component=\"category-selector\" class=\"btn-group bottom-sheet\">\n<button type=\"button\" class=\"btn btn-default dropdown-toggle\" data-toggle=\"dropdown\">\n    <span component=\"category-selector-selected\">" + 
           (guard((context != null) ? context['selectedCategory'] : null) ?
@@ -50,35 +64,25 @@
           compiled.blocks['categoryItems'](helpers, context, guard, iter, helper) + 
           "\n</ul>\n</div>\n\t\t\t</div>\n\t\t\t" :
         "") + 
-      "\n\n\t\t\t" + 
-      (guard((context != null) ? context['showHandleInput'] : null) ?
-        "\n\t\t\t<div data-component=\"composer/handle\">\n\t\t\t\t<input class=\"handle form-control\" type=\"text\" tabindex=\"1\" placeholder=\"[[topic:composer.handle_placeholder]]\" value=\"" + 
-          __escape(guard((context != null) ? context['handle'] : null)) + 
-          "\" />\n\t\t\t</div>\n\t\t\t" :
-        "") + 
-      "\n\t\t\t<div data-component=\"composer/title\">\n\t\t\t\t" + 
-      (guard((context != null) ? context['isTopicOrMain'] : null) ?
-        "\n\t\t\t\t<input class=\"title form-control\" type=\"text\" tabindex=\"1\" placeholder=\"[[topic:composer.title_placeholder]]\" value=\"" + 
-          __escape(guard((context != null) ? context['title'] : null)) + 
-          "\"/>\n\t\t\t\t" :
-        "\n\t\t\t\t<span class=\"title form-control\">[[topic:composer.replying_to, \"" + 
-          __escape(guard((context != null) ? context['title'] : null)) + 
-          "\"]]</span>\n\t\t\t\t") + 
-      "\n\t\t\t\t<div id=\"quick-search-container\" class=\"quick-search-container hidden\">\n\t\t\t\t\t<div class=\"text-center loading-indicator\"><i class=\"fa fa-spinner fa-spin\"></i></div>\n\t\t\t\t\t<div class=\"quick-search-results-container\"></div>\n\t\t\t\t</div>\n\t\t\t</div>\n\n\t\t\t<div class=\"pull-right draft-icon hidden-xs hidden-sm\"></div>\n\n\t\t\t<div class=\"display-scheduler pull-right hidden-sm hidden-xs" + 
+      "\n\n\t\t\t<div class=\"pull-right draft-icon hidden-xs hidden-sm\"></div>\n\n\t\t\t<div class=\"display-scheduler pull-right hidden-sm hidden-xs" + 
       (guard((context != null) ? context['canSchedule'] : null) ?
         "" :
         " hidden") + 
       "\">\n\t\t\t\t<i class=\"fa fa-clock-o\"></i>\n\t\t\t</div>\n\n\t\t\t<div class=\"btn-group pull-right action-bar hidden-sm hidden-xs\">\n\t\t\t\t<button class=\"btn btn-default composer-discard\" data-action=\"discard\" tabindex=\"-1\"><i class=\"fa fa-times\"></i> [[topic:composer.discard]]</button>\n\n\t\t\t\t<button class=\"btn btn-primary composer-submit\" data-action=\"post\" tabindex=\"6\" data-text-variant=\" [[topic:composer.schedule]]\"><i class=\"fa fa-check\"></i> [[topic:composer.submit]]</button>\n\t\t\t</div>\n\t\t</div>\n\n\t\t<div class=\"category-tag-row\">\n\t\t\t<div class=\"btn-toolbar formatting-bar\">\n\t\t\t\t<ul class=\"formatting-group\">\n\t\t\t\t\t" + 
       compiled.blocks['formatting'](helpers, context, guard, iter, helper) + 
-      "\n\n\t\t\t\t\t" + 
+      "\n\n\t\t\t\t\t<!--[if gte IE 9]><!-->\n\t\t\t\t\t\t" + 
       (guard((context != null && context['privileges'] != null) ? context['privileges']['upload:post:image'] : null) ?
-        "\n\t\t\t\t\t<li class=\"img-upload-btn\" data-format=\"picture\" tabindex=\"-1\" title=\"[[modules:composer.upload-picture]]\">\n\t\t\t\t\t\t<i class=\"fa fa-file-image-o\"></i>\n\t\t\t\t\t</li>\n\t\t\t\t\t" :
+        "\n\t\t\t\t\t\t<li class=\"img-upload-btn hide\" data-format=\"picture\" tabindex=\"-1\" title=\"[[modules:composer.upload-picture]]\">\n\t\t\t\t\t\t\t<i class=\"fa fa-file-image-o\"></i>\n\t\t\t\t\t\t</li>\n\t\t\t\t\t\t" :
         "") + 
-      "\n\t\t\t\t\t" + 
+      "\n\t\t\t\t\t\t" + 
       (guard((context != null && context['privileges'] != null) ? context['privileges']['upload:post:file'] : null) ?
-        "\n\t\t\t\t\t<li class=\"file-upload-btn\" data-format=\"upload\" tabindex=\"-1\" title=\"[[modules:composer.upload-file]]\">\n\t\t\t\t\t\t<i class=\"fa fa-file-o\"></i>\n\t\t\t\t\t</li>\n\t\t\t\t\t" :
+        "\n\t\t\t\t\t\t<li class=\"file-upload-btn hide\" data-format=\"upload\" tabindex=\"-1\" title=\"[[modules:composer.upload-file]]\">\n\t\t\t\t\t\t\t<span class=\"fa-stack\">\n\t\t\t\t\t\t\t\t<i class=\"fa fa-file-o fa-stack-1x\"></i>\n\t\t\t\t\t\t\t\t<i class=\"fa fa-arrow-up fa-stack-1x\"></i>\n\t\t\t\t\t\t\t</span>\n\t\t\t\t\t\t</li>\n\t\t\t\t\t\t" :
         "") + 
-      "\n\n\t\t\t\t\t<form id=\"fileForm\" method=\"post\" enctype=\"multipart/form-data\">\n\t\t\t\t\t\t<input type=\"file\" id=\"files\" name=\"files[]\" multiple class=\"gte-ie9 hide\"/>\n\t\t\t\t\t</form>\n\t\t\t\t</ul>\n\t\t\t</div>\n\t\t</div>\n\n\t\t<div class=\"row write-preview-container\">\n\t\t\t<div class=\"write-container\">\n\t\t\t\t<div class=\"help-text\">\n\t\t\t\t\t<span class=\"help hidden\">[[modules:composer.compose]] <i class=\"fa fa-question-circle\"></i></span>\n\t\t\t\t\t<span class=\"toggle-preview hide\">[[modules:composer.show_preview]]</span>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"pull-right draft-icon hidden-md hidden-lg\"></div>\n\t\t\t\t<textarea class=\"write\" tabindex=\"4\" placeholder=\"[[modules:composer.textarea.placeholder]]\"></textarea>\n\t\t\t</div>\n\t\t\t<div class=\"hidden-sm hidden-xs preview-container\">\n\t\t\t\t<div class=\"help-text\">\n\t\t\t\t\t<span class=\"toggle-preview\">[[modules:composer.hide_preview]]</span>\n\t\t\t\t</div>\n\t\t\t\t<div class=\"preview well\"></div>\n\t\t\t</div>\n\t\t</div>\n\n\t\t" + 
+      "\n\t\t\t\t\t<!--<![endif]-->\n\n\t\t\t\t\t" + 
+      (guard((context != null) ? context['allowTopicsThumbnail'] : null) ?
+        "\n\t\t\t\t\t<li tabindex=\"-1\">\n\t\t\t\t\t\t<i class=\"fa fa-th-large topic-thumb-btn topic-thumb-toggle-btn hide\" title=\"[[topic:composer.thumb_title]]\"></i>\n\t\t\t\t\t</li>\n\t\t\t\t\t<div class=\"topic-thumb-container center-block hide\">\n\t\t\t\t\t\t<form id=\"thumbForm\" method=\"post\" class=\"topic-thumb-form form-inline\" enctype=\"multipart/form-data\">\n\t\t\t\t\t\t\t<img class=\"topic-thumb-preview\"></img>\n\t\t\t\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t\t\t\t<label for=\"topic-thumb-url\">[[topic:composer.thumb_url_label]]</label>\n\t\t\t\t\t\t\t\t<input type=\"text\" id=\"topic-thumb-url\" class=\"form-control\" placeholder=\"[[topic:composer.thumb_url_placeholder]]\" />\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t\t\t\t<label for=\"topic-thumb-file\">[[topic:composer.thumb_file_label]]</label>\n\t\t\t\t\t\t\t\t<input type=\"file\" id=\"topic-thumb-file\" class=\"form-control\" />\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t\t<div class=\"form-group topic-thumb-ctrl\">\n\t\t\t\t\t\t\t\t<i class=\"fa fa-spinner fa-spin hide topic-thumb-spinner\" title=\"[[topic:composer.uploading]]\"></i>\n\t\t\t\t\t\t\t\t<i class=\"fa fa-times topic-thumb-btn hide topic-thumb-clear-btn\" title=\"[[topic:composer.thumb_remove]]\"></i>\n\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t</form>\n\t\t\t\t\t</div>\n\t\t\t\t\t" :
+        "") + 
+      "\n\n\t\t\t\t\t<form id=\"fileForm\" method=\"post\" enctype=\"multipart/form-data\">\n\t\t\t\t\t\t<!--[if gte IE 9]><!-->\n\t\t\t\t\t\t\t<input type=\"file\" id=\"files\" name=\"files[]\" multiple class=\"gte-ie9 hide\"/>\n\t\t\t\t\t\t<!--<![endif]-->\n\t\t\t\t\t\t<!--[if lt IE 9]>\n\t\t\t\t\t\t\t<input type=\"file\" id=\"files\" name=\"files[]\" class=\"lt-ie9 hide\" value=\"Upload\"/>\n\t\t\t\t\t\t<![endif]-->\n\t\t\t\t\t</form>\n\t\t\t\t</ul>\n\t\t\t</div>\n\t\t</div>\n\n\t\t<div class=\"row write-preview-container\">\n\t\t\t<div class=\"write-container\">\n\t\t\t\t<div></div>\n\t\t\t\t<textarea></textarea>\n\t\t\t</div>\n\t\t</div>\n\n\t\t" + 
       (guard((context != null) ? context['isTopicOrMain'] : null) ?
         "\n\t\t<div class=\"tag-row\">\n\t\t\t<div class=\"tags-container\">\n\t\t\t\t<div class=\"btn-group dropup " + 
           (guard((context != null && context['tagWhitelist'] != null) ? context['tagWhitelist']['length'] : null) ?
@@ -91,10 +95,6 @@
           ", " + 
           __escape(guard((context != null) ? context['maximumTagLength'] : null)) + 
           "]]\" tabindex=\"5\"/>\n\t\t\t</div>\n\t\t</div>\n\t\t" :
-        "") + 
-      "\n\n\t\t" + 
-      (guard((context != null) ? context['isTopic'] : null) ?
-        "\n\t\t<ul class=\"category-selector visible-xs visible-sm\">\n\n\t\t</ul>\n\t\t" :
         "") + 
       "\n\n\t\t<div class=\"imagedrop\"><div>[[topic:composer.drag_and_drop_images]]</div></div>\n\n\t\t<div class=\"resizer\"><div class=\"trigger text-center\"><i class=\"fa\"></i></div></div>\n\t</div>\n</div>\n";
   }
@@ -147,15 +147,15 @@
           (guard((context != null && context['formatting'] != null && context['formatting'][key0] != null) ? context['formatting'][key0]['spacer'] : null) ?
             "\n\t\t\t\t\t\t<li class=\"spacer\"></li>\n\t\t\t\t\t\t" :
             "\n\t\t\t\t\t\t" + 
-              ((guard((context != null && context['formatting'] != null && context['formatting'][key0] != null && context['formatting'][key0]['visibility'] != null) ? context['formatting'][key0]['visibility']['desktop'] : null) && ((guard((context != null) ? context['isTopicOrMain'] : null) && guard((context != null && context['formatting'] != null && context['formatting'][key0] != null && context['formatting'][key0]['visibility'] != null) ? context['formatting'][key0]['visibility']['main'] : null)) || (!guard((context != null) ? context['isTopicOrMain'] : null) && guard((context != null && context['formatting'] != null && context['formatting'][key0] != null && context['formatting'][key0]['visibility'] != null) ? context['formatting'][key0]['visibility']['reply'] : null)))) ?
+              (guard((context != null && context['formatting'] != null && context['formatting'][key0] != null) ? context['formatting'][key0]['mobile'] : null) ?
+                "" :
                 "\n\t\t\t\t\t\t<li tabindex=\"-1\" data-format=\"" + 
                   __escape(guard((context != null && context['formatting'] != null && context['formatting'][key0] != null) ? context['formatting'][key0]['name'] : null)) + 
                   "\" title=\"" + 
                   __escape(guard((context != null && context['formatting'] != null && context['formatting'][key0] != null) ? context['formatting'][key0]['title'] : null)) + 
                   "\"><i class=\"" + 
                   __escape(guard((context != null && context['formatting'] != null && context['formatting'][key0] != null) ? context['formatting'][key0]['className'] : null)) + 
-                  "\"></i></li>\n\t\t\t\t\t\t" :
-                "") + 
+                  "\"></i></li>\n\t\t\t\t\t\t") + 
               "\n\t\t\t\t\t\t") + 
           "\n\t\t\t\t\t";
       }, function alt() {
