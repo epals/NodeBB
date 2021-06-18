@@ -71,15 +71,19 @@
                   (guard((context != null && context['config'] != null) ? context['config']['disableChat'] : null) ?
                     "" :
                     "\r\n\t\t\t\t<a component=\"account/chat\" href=\"#\" class=\"btn btn-primary btn-sm\"><i class=\"fa fa-fw fa-comment-o\"></i> Chat</a>\r\n\t\t\t\t") + 
-                  "\r\n\t\t\t\t<a id=\"follow-btn\" component=\"account/follow\" href=\"#\" class=\"btn btn-success btn-sm " + 
-                  (guard((context != null) ? context['isFollowing'] : null) ?
-                    "hide" :
+                  "\r\n\t\t\t\t" + 
+                  (guard((context != null) ? context['false'] : null) ?
+                    "\r\n\t\t\t\t\t<a id=\"follow-btn\" component=\"account/follow\" href=\"#\" class=\"btn btn-success btn-sm " + 
+                      (guard((context != null) ? context['isFollowing'] : null) ?
+                        "hide" :
+                        "") + 
+                      "\">[[user:follow]]</a>\r\n\t\t\t\t\t<a id=\"unfollow-btn\" component=\"account/unfollow\" href=\"#\" class=\"btn btn-warning btn-sm " + 
+                      (guard((context != null) ? context['isFollowing'] : null) ?
+                        "" :
+                        "hide") + 
+                      "\">[[user:unfollow]]</a>\r\n\t\t\t\t" :
                     "") + 
-                  "\">[[user:follow]]</a>\r\n\t\t\t\t<a id=\"unfollow-btn\" component=\"account/unfollow\" href=\"#\" class=\"btn btn-warning btn-sm " + 
-                  (guard((context != null) ? context['isFollowing'] : null) ?
-                    "" :
-                    "hide") + 
-                  "\">[[user:unfollow]]</a>\r\n\t\t\t\t") + 
+                  "\r\n\t\t\t\t") + 
               "\r\n\t\t\t\t") + 
           "\r\n\t\t\t\t" :
         "") + 
