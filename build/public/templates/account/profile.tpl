@@ -81,6 +81,7 @@
 					<span class="stat-label">[[global:posts]]</span>
 				</div>
 
+				<!-- IF false -->
 				<div class="stat">
 					<div class="human-readable-number" title="{profileviews}">{profileviews}</div>
 					<span class="stat-label">[[user:profile_views]]</span>
@@ -95,35 +96,38 @@
 					<div class="human-readable-number" title="{followingCount}">{followingCount}</div>
 					<span class="stat-label">[[user:following]]</span>
 				</div>
+				<!-- ENDIF false -->
 			</div>
 
-			<div class="text-center profile-meta">
-				<span>[[user:joined]]</span>
-				<strong class="timeago" title="{joindateISO}"></strong>
+			<!-- IF false -->
+				<div class="text-center profile-meta">
+					<span>[[user:joined]]</span>
+					<strong class="timeago" title="{joindateISO}"></strong>
 
-				<span>[[user:lastonline]]</span>
-				<strong class="timeago" title="{lastonlineISO}"></strong><br />
+					<span>[[user:lastonline]]</span>
+					<strong class="timeago" title="{lastonlineISO}"></strong><br />
 
-				<!-- IF email -->
-				<span>[[user:email]]</span>
-				<strong><i class="fa fa-eye-slash {emailClass}" title="[[user:email_hidden]]"></i> {email}</strong>
-				<!-- ENDIF email -->
+					<!-- IF email -->
+					<span>[[user:email]]</span>
+					<strong><i class="fa fa-eye-slash {emailClass}" title="[[user:email_hidden]]"></i> {email}</strong>
+					<!-- ENDIF email -->
 
-				<!-- IF websiteName -->
-				<span>[[user:website]]</span>
-				<strong><a href="{websiteLink}" rel="nofollow noopener noreferrer">{websiteName}</a></strong>
-				<!-- ENDIF websiteName -->
+					<!-- IF websiteName -->
+					<span>[[user:website]]</span>
+					<strong><a href="{websiteLink}" rel="nofollow noopener noreferrer">{websiteName}</a></strong>
+					<!-- ENDIF websiteName -->
 
-				<!-- IF location -->
-				<span>[[user:location]]</span>
-				<strong>{location}</strong>
-				<!-- ENDIF location -->
+					<!-- IF location -->
+					<span>[[user:location]]</span>
+					<strong>{location}</strong>
+					<!-- ENDIF location -->
 
-				<!-- IF age -->
-				<span>[[user:age]]</span>
-				<strong>{age}</strong>
-				<!-- ENDIF age -->
-			</div>
+					<!-- IF age -->
+					<span>[[user:age]]</span>
+					<strong>{age}</strong>
+					<!-- ENDIF age -->
+				</div>
+			<!-- ENDIF false -->
 		</div>
 	</div>
 
@@ -131,85 +135,92 @@
 	<div class="row account-menu">
 	<div class="col-xs-12">
 		<ul class="nav nav-pills pull-right">
-			<li>
-				<a href="{config.relative_path}/user/{userslug}" class="inline-block" id="profile">[[user:profile]]</a>
-			</li>
+			<!-- IF false -->
+				<li>
+					<a href="{config.relative_path}/user/{userslug}" class="inline-block" id="profile">[[user:profile]]</a>
+				</li>
+			<!-- ENDIF false -->
 			<!-- IF showHidden -->
-			<li><a href="{config.relative_path}/user/{userslug}/edit">[[user:edit]]</a></li>
+			<!-- IF false -->
+				<li><a href="{config.relative_path}/user/{userslug}/edit">[[user:edit]]</a></li>
+			<!-- ENDIF false -->
 			<li><a href="{config.relative_path}/user/{userslug}/settings">[[user:settings]]</a></li>
 			<!-- ENDIF showHidden -->
-			<li class="dropdown bottom-sheet">
-				<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-			      [[user:more]] <span class="caret"></span>
-			    </a>
-				<ul class="dropdown-menu dropdown-menu-right">
-					<!-- IF loggedIn -->
-					<!-- IF !isSelf -->
-					<!-- IF !banned -->
-					<!-- IF !config.disableChat -->
-					<li><a component="account/chat" href="#">[[user:chat_with, {username}]]</a></li>
-					<!-- ENDIF !config.disableChat -->
+			<!-- IF false -->
+				<li class="dropdown bottom-sheet">
 
-					<li><a component="account/flag" href="#">[[user:flag-profile]]</a></li>
-					<li>
-						<a component="account/block" href="#"><!-- IF !../isBlocked -->[[user:block_user]]<!-- ELSE -->[[user:unblock_user]]<!-- END --></a>
-					</li>
-					<li class="divider"></li>
-					<!-- ENDIF !banned -->
-					<!-- ENDIF !isSelf -->
-					<!-- ENDIF loggedIn -->
+					<a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+					[[user:more]] <span class="caret"></span>
+					</a>
+					<ul class="dropdown-menu dropdown-menu-right">
+						<!-- IF loggedIn -->
+						<!-- IF !isSelf -->
+						<!-- IF !banned -->
+						<!-- IF !config.disableChat -->
+						<li><a component="account/chat" href="#">[[user:chat_with, {username}]]</a></li>
+						<!-- ENDIF !config.disableChat -->
 
-
-					<!-- IF !isSelf -->
-					<!-- IF canBan -->
-					<li class="<!-- IF banned -->hide<!-- ENDIF banned -->">
-						<a component="account/ban" href="#">[[user:ban_account]]</a>
-					</li>
-					<li class="<!-- IF !banned -->hide<!-- ENDIF !banned -->">
-						<a component="account/unban" href="#">[[user:unban_account]]</a>
-					</li>
-					<!-- ENDIF canBan -->
-					<!-- IF isAdmin -->
-					<li><a component="account/delete" href="#" class="">[[user:delete_account]]</a></li>
-					<!-- ENDIF isAdmin -->
-					<li class="divider"></li>
-					<!-- ENDIF !isSelf -->
+						<li><a component="account/flag" href="#">[[user:flag-profile]]</a></li>
+						<li>
+							<a component="account/block" href="#"><!-- IF !../isBlocked -->[[user:block_user]]<!-- ELSE -->[[user:unblock_user]]<!-- END --></a>
+						</li>
+						<li class="divider"></li>
+						<!-- ENDIF !banned -->
+						<!-- ENDIF !isSelf -->
+						<!-- ENDIF loggedIn -->
 
 
-					<li><a href="{config.relative_path}/user/{userslug}/following">[[user:following]]</a></li>
-					<li><a href="{config.relative_path}/user/{userslug}/followers">[[user:followers]]</a></li>
-					<!-- IF showHidden -->
-					<li><a href="{config.relative_path}/user/{userslug}/blocks">[[user:blocks]]</a></li>
-					<!-- ENDIF showHidden -->
-					<li class="divider"></li>
-					<li><a href="{config.relative_path}/user/{userslug}/topics">[[global:topics]]</a></li>
-					<li><a href="{config.relative_path}/user/{userslug}/posts">[[global:posts]]</a></li>
-					<!-- IF !reputation:disabled -->
-					<li><a href="{config.relative_path}/user/{userslug}/best">[[global:best]]</a></li>
-					<!-- ENDIF !reputation:disabled -->
-					<li><a href="{config.relative_path}/user/{userslug}/groups">[[global:header.groups]]</a></li>
+						<!-- IF !isSelf -->
+						<!-- IF canBan -->
+						<li class="<!-- IF banned -->hide<!-- ENDIF banned -->">
+							<a component="account/ban" href="#">[[user:ban_account]]</a>
+						</li>
+						<li class="<!-- IF !banned -->hide<!-- ENDIF !banned -->">
+							<a component="account/unban" href="#">[[user:unban_account]]</a>
+						</li>
+						<!-- ENDIF canBan -->
+						<!-- IF isAdmin -->
+						<li><a component="account/delete" href="#" class="">[[user:delete_account]]</a></li>
+						<!-- ENDIF isAdmin -->
+						<li class="divider"></li>
+						<!-- ENDIF !isSelf -->
 
-					<!-- IF showHidden -->
-					<li><a href="{config.relative_path}/user/{userslug}/bookmarks">[[user:bookmarks]]</a></li>
-					<li><a href="{config.relative_path}/user/{userslug}/watched">[[user:watched]]</a></li>
-					<li><a href="{config.relative_path}/user/{userslug}/ignored">[[user:ignored]]</a></li>
-					<!-- IF !reputation:disabled -->
-					<li><a href="{config.relative_path}/user/{userslug}/upvoted">[[global:upvoted]]</a></li>
-					<!-- IF !downvote:disabled -->
-					<li><a href="{config.relative_path}/user/{userslug}/downvoted">[[global:downvoted]]</a></li>
-					<!-- ENDIF !downvote:disabled -->
-					<!-- ENDIF !reputation:disabled -->
-					<li><a href="{config.relative_path}/user/{userslug}/uploads">[[global:uploads]]</a></li>
-					<!-- ENDIF showHidden -->
 
-					<!-- BEGIN profile_links -->
-					<!-- IF @first -->
-					<li class="divider"></li>
-					<!-- ENDIF @first -->
-					<li id="{profile_links.id}" class="plugin-link <!-- IF profile_links.public -->public<!-- ELSE -->private<!-- ENDIF profile_links.public -->"><a href="{config.relative_path}/user/{userslug}/{profile_links.route}"><!-- IF profile_links.icon --><i class="fa fa-fw {profile_links.icon}"></i> <!-- ENDIF profile_links.icon -->{profile_links.name}</a></li>
-					<!-- END profile_links -->
-				</ul>
-			</li>
+						<li><a href="{config.relative_path}/user/{userslug}/following">[[user:following]]</a></li>
+						<li><a href="{config.relative_path}/user/{userslug}/followers">[[user:followers]]</a></li>
+						<!-- IF showHidden -->
+						<li><a href="{config.relative_path}/user/{userslug}/blocks">[[user:blocks]]</a></li>
+						<!-- ENDIF showHidden -->
+						<li class="divider"></li>
+						<li><a href="{config.relative_path}/user/{userslug}/topics">[[global:topics]]</a></li>
+						<li><a href="{config.relative_path}/user/{userslug}/posts">[[global:posts]]</a></li>
+						<!-- IF !reputation:disabled -->
+						<li><a href="{config.relative_path}/user/{userslug}/best">[[global:best]]</a></li>
+						<!-- ENDIF !reputation:disabled -->
+						<li><a href="{config.relative_path}/user/{userslug}/groups">[[global:header.groups]]</a></li>
+
+						<!-- IF showHidden -->
+						<li><a href="{config.relative_path}/user/{userslug}/bookmarks">[[user:bookmarks]]</a></li>
+						<li><a href="{config.relative_path}/user/{userslug}/watched">[[user:watched]]</a></li>
+						<li><a href="{config.relative_path}/user/{userslug}/ignored">[[user:ignored]]</a></li>
+						<!-- IF !reputation:disabled -->
+						<li><a href="{config.relative_path}/user/{userslug}/upvoted">[[global:upvoted]]</a></li>
+						<!-- IF !downvote:disabled -->
+						<li><a href="{config.relative_path}/user/{userslug}/downvoted">[[global:downvoted]]</a></li>
+						<!-- ENDIF !downvote:disabled -->
+						<!-- ENDIF !reputation:disabled -->
+						<li><a href="{config.relative_path}/user/{userslug}/uploads">[[global:uploads]]</a></li>
+						<!-- ENDIF showHidden -->
+
+						<!-- BEGIN profile_links -->
+						<!-- IF @first -->
+						<li class="divider"></li>
+						<!-- ENDIF @first -->
+						<li id="{profile_links.id}" class="plugin-link <!-- IF profile_links.public -->public<!-- ELSE -->private<!-- ENDIF profile_links.public -->"><a href="{config.relative_path}/user/{userslug}/{profile_links.route}"><!-- IF profile_links.icon --><i class="fa fa-fw {profile_links.icon}"></i> <!-- ENDIF profile_links.icon -->{profile_links.name}</a></li>
+						<!-- END profile_links -->
+					</ul>
+				</li>
+			<!-- ENDIF false -->
 		</ul>
 	</div>
 </div>
@@ -234,16 +245,17 @@
 	</div>
 
 	<div class="row">
-		<div class="col-xs-6">
-			<h1 class="section-title">[[pages:account/best, {username}]]</h1>
+		<!-- IF false -->
+			<div class="col-xs-6">
+				<h1 class="section-title">[[pages:account/best, {username}]]</h1>
 
-			<!-- IF !bestPosts.length -->
-			<div class="alert alert-warning">[[user:has_no_posts]]</div>
-			<!-- ENDIF !bestPosts.length -->
+				<!-- IF !bestPosts.length -->
+				<div class="alert alert-warning">[[user:has_no_posts]]</div>
+				<!-- ENDIF !bestPosts.length -->
 
-			<div component="posts" class="posts-list">
-			{{{each bestPosts}}}
-			<div component="post" class="posts-list-item<!-- IF ../deleted --> deleted<!-- ELSE --><!-- IF ../topic.deleted --> deleted<!-- ENDIF ../topic.deleted --><!-- ENDIF ../deleted -->" data-pid="{../pid}" data-uid="{../uid}">
+				<div component="posts" class="posts-list">
+				{{{each bestPosts}}}
+				<div component="post" class="posts-list-item<!-- IF ../deleted --> deleted<!-- ELSE --><!-- IF ../topic.deleted --> deleted<!-- ENDIF ../topic.deleted --><!-- ENDIF ../deleted -->" data-pid="{../pid}" data-uid="{../uid}">
     <div class="post-body">
         <a class="topic-title" href="{config.relative_path}/post/{../pid}">
             <!-- IF !../isMainPost -->RE: <!-- ENDIF !../isMainPost -->{../topic.title}
@@ -256,9 +268,10 @@
         <span class="topic-category"><a href="{config.relative_path}/category/{../category.slug}">[[global:posted_in, {../category.name}]]</a></span> &bull; <span class="timeago" title="{../timestampISO}"></span>
     </div>
 </div>
-			{{{end}}}
+				{{{end}}}
+				</div>
 			</div>
-		</div>
+		<!-- ENDIF false -->
 		<div class="col-xs-6">
 			<h1 class="section-title">[[pages:account/latest-posts, {username}]]</h1>
 
