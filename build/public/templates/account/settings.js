@@ -160,34 +160,18 @@
           "\r\n\t\t\t\t\t</ul>\r\n\t\t\t\t</li>\r\n\t\t\t" :
         "") + 
       "\r\n\t\t</ul>\r\n\t</div>\r\n</div>\r\n\r\n\r\n\t<div class=\"row\">\r\n\t\t<div class=\"col-xs-12\">\r\n\t\t\t" + 
-      (guard((context != null) ? context['allowUserHomePage'] : null) ?
-        "\r\n\t\t\t<h4>[[user:select-homepage]]</h4>\r\n\t\t\t<div class=\"user-setting\">\r\n\t\t\t\t<div class=\"form-group\">\r\n\t\t\t\t\t<label for=\"dailyDigestFreq\">[[user:homepage]]</label>\r\n\t\t\t\t\t<select class=\"form-control\" data-property=\"homePageRoute\">\r\n\t\t\t\t\t\t<option value=\"none\">None</option>\r\n\t\t\t\t\t\t" + 
-          compiled.blocks['homePageRoutes'](helpers, context, guard, iter, helper) + 
-          "\r\n\t\t\t\t\t</select>\r\n\t\t\t\t\t<p class=\"help-block\">[[user:homepage_description]]</p>\r\n\t\t\t\t</div>\r\n\t\t\t\t<div id=\"homePageCustom\" class=\"form-group\" style=\"display: none;\">\r\n\t\t\t\t\t<label for=\"homePageCustom\">[[user:custom_route]]</label>\r\n\t\t\t\t\t<input type=\"text\" class=\"form-control\" data-property=\"homePageCustom\" id=\"homePageCustom\" value=\"" + 
-          __escape(guard((context != null && context['settings'] != null) ? context['settings']['homePageRoute'] : null)) + 
-          "\"/>\r\n\t\t\t\t\t<p class=\"help-block\">[[user:custom_route_help]]</p>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t\t" :
-        "") + 
-      "\r\n\r\n\t\t\t<h4>[[user:browsing]]</h4>\r\n\t\t\t<div class=\"user-setting\">\r\n\t\t\t\t<div class=\"checkbox\">\r\n\t\t\t\t\t<label>\r\n\t\t\t\t\t\t<input type=\"checkbox\" data-property=\"openOutgoingLinksInNewTab\" " + 
-      (guard((context != null && context['settings'] != null) ? context['settings']['openOutgoingLinksInNewTab'] : null) ?
-        "checked" :
-        "") + 
-      "/><i class=\"input-helper\"></i> <strong>[[user:open_links_in_new_tab]]</strong>\r\n\t\t\t\t\t</label>\r\n\t\t\t\t</div>\r\n\t\t\t\t" + 
-      (guard((context != null) ? context['inTopicSearchAvailable'] : null) ?
-        "\r\n\t\t\t\t<div class=\"checkbox\">\r\n\t\t\t\t\t<label>\r\n\t\t\t\t\t\t<input type=\"checkbox\" data-property=\"topicSearchEnabled\" " + 
-          (guard((context != null && context['settings'] != null) ? context['settings']['topicSearchEnabled'] : null) ?
-            "checked" :
+      (guard((context != null) ? context['false'] : null) ?
+        "\r\n\t\t\t\t" + 
+          (guard((context != null) ? context['allowUserHomePage'] : null) ?
+            "\r\n\t\t\t\t<h4>[[user:select-homepage]]</h4>\r\n\t\t\t\t<div class=\"user-setting\">\r\n\t\t\t\t\t<div class=\"form-group\">\r\n\t\t\t\t\t\t<label for=\"dailyDigestFreq\">[[user:homepage]]</label>\r\n\t\t\t\t\t\t<select class=\"form-control\" data-property=\"homePageRoute\">\r\n\t\t\t\t\t\t\t<option value=\"none\">None</option>\r\n\t\t\t\t\t\t\t" + 
+              compiled.blocks['homePageRoutes'](helpers, context, guard, iter, helper) + 
+              "\r\n\t\t\t\t\t\t</select>\r\n\t\t\t\t\t\t<p class=\"help-block\">[[user:homepage_description]]</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t\t<div id=\"homePageCustom\" class=\"form-group\" style=\"display: none;\">\r\n\t\t\t\t\t\t<label for=\"homePageCustom\">[[user:custom_route]]</label>\r\n\t\t\t\t\t\t<input type=\"text\" class=\"form-control\" data-property=\"homePageCustom\" id=\"homePageCustom\" value=\"" + 
+              __escape(guard((context != null && context['settings'] != null) ? context['settings']['homePageRoute'] : null)) + 
+              "\"/>\r\n\t\t\t\t\t\t<p class=\"help-block\">[[user:custom_route_help]]</p>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t</div>\r\n\t\t\t\t" :
             "") + 
-          "/><i class=\"input-helper\"></i> <strong>[[user:enable_topic_searching]]</strong>\r\n\t\t\t\t\t</label>\r\n\t\t\t\t</div>\r\n\t\t\t\t<p class=\"help-block\">[[user:topic_search_help]]</p>\r\n\t\t\t\t" :
+          "\r\n\t\t\t" :
         "") + 
-      "\r\n\t\t\t\t<div class=\"checkbox\">\r\n\t\t\t\t\t<label>\r\n\t\t\t\t\t\t<input type=\"checkbox\" data-property=\"updateUrlWithPostIndex\" " + 
-      (guard((context != null && context['settings'] != null) ? context['settings']['updateUrlWithPostIndex'] : null) ?
-        "checked" :
-        "") + 
-      "/> <strong>[[user:update_url_with_post_index]]</strong>\r\n\t\t\t\t\t</label>\r\n\t\t\t\t</div>\r\n\t\t\t\t<div class=\"checkbox\">\r\n\t\t\t\t\t<label>\r\n\t\t\t\t\t\t<input type=\"checkbox\" data-property=\"scrollToMyPost\" " + 
-      (guard((context != null && context['settings'] != null) ? context['settings']['scrollToMyPost'] : null) ?
-        "checked" :
-        "") + 
-      "/><i class=\"input-helper\"></i> <strong>[[user:scroll_to_my_post]]</strong>\r\n\t\t\t\t\t</label>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\r\n\t\t\t<h4>[[global:privacy]]</h4>\r\n\t\t\t<div class=\"user-setting\">\r\n\t\t\t\t" + 
+      "\r\n\r\n\t\t\t<h4>[[global:privacy]]</h4>\r\n\t\t\t<div class=\"user-setting\">\r\n\t\t\t\t" + 
       (guard((context != null) ? context['hideEmail'] : null) ?
         "" :
         "\r\n\t\t\t\t<div class=\"checkbox\">\r\n\t\t\t\t\t<label>\r\n\t\t\t\t\t\t<input type=\"checkbox\" data-property=\"showemail\" " + 
@@ -212,32 +196,60 @@
             "") + 
           "/><i class=\"input-helper\"></i> <strong>[[user:restrict_chats]]</strong>\r\n\t\t\t\t\t</label>\r\n\t\t\t\t</div>\r\n\t\t\t\t") + 
       "\r\n\t\t\t</div>\r\n\r\n\t\t\t" + 
+      (guard((context != null) ? context['false'] : null) ?
+        "\r\n\t\t\t<h4>[[user:browsing]]</h4>\r\n\t\t\t<div class=\"user-setting\">\r\n\t\t\t\t<div class=\"checkbox\">\r\n\t\t\t\t\t<label>\r\n\t\t\t\t\t\t<input type=\"checkbox\" data-property=\"openOutgoingLinksInNewTab\" " + 
+          (guard((context != null && context['settings'] != null) ? context['settings']['openOutgoingLinksInNewTab'] : null) ?
+            "checked" :
+            "") + 
+          "/><i class=\"input-helper\"></i> <strong>[[user:open_links_in_new_tab]]</strong>\r\n\t\t\t\t\t</label>\r\n\t\t\t\t</div>\r\n\t\t\t\t" + 
+          (guard((context != null) ? context['inTopicSearchAvailable'] : null) ?
+            "\r\n\t\t\t\t<div class=\"checkbox\">\r\n\t\t\t\t\t<label>\r\n\t\t\t\t\t\t<input type=\"checkbox\" data-property=\"topicSearchEnabled\" " + 
+              (guard((context != null && context['settings'] != null) ? context['settings']['topicSearchEnabled'] : null) ?
+                "checked" :
+                "") + 
+              "/><i class=\"input-helper\"></i> <strong>[[user:enable_topic_searching]]</strong>\r\n\t\t\t\t\t</label>\r\n\t\t\t\t</div>\r\n\t\t\t\t<p class=\"help-block\">[[user:topic_search_help]]</p>\r\n\t\t\t\t" :
+            "") + 
+          "\r\n\t\t\t\t<div class=\"checkbox\">\r\n\t\t\t\t\t<label>\r\n\t\t\t\t\t\t<input type=\"checkbox\" data-property=\"updateUrlWithPostIndex\" " + 
+          (guard((context != null && context['settings'] != null) ? context['settings']['updateUrlWithPostIndex'] : null) ?
+            "checked" :
+            "") + 
+          "/> <strong>[[user:update_url_with_post_index]]</strong>\r\n\t\t\t\t\t</label>\r\n\t\t\t\t</div>\r\n\t\t\t\t<div class=\"checkbox\">\r\n\t\t\t\t\t<label>\r\n\t\t\t\t\t\t<input type=\"checkbox\" data-property=\"scrollToMyPost\" " + 
+          (guard((context != null && context['settings'] != null) ? context['settings']['scrollToMyPost'] : null) ?
+            "checked" :
+            "") + 
+          "/><i class=\"input-helper\"></i> <strong>[[user:scroll_to_my_post]]</strong>\r\n\t\t\t\t\t</label>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t\t" :
+        "") + 
+      "\r\n\r\n\r\n\r\n\t\t\t" + 
       (guard((context != null) ? context['disableEmailSubscriptions'] : null) ?
         "" :
         "\r\n\t\t\t<h4>[[global:email]]</h4>\r\n\t\t\t<div class=\"user-setting\">\r\n\t\t\t\t<div class=\"form-group\">\r\n\t\t\t\t\t<label for=\"dailyDigestFreq\">[[user:digest_label]]</label>\r\n\t\t\t\t\t<select class=\"form-control\" id=\"dailyDigestFreq\" data-property=\"dailyDigestFreq\" autocomplete=\"off\">\r\n\t\t\t\t\t\t" + 
           compiled.blocks['dailyDigestFreqOptions'](helpers, context, guard, iter, helper) + 
           "\r\n\t\t\t\t\t</select>\r\n\t\t\t\t\t<p class=\"help-block\">[[user:digest_description]]</p>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t\t") + 
-      "\r\n\r\n\t\t\t<h4>[[topic:watch]]</h4>\r\n\t\t\t<div class=\"user-setting\">\r\n\t\t\t\t<div class=\"checkbox\">\r\n\t\t\t\t\t<label>\r\n\t\t\t\t\t\t<input type=\"checkbox\" data-property=\"followTopicsOnCreate\" " + 
-      (guard((context != null && context['settings'] != null) ? context['settings']['followTopicsOnCreate'] : null) ?
-        "checked " :
+      "\r\n\r\n\t\t\t" + 
+      (guard((context != null) ? context['false'] : null) ?
+        "\r\n\t\t\t<h4>[[topic:watch]]</h4>\r\n\t\t\t<div class=\"user-setting\">\r\n\t\t\t\t<div class=\"checkbox\">\r\n\t\t\t\t\t<label>\r\n\t\t\t\t\t\t<input type=\"checkbox\" data-property=\"followTopicsOnCreate\" " + 
+          (guard((context != null && context['settings'] != null) ? context['settings']['followTopicsOnCreate'] : null) ?
+            "checked " :
+            "") + 
+          "/><i class=\"input-helper\"></i> <strong>[[user:follow_topics_you_create]]</strong>\r\n\t\t\t\t\t</label>\r\n\t\t\t\t</div>\r\n\t\t\t\t<div class=\"checkbox\">\r\n\t\t\t\t\t<label>\r\n\t\t\t\t\t\t<input type=\"checkbox\" data-property=\"followTopicsOnReply\" " + 
+          (guard((context != null && context['settings'] != null) ? context['settings']['followTopicsOnReply'] : null) ?
+            "checked" :
+            "") + 
+          "/><i class=\"input-helper\"></i> <strong>[[user:follow_topics_you_reply_to]]</strong>\r\n\t\t\t\t\t</label>\r\n\t\t\t\t</div>\r\n\t\t\t\t<div class=\"form-group\">\r\n\t\t\t\t\t<label>[[user:default-category-watch-state]]</label>\r\n\t\t\t\t\t<select class=\"form-control\" data-property=\"categoryWatchState\">\r\n\t\t\t\t\t\t<option value=\"watching\" " + 
+          (guard((context != null && context['categoryWatchState'] != null) ? context['categoryWatchState']['watching'] : null) ?
+            "selected" :
+            "") + 
+          ">[[category:watching]]</option>\r\n\t\t\t\t\t\t<option value=\"notwatching\" " + 
+          (guard((context != null && context['categoryWatchState'] != null) ? context['categoryWatchState']['notwatching'] : null) ?
+            "selected" :
+            "") + 
+          ">[[category:not-watching]]</option>\r\n\t\t\t\t\t\t<option value=\"ignoring\" " + 
+          (guard((context != null && context['categoryWatchState'] != null) ? context['categoryWatchState']['ignoring'] : null) ?
+            "selected" :
+            "") + 
+          ">[[category:ignoring]]</option>\r\n\t\t\t\t\t</select>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t\t" :
         "") + 
-      "/><i class=\"input-helper\"></i> <strong>[[user:follow_topics_you_create]]</strong>\r\n\t\t\t\t\t</label>\r\n\t\t\t\t</div>\r\n\t\t\t\t<div class=\"checkbox\">\r\n\t\t\t\t\t<label>\r\n\t\t\t\t\t\t<input type=\"checkbox\" data-property=\"followTopicsOnReply\" " + 
-      (guard((context != null && context['settings'] != null) ? context['settings']['followTopicsOnReply'] : null) ?
-        "checked" :
-        "") + 
-      "/><i class=\"input-helper\"></i> <strong>[[user:follow_topics_you_reply_to]]</strong>\r\n\t\t\t\t\t</label>\r\n\t\t\t\t</div>\r\n\t\t\t\t<div class=\"form-group\">\r\n\t\t\t\t\t<label>[[user:default-category-watch-state]]</label>\r\n\t\t\t\t\t<select class=\"form-control\" data-property=\"categoryWatchState\">\r\n\t\t\t\t\t\t<option value=\"watching\" " + 
-      (guard((context != null && context['categoryWatchState'] != null) ? context['categoryWatchState']['watching'] : null) ?
-        "selected" :
-        "") + 
-      ">[[category:watching]]</option>\r\n\t\t\t\t\t\t<option value=\"notwatching\" " + 
-      (guard((context != null && context['categoryWatchState'] != null) ? context['categoryWatchState']['notwatching'] : null) ?
-        "selected" :
-        "") + 
-      ">[[category:not-watching]]</option>\r\n\t\t\t\t\t\t<option value=\"ignoring\" " + 
-      (guard((context != null && context['categoryWatchState'] != null) ? context['categoryWatchState']['ignoring'] : null) ?
-        "selected" :
-        "") + 
-      ">[[category:ignoring]]</option>\r\n\t\t\t\t\t</select>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\r\n\t\t\t<h4>[[global:pagination]]</h4>\r\n\t\t\t<div class=\"user-setting\">\r\n\t\t\t\t<div class=\"checkbox\">\r\n\t\t\t\t\t<label>\r\n\t\t\t\t\t\t<input type=\"checkbox\" data-property=\"usePagination\" " + 
+      "\r\n\r\n\t\t\t<h4>[[global:pagination]]</h4>\r\n\t\t\t<div class=\"user-setting\">\r\n\t\t\t\t<div class=\"checkbox\">\r\n\t\t\t\t\t<label>\r\n\t\t\t\t\t\t<input type=\"checkbox\" data-property=\"usePagination\" " + 
       (guard((context != null && context['settings'] != null) ? context['settings']['usePagination'] : null) ?
         "checked" :
         "") + 
@@ -261,11 +273,15 @@
             "") + 
           "\r\n\t\t\t\t" :
         "") + 
-      "\r\n\t\t\t</div>\r\n\r\n\t\t\t<h4>[[user:notifications]]</h4>\r\n\t\t\t<div class=\"user-setting\">\r\n\t\t\t\t" + 
-      compiled.blocks['notificationSettings'](helpers, context, guard, iter, helper) + 
-      "\r\n\r\n\t\t\t\t<label for=\"upvote-notif-freq\">[[user:upvote-notif-freq]]</label>\r\n\t\t\t\t<div class=\"row\">\r\n\t\t\t\t\t<div class=\"form-group col-xs-12\">\r\n\t\t\t\t\t\t<select class=\"form-control\" id=\"upvote-notif-freq\" name=\"upvote-notif-freq\" data-property=\"upvoteNotifFreq\">\r\n\t\t\t\t\t\t\t" + 
-      compiled.blocks['upvoteNotifFreq'](helpers, context, guard, iter, helper) + 
-      "\r\n\t\t\t\t\t\t</select>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\r\n\t\t\t" + 
+      "\r\n\t\t\t</div>\r\n\r\n\t\t\t" + 
+      (guard((context != null) ? context['false'] : null) ?
+        "\r\n\t\t\t<h4>[[user:notifications]]</h4>\r\n\t\t\t<div class=\"user-setting\">\r\n\t\t\t\t" + 
+          compiled.blocks['notificationSettings'](helpers, context, guard, iter, helper) + 
+          "\r\n\r\n\t\t\t\t<label for=\"upvote-notif-freq\">[[user:upvote-notif-freq]]</label>\r\n\t\t\t\t<div class=\"row\">\r\n\t\t\t\t\t<div class=\"form-group col-xs-12\">\r\n\t\t\t\t\t\t<select class=\"form-control\" id=\"upvote-notif-freq\" name=\"upvote-notif-freq\" data-property=\"upvoteNotifFreq\">\r\n\t\t\t\t\t\t\t" + 
+          compiled.blocks['upvoteNotifFreq'](helpers, context, guard, iter, helper) + 
+          "\r\n\t\t\t\t\t\t</select>\r\n\t\t\t\t\t</div>\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t\t" :
+        "") + 
+      "\r\n\r\n\t\t\t" + 
       compiled.blocks['customSettings'](helpers, context, guard, iter, helper) + 
       "\r\n\r\n\t\t</div>\r\n\t</div>\r\n\t<div class=\"form-actions\">\r\n\t\t<a id=\"submitBtn\" href=\"#\" class=\"btn btn-primary\">[[global:save_changes]]</a>\r\n\t</div>\r\n</div>";
   }
@@ -354,7 +370,7 @@
       var value = context;
       return iter(guard((context != null) ? context['homePageRoutes'] : null), function each(key0, index, length, value) {
         var key = key0;
-        return "\r\n\t\t\t\t\t\t<option value=\"" + 
+        return "\r\n\t\t\t\t\t\t\t<option value=\"" + 
           __escape(guard((context != null && context['homePageRoutes'] != null && context['homePageRoutes'][key0] != null) ? context['homePageRoutes'][key0]['route'] : null)) + 
           "\" " + 
           (guard((context != null && context['homePageRoutes'] != null && context['homePageRoutes'][key0] != null) ? context['homePageRoutes'][key0]['selected'] : null) ?
@@ -362,7 +378,7 @@
             "") + 
           ">" + 
           __escape(guard((context != null && context['homePageRoutes'] != null && context['homePageRoutes'][key0] != null) ? context['homePageRoutes'][key0]['name'] : null)) + 
-          "</option>\r\n\t\t\t\t\t\t";
+          "</option>\r\n\t\t\t\t\t\t\t";
       }, function alt() {
         return "";
       });

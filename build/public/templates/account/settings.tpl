@@ -115,53 +115,28 @@
 
 	<div class="row">
 		<div class="col-xs-12">
-			<!-- IF allowUserHomePage -->
-			<h4>[[user:select-homepage]]</h4>
-			<div class="user-setting">
-				<div class="form-group">
-					<label for="dailyDigestFreq">[[user:homepage]]</label>
-					<select class="form-control" data-property="homePageRoute">
-						<option value="none">None</option>
-						<!-- BEGIN homePageRoutes -->
-						<option value="{homePageRoutes.route}" <!-- IF homePageRoutes.selected -->selected="1"<!-- ENDIF homePageRoutes.selected -->>{homePageRoutes.name}</option>
-						<!-- END homePageRoutes -->
-					</select>
-					<p class="help-block">[[user:homepage_description]]</p>
+			<!-- IF false -->
+				<!-- IF allowUserHomePage -->
+				<h4>[[user:select-homepage]]</h4>
+				<div class="user-setting">
+					<div class="form-group">
+						<label for="dailyDigestFreq">[[user:homepage]]</label>
+						<select class="form-control" data-property="homePageRoute">
+							<option value="none">None</option>
+							<!-- BEGIN homePageRoutes -->
+							<option value="{homePageRoutes.route}" <!-- IF homePageRoutes.selected -->selected="1"<!-- ENDIF homePageRoutes.selected -->>{homePageRoutes.name}</option>
+							<!-- END homePageRoutes -->
+						</select>
+						<p class="help-block">[[user:homepage_description]]</p>
+					</div>
+					<div id="homePageCustom" class="form-group" style="display: none;">
+						<label for="homePageCustom">[[user:custom_route]]</label>
+						<input type="text" class="form-control" data-property="homePageCustom" id="homePageCustom" value="{settings.homePageRoute}"/>
+						<p class="help-block">[[user:custom_route_help]]</p>
+					</div>
 				</div>
-				<div id="homePageCustom" class="form-group" style="display: none;">
-					<label for="homePageCustom">[[user:custom_route]]</label>
-					<input type="text" class="form-control" data-property="homePageCustom" id="homePageCustom" value="{settings.homePageRoute}"/>
-					<p class="help-block">[[user:custom_route_help]]</p>
-				</div>
-			</div>
-			<!-- ENDIF allowUserHomePage -->
-
-			<h4>[[user:browsing]]</h4>
-			<div class="user-setting">
-				<div class="checkbox">
-					<label>
-						<input type="checkbox" data-property="openOutgoingLinksInNewTab" <!-- IF settings.openOutgoingLinksInNewTab -->checked<!-- ENDIF settings.openOutgoingLinksInNewTab -->/><i class="input-helper"></i> <strong>[[user:open_links_in_new_tab]]</strong>
-					</label>
-				</div>
-				<!-- IF inTopicSearchAvailable -->
-				<div class="checkbox">
-					<label>
-						<input type="checkbox" data-property="topicSearchEnabled" <!-- IF settings.topicSearchEnabled -->checked<!-- ENDIF settings.topicSearchEnabled -->/><i class="input-helper"></i> <strong>[[user:enable_topic_searching]]</strong>
-					</label>
-				</div>
-				<p class="help-block">[[user:topic_search_help]]</p>
-				<!-- ENDIF inTopicSearchAvailable -->
-				<div class="checkbox">
-					<label>
-						<input type="checkbox" data-property="updateUrlWithPostIndex" {{{ if settings.updateUrlWithPostIndex }}}checked{{{ end }}}/> <strong>[[user:update_url_with_post_index]]</strong>
-					</label>
-				</div>
-				<div class="checkbox">
-					<label>
-						<input type="checkbox" data-property="scrollToMyPost" <!-- IF settings.scrollToMyPost -->checked<!-- ENDIF settings.scrollToMyPost -->/><i class="input-helper"></i> <strong>[[user:scroll_to_my_post]]</strong>
-					</label>
-				</div>
-			</div>
+				<!-- ENDIF allowUserHomePage -->
+			<!-- ENDIF false  -->
 
 			<h4>[[global:privacy]]</h4>
 			<div class="user-setting">
@@ -189,6 +164,37 @@
 				<!-- ENDIF !config.disableChat -->
 			</div>
 
+			<!-- IF false -->
+			<h4>[[user:browsing]]</h4>
+			<div class="user-setting">
+				<div class="checkbox">
+					<label>
+						<input type="checkbox" data-property="openOutgoingLinksInNewTab" <!-- IF settings.openOutgoingLinksInNewTab -->checked<!-- ENDIF settings.openOutgoingLinksInNewTab -->/><i class="input-helper"></i> <strong>[[user:open_links_in_new_tab]]</strong>
+					</label>
+				</div>
+				<!-- IF inTopicSearchAvailable -->
+				<div class="checkbox">
+					<label>
+						<input type="checkbox" data-property="topicSearchEnabled" <!-- IF settings.topicSearchEnabled -->checked<!-- ENDIF settings.topicSearchEnabled -->/><i class="input-helper"></i> <strong>[[user:enable_topic_searching]]</strong>
+					</label>
+				</div>
+				<p class="help-block">[[user:topic_search_help]]</p>
+				<!-- ENDIF inTopicSearchAvailable -->
+				<div class="checkbox">
+					<label>
+						<input type="checkbox" data-property="updateUrlWithPostIndex" {{{ if settings.updateUrlWithPostIndex }}}checked{{{ end }}}/> <strong>[[user:update_url_with_post_index]]</strong>
+					</label>
+				</div>
+				<div class="checkbox">
+					<label>
+						<input type="checkbox" data-property="scrollToMyPost" <!-- IF settings.scrollToMyPost -->checked<!-- ENDIF settings.scrollToMyPost -->/><i class="input-helper"></i> <strong>[[user:scroll_to_my_post]]</strong>
+					</label>
+				</div>
+			</div>
+			<!-- ENDIF false -->
+
+
+
 			<!-- IF !disableEmailSubscriptions -->
 			<h4>[[global:email]]</h4>
 			<div class="user-setting">
@@ -204,6 +210,7 @@
 			</div>
 			<!-- ENDIF !disableEmailSubscriptions -->
 
+			<!-- IF false -->
 			<h4>[[topic:watch]]</h4>
 			<div class="user-setting">
 				<div class="checkbox">
@@ -225,6 +232,7 @@
 					</select>
 				</div>
 			</div>
+			<!-- ENDIF false -->
 
 			<h4>[[global:pagination]]</h4>
 			<div class="user-setting">
@@ -272,6 +280,7 @@
 				<!-- ENDIF isAdmin -->
 			</div>
 
+			<!-- IF false -->
 			<h4>[[user:notifications]]</h4>
 			<div class="user-setting">
 				<!-- BEGIN notificationSettings -->
@@ -301,6 +310,7 @@
 					</div>
 				</div>
 			</div>
+			<!-- ENDIF false -->
 
 			<!-- BEGIN customSettings -->
 			<h4>{customSettings.title}</h4>

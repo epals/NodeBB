@@ -89,6 +89,7 @@
     "nodebb-plugin-dbsearch": "4.2.0",
     "nodebb-plugin-emoji": "^3.5.0",
     "nodebb-plugin-emoji-android": "2.0.5",
+    "nodebb-plugin-emoji-apple": "^2.0.5",
     "nodebb-plugin-markdown": "8.12.7",
     "nodebb-plugin-mentions": "2.13.9",
     "nodebb-plugin-s3-uploads-updated-again": "^0.4.0",
