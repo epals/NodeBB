@@ -1,1 +1,6 @@
-{"post-cache":"Postituste vahemälu","percent-full":"%1% Täis","post-cache-size":"Postituse vahemälu suurus","items-in-cache":"Esemed vahemälus"}
+{
+  "post-cache": "Postituste vahemälu",
+  "percent-full": "%1% Täis",
+  "post-cache-size": "Postituse vahemälu suurus",
+  "items-in-cache": "Esemed vahemälus"
+}

@@ -51,7 +51,7 @@
       __escape(guard((context != null && context['category'] != null) ? context['category']['cid'] : null)) + 
       "-color\" placeholder=\"#ffffff\" data-name=\"color\" value=\"" + 
       __escape(guard((context != null && context['category'] != null) ? context['category']['color'] : null)) + 
-      "\" class=\"form-control category_color\" />\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\t\t\t\t\t<div class=\"col-sm-4 col-xs-12\">\n\t\t\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t\t\t<label for=\"cid-" + 
+      "\" class=\"form-control category_color\" />\n\t\t\t\t\t\t</div>\n\t\t\t\t\t</div>\n\n\t\t\t\t\t<div class=\"col-sm-4 col-xs-12\">\n\t\t\t\t\t\t<div class=\"form-group\">\n\t\t\t\t\t\t\t<label for=\"cid-" + 
       __escape(guard((context != null && context['category'] != null) ? context['category']['cid'] : null)) + 
       "-imageClass\">\n\t\t\t\t\t\t\t\t[[admin/manage/categories:bg-image-size]]\n\t\t\t\t\t\t\t</label>\n\t\t\t\t\t\t\t<select id=\"cid-" + 
       __escape(guard((context != null && context['category'] != null) ? context['category']['cid'] : null)) + 

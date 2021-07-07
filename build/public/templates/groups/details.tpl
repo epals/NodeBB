@@ -1062,7 +1062,7 @@
 	</div>
 	<p class="help-block text-center">
 		For a full list of icons, please consult:
-		<a href="http://fortawesome.github.io/Font-Awesome/icons/">FontAwesome</a>
+		<a href="https://fontawesome.com/v4.7/icons/">FontAwesome</a>"
 	</p>
 </div>
 									</div>

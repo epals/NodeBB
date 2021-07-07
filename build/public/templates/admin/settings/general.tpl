@@ -199,6 +199,18 @@
 	</div>
 </div>
 
+<div class="row">
+	<div class="col-sm-2 col-xs-12 settings-header">[[admin/settings/general:topic-tools]]</div>
+	<div class="col-sm-10 col-xs-12">
+		<form>
+			<label>[[admin/settings/general:undo-timeout]]</label>
+			<input type="text" class="form-control" placeholder="10000" data-field="undoTimeout" />
+			<p class="help-block">
+				[[admin/settings/general:undo-timeout-help]]
+			</p>
+		</form>
+	</div>
+</div>
 </div>
 
 <button id="save" class="floating-button mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">

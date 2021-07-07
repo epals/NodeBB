@@ -1,2 +1,0 @@
-"use strict";define("forum/account/best",["forum/account/header","forum/account/posts"],function(n,t){var o={};o.init=function(){n.init();$('[component="post/content"] img:not(.not-responsive)').addClass("img-responsive");t.handleInfiniteScroll("account/best")};return o});
-//# sourceMappingURL=best.js.map

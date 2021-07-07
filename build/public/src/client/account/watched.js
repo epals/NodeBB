@@ -1,2 +1,0 @@
-"use strict";define("forum/account/watched",["forum/account/header","forum/account/topics"],function(c,n){var t={};t.init=function(){c.init();n.handleInfiniteScroll("account/watched")};return t});
-//# sourceMappingURL=watched.js.map

@@ -1,2 +1,0 @@
-"use strict";define("forum/account/ignored",["forum/account/header","forum/account/topics"],function(n,c){var i={};i.init=function(){n.init();c.handleInfiniteScroll("account/ignored")};return i});
-//# sourceMappingURL=ignored.js.map
