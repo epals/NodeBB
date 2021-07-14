@@ -22,22 +22,6 @@
 			</div>
 		</nav>
 		<div class="row title-container">
-			<!-- IF showHandleInput -->
-			<div data-component="composer/handle">
-				<input class="handle form-control" type="text" tabindex="1" placeholder="[[topic:composer.handle_placeholder]]" value="{handle}" />
-			</div>
-			<!-- ENDIF showHandleInput -->
-			<div data-component="composer/title">
-				<!-- IF isTopicOrMain -->
-				<input class="title form-control" type="text" tabindex="1" placeholder="[[topic:composer.title_placeholder]]" value="{title}"/>
-				<!-- ELSE -->
-				<span class="title form-control">[[topic:composer.replying_to, "{title}"]]</span>
-				<!-- ENDIF isTopicOrMain -->
-				<div id="quick-search-container" class="quick-search-container hidden">
-					<div class="quick-search-results-container"></div>
-				</div>
-			</div>
-
 			{{{ if isTopic }}}
 			<div class="category-list-container hidden-sm hidden-xs">
 				<div component="category-selector" class="btn-group bottom-sheet">
@@ -62,6 +46,23 @@
 			</div>
 			{{{ end }}}
 
+			<!-- IF showHandleInput -->
+			<div data-component="composer/handle">
+				<input class="handle form-control" type="text" tabindex="1" placeholder="[[topic:composer.handle_placeholder]]" value="{handle}" />
+			</div>
+			<!-- ENDIF showHandleInput -->
+			<div data-component="composer/title">
+				<!-- IF isTopicOrMain -->
+				<input class="title form-control" type="text" tabindex="1" placeholder="[[topic:composer.title_placeholder]]" value="{title}"/>
+				<!-- ELSE -->
+				<span class="title form-control">[[topic:composer.replying_to, "{title}"]]</span>
+				<!-- ENDIF isTopicOrMain -->
+				<div id="quick-search-container" class="quick-search-container hidden">
+					<div class="text-center loading-indicator"><i class="fa fa-spinner fa-spin"></i></div>
+					<div class="quick-search-results-container"></div>
+				</div>
+			</div>
+
 			<div class="pull-right draft-icon hidden-xs hidden-sm"></div>
 
 			<div class="display-scheduler pull-right hidden-sm hidden-xs{{{ if !canSchedule }}} hidden{{{ end }}}">
@@ -82,58 +83,25 @@
 						<!-- IF formatting.spacer -->
 						<li class="spacer"></li>
 						<!-- ELSE -->
-						<!-- IF !formatting.mobile -->
+						{{{ if (./visibility.desktop && ((isTopicOrMain && ./visibility.main) || (!isTopicOrMain && ./visibility.reply))) }}}
 						<li tabindex="-1" data-format="{formatting.name}" title="{formatting.title}"><i class="{formatting.className}"></i></li>
-						<!-- ENDIF !formatting.mobile -->
+						{{{ end }}}
 						<!-- ENDIF formatting.spacer -->
 					<!-- END formatting -->
 
-					<!--[if gte IE 9]><!-->
-						<!-- IF privileges.upload:post:image -->
-						<li class="img-upload-btn hide" data-format="picture" tabindex="-1" title="[[modules:composer.upload-picture]]">
-							<i class="fa fa-file-image-o"></i>
-						</li>
-						<!-- ENDIF privileges.upload:post:image -->
-						<!-- IF privileges.upload:post:file -->
-						<li class="file-upload-btn hide" data-format="upload" tabindex="-1" title="[[modules:composer.upload-file]]">
-							<span class="fa-stack">
-								<i class="fa fa-file-o fa-stack-1x"></i>
-								<i class="fa fa-arrow-up fa-stack-1x"></i>
-							</span>
-						</li>
-						<!-- ENDIF privileges.upload:post:file -->
-					<!--<![endif]-->
-
-					<!-- IF allowTopicsThumbnail -->
-					<li tabindex="-1">
-						<i class="fa fa-th-large topic-thumb-btn topic-thumb-toggle-btn hide" title="[[topic:composer.thumb_title]]"></i>
+					<!-- IF privileges.upload:post:image -->
+					<li class="img-upload-btn" data-format="picture" tabindex="-1" title="[[modules:composer.upload-picture]]">
+						<i class="fa fa-file-image-o"></i>
 					</li>
-					<div class="topic-thumb-container center-block hide">
-						<form id="thumbForm" method="post" class="topic-thumb-form form-inline" enctype="multipart/form-data">
-							<img class="topic-thumb-preview"></img>
-							<div class="form-group">
-								<label for="topic-thumb-url">[[topic:composer.thumb_url_label]]</label>
-								<input type="text" id="topic-thumb-url" class="form-control" placeholder="[[topic:composer.thumb_url_placeholder]]" />
-							</div>
-							<div class="form-group">
-								<label for="topic-thumb-file">[[topic:composer.thumb_file_label]]</label>
-								<input type="file" id="topic-thumb-file" class="form-control" />
-							</div>
-							<div class="form-group topic-thumb-ctrl">
-								<i class="fa fa-spinner fa-spin hide topic-thumb-spinner" title="[[topic:composer.uploading]]"></i>
-								<i class="fa fa-times topic-thumb-btn hide topic-thumb-clear-btn" title="[[topic:composer.thumb_remove]]"></i>
-							</div>
-						</form>
-					</div>
-					<!-- ENDIF allowTopicsThumbnail -->
+					<!-- ENDIF privileges.upload:post:image -->
+					<!-- IF privileges.upload:post:file -->
+					<li class="file-upload-btn" data-format="upload" tabindex="-1" title="[[modules:composer.upload-file]]">
+						<i class="fa fa-file-o"></i>
+					</li>
+					<!-- ENDIF privileges.upload:post:file -->
 
 					<form id="fileForm" method="post" enctype="multipart/form-data">
-						<!--[if gte IE 9]><!-->
-							<input type="file" id="files" name="files[]" multiple class="gte-ie9 hide"/>
-						<!--<![endif]-->
-						<!--[if lt IE 9]>
-							<input type="file" id="files" name="files[]" class="lt-ie9 hide" value="Upload"/>
-						<![endif]-->
+						<input type="file" id="files" name="files[]" multiple class="gte-ie9 hide"/>
 					</form>
 				</ul>
 			</div>
@@ -141,8 +109,18 @@
 
 		<div class="row write-preview-container">
 			<div class="write-container">
-				<div></div>
-				<textarea></textarea>
+				<div class="help-text">
+					<span class="help hidden">[[modules:composer.compose]] <i class="fa fa-question-circle"></i></span>
+					<span class="toggle-preview hide">[[modules:composer.show_preview]]</span>
+				</div>
+				<div class="pull-right draft-icon hidden-md hidden-lg"></div>
+				<textarea class="write" tabindex="4" placeholder="[[modules:composer.textarea.placeholder]]"></textarea>
+			</div>
+			<div class="hidden-sm hidden-xs preview-container">
+				<div class="help-text">
+					<span class="toggle-preview">[[modules:composer.hide_preview]]</span>
+				</div>
+				<div class="preview well"></div>
 			</div>
 		</div>
 
@@ -165,6 +143,12 @@
 			</div>
 		</div>
 		<!-- ENDIF isTopicOrMain -->
+
+		<!-- IF isTopic -->
+		<ul class="category-selector visible-xs visible-sm">
+
+		</ul>
+		<!-- ENDIF isTopic -->
 
 		<div class="imagedrop"><div>[[topic:composer.drag_and_drop_images]]</div></div>
 
