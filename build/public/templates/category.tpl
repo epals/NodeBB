@@ -120,6 +120,7 @@
 				<div class="alert alert-warning hide" id="new-topics-alert"></div>
 			</a>
 
+			<!-- IF privileges.topics:read -->
 			<span class="pull-right" component="category/controls">
 				<!-- IF config.loggedIn -->
 <div class="btn-group topic-watch-dropdown bottom-sheet" component="topic/watch">
@@ -232,8 +233,10 @@
 </div>
 <!-- ENDIF privileges.editable -->
 			</span>
+			<!-- ENDIF privileges.topics:read -->
 		</div>
 
+		<!-- IF privileges.topics:read -->
 		<hr class="hidden-xs" />
 
 		<h4 class="hidden-xs">{name}</h4>
@@ -378,6 +381,7 @@
 	</ul>
 </div>
 		<!-- ENDIF config.usePagination -->
+		<!-- ENDIF privileges.topics:read -->
 	</div>
 </div>
 

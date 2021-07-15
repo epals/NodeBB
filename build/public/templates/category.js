@@ -62,115 +62,123 @@
           "\r\n\t\t\t") + 
       "\r\n\r\n\t\t\t<a href=\"" + 
       __escape(guard((context != null) ? context['url'] : null)) + 
-      "\" class=\"inline-block\">\r\n\t\t\t\t<div class=\"alert alert-warning hide\" id=\"new-topics-alert\"></div>\r\n\t\t\t</a>\r\n\r\n\t\t\t<span class=\"pull-right\" component=\"category/controls\">\r\n\t\t\t\t" + 
-      (guard((context != null && context['config'] != null) ? context['config']['loggedIn'] : null) ?
-        "\r\n<div class=\"btn-group topic-watch-dropdown bottom-sheet\" component=\"topic/watch\">\r\n\r\n\t<button class=\"btn btn-default dropdown-toggle\" data-toggle=\"dropdown\" type=\"button\">\r\n\t\t<span component=\"category/watching/menu\" " + 
-          (guard((context != null) ? context['isWatched'] : null) ?
-            "" :
-            "class=\"hidden\"") + 
-          "><i class=\"fa fa-fw fa-inbox\"></i><span class=\"visible-sm-inline visible-md-inline visible-lg-inline\">[[category:watching]]</span></span>\r\n\t\t<span component=\"category/notwatching/menu\" " + 
-          (guard((context != null) ? context['isNotWatched'] : null) ?
-            "" :
-            "class=\"hidden\"") + 
-          "><i class=\"fa fa-fw fa-clock-o\"></i><span class=\"visible-sm-inline visible-md-inline visible-lg-inline\">[[category:not-watching]]</span></span>\r\n\t\t<span component=\"category/ignoring/menu\" " + 
-          (guard((context != null) ? context['isIgnored'] : null) ?
-            "" :
-            "class=\"hidden\"") + 
-          "><i class=\"fa fa-fw fa-eye-slash\"></i><span class=\"visible-sm-inline visible-md-inline visible-lg-inline\">[[category:ignoring]]</span></span>\r\n\t\t<span class=\"caret\"></span>\r\n\t</button>\r\n\r\n\t<ul class=\"dropdown-menu dropdown-menu-right\">\r\n\t\t<li><a href=\"#\" component=\"category/watching\" data-state=\"watching\"><i component=\"category/watching/check\" class=\"fa fa-fw " + 
-          (guard((context != null) ? context['isWatched'] : null) ?
-            "fa-check" :
+      "\" class=\"inline-block\">\r\n\t\t\t\t<div class=\"alert alert-warning hide\" id=\"new-topics-alert\"></div>\r\n\t\t\t</a>\r\n\r\n\t\t\t" + 
+      (guard((context != null && context['privileges'] != null) ? context['privileges']['topics:read'] : null) ?
+        "\r\n\t\t\t<span class=\"pull-right\" component=\"category/controls\">\r\n\t\t\t\t" + 
+          (guard((context != null && context['config'] != null) ? context['config']['loggedIn'] : null) ?
+            "\r\n<div class=\"btn-group topic-watch-dropdown bottom-sheet\" component=\"topic/watch\">\r\n\r\n\t<button class=\"btn btn-default dropdown-toggle\" data-toggle=\"dropdown\" type=\"button\">\r\n\t\t<span component=\"category/watching/menu\" " + 
+              (guard((context != null) ? context['isWatched'] : null) ?
+                "" :
+                "class=\"hidden\"") + 
+              "><i class=\"fa fa-fw fa-inbox\"></i><span class=\"visible-sm-inline visible-md-inline visible-lg-inline\">[[category:watching]]</span></span>\r\n\t\t<span component=\"category/notwatching/menu\" " + 
+              (guard((context != null) ? context['isNotWatched'] : null) ?
+                "" :
+                "class=\"hidden\"") + 
+              "><i class=\"fa fa-fw fa-clock-o\"></i><span class=\"visible-sm-inline visible-md-inline visible-lg-inline\">[[category:not-watching]]</span></span>\r\n\t\t<span component=\"category/ignoring/menu\" " + 
+              (guard((context != null) ? context['isIgnored'] : null) ?
+                "" :
+                "class=\"hidden\"") + 
+              "><i class=\"fa fa-fw fa-eye-slash\"></i><span class=\"visible-sm-inline visible-md-inline visible-lg-inline\">[[category:ignoring]]</span></span>\r\n\t\t<span class=\"caret\"></span>\r\n\t</button>\r\n\r\n\t<ul class=\"dropdown-menu dropdown-menu-right\">\r\n\t\t<li><a href=\"#\" component=\"category/watching\" data-state=\"watching\"><i component=\"category/watching/check\" class=\"fa fa-fw " + 
+              (guard((context != null) ? context['isWatched'] : null) ?
+                "fa-check" :
+                "") + 
+              "\"></i><i class=\"fa fa-fw fa-inbox\"></i> [[category:watching]]<p class=\"help-text\"><small>[[category:watching.description]]</small></p></a></li>\r\n\t\t<li><a href=\"#\" component=\"category/notwatching\" data-state=\"notwatching\"><i component=\"category/notwatching/check\" class=\"fa fa-fw " + 
+              (guard((context != null) ? context['isNotWatched'] : null) ?
+                "fa-check" :
+                "") + 
+              "\"></i><i class=\"fa fa-fw fa-clock-o\"></i> [[category:not-watching]]<p class=\"help-text\"><small>[[category:not-watching.description]]</small></p></a></li>\r\n\t\t<li><a href=\"#\" component=\"category/ignoring\" data-state=\"ignoring\"><i component=\"category/ignoring/check\" class=\"fa fa-fw " + 
+              (guard((context != null) ? context['isIgnored'] : null) ?
+                "fa-check" :
+                "") + 
+              "\"></i><i class=\"fa fa-fw fa-eye-slash\"></i> [[category:ignoring]]<p class=\"help-text\"><small>[[category:ignoring.description]]</small></p></a></li>\r\n\t</ul>\r\n</div>\r\n" :
             "") + 
-          "\"></i><i class=\"fa fa-fw fa-inbox\"></i> [[category:watching]]<p class=\"help-text\"><small>[[category:watching.description]]</small></p></a></li>\r\n\t\t<li><a href=\"#\" component=\"category/notwatching\" data-state=\"notwatching\"><i component=\"category/notwatching/check\" class=\"fa fa-fw " + 
-          (guard((context != null) ? context['isNotWatched'] : null) ?
-            "fa-check" :
+          "\r\n\t\t\t\t<div class=\"btn-group bottom-sheet\" component=\"thread/sort\">\r\n\t<button class=\"btn btn-default dropdown-toggle\" data-toggle=\"dropdown\" type=\"button\">\r\n\t\t<span class=\"visible-sm-inline visible-md-inline visible-lg-inline\">[[topic:sort_by]]</span>\r\n\t\t<span class=\"visible-xs-inline\"><i class=\"fa fa-fw fa-sort\"></i></span>\r\n\t\t<span class=\"caret\"></span>\r\n\t</button>\r\n\r\n\t<ul class=\"dropdown-menu pull-right\">\r\n\t\t<li><a href=\"#\" class=\"newest_to_oldest\" data-sort=\"newest_to_oldest\"><i class=\"fa fa-fw\"></i> [[topic:newest_to_oldest]]</a></li>\r\n\t\t<li><a href=\"#\" class=\"oldest_to_newest\" data-sort=\"oldest_to_newest\"><i class=\"fa fa-fw\"></i> [[topic:oldest_to_newest]]</a></li>\r\n\t\t<li><a href=\"#\" class=\"most_posts\" data-sort=\"most_posts\"><i class=\"fa fa-fw\"></i> [[topic:most_posts]]</a></li>\r\n\t</ul>\r\n</div>\r\n\r\n\t\t\t\t" + 
+          (guard((context != null && context['privileges'] != null) ? context['privileges']['editable'] : null) ?
+            "\r\n<div class=\"btn-group thread-tools bottom-sheet\">\r\n\t<button class=\"btn btn-default dropdown-toggle\" data-toggle=\"dropdown\" type=\"button\">\r\n\t\t<span class=\"visible-sm-inline visible-md-inline visible-lg-inline\">[[topic:thread_tools.title]]</span>\r\n\t\t<span class=\"visible-xs-inline\"><i class=\"fa fa-fw fa-gear\"></i></span>\r\n\t\t<span class=\"caret\"></span>\r\n\t</button>\r\n\t<ul class=\"dropdown-menu pull-right\">\r\n\t\t<li>\r\n\t\t\t<a component=\"topic/mark-unread-for-all\" href=\"#\">\r\n\t\t\t\t<i class=\"fa fa-fw fa-inbox\"></i> [[topic:thread_tools.markAsUnreadForAll]]\r\n\t\t\t</a>\r\n\t\t</li>\r\n\t\t<li>\r\n\t\t\t<a component=\"topic/pin\" href=\"#\">\r\n\t\t\t\t<i class=\"fa fa-fw fa-thumb-tack\"></i> [[topic:thread_tools.pin]]\r\n\t\t\t</a>\r\n\t\t</li>\r\n\t\t<li>\r\n\t\t\t<a component=\"topic/unpin\" href=\"#\" class=\"hidden\">\r\n\t\t\t\t<i class=\"fa fa-fw fa-thumb-tack fa-rotate-90\"></i> [[topic:thread_tools.unpin]]\r\n\t\t\t</a>\r\n\t\t</li>\r\n\r\n\t\t<li>\r\n\t\t\t<a component=\"topic/lock\" href=\"#\">\r\n\t\t\t\t<i class=\"fa fa-fw fa-lock\"></i> [[topic:thread_tools.lock]]\r\n\t\t\t</a>\r\n\t\t</li>\r\n\t\t<li>\r\n\t\t\t<a component=\"topic/unlock\" href=\"#\" class=\"hidden\">\r\n\t\t\t\t<i class=\"fa fa-fw fa-unlock\"></i> [[topic:thread_tools.unlock]]\r\n\t\t\t</a>\r\n\t\t</li>\r\n\r\n\t\t<li class=\"divider\"></li>\r\n\r\n\t\t<li>\r\n\t\t\t<a component=\"topic/move\" href=\"#\">\r\n\t\t\t\t<i class=\"fa fa-fw fa-arrows\"></i> [[topic:thread_tools.move]]\r\n\t\t\t</a>\r\n\t\t</li>\r\n\t\t<li>\r\n\t\t\t<a component=\"topic/move-all\" href=\"#\">\r\n\t\t\t\t<i class=\"fa fa-fw fa-arrows\"></i> [[topic:thread_tools.move_all]]\r\n\t\t\t</a>\r\n\t\t</li>\r\n\t\t<li>\r\n\t\t\t<a component=\"topic/merge\" href=\"#\">\r\n\t\t\t\t<i class=\"fa fa-fw fa-code-fork\"></i> [[topic:thread_tools.merge]]\r\n\t\t\t</a>\r\n\t\t</li>\r\n\r\n\t\t<li class=\"divider\"></li>\r\n\r\n\t\t<li>\r\n\t\t\t<a component=\"topic/delete\" href=\"#\">\r\n\t\t\t\t<i class=\"fa fa-fw fa-trash-o\"></i> [[topic:thread_tools.delete]]\r\n\t\t\t</a>\r\n\t\t</li>\r\n\t\t<li>\r\n\t\t\t<a component=\"topic/restore\" href=\"#\" class=\"hidden\">\r\n\t\t\t\t<i class=\"fa fa-fw fa-history\"></i> [[topic:thread_tools.restore]]\r\n\t\t\t</a>\r\n\t\t</li>\r\n\t\t<li>\r\n\t\t\t<a component=\"topic/purge\" href=\"#\" class=\"hidden\">\r\n\t\t\t\t<i class=\"fa fa-fw fa-eraser\"></i> [[topic:thread_tools.purge]]\r\n\t\t\t</a>\r\n\t\t</li>\r\n\r\n\t\t" + 
+              compiled.blocks['thread_tools'](helpers, context, guard, iter, helper) + 
+              "\r\n\t</ul>\r\n</div>\r\n" :
             "") + 
-          "\"></i><i class=\"fa fa-fw fa-clock-o\"></i> [[category:not-watching]]<p class=\"help-text\"><small>[[category:not-watching.description]]</small></p></a></li>\r\n\t\t<li><a href=\"#\" component=\"category/ignoring\" data-state=\"ignoring\"><i component=\"category/ignoring/check\" class=\"fa fa-fw " + 
-          (guard((context != null) ? context['isIgnored'] : null) ?
-            "fa-check" :
+          "\r\n\t\t\t</span>\r\n\t\t\t" :
+        "") + 
+      "\r\n\t\t</div>\r\n\r\n\t\t" + 
+      (guard((context != null && context['privileges'] != null) ? context['privileges']['topics:read'] : null) ?
+        "\r\n\t\t<hr class=\"hidden-xs\" />\r\n\r\n\t\t<h4 class=\"hidden-xs\">" + 
+          __escape(guard((context != null) ? context['name'] : null)) + 
+          "</h4>\r\n\r\n\t\t" + 
+          (guard((context != null && context['topics'] != null) ? context['topics']['length'] : null) ?
+            "" :
+            "\r\n\t\t<div class=\"alert alert-warning\" id=\"category-no-topics\">\r\n\t\t\t[[category:no_topics]]\r\n\t\t</div>\r\n\t\t") + 
+          "\r\n\r\n\t\t<div component=\"category\" class=\"topic-list\" itemscope itemtype=\"http://www.schema.org/ItemList\" data-nextstart=\"" + 
+          __escape(guard((context != null) ? context['nextStart'] : null)) + 
+          "\" data-set=\"" + 
+          __escape(guard((context != null) ? context['set'] : null)) + 
+          "\">\r\n\t<meta itemprop=\"itemListOrder\" content=\"descending\">\r\n\t" + 
+          (guard((context != null && context['topics'] != null) ? context['topics']['length'] : null) ?
+            "\r\n\t<div class=\"row topics-header hidden-xs hidden-sm\">\r\n\t\t<div class=\"col-md-8 col-xs-12\"><div class=\"header-title\">[[global:topics]]</div></div>\r\n\t\t<div class=\"col-md-1\"><div class=\"header-title\">[[global:posts]]</div></div>\r\n\t\t<div class=\"col-md-1\"><div class=\"header-title\">[[global:views]]</div></div>\r\n\t\t<div class=\"col-md-2\"><div class=\"header-title\">Last Reply</div></div>\r\n\t</div>\r\n\t" :
             "") + 
-          "\"></i><i class=\"fa fa-fw fa-eye-slash\"></i> [[category:ignoring]]<p class=\"help-text\"><small>[[category:ignoring.description]]</small></p></a></li>\r\n\t</ul>\r\n</div>\r\n" :
-        "") + 
-      "\r\n\t\t\t\t<div class=\"btn-group bottom-sheet\" component=\"thread/sort\">\r\n\t<button class=\"btn btn-default dropdown-toggle\" data-toggle=\"dropdown\" type=\"button\">\r\n\t\t<span class=\"visible-sm-inline visible-md-inline visible-lg-inline\">[[topic:sort_by]]</span>\r\n\t\t<span class=\"visible-xs-inline\"><i class=\"fa fa-fw fa-sort\"></i></span>\r\n\t\t<span class=\"caret\"></span>\r\n\t</button>\r\n\r\n\t<ul class=\"dropdown-menu pull-right\">\r\n\t\t<li><a href=\"#\" class=\"newest_to_oldest\" data-sort=\"newest_to_oldest\"><i class=\"fa fa-fw\"></i> [[topic:newest_to_oldest]]</a></li>\r\n\t\t<li><a href=\"#\" class=\"oldest_to_newest\" data-sort=\"oldest_to_newest\"><i class=\"fa fa-fw\"></i> [[topic:oldest_to_newest]]</a></li>\r\n\t\t<li><a href=\"#\" class=\"most_posts\" data-sort=\"most_posts\"><i class=\"fa fa-fw\"></i> [[topic:most_posts]]</a></li>\r\n\t</ul>\r\n</div>\r\n\r\n\t\t\t\t" + 
-      (guard((context != null && context['privileges'] != null) ? context['privileges']['editable'] : null) ?
-        "\r\n<div class=\"btn-group thread-tools bottom-sheet\">\r\n\t<button class=\"btn btn-default dropdown-toggle\" data-toggle=\"dropdown\" type=\"button\">\r\n\t\t<span class=\"visible-sm-inline visible-md-inline visible-lg-inline\">[[topic:thread_tools.title]]</span>\r\n\t\t<span class=\"visible-xs-inline\"><i class=\"fa fa-fw fa-gear\"></i></span>\r\n\t\t<span class=\"caret\"></span>\r\n\t</button>\r\n\t<ul class=\"dropdown-menu pull-right\">\r\n\t\t<li>\r\n\t\t\t<a component=\"topic/mark-unread-for-all\" href=\"#\">\r\n\t\t\t\t<i class=\"fa fa-fw fa-inbox\"></i> [[topic:thread_tools.markAsUnreadForAll]]\r\n\t\t\t</a>\r\n\t\t</li>\r\n\t\t<li>\r\n\t\t\t<a component=\"topic/pin\" href=\"#\">\r\n\t\t\t\t<i class=\"fa fa-fw fa-thumb-tack\"></i> [[topic:thread_tools.pin]]\r\n\t\t\t</a>\r\n\t\t</li>\r\n\t\t<li>\r\n\t\t\t<a component=\"topic/unpin\" href=\"#\" class=\"hidden\">\r\n\t\t\t\t<i class=\"fa fa-fw fa-thumb-tack fa-rotate-90\"></i> [[topic:thread_tools.unpin]]\r\n\t\t\t</a>\r\n\t\t</li>\r\n\r\n\t\t<li>\r\n\t\t\t<a component=\"topic/lock\" href=\"#\">\r\n\t\t\t\t<i class=\"fa fa-fw fa-lock\"></i> [[topic:thread_tools.lock]]\r\n\t\t\t</a>\r\n\t\t</li>\r\n\t\t<li>\r\n\t\t\t<a component=\"topic/unlock\" href=\"#\" class=\"hidden\">\r\n\t\t\t\t<i class=\"fa fa-fw fa-unlock\"></i> [[topic:thread_tools.unlock]]\r\n\t\t\t</a>\r\n\t\t</li>\r\n\r\n\t\t<li class=\"divider\"></li>\r\n\r\n\t\t<li>\r\n\t\t\t<a component=\"topic/move\" href=\"#\">\r\n\t\t\t\t<i class=\"fa fa-fw fa-arrows\"></i> [[topic:thread_tools.move]]\r\n\t\t\t</a>\r\n\t\t</li>\r\n\t\t<li>\r\n\t\t\t<a component=\"topic/move-all\" href=\"#\">\r\n\t\t\t\t<i class=\"fa fa-fw fa-arrows\"></i> [[topic:thread_tools.move_all]]\r\n\t\t\t</a>\r\n\t\t</li>\r\n\t\t<li>\r\n\t\t\t<a component=\"topic/merge\" href=\"#\">\r\n\t\t\t\t<i class=\"fa fa-fw fa-code-fork\"></i> [[topic:thread_tools.merge]]\r\n\t\t\t</a>\r\n\t\t</li>\r\n\r\n\t\t<li class=\"divider\"></li>\r\n\r\n\t\t<li>\r\n\t\t\t<a component=\"topic/delete\" href=\"#\">\r\n\t\t\t\t<i class=\"fa fa-fw fa-trash-o\"></i> [[topic:thread_tools.delete]]\r\n\t\t\t</a>\r\n\t\t</li>\r\n\t\t<li>\r\n\t\t\t<a component=\"topic/restore\" href=\"#\" class=\"hidden\">\r\n\t\t\t\t<i class=\"fa fa-fw fa-history\"></i> [[topic:thread_tools.restore]]\r\n\t\t\t</a>\r\n\t\t</li>\r\n\t\t<li>\r\n\t\t\t<a component=\"topic/purge\" href=\"#\" class=\"hidden\">\r\n\t\t\t\t<i class=\"fa fa-fw fa-eraser\"></i> [[topic:thread_tools.purge]]\r\n\t\t\t</a>\r\n\t\t</li>\r\n\r\n\t\t" + 
-          compiled.blocks['thread_tools'](helpers, context, guard, iter, helper) + 
-          "\r\n\t</ul>\r\n</div>\r\n" :
-        "") + 
-      "\r\n\t\t\t</span>\r\n\t\t</div>\r\n\r\n\t\t<hr class=\"hidden-xs\" />\r\n\r\n\t\t<h4 class=\"hidden-xs\">" + 
-      __escape(guard((context != null) ? context['name'] : null)) + 
-      "</h4>\r\n\r\n\t\t" + 
-      (guard((context != null && context['topics'] != null) ? context['topics']['length'] : null) ?
-        "" :
-        "\r\n\t\t<div class=\"alert alert-warning\" id=\"category-no-topics\">\r\n\t\t\t[[category:no_topics]]\r\n\t\t</div>\r\n\t\t") + 
-      "\r\n\r\n\t\t<div component=\"category\" class=\"topic-list\" itemscope itemtype=\"http://www.schema.org/ItemList\" data-nextstart=\"" + 
-      __escape(guard((context != null) ? context['nextStart'] : null)) + 
-      "\" data-set=\"" + 
-      __escape(guard((context != null) ? context['set'] : null)) + 
-      "\">\r\n\t<meta itemprop=\"itemListOrder\" content=\"descending\">\r\n\t" + 
-      (guard((context != null && context['topics'] != null) ? context['topics']['length'] : null) ?
-        "\r\n\t<div class=\"row topics-header hidden-xs hidden-sm\">\r\n\t\t<div class=\"col-md-8 col-xs-12\"><div class=\"header-title\">[[global:topics]]</div></div>\r\n\t\t<div class=\"col-md-1\"><div class=\"header-title\">[[global:posts]]</div></div>\r\n\t\t<div class=\"col-md-1\"><div class=\"header-title\">[[global:views]]</div></div>\r\n\t\t<div class=\"col-md-2\"><div class=\"header-title\">Last Reply</div></div>\r\n\t</div>\r\n\t" :
-        "") + 
-      "\r\n\t" + 
-      compiled.blocks['topics'](helpers, context, guard, iter, helper) + 
-      "\r\n</div>\r\n\r\n\t\t" + 
-      (guard((context != null && context['config'] != null) ? context['config']['usePagination'] : null) ?
-        "\r\n\t\t\t<div component=\"pagination\" class=\"text-center pagination-container" + 
-          (guard((context != null && context['pagination'] != null && context['pagination']['pages'] != null) ? context['pagination']['pages']['length'] : null) ?
-            "" :
-            " hidden") + 
-          "\">\n\t<ul class=\"pagination hidden-xs\">\n\t\t<li class=\"previous pull-left" + 
-          (guard((context != null && context['pagination'] != null && context['pagination']['prev'] != null) ? context['pagination']['prev']['active'] : null) ?
-            "" :
-            " disabled") + 
-          "\">\n\t\t\t<a href=\"?" + 
-          __escape(guard((context != null && context['pagination'] != null && context['pagination']['prev'] != null) ? context['pagination']['prev']['qs'] : null)) + 
-          "\" data-page=\"" + 
-          __escape(guard((context != null && context['pagination'] != null && context['pagination']['prev'] != null) ? context['pagination']['prev']['page'] : null)) + 
-          "\"><i class=\"fa fa-chevron-left\"></i> </a>\n\t\t</li>\n\n\t\t" + 
-          compiled.blocks['pagination.pages'](helpers, context, guard, iter, helper) + 
-          "\n\n\t\t<li class=\"next pull-right" + 
-          (guard((context != null && context['pagination'] != null && context['pagination']['next'] != null) ? context['pagination']['next']['active'] : null) ?
-            "" :
-            " disabled") + 
-          "\">\n\t\t\t<a href=\"?" + 
-          __escape(guard((context != null && context['pagination'] != null && context['pagination']['next'] != null) ? context['pagination']['next']['qs'] : null)) + 
-          "\" data-page=\"" + 
-          __escape(guard((context != null && context['pagination'] != null && context['pagination']['next'] != null) ? context['pagination']['next']['page'] : null)) + 
-          "\"> <i class=\"fa fa-chevron-right\"></i></a>\n\t\t</li>\n\t</ul>\n\n\t<ul class=\"pagination hidden-sm hidden-md hidden-lg\">\n\t\t<li class=\"first" + 
-          (guard((context != null && context['pagination'] != null && context['pagination']['prev'] != null) ? context['pagination']['prev']['active'] : null) ?
-            "" :
-            " disabled") + 
-          "\">\n\t\t\t<a href=\"?" + 
-          __escape(guard((context != null && context['pagination'] != null && context['pagination']['first'] != null) ? context['pagination']['first']['qs'] : null)) + 
-          "\" data-page=\"1\"><i class=\"fa fa-fast-backward\"></i> </a>\n\t\t</li>\n\n\t\t<li class=\"previous" + 
-          (guard((context != null && context['pagination'] != null && context['pagination']['prev'] != null) ? context['pagination']['prev']['active'] : null) ?
-            "" :
-            " disabled") + 
-          "\">\n\t\t\t<a href=\"?" + 
-          __escape(guard((context != null && context['pagination'] != null && context['pagination']['prev'] != null) ? context['pagination']['prev']['qs'] : null)) + 
-          "\" data-page=\"" + 
-          __escape(guard((context != null && context['pagination'] != null && context['pagination']['prev'] != null) ? context['pagination']['prev']['page'] : null)) + 
-          "\"><i class=\"fa fa-chevron-left\"></i> </a>\n\t\t</li>\n\n\t\t<li component=\"pagination/select-page\" class=\"page select-page\">\n\t\t\t<a href=\"#\">" + 
-          __escape(guard((context != null && context['pagination'] != null) ? context['pagination']['currentPage'] : null)) + 
-          " / " + 
-          __escape(guard((context != null && context['pagination'] != null) ? context['pagination']['pageCount'] : null)) + 
-          "</a>\n\t\t</li>\n\n\t\t<li class=\"next" + 
-          (guard((context != null && context['pagination'] != null && context['pagination']['next'] != null) ? context['pagination']['next']['active'] : null) ?
-            "" :
-            " disabled") + 
-          "\">\n\t\t\t<a href=\"?" + 
-          __escape(guard((context != null && context['pagination'] != null && context['pagination']['next'] != null) ? context['pagination']['next']['qs'] : null)) + 
-          "\" data-page=\"" + 
-          __escape(guard((context != null && context['pagination'] != null && context['pagination']['next'] != null) ? context['pagination']['next']['page'] : null)) + 
-          "\"> <i class=\"fa fa-chevron-right\"></i></a>\n\t\t</li>\n\n\t\t<li class=\"last" + 
-          (guard((context != null && context['pagination'] != null && context['pagination']['next'] != null) ? context['pagination']['next']['active'] : null) ?
-            "" :
-            " disabled") + 
-          "\">\n\t\t\t<a href=\"?" + 
-          __escape(guard((context != null && context['pagination'] != null && context['pagination']['last'] != null) ? context['pagination']['last']['qs'] : null)) + 
-          "\" data-page=\"" + 
-          __escape(guard((context != null && context['pagination'] != null) ? context['pagination']['pageCount'] : null)) + 
-          "\"><i class=\"fa fa-fast-forward\"></i> </a>\n\t\t</li>\n\t</ul>\n</div>\r\n\t\t" :
+          "\r\n\t" + 
+          compiled.blocks['topics'](helpers, context, guard, iter, helper) + 
+          "\r\n</div>\r\n\r\n\t\t" + 
+          (guard((context != null && context['config'] != null) ? context['config']['usePagination'] : null) ?
+            "\r\n\t\t\t<div component=\"pagination\" class=\"text-center pagination-container" + 
+              (guard((context != null && context['pagination'] != null && context['pagination']['pages'] != null) ? context['pagination']['pages']['length'] : null) ?
+                "" :
+                " hidden") + 
+              "\">\n\t<ul class=\"pagination hidden-xs\">\n\t\t<li class=\"previous pull-left" + 
+              (guard((context != null && context['pagination'] != null && context['pagination']['prev'] != null) ? context['pagination']['prev']['active'] : null) ?
+                "" :
+                " disabled") + 
+              "\">\n\t\t\t<a href=\"?" + 
+              __escape(guard((context != null && context['pagination'] != null && context['pagination']['prev'] != null) ? context['pagination']['prev']['qs'] : null)) + 
+              "\" data-page=\"" + 
+              __escape(guard((context != null && context['pagination'] != null && context['pagination']['prev'] != null) ? context['pagination']['prev']['page'] : null)) + 
+              "\"><i class=\"fa fa-chevron-left\"></i> </a>\n\t\t</li>\n\n\t\t" + 
+              compiled.blocks['pagination.pages'](helpers, context, guard, iter, helper) + 
+              "\n\n\t\t<li class=\"next pull-right" + 
+              (guard((context != null && context['pagination'] != null && context['pagination']['next'] != null) ? context['pagination']['next']['active'] : null) ?
+                "" :
+                " disabled") + 
+              "\">\n\t\t\t<a href=\"?" + 
+              __escape(guard((context != null && context['pagination'] != null && context['pagination']['next'] != null) ? context['pagination']['next']['qs'] : null)) + 
+              "\" data-page=\"" + 
+              __escape(guard((context != null && context['pagination'] != null && context['pagination']['next'] != null) ? context['pagination']['next']['page'] : null)) + 
+              "\"> <i class=\"fa fa-chevron-right\"></i></a>\n\t\t</li>\n\t</ul>\n\n\t<ul class=\"pagination hidden-sm hidden-md hidden-lg\">\n\t\t<li class=\"first" + 
+              (guard((context != null && context['pagination'] != null && context['pagination']['prev'] != null) ? context['pagination']['prev']['active'] : null) ?
+                "" :
+                " disabled") + 
+              "\">\n\t\t\t<a href=\"?" + 
+              __escape(guard((context != null && context['pagination'] != null && context['pagination']['first'] != null) ? context['pagination']['first']['qs'] : null)) + 
+              "\" data-page=\"1\"><i class=\"fa fa-fast-backward\"></i> </a>\n\t\t</li>\n\n\t\t<li class=\"previous" + 
+              (guard((context != null && context['pagination'] != null && context['pagination']['prev'] != null) ? context['pagination']['prev']['active'] : null) ?
+                "" :
+                " disabled") + 
+              "\">\n\t\t\t<a href=\"?" + 
+              __escape(guard((context != null && context['pagination'] != null && context['pagination']['prev'] != null) ? context['pagination']['prev']['qs'] : null)) + 
+              "\" data-page=\"" + 
+              __escape(guard((context != null && context['pagination'] != null && context['pagination']['prev'] != null) ? context['pagination']['prev']['page'] : null)) + 
+              "\"><i class=\"fa fa-chevron-left\"></i> </a>\n\t\t</li>\n\n\t\t<li component=\"pagination/select-page\" class=\"page select-page\">\n\t\t\t<a href=\"#\">" + 
+              __escape(guard((context != null && context['pagination'] != null) ? context['pagination']['currentPage'] : null)) + 
+              " / " + 
+              __escape(guard((context != null && context['pagination'] != null) ? context['pagination']['pageCount'] : null)) + 
+              "</a>\n\t\t</li>\n\n\t\t<li class=\"next" + 
+              (guard((context != null && context['pagination'] != null && context['pagination']['next'] != null) ? context['pagination']['next']['active'] : null) ?
+                "" :
+                " disabled") + 
+              "\">\n\t\t\t<a href=\"?" + 
+              __escape(guard((context != null && context['pagination'] != null && context['pagination']['next'] != null) ? context['pagination']['next']['qs'] : null)) + 
+              "\" data-page=\"" + 
+              __escape(guard((context != null && context['pagination'] != null && context['pagination']['next'] != null) ? context['pagination']['next']['page'] : null)) + 
+              "\"> <i class=\"fa fa-chevron-right\"></i></a>\n\t\t</li>\n\n\t\t<li class=\"last" + 
+              (guard((context != null && context['pagination'] != null && context['pagination']['next'] != null) ? context['pagination']['next']['active'] : null) ?
+                "" :
+                " disabled") + 
+              "\">\n\t\t\t<a href=\"?" + 
+              __escape(guard((context != null && context['pagination'] != null && context['pagination']['last'] != null) ? context['pagination']['last']['qs'] : null)) + 
+              "\" data-page=\"" + 
+              __escape(guard((context != null && context['pagination'] != null) ? context['pagination']['pageCount'] : null)) + 
+              "\"><i class=\"fa fa-fast-forward\"></i> </a>\n\t\t</li>\n\t</ul>\n</div>\r\n\t\t" :
+            "") + 
+          "\r\n\t\t" :
         "") + 
       "\r\n\t</div>\r\n</div>\r\n\r\n<div id=\"move_thread_modal\" class=\"modal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"move_topic_label\" aria-hidden=\"true\">\r\n\t<div class=\"modal-dialog\">\r\n\t\t<div class=\"modal-content\">\r\n\t\t\t<div class=\"modal-header\">\r\n\t\t\t\t<button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-hidden=\"true\">&times;</button>\r\n\t\t\t\t<h3 id=\"move_topic_label\">[[topic:move_topic]]</h3>\r\n\t\t\t</div>\r\n\t\t\t<div class=\"modal-body\">\r\n\t\t\t\t<div component=\"category-selector\" class=\"btn-group bottom-sheet\">\n<button type=\"button\" class=\"btn btn-default dropdown-toggle\" data-toggle=\"dropdown\">\n    <span component=\"category-selector-selected\">" + 
       (guard((context != null) ? context['selectedCategory'] : null) ?

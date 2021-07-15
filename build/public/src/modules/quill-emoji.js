@@ -1,1 +1,0 @@
-../../../../node_modules/nodebb-plugin-composer-quill/static/lib/emoji.js

@@ -1,7 +1,1 @@
-{
-  "success": "הצלחה",
-  "topic-post": "העלת פוסט בהצלחה.",
-  "post-queued": "הפוסט שלך נשלח. תקבל התראה הוא יתקבל או ידחה.",
-  "authentication-successful": "הנתונים אומתו בהצלחה",
-  "settings-saved": "הנתונים נשמרו!"
-}
+{"success":"הצלחה","topic-post":"העלת פוסט בהצלחה.","post-queued":"הפוסט שלך נשלח. תקבל התראה הוא יתקבל או ידחה.","authentication-successful":"הנתונים אומתו בהצלחה","settings-saved":"הנתונים נשמרו!"}

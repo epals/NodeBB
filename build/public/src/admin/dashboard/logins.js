@@ -1,0 +1,2 @@
+"use strict";define("admin/dashboard/logins",["admin/modules/dashboard-line-graph"],a=>{const i={};i.init=(()=>{a.init({set:"logins",dataset:ajaxify.data.dataset})});return i});
+//# sourceMappingURL=logins.js.map
