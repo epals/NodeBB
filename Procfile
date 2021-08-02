@@ -1,1 +1,1 @@
-web: node ./nodebb dev
+web: node loader.js --no-daemon
