@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+if [ "$DEV_MODE" == 'true' ]; then
+    ./nodebb dev
+else
+    node loader.js --no-daemon
+fi
