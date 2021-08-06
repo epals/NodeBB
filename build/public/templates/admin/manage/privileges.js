@@ -9,7 +9,7 @@
   function compiled(helpers, context, guard, iter, helper) {
     var __escape = helpers.__escape;
     var value = context;
-    return "<div class=\"row\">\n\t<form role=\"form\" class=\"category\">\n\t\t<div class=\"\">\n\t\t\t<p>\n\t\t\t\t[[admin/manage/categories:privileges.description]]\n\t\t\t</p>\n\n\t\t\t<div class=\"lead\">\n\t\t\t\t[[admin/manage/categories:privileges.category-selector]]\n\t\t\t\t<div component=\"category-selector\" class=\"btn-group bottom-sheet\">\n<button type=\"button\" class=\"btn btn-default dropdown-toggle\" data-toggle=\"dropdown\">\n    <span component=\"category-selector-selected\">" + 
+    return "<div class=\"row\">\n\t<form role=\"form\" class=\"category\">\n\t\t<div class=\"\">\n\t\t\t<p>\n\t\t\t\t[[admin/manage/categories:privileges.description]]\n\t\t\t</p>\n\n\t\t\t<div class=\"lead\">\n\t\t\t\t[[admin/manage/categories:privileges.category-selector]]\n\t\t\t\t<div component=\"category-selector\" class=\"btn-group bottom-sheet\">\r\n<button type=\"button\" class=\"btn btn-default dropdown-toggle\" data-toggle=\"dropdown\">\r\n    <span component=\"category-selector-selected\">" + 
       (guard((context != null) ? context['selectedCategory'] : null) ?
         "<span class=\"fa-stack\" style=\"" + 
           __escape(helper(context, helpers, 'generateCategoryBackground', [guard((context != null) ? context['selectedCategory'] : null)])) + 
@@ -19,13 +19,13 @@
           __escape(guard((context != null && context['selectedCategory'] != null) ? context['selectedCategory']['color'] : null)) + 
           ";\"></i></span> " + 
           __escape(guard((context != null && context['selectedCategory'] != null) ? context['selectedCategory']['name'] : null)) :
-        "\n    " + 
+        "\r\n    " + 
           (guard((context != null) ? context['selectCategoryLabel'] : null) ?
             __escape(guard((context != null) ? context['selectCategoryLabel'] : null)) :
             "[[topic:thread_tools.select_category]]")) + 
-      "</span> <span class=\"caret\"></span>\n</button>\n<div component=\"category-selector-search\" class=\"hidden\">\n    <input type=\"text\" class=\"form-control\" autocomplete=\"off\">\n</div>\n<ul component=\"category/list\" class=\"dropdown-menu category-dropdown-menu\" role=\"menu\">\n    <li component=\"category/no-matches\" role=\"presentation\" class=\"category hidden\">\n        <a role=\"menu-item\">[[search:no-matches]]</a>\n    </li>\n    " + 
+      "</span> <span class=\"caret\"></span>\r\n</button>\r\n<div component=\"category-selector-search\" class=\"hidden\">\r\n    <input type=\"text\" class=\"form-control\" autocomplete=\"off\">\r\n</div>\r\n<ul component=\"category/list\" class=\"dropdown-menu category-dropdown-menu\" role=\"menu\">\r\n    <li component=\"category/no-matches\" role=\"presentation\" class=\"category hidden\">\r\n        <a role=\"menu-item\">[[search:no-matches]]</a>\r\n    </li>\r\n    " + 
       compiled.blocks['categoryItems'](helpers, context, guard, iter, helper) + 
-      "\n</ul>\n</div>\n\t\t\t</div>\n\n\t\t\t<div class=\"privilege-table-container\">\n\t\t\t\t" + 
+      "\r\n</ul>\r\n</div>\n\t\t\t</div>\n\n\t\t\t<div class=\"privilege-table-container\">\n\t\t\t\t" + 
       (guard((context != null) ? context['cid'] : null) ?
         "\n\t\t\t\t\t\t\t\t\t<label>[[admin/manage/privileges:group-privileges]]</label>\n\t\t\t\t\t<table class=\"table table-striped privilege-table\">\n\t\t\t\t\t\t<thead>\n\t\t\t\t\t\t\t<tr class=\"privilege-table-header\">\n\t\t\t\t\t\t\t\t<th colspan=\"3\"></th>\n\t\t\t\t\t\t\t\t<th class=\"arrowed\" colspan=\"3\">\n\t\t\t\t\t\t\t\t\t[[admin/manage/categories:privileges.section-viewing]]\n\t\t\t\t\t\t\t\t</th>\n\t\t\t\t\t\t\t\t<th class=\"arrowed\" colspan=\"10\">\n\t\t\t\t\t\t\t\t\t[[admin/manage/categories:privileges.section-posting]]\n\t\t\t\t\t\t\t\t</th>\n\t\t\t\t\t\t\t\t<th class=\"arrowed\" colspan=\"3\">\n\t\t\t\t\t\t\t\t\t[[admin/manage/categories:privileges.section-moderation]]\n\t\t\t\t\t\t\t\t</th>\n\t\t\t\t\t\t\t\t" + 
           (guard((context != null && context['privileges'] != null) ? context['privileges']['columnCountGroupOther'] : null) ?
@@ -142,7 +142,7 @@
       var value = context;
       return iter(guard((context != null) ? context['categoryItems'] : null), function each(key0, index, length, value) {
         var key = key0;
-        return "\n    <li role=\"presentation\" class=\"category " + 
+        return "\r\n    <li role=\"presentation\" class=\"category " + 
           (guard((context != null && context['categoryItems'] != null && context['categoryItems'][key0] != null) ? context['categoryItems'][key0]['disabledClass'] : null) ?
             "disabled " :
             "") + 
@@ -152,7 +152,7 @@
           __escape(guard((context != null && context['categoryItems'] != null && context['categoryItems'][key0] != null) ? context['categoryItems'][key0]['name'] : null)) + 
           "\" data-parent-cid=\"" + 
           __escape(guard((context != null && context['categoryItems'] != null && context['categoryItems'][key0] != null) ? context['categoryItems'][key0]['parentCid'] : null)) + 
-          "\">\n        <a role=\"menu-item\">" + 
+          "\">\r\n        <a role=\"menu-item\">" + 
           __escape(guard((context != null && context['categoryItems'] != null && context['categoryItems'][key0] != null) ? context['categoryItems'][key0]['level'] : null)) + 
           "<span component=\"category-markup\" style=\"" + 
           (guard((context != null && context['categoryItems'] != null && context['categoryItems'][key0] != null) ? context['categoryItems'][key0]['match'] : null) ?
@@ -170,7 +170,7 @@
             "") + 
           " " + 
           __escape(guard((context != null && context['categoryItems'] != null && context['categoryItems'][key0] != null) ? context['categoryItems'][key0]['name'] : null)) + 
-          "</span></a>\n    </li>\n    ";
+          "</span></a>\r\n    </li>\r\n    ";
       }, function alt() {
         return "";
       });

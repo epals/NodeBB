@@ -11,7 +11,7 @@
     var value = context;
     return "<input type=\"text\" class=\"form-control\" id=\"roomName\" placeholder=\"[[modules:chat.rename-placeholder]]\" value=\"" + 
       __escape(guard((context != null) ? context['name'] : null)) + 
-      "\" />\n<p class=\"help-block\">\n\t[[modules:chat.rename-help]]\n</p>";
+      "\" />\r\n<p class=\"help-block\">\r\n\t[[modules:chat.rename-help]]\r\n</p>";
   }
 
   compiled.blocks = {

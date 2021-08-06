@@ -11,11 +11,11 @@
     var value = context;
     return "<div class=\"account\">\r\n\t" + 
       (guard((context != null && context['breadcrumbs'] != null) ? context['breadcrumbs']['length'] : null) ?
-        "\n<ol class=\"breadcrumb\" itemscope=\"itemscope\" itemprop=\"breadcrumb\" itemtype=\"http://schema.org/BreadcrumbList\">\n\t" + 
+        "\r\n<ol class=\"breadcrumb\" itemscope=\"itemscope\" itemprop=\"breadcrumb\" itemtype=\"http://schema.org/BreadcrumbList\">\r\n\t" + 
           compiled.blocks['breadcrumbs'](helpers, context, guard, iter, helper) + 
-          "\n</ol>\n" :
+          "\r\n</ol>\r\n" :
         "") + 
-      "\n\r\n\r\n\t<div class=\"row account-menu\">\r\n\t<div class=\"col-xs-12\">\r\n\t\t<ul class=\"nav nav-pills pull-right\">\r\n\t\t\t" + 
+      "\r\n\r\n\r\n\t<div class=\"row account-menu\">\r\n\t<div class=\"col-xs-12\">\r\n\t\t<ul class=\"nav nav-pills pull-right\">\r\n\t\t\t" + 
       (guard((context != null) ? context['false'] : null) ?
         "\r\n\t\t\t\t<li>\r\n\t\t\t\t\t<a href=\"" + 
           __escape(guard((context != null && context['config'] != null) ? context['config']['relative_path'] : null)) + 
@@ -173,59 +173,59 @@
           (guard((context != null && context['pagination'] != null && context['pagination']['pages'] != null) ? context['pagination']['pages']['length'] : null) ?
             "" :
             " hidden") + 
-          "\">\n\t<ul class=\"pagination hidden-xs\">\n\t\t<li class=\"previous pull-left" + 
+          "\">\r\n\t<ul class=\"pagination hidden-xs\">\r\n\t\t<li class=\"previous pull-left" + 
           (guard((context != null && context['pagination'] != null && context['pagination']['prev'] != null) ? context['pagination']['prev']['active'] : null) ?
             "" :
             " disabled") + 
-          "\">\n\t\t\t<a href=\"?" + 
+          "\">\r\n\t\t\t<a href=\"?" + 
           __escape(guard((context != null && context['pagination'] != null && context['pagination']['prev'] != null) ? context['pagination']['prev']['qs'] : null)) + 
           "\" data-page=\"" + 
           __escape(guard((context != null && context['pagination'] != null && context['pagination']['prev'] != null) ? context['pagination']['prev']['page'] : null)) + 
-          "\"><i class=\"fa fa-chevron-left\"></i> </a>\n\t\t</li>\n\n\t\t" + 
+          "\"><i class=\"fa fa-chevron-left\"></i> </a>\r\n\t\t</li>\r\n\r\n\t\t" + 
           compiled.blocks['pagination.pages'](helpers, context, guard, iter, helper) + 
-          "\n\n\t\t<li class=\"next pull-right" + 
+          "\r\n\r\n\t\t<li class=\"next pull-right" + 
           (guard((context != null && context['pagination'] != null && context['pagination']['next'] != null) ? context['pagination']['next']['active'] : null) ?
             "" :
             " disabled") + 
-          "\">\n\t\t\t<a href=\"?" + 
+          "\">\r\n\t\t\t<a href=\"?" + 
           __escape(guard((context != null && context['pagination'] != null && context['pagination']['next'] != null) ? context['pagination']['next']['qs'] : null)) + 
           "\" data-page=\"" + 
           __escape(guard((context != null && context['pagination'] != null && context['pagination']['next'] != null) ? context['pagination']['next']['page'] : null)) + 
-          "\"> <i class=\"fa fa-chevron-right\"></i></a>\n\t\t</li>\n\t</ul>\n\n\t<ul class=\"pagination hidden-sm hidden-md hidden-lg\">\n\t\t<li class=\"first" + 
+          "\"> <i class=\"fa fa-chevron-right\"></i></a>\r\n\t\t</li>\r\n\t</ul>\r\n\r\n\t<ul class=\"pagination hidden-sm hidden-md hidden-lg\">\r\n\t\t<li class=\"first" + 
           (guard((context != null && context['pagination'] != null && context['pagination']['prev'] != null) ? context['pagination']['prev']['active'] : null) ?
             "" :
             " disabled") + 
-          "\">\n\t\t\t<a href=\"?" + 
+          "\">\r\n\t\t\t<a href=\"?" + 
           __escape(guard((context != null && context['pagination'] != null && context['pagination']['first'] != null) ? context['pagination']['first']['qs'] : null)) + 
-          "\" data-page=\"1\"><i class=\"fa fa-fast-backward\"></i> </a>\n\t\t</li>\n\n\t\t<li class=\"previous" + 
+          "\" data-page=\"1\"><i class=\"fa fa-fast-backward\"></i> </a>\r\n\t\t</li>\r\n\r\n\t\t<li class=\"previous" + 
           (guard((context != null && context['pagination'] != null && context['pagination']['prev'] != null) ? context['pagination']['prev']['active'] : null) ?
             "" :
             " disabled") + 
-          "\">\n\t\t\t<a href=\"?" + 
+          "\">\r\n\t\t\t<a href=\"?" + 
           __escape(guard((context != null && context['pagination'] != null && context['pagination']['prev'] != null) ? context['pagination']['prev']['qs'] : null)) + 
           "\" data-page=\"" + 
           __escape(guard((context != null && context['pagination'] != null && context['pagination']['prev'] != null) ? context['pagination']['prev']['page'] : null)) + 
-          "\"><i class=\"fa fa-chevron-left\"></i> </a>\n\t\t</li>\n\n\t\t<li component=\"pagination/select-page\" class=\"page select-page\">\n\t\t\t<a href=\"#\">" + 
+          "\"><i class=\"fa fa-chevron-left\"></i> </a>\r\n\t\t</li>\r\n\r\n\t\t<li component=\"pagination/select-page\" class=\"page select-page\">\r\n\t\t\t<a href=\"#\">" + 
           __escape(guard((context != null && context['pagination'] != null) ? context['pagination']['currentPage'] : null)) + 
           " / " + 
           __escape(guard((context != null && context['pagination'] != null) ? context['pagination']['pageCount'] : null)) + 
-          "</a>\n\t\t</li>\n\n\t\t<li class=\"next" + 
+          "</a>\r\n\t\t</li>\r\n\r\n\t\t<li class=\"next" + 
           (guard((context != null && context['pagination'] != null && context['pagination']['next'] != null) ? context['pagination']['next']['active'] : null) ?
             "" :
             " disabled") + 
-          "\">\n\t\t\t<a href=\"?" + 
+          "\">\r\n\t\t\t<a href=\"?" + 
           __escape(guard((context != null && context['pagination'] != null && context['pagination']['next'] != null) ? context['pagination']['next']['qs'] : null)) + 
           "\" data-page=\"" + 
           __escape(guard((context != null && context['pagination'] != null && context['pagination']['next'] != null) ? context['pagination']['next']['page'] : null)) + 
-          "\"> <i class=\"fa fa-chevron-right\"></i></a>\n\t\t</li>\n\n\t\t<li class=\"last" + 
+          "\"> <i class=\"fa fa-chevron-right\"></i></a>\r\n\t\t</li>\r\n\r\n\t\t<li class=\"last" + 
           (guard((context != null && context['pagination'] != null && context['pagination']['next'] != null) ? context['pagination']['next']['active'] : null) ?
             "" :
             " disabled") + 
-          "\">\n\t\t\t<a href=\"?" + 
+          "\">\r\n\t\t\t<a href=\"?" + 
           __escape(guard((context != null && context['pagination'] != null && context['pagination']['last'] != null) ? context['pagination']['last']['qs'] : null)) + 
           "\" data-page=\"" + 
           __escape(guard((context != null && context['pagination'] != null) ? context['pagination']['pageCount'] : null)) + 
-          "\"><i class=\"fa fa-fast-forward\"></i> </a>\n\t\t</li>\n\t</ul>\n</div>\r\n\t\t</div>\r\n\t\t" :
+          "\"><i class=\"fa fa-fast-forward\"></i> </a>\r\n\t\t</li>\r\n\t</ul>\r\n</div>\r\n\t\t</div>\r\n\t\t" :
         "\r\n\t\t<div class=\"alert alert-warning text-center\">[[uploads:no-uploads-found]]</div>\r\n\t\t") + 
       "\r\n\t</div>\r\n</div>";
   }
@@ -236,7 +236,7 @@
       var value = context;
       return iter(guard((context != null) ? context['breadcrumbs'] : null), function each(key0, index, length, value) {
         var key = key0;
-        return "\n\t<li" + 
+        return "\r\n\t<li" + 
           (index === length - 1 ?
             " component=\"breadcrumb/current\"" :
             "") + 
@@ -244,34 +244,34 @@
           (index === length - 1 ?
             "class=\"active\"" :
             "") + 
-          ">\n\t\t<meta itemprop=\"position\" content=\"" + 
+          ">\r\n\t\t<meta itemprop=\"position\" content=\"" + 
           __escape(index) + 
-          "\" />\n\t\t" + 
+          "\" />\r\n\t\t" + 
           (index === length - 1 ?
             "" :
             "<a href=\"" + 
               __escape(guard((context != null && context['breadcrumbs'] != null && context['breadcrumbs'][key0] != null) ? context['breadcrumbs'][key0]['url'] : null)) + 
               "\" itemprop=\"item\">") + 
-          "\n\t\t\t<span itemprop=\"name\">\n\t\t\t\t" + 
+          "\r\n\t\t\t<span itemprop=\"name\">\r\n\t\t\t\t" + 
           __escape(guard((context != null && context['breadcrumbs'] != null && context['breadcrumbs'][key0] != null) ? context['breadcrumbs'][key0]['text'] : null)) + 
-          "\n\t\t\t\t" + 
+          "\r\n\t\t\t\t" + 
           (index === length - 1 ?
-            "\n\t\t\t\t" + 
+            "\r\n\t\t\t\t" + 
               (guard((context != null) ? context['feeds:disableRSS'] : null) ?
                 "" :
-                "\n\t\t\t\t" + 
+                "\r\n\t\t\t\t" + 
                   (guard((context != null) ? context['rssFeedUrl'] : null) ?
                     "<a target=\"_blank\" href=\"" + 
                       __escape(guard((context != null) ? context['rssFeedUrl'] : null)) + 
                       "\" itemprop=\"item\"><i class=\"fa fa-rss-square\"></i></a>" :
                     "")) + 
-              "\n\t\t\t\t" :
+              "\r\n\t\t\t\t" :
             "") + 
-          "\n\t\t\t</span>\n\t\t" + 
+          "\r\n\t\t\t</span>\r\n\t\t" + 
           (index === length - 1 ?
             "" :
             "</a>") + 
-          "\n\t</li>\n\t";
+          "\r\n\t</li>\r\n\t";
       }, function alt() {
         return "";
       });
@@ -331,21 +331,21 @@
       var value = context;
       return iter(guard((context != null && context['pagination'] != null) ? context['pagination']['pages'] : null), function each(key0, index, length, value) {
         var key = key0;
-        return "\n\t\t\t" + 
+        return "\r\n\t\t\t" + 
           (guard((context != null && context['pagination'] != null && context['pagination']['pages'] != null && context['pagination']['pages'][key0] != null) ? context['pagination']['pages'][key0]['separator'] : null) ?
-            "\n\t\t\t<li component=\"pagination/select-page\" class=\"page select-page\">\n\t\t\t\t<a href=\"#\"><i class=\"fa fa-ellipsis-h\"></i></a>\n\t\t\t</li>\n\t\t\t" :
-            "\n\t\t\t<li class=\"page" + 
+            "\r\n\t\t\t<li component=\"pagination/select-page\" class=\"page select-page\">\r\n\t\t\t\t<a href=\"#\"><i class=\"fa fa-ellipsis-h\"></i></a>\r\n\t\t\t</li>\r\n\t\t\t" :
+            "\r\n\t\t\t<li class=\"page" + 
               (guard((context != null && context['pagination'] != null && context['pagination']['pages'] != null && context['pagination']['pages'][key0] != null) ? context['pagination']['pages'][key0]['active'] : null) ?
                 " active" :
                 "") + 
-              "\" >\n\t\t\t\t<a href=\"?" + 
+              "\" >\r\n\t\t\t\t<a href=\"?" + 
               __escape(guard((context != null && context['pagination'] != null && context['pagination']['pages'] != null && context['pagination']['pages'][key0] != null) ? context['pagination']['pages'][key0]['qs'] : null)) + 
               "\" data-page=\"" + 
               __escape(guard((context != null && context['pagination'] != null && context['pagination']['pages'] != null && context['pagination']['pages'][key0] != null) ? context['pagination']['pages'][key0]['page'] : null)) + 
               "\">" + 
               __escape(guard((context != null && context['pagination'] != null && context['pagination']['pages'] != null && context['pagination']['pages'][key0] != null) ? context['pagination']['pages'][key0]['page'] : null)) + 
-              "</a>\n\t\t\t</li>\n\t\t\t") + 
-          "\n\t\t";
+              "</a>\r\n\t\t\t</li>\r\n\t\t\t") + 
+          "\r\n\t\t";
       }, function alt() {
         return "";
       });

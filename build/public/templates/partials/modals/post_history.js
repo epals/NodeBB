@@ -9,33 +9,33 @@
   function compiled(helpers, context, guard, iter, helper) {
     var __escape = helpers.__escape;
     var value = context;
-    return "<p class=\"number-of-diffs\">\n\t" + 
+    return "<p class=\"number-of-diffs\">\r\n\t" + 
       (guard((context != null) ? context['numDiffs'] : null) ?
-        "\n\t[[topic:diffs.description, " + 
+        "\r\n\t[[topic:diffs.description, " + 
           __escape(guard((context != null) ? context['numDiffs'] : null)) + 
-          "]]\n\t" :
-        "\n\t[[topic:diffs.no-revisions-description, " + 
+          "]]\r\n\t" :
+        "\r\n\t[[topic:diffs.no-revisions-description, " + 
           __escape(guard((context != null) ? context['numDiffs'] : null)) + 
-          "]]\n\t") + 
-      "\n</p>\n" + 
+          "]]\r\n\t") + 
+      "\r\n</p>\r\n" + 
       (guard((context != null) ? context['numDiffs'] : null) ?
-        "\n<div class=\"form-group\">\n\t<select class=\"form-control\">\n\t\t" + 
+        "\r\n<div class=\"form-group\">\r\n\t<select class=\"form-control\">\r\n\t\t" + 
           compiled.blocks['diffs'](helpers, context, guard, iter, helper) + 
-          "\n\t</select>\n\n\t<hr />\n\n\t<ul class=\"posts-list diffs\"></ul>\n\n\t" + 
+          "\r\n\t</select>\r\n\r\n\t<hr />\r\n\r\n\t<ul class=\"posts-list diffs\"></ul>\r\n\r\n\t" + 
           (guard((context != null) ? context['editable'] : null) ?
-            "\n\t<button class=\"btn btn-primary\" data-action=\"restore\">[[topic:diffs.restore]]</button>\n\t" :
+            "\r\n\t<button class=\"btn btn-primary\" data-action=\"restore\">[[topic:diffs.restore]]</button>\r\n\t" :
             "") + 
-          "\n\t" + 
+          "\r\n\t" + 
           (guard((context != null) ? context['deletable'] : null) ?
-            "\n\t<button class=\"btn btn-danger\" data-action=\"delete\">[[topic:diffs.delete]]</button>\n\t" :
+            "\r\n\t<button class=\"btn btn-danger\" data-action=\"delete\">[[topic:diffs.delete]]</button>\r\n\t" :
             "") + 
-          "\n\t" + 
+          "\r\n\t" + 
           (guard((context != null) ? context['editable'] : null) ?
-            "\n\t<p class=\"help-block\">[[topic:diffs.restore-description]]</p>\n\t" :
+            "\r\n\t<p class=\"help-block\">[[topic:diffs.restore-description]]</p>\r\n\t" :
             "") + 
-          "\n\n</div>\n" :
+          "\r\n\r\n</div>\r\n" :
         "") + 
-      "\n";
+      "\r\n";
   }
 
   compiled.blocks = {
@@ -44,25 +44,25 @@
       var value = context;
       return iter(guard((context != null) ? context['diffs'] : null), function each(key0, index, length, value) {
         var key = key0;
-        return "\n\t\t<option value=\"" + 
+        return "\r\n\t\t<option value=\"" + 
           __escape(guard((context != null && context['diffs'] != null && context['diffs'][key0] != null) ? context['diffs'][key0]['timestamp'] : null)) + 
-          "\">\n\t\t\t" + 
+          "\">\r\n\t\t\t" + 
           __escape(guard((context != null && context['diffs'] != null && context['diffs'][key0] != null) ? context['diffs'][key0]['pretty'] : null)) + 
-          "\n\t\t\t" + 
+          "\r\n\t\t\t" + 
           (guard((context != null && context['diffs'] != null && context['diffs'][key0] != null) ? context['diffs'][key0]['username'] : null) ?
             "[" + 
               __escape(guard((context != null && context['diffs'] != null && context['diffs'][key0] != null) ? context['diffs'][key0]['username'] : null)) + 
               "]" :
             "") + 
-          "\n\t\t\t" + 
+          "\r\n\t\t\t" + 
           (index === 0 ?
             "([[topic:diffs.current-revision]])" :
             "") + 
-          "\n\t\t\t" + 
+          "\r\n\t\t\t" + 
           (index === length - 1 ?
             "([[topic:diffs.original-revision]])" :
             "") + 
-          "\n\t\t</option>\n\t\t";
+          "\r\n\t\t</option>\r\n\t\t";
       }, function alt() {
         return "";
       });

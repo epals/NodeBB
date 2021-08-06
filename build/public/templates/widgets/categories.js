@@ -18,23 +18,23 @@
       var value = context;
       return iter(guard((context != null) ? context['categories'] : null), function each(key0, index, length, value) {
         var key = key0;
-        return "\r\n<ul class=\"categories-list\">\r\n\t<li>\r\n\t\t" + 
+        return "\n<ul class=\"categories-list\">\n\t<li>\n\t\t" + 
           (guard((context != null && context['categories'] != null && context['categories'][key0] != null) ? context['categories'][key0]['link'] : null) ?
-            "\r\n\t\t<h4><a href=\"" + 
+            "\n\t\t<h4><a href=\"" + 
               __escape(guard((context != null && context['categories'] != null && context['categories'][key0] != null) ? context['categories'][key0]['link'] : null)) + 
               "\">" + 
               __escape(guard((context != null && context['categories'] != null && context['categories'][key0] != null) ? context['categories'][key0]['name'] : null)) + 
-              "</a></h4>\r\n\t\t" :
-            "\r\n\t\t<h4><a href=\"" + 
+              "</a></h4>\n\t\t" :
+            "\n\t\t<h4><a href=\"" + 
               __escape(guard((context != null) ? context['relative_path'] : null)) + 
               "/category/" + 
               __escape(guard((context != null && context['categories'] != null && context['categories'][key0] != null) ? context['categories'][key0]['slug'] : null)) + 
               "\">" + 
               __escape(guard((context != null && context['categories'] != null && context['categories'][key0] != null) ? context['categories'][key0]['name'] : null)) + 
-              "</a></h4>\r\n\t\t") + 
-          "\r\n\t\t<p>" + 
+              "</a></h4>\n\t\t") + 
+          "\n\t\t<p>" + 
           __escape(guard((context != null && context['categories'] != null && context['categories'][key0] != null) ? context['categories'][key0]['descriptionParsed'] : null)) + 
-          "</p>\r\n\t</li>\r\n</ul>\r\n";
+          "</p>\n\t</li>\n</ul>\n";
       }, function alt() {
         return "";
       });

@@ -18,21 +18,21 @@
       var value = context;
       return iter(guard((context != null) ? context['users'] : null), function each(key0, index, length, value) {
         var key = key0;
-        return "\n<li class=\"list-group-item\">\n\t" + 
+        return "\r\n<li class=\"list-group-item\">\r\n\t" + 
           (guard((context != null && context['users'] != null && context['users'][key0] != null) ? context['users'][key0]['canKick'] : null) ?
             "<button class=\"pull-right btn btn-xs btn-link\" data-action=\"kick\" data-uid=\"" + 
               __escape(guard((context != null && context['users'] != null && context['users'][key0] != null) ? context['users'][key0]['uid'] : null)) + 
               "\">[[modules:chat.kick]]</button>" :
             "") + 
-          "\n\t" + 
+          "\r\n\t" + 
           __escape(helper(context, helpers, 'buildAvatar', [guard((context != null && context['users'] != null) ? context['users'][key0] : null), "sm", guard((context != null) ? context['true'] : null)])) + 
-          "\n\t<span>" + 
+          "\r\n\t<span>" + 
           __escape(guard((context != null && context['users'] != null && context['users'][key0] != null) ? context['users'][key0]['username'] : null)) + 
           " " + 
           (guard((context != null && context['users'] != null && context['users'][key0] != null) ? context['users'][key0]['isOwner'] : null) ?
             "<i class=\"fa fa-star text-warning\" title=\"[[modules:chat.owner]]\"></i>" :
             "") + 
-          "</span>\n</li>\n";
+          "</span>\r\n</li>\r\n";
       }, function alt() {
         return "";
       });

@@ -10,40 +10,40 @@
     var __escape = helpers.__escape;
     var value = context;
     return (guard((context != null && context['breadcrumbs'] != null) ? context['breadcrumbs']['length'] : null) ?
-        "\n<ol class=\"breadcrumb\" itemscope=\"itemscope\" itemprop=\"breadcrumb\" itemtype=\"http://schema.org/BreadcrumbList\">\n\t" + 
+        "\r\n<ol class=\"breadcrumb\" itemscope=\"itemscope\" itemprop=\"breadcrumb\" itemtype=\"http://schema.org/BreadcrumbList\">\r\n\t" + 
           compiled.blocks['breadcrumbs'](helpers, context, guard, iter, helper) + 
-          "\n</ol>\n" :
+          "\r\n</ol>\r\n" :
         "") + 
-      "\n\n\n<div data-widget-area=\"header\">\n\t" + 
+      "\r\n\r\n\r\n<div data-widget-area=\"header\">\r\n\t" + 
       compiled.blocks['widgets.header'](helpers, context, guard, iter, helper) + 
-      "\n</div>\n\n<div class=\"cover\" component=\"account/cover\" style=\"background-image: url(" + 
+      "\r\n</div>\r\n\r\n<div class=\"cover\" component=\"account/cover\" style=\"background-image: url(" + 
       __escape(guard((context != null) ? context['cover:url'] : null)) + 
       "); background-position: " + 
       __escape(guard((context != null) ? context['cover:position'] : null)) + 
-      ";\">\n\t<div class=\"avatar-wrapper\" data-uid=\"" + 
+      ";\">\r\n\t<div class=\"avatar-wrapper\" data-uid=\"" + 
       __escape(guard((context != null) ? context['uid'] : null)) + 
-      "\">\n\t\t" + 
+      "\">\r\n\t\t" + 
       (guard((context != null) ? context['picture'] : null) ?
-        "\n\t\t<img src=\"" + 
+        "\r\n\t\t<img src=\"" + 
           __escape(guard((context != null) ? context['picture'] : null)) + 
-          "\" class=\"avatar avatar-xl avatar-rounded\" />\n\t\t" :
-        "\n\t\t<div class=\"avatar avatar-xl avatar-rounded\" style=\"background-color: " + 
+          "\" class=\"avatar avatar-xl avatar-rounded\" />\r\n\t\t" :
+        "\r\n\t\t<div class=\"avatar avatar-xl avatar-rounded\" style=\"background-color: " + 
           __escape(guard((context != null) ? context['icon:bgColor'] : null)) + 
           ";\" title=\"" + 
           __escape(guard((context != null) ? context['username'] : null)) + 
           "\">" + 
           __escape(guard((context != null) ? context['icon:text'] : null)) + 
-          "</div>\n\t\t") + 
-      "\n\t\t<i component=\"user/status\" class=\"fa fa-circle status " + 
+          "</div>\r\n\t\t") + 
+      "\r\n\t\t<i component=\"user/status\" class=\"fa fa-circle status " + 
       __escape(guard((context != null) ? context['status'] : null)) + 
       "\" title=\"[[global:" + 
       __escape(guard((context != null) ? context['status'] : null)) + 
-      "]]\"></i>\n\n\t\t" + 
+      "]]\"></i>\r\n\r\n\t\t" + 
       (guard((context != null) ? context['loggedIn'] : null) ?
-        "\n\t\t" + 
+        "\r\n\t\t" + 
           (guard((context != null) ? context['isSelf'] : null) ?
             "" :
-            "\n\t\t<button class=\"btn-morph fab " + 
+            "\r\n\t\t<button class=\"btn-morph fab " + 
               (guard((context != null) ? context['isFollowing'] : null) ?
                 "heart" :
                 "plus") + 
@@ -51,10 +51,10 @@
               (guard((context != null) ? context['isFollowing'] : null) ?
                 "[[global:unfollow]]" :
                 "[[global:follow]]") + 
-              "\">\n\t\t\t<span>\n\t\t\t\t<span class=\"s1\"></span>\n\t\t\t\t<span class=\"s2\"></span>\n\t\t\t\t<span class=\"s3\"></span>\n\t\t\t</span>\n\t\t</button>\n\t\t") + 
-          "\n\t\t" :
+              "\">\r\n\t\t\t<span>\r\n\t\t\t\t<span class=\"s1\"></span>\r\n\t\t\t\t<span class=\"s2\"></span>\r\n\t\t\t\t<span class=\"s3\"></span>\r\n\t\t\t</span>\r\n\t\t</button>\r\n\t\t") + 
+          "\r\n\t\t" :
         "") + 
-      "\n\t</div>\n\n\t<div class=\"container\">\n\t\t<div class=\"row account-menu\">\r\n\t<div class=\"col-xs-12\">\r\n\t\t<ul class=\"nav nav-pills pull-right\">\r\n\t\t\t" + 
+      "\r\n\t</div>\r\n\r\n\t<div class=\"container\">\r\n\t\t<div class=\"row account-menu\">\r\n\t<div class=\"col-xs-12\">\r\n\t\t<ul class=\"nav nav-pills pull-right\">\r\n\t\t\t" + 
       (guard((context != null) ? context['false'] : null) ?
         "\r\n\t\t\t\t<li>\r\n\t\t\t\t\t<a href=\"" + 
           __escape(guard((context != null && context['config'] != null) ? context['config']['relative_path'] : null)) + 
@@ -198,15 +198,15 @@
           compiled.blocks['profile_links'](helpers, context, guard, iter, helper) + 
           "\r\n\t\t\t\t\t</ul>\r\n\t\t\t\t</li>\r\n\t\t\t" :
         "") + 
-      "\r\n\t\t</ul>\r\n\t</div>\r\n</div>\r\n\n\n\t\t" + 
+      "\r\n\t\t</ul>\r\n\t</div>\r\n</div>\r\n\r\n\r\n\t\t" + 
       (guard((context != null) ? context['allowCoverPicture'] : null) ?
-        "\n\t\t" + 
+        "\r\n\t\t" + 
           (guard((context != null) ? context['canEdit'] : null) ?
-            "\n\t\t<div class=\"controls\">\n\t\t\t<span class=\"upload\"><i class=\"fa fa-fw fa-4x fa-upload\"></i></span>\n\t\t\t<span class=\"resize\"><i class=\"fa fa-fw fa-4x fa-arrows\"></i></span>\n\t\t\t<span class=\"remove\"><i class=\"fa fa-fw fa-4x fa-times\"></i></span>\n\t\t</div>\n\t\t<div class=\"save\">[[groups:cover-save]] <i class=\"fa fa-fw fa-floppy-o\"></i></div>\n\t\t<div class=\"indicator\">[[groups:cover-saving]] <i class=\"fa fa-fw fa-refresh fa-spin\"></i></div>\n\t\t" :
+            "\r\n\t\t<div class=\"controls\">\r\n\t\t\t<span class=\"upload\"><i class=\"fa fa-fw fa-4x fa-upload\"></i></span>\r\n\t\t\t<span class=\"resize\"><i class=\"fa fa-fw fa-4x fa-arrows\"></i></span>\r\n\t\t\t<span class=\"remove\"><i class=\"fa fa-fw fa-4x fa-times\"></i></span>\r\n\t\t</div>\r\n\t\t<div class=\"save\">[[groups:cover-save]] <i class=\"fa fa-fw fa-floppy-o\"></i></div>\r\n\t\t<div class=\"indicator\">[[groups:cover-saving]] <i class=\"fa fa-fw fa-refresh fa-spin\"></i></div>\r\n\t\t" :
             "") + 
-          "\n\t\t" :
+          "\r\n\t\t" :
         "") + 
-      "\n\t</div>\n</div>\n";
+      "\r\n\t</div>\r\n</div>\r\n";
   }
 
   compiled.blocks = {
@@ -215,7 +215,7 @@
       var value = context;
       return iter(guard((context != null) ? context['breadcrumbs'] : null), function each(key0, index, length, value) {
         var key = key0;
-        return "\n\t<li" + 
+        return "\r\n\t<li" + 
           (index === length - 1 ?
             " component=\"breadcrumb/current\"" :
             "") + 
@@ -223,34 +223,34 @@
           (index === length - 1 ?
             "class=\"active\"" :
             "") + 
-          ">\n\t\t<meta itemprop=\"position\" content=\"" + 
+          ">\r\n\t\t<meta itemprop=\"position\" content=\"" + 
           __escape(index) + 
-          "\" />\n\t\t" + 
+          "\" />\r\n\t\t" + 
           (index === length - 1 ?
             "" :
             "<a href=\"" + 
               __escape(guard((context != null && context['breadcrumbs'] != null && context['breadcrumbs'][key0] != null) ? context['breadcrumbs'][key0]['url'] : null)) + 
               "\" itemprop=\"item\">") + 
-          "\n\t\t\t<span itemprop=\"name\">\n\t\t\t\t" + 
+          "\r\n\t\t\t<span itemprop=\"name\">\r\n\t\t\t\t" + 
           __escape(guard((context != null && context['breadcrumbs'] != null && context['breadcrumbs'][key0] != null) ? context['breadcrumbs'][key0]['text'] : null)) + 
-          "\n\t\t\t\t" + 
+          "\r\n\t\t\t\t" + 
           (index === length - 1 ?
-            "\n\t\t\t\t" + 
+            "\r\n\t\t\t\t" + 
               (guard((context != null) ? context['feeds:disableRSS'] : null) ?
                 "" :
-                "\n\t\t\t\t" + 
+                "\r\n\t\t\t\t" + 
                   (guard((context != null) ? context['rssFeedUrl'] : null) ?
                     "<a target=\"_blank\" href=\"" + 
                       __escape(guard((context != null) ? context['rssFeedUrl'] : null)) + 
                       "\" itemprop=\"item\"><i class=\"fa fa-rss-square\"></i></a>" :
                     "")) + 
-              "\n\t\t\t\t" :
+              "\r\n\t\t\t\t" :
             "") + 
-          "\n\t\t\t</span>\n\t\t" + 
+          "\r\n\t\t\t</span>\r\n\t\t" + 
           (index === length - 1 ?
             "" :
             "</a>") + 
-          "\n\t</li>\n\t";
+          "\r\n\t</li>\r\n\t";
       }, function alt() {
         return "";
       });
@@ -260,9 +260,9 @@
       var value = context;
       return iter(guard((context != null && context['widgets'] != null) ? context['widgets']['header'] : null), function each(key0, index, length, value) {
         var key = key0;
-        return "\n\t" + 
+        return "\r\n\t" + 
           guard((context != null && context['widgets'] != null && context['widgets']['header'] != null && context['widgets']['header'][key0] != null) ? context['widgets']['header'][key0]['html'] : null) + 
-          "\n\t";
+          "\r\n\t";
       }, function alt() {
         return "";
       });

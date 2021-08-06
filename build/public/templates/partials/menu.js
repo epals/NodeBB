@@ -114,20 +114,20 @@
               "/login\">\r\n\t\t\t\t\t\t\t<i class=\"fa fa-sign-in visible-xs-inline\"></i>\r\n\t\t\t\t\t\t\t<span>[[global:login]]</span>\r\n\t\t\t\t\t\t</a>\r\n\t\t\t\t\t</li>\r\n\t\t\t\t</ul>\r\n\t\t\t\t") + 
           "\r\n\t\t\t\t" + 
           (guard((context != null && context['config'] != null) ? context['config']['searchEnabled'] : null) ?
-            "\r\n\t\t\t\t<ul class=\"nav navbar-nav navbar-right search-menu\">\r\n\t\t\t\t\t<li>\r\n\t\t\t\t\t\t<form id=\"search-form\" class=\"navbar-form navbar-right hidden-xs\" role=\"search\" method=\"GET\">\r\n\t\t\t\t\t\t\t<button id=\"search-button\" type=\"button\" class=\"btn btn-link\"><i class=\"fa fa-search fa-fw\" title=\"[[global:header.search]]\"></i></button>\r\n\t\t\t\t\t\t\t<div class=\"hidden\" id=\"search-fields\">\r\n\t\t\t\t\t\t\t\t<div class=\"form-group\">\r\n\t\t\t\t\t\t\t\t\t<input type=\"text\" class=\"form-control\" placeholder=\"[[global:search]]\" name=\"query\" value=\"\">\r\n\t\t\t\t\t\t\t\t\t<a href=\"#\"><i class=\"fa fa-gears fa-fw advanced-search-link\"></i></a>\r\n\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t\t<button type=\"submit\" class=\"btn btn-default hide\">[[global:search]]</button>\r\n\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t</form>\r\n\t\t\t\t\t\t<ul id=\"quick-search-results\" class=\"dropdown-menu quick-search-results hidden\">\r\n\t\t\t\t\t\t\t<ul id=\"quick-search-results\" class=\"quick-search-results\">\n" + 
+            "\r\n\t\t\t\t<ul class=\"nav navbar-nav navbar-right search-menu\">\r\n\t\t\t\t\t<li>\r\n\t\t\t\t\t\t<form id=\"search-form\" class=\"navbar-form navbar-right hidden-xs\" role=\"search\" method=\"GET\">\r\n\t\t\t\t\t\t\t<button id=\"search-button\" type=\"button\" class=\"btn btn-link\"><i class=\"fa fa-search fa-fw\" title=\"[[global:header.search]]\"></i></button>\r\n\t\t\t\t\t\t\t<div class=\"hidden\" id=\"search-fields\">\r\n\t\t\t\t\t\t\t\t<div class=\"form-group\">\r\n\t\t\t\t\t\t\t\t\t<input type=\"text\" class=\"form-control\" placeholder=\"[[global:search]]\" name=\"query\" value=\"\">\r\n\t\t\t\t\t\t\t\t\t<a href=\"#\"><i class=\"fa fa-gears fa-fw advanced-search-link\"></i></a>\r\n\t\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t\t\t<button type=\"submit\" class=\"btn btn-default hide\">[[global:search]]</button>\r\n\t\t\t\t\t\t\t</div>\r\n\t\t\t\t\t\t</form>\r\n\t\t\t\t\t\t<ul id=\"quick-search-results\" class=\"dropdown-menu quick-search-results hidden\">\r\n\t\t\t\t\t\t\t<ul id=\"quick-search-results\" class=\"quick-search-results\">\r\n" + 
               compiled.blocks['posts'](helpers, context, guard, iter, helper) + 
-              "\n</ul>\n" + 
+              "\r\n</ul>\r\n" + 
               (guard((context != null) ? context['multiplePages'] : null) ?
-                "\n<div class=\"text-center\">\n\t<a href=\"" + 
+                "\r\n<div class=\"text-center\">\r\n\t<a href=\"" + 
                   __escape(guard((context != null) ? context['url'] : null)) + 
-                  "\">\n\t\t[[search:see-more-results, " + 
+                  "\">\r\n\t\t[[search:see-more-results, " + 
                   __escape(guard((context != null) ? context['matchCount'] : null)) + 
-                  "]]\n\t</a>\n</div>\n" :
+                  "]]\r\n\t</a>\r\n</div>\r\n" :
                 "") + 
-              "\n" + 
+              "\r\n" + 
               (guard((context != null && context['posts'] != null) ? context['posts']['length'] : null) ?
                 "" :
-                "\n<div class=\"text-center no-results\">[[search:no-matches]]</li>\n") + 
+                "\r\n<div class=\"text-center no-results\">[[search:no-matches]]</li>\r\n") + 
               "\r\n\t\t\t\t\t\t</ul>\r\n\t\t\t\t\t</li>\r\n\t\t\t\t\t<li class=\"visible-xs\" id=\"search-menu\">\r\n\t\t\t\t\t\t<a href=\"" + 
               __escape(guard((context != null) ? context['relative_path'] : null)) + 
               "/search\">\r\n\t\t\t\t\t\t\t<i class=\"fa fa-search fa-fw\"></i> [[global:search]]\r\n\t\t\t\t\t\t</a>\r\n\t\t\t\t\t</li>\r\n\t\t\t\t</ul>\r\n\t\t\t\t" :
@@ -146,21 +146,21 @@
       var value = context;
       return iter(guard((context != null) ? context['posts'] : null), function each(key0, index, length, value) {
         var key = key0;
-        return "\n<li data-tid=\"" + 
+        return "\r\n<li data-tid=\"" + 
           __escape(guard((context != null && context['posts'] != null && context['posts'][key0] != null && context['posts'][key0]['topic'] != null) ? context['posts'][key0]['topic']['tid'] : null)) + 
           "\" data-pid=\"" + 
           __escape(guard((context != null && context['posts'] != null && context['posts'][key0] != null) ? context['posts'][key0]['pid'] : null)) + 
-          "\">\n\t<a href=\"" + 
+          "\">\r\n\t<a href=\"" + 
           __escape(guard((context != null && context['config'] != null) ? context['config']['relative_path'] : null)) + 
           "/post/" + 
           __escape(guard((context != null && context['posts'] != null && context['posts'][key0] != null) ? context['posts'][key0]['pid'] : null)) + 
-          "\">\n\t\t" + 
+          "\">\r\n\t\t" + 
           __escape(helper(context, helpers, 'buildAvatar', [guard((context != null && context['posts'] != null && context['posts'][key0] != null) ? context['posts'][key0]['user'] : null), "sm", guard((context != null) ? context['true'] : null)])) + 
-          "\n\t\t<span class=\"quick-search-title\">" + 
+          "\r\n\t\t<span class=\"quick-search-title\">" + 
           __escape(guard((context != null && context['posts'] != null && context['posts'][key0] != null && context['posts'][key0]['topic'] != null) ? context['posts'][key0]['topic']['title'] : null)) + 
-          "</span>\n\t\t<br/>\n\t\t<p class=\"snippet\">\n\t\t" + 
+          "</span>\r\n\t\t<br/>\r\n\t\t<p class=\"snippet\">\r\n\t\t" + 
           __escape(guard((context != null && context['posts'] != null && context['posts'][key0] != null) ? context['posts'][key0]['snippet'] : null)) + 
-          "\n\t\t</p>\n\t\t<small class=\"post-info pull-right\">\n\t\t\t<span class=\"fa-stack\" style=\"" + 
+          "\r\n\t\t</p>\r\n\t\t<small class=\"post-info pull-right\">\r\n\t\t\t<span class=\"fa-stack\" style=\"" + 
           __escape(helper(context, helpers, 'generateCategoryBackground', [guard((context != null && context['posts'] != null && context['posts'][key0] != null) ? context['posts'][key0]['category'] : null)])) + 
           "\"><i style=\"color:" + 
           __escape(guard((context != null && context['posts'] != null && context['posts'][key0] != null && context['posts'][key0]['category'] != null) ? context['posts'][key0]['category']['color'] : null)) + 
@@ -168,13 +168,13 @@
           __escape(guard((context != null && context['posts'] != null && context['posts'][key0] != null && context['posts'][key0]['category'] != null) ? context['posts'][key0]['category']['icon'] : null)) + 
           " fa-stack-1x\"></i></span> " + 
           __escape(guard((context != null && context['posts'] != null && context['posts'][key0] != null && context['posts'][key0]['category'] != null) ? context['posts'][key0]['category']['name'] : null)) + 
-          " &bull;\n\t\t\t<span class=\"timeago\" title=\"" + 
+          " &bull;\r\n\t\t\t<span class=\"timeago\" title=\"" + 
           __escape(guard((context != null && context['posts'] != null && context['posts'][key0] != null) ? context['posts'][key0]['timestampISO'] : null)) + 
-          "\"></span>\n\t\t</small>\n\t </a>\n</li>\n" + 
+          "\"></span>\r\n\t\t</small>\r\n\t </a>\r\n</li>\r\n" + 
           (index === length - 1 ?
             "" :
-            "\n<li role=\"separator\" class=\"divider\"></li>\n") + 
-          "\n";
+            "\r\n<li role=\"separator\" class=\"divider\"></li>\r\n") + 
+          "\r\n";
       }, function alt() {
         return "";
       });

@@ -9,9 +9,9 @@
   function compiled(helpers, context, guard, iter, helper) {
     var __escape = helpers.__escape;
     var value = context;
-    return "<label>Amount of Posts to display:</label>\r\n<input type=\"text\" class=\"form-control\" name=\"numPosts\" placeholder=\"4\" />\r\n<label>Select Group</label>\r\n<select name=\"groupName\" class=\"form-control\">\r\n\t" + 
+    return "<label>Amount of Posts to display:</label>\n<input type=\"text\" class=\"form-control\" name=\"numPosts\" placeholder=\"4\" />\n<label>Select Group</label>\n<select name=\"groupName\" class=\"form-control\">\n\t" + 
       compiled.blocks['groups'](helpers, context, guard, iter, helper) + 
-      "\r\n</select>\r\n";
+      "\n</select>\n";
   }
 
   compiled.blocks = {
@@ -20,11 +20,11 @@
       var value = context;
       return iter(guard((context != null) ? context['groups'] : null), function each(key0, index, length, value) {
         var key = key0;
-        return "\r\n\t<option value=\"" + 
+        return "\n\t<option value=\"" + 
           __escape(guard((context != null && context['groups'] != null && context['groups'][key0] != null) ? context['groups'][key0]['name'] : null)) + 
           "\">" + 
           __escape(guard((context != null && context['groups'] != null && context['groups'][key0] != null) ? context['groups'][key0]['name'] : null)) + 
-          "</option>\r\n\t";
+          "</option>\n\t";
       }, function alt() {
         return "";
       });

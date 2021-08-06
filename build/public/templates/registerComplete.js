@@ -10,25 +10,25 @@
     var __escape = helpers.__escape;
     var value = context;
     return (guard((context != null && context['breadcrumbs'] != null) ? context['breadcrumbs']['length'] : null) ?
-        "\n<ol class=\"breadcrumb\" itemscope=\"itemscope\" itemprop=\"breadcrumb\" itemtype=\"http://schema.org/BreadcrumbList\">\n\t" + 
+        "\r\n<ol class=\"breadcrumb\" itemscope=\"itemscope\" itemprop=\"breadcrumb\" itemtype=\"http://schema.org/BreadcrumbList\">\r\n\t" + 
           compiled.blocks['breadcrumbs'](helpers, context, guard, iter, helper) + 
-          "\n</ol>\n" :
+          "\r\n</ol>\r\n" :
         "") + 
-      "\n\n\n<div class=\"row\">\n\t<div class=\"col-xs-12 col-sm-8 col-sm-offset-2\">\n\t\t<p class=\"lead text-center\">\n\t\t\t[[register:interstitial.intro]]\n\t\t</p>\n\n\t\t" + 
+      "\r\n\r\n\r\n<div class=\"row\">\r\n\t<div class=\"col-xs-12 col-sm-8 col-sm-offset-2\">\r\n\t\t<p class=\"lead text-center\">\r\n\t\t\t[[register:interstitial.intro]]\r\n\t\t</p>\r\n\r\n\t\t" + 
       (guard((context != null && context['errors'] != null) ? context['errors']['length'] : null) ?
-        "\n\t\t<div class=\"alert alert-warning\">\n\t\t\t<p>\n\t\t\t\t[[register:interstitial.errors-found]]\n\t\t\t</p>\n\t\t\t<ul>\n\t\t\t\t" + 
+        "\r\n\t\t<div class=\"alert alert-warning\">\r\n\t\t\t<p>\r\n\t\t\t\t[[register:interstitial.errors-found]]\r\n\t\t\t</p>\r\n\t\t\t<ul>\r\n\t\t\t\t" + 
           compiled.blocks['errors'](helpers, context, guard, iter, helper) + 
-          "\n\t\t\t</ul>\n\t\t</div>\n\t\t" :
+          "\r\n\t\t\t</ul>\r\n\t\t</div>\r\n\t\t" :
         "") + 
-      "\n\t</div>\n</div>\n\n<form role=\"form\" method=\"post\" action=\"" + 
+      "\r\n\t</div>\r\n</div>\r\n\r\n<form role=\"form\" method=\"post\" action=\"" + 
       __escape(guard((context != null && context['config'] != null) ? context['config']['relative_path'] : null)) + 
       "/register/complete/?_csrf=" + 
       __escape(guard((context != null && context['config'] != null) ? context['config']['csrf_token'] : null)) + 
-      "\" enctype=\"multipart/form-data\">\n\t" + 
+      "\" enctype=\"multipart/form-data\">\r\n\t" + 
       compiled.blocks['sections'](helpers, context, guard, iter, helper) + 
-      "\n\n\t<div class=\"row\">\n\t\t<div class=\"col-xs-12 col-sm-8 col-sm-offset-2\">\n\t\t\t<button class=\"btn btn-primary btn-block\">[[topic:composer.submit]]</button>\n\t\t</div>\n\t</div>\n</form>\n<form role=\"form\" method=\"post\" action=\"" + 
+      "\r\n\r\n\t<div class=\"row\">\r\n\t\t<div class=\"col-xs-12 col-sm-8 col-sm-offset-2\">\r\n\t\t\t<button class=\"btn btn-primary btn-block\">[[topic:composer.submit]]</button>\r\n\t\t</div>\r\n\t</div>\r\n</form>\r\n<form role=\"form\" method=\"post\" action=\"" + 
       __escape(guard((context != null && context['config'] != null) ? context['config']['relative_path'] : null)) + 
-      "/register/abort\">\n\t<p class=\"text-center\">\n\t\t<button class=\"btn btn-link\">[[register:cancel_registration]]</button>\n\t</p>\n</form>";
+      "/register/abort\">\r\n\t<p class=\"text-center\">\r\n\t\t<button class=\"btn btn-link\">[[register:cancel_registration]]</button>\r\n\t</p>\r\n</form>";
   }
 
   compiled.blocks = {
@@ -37,7 +37,7 @@
       var value = context;
       return iter(guard((context != null) ? context['breadcrumbs'] : null), function each(key0, index, length, value) {
         var key = key0;
-        return "\n\t<li" + 
+        return "\r\n\t<li" + 
           (index === length - 1 ?
             " component=\"breadcrumb/current\"" :
             "") + 
@@ -45,34 +45,34 @@
           (index === length - 1 ?
             "class=\"active\"" :
             "") + 
-          ">\n\t\t<meta itemprop=\"position\" content=\"" + 
+          ">\r\n\t\t<meta itemprop=\"position\" content=\"" + 
           __escape(index) + 
-          "\" />\n\t\t" + 
+          "\" />\r\n\t\t" + 
           (index === length - 1 ?
             "" :
             "<a href=\"" + 
               __escape(guard((context != null && context['breadcrumbs'] != null && context['breadcrumbs'][key0] != null) ? context['breadcrumbs'][key0]['url'] : null)) + 
               "\" itemprop=\"item\">") + 
-          "\n\t\t\t<span itemprop=\"name\">\n\t\t\t\t" + 
+          "\r\n\t\t\t<span itemprop=\"name\">\r\n\t\t\t\t" + 
           __escape(guard((context != null && context['breadcrumbs'] != null && context['breadcrumbs'][key0] != null) ? context['breadcrumbs'][key0]['text'] : null)) + 
-          "\n\t\t\t\t" + 
+          "\r\n\t\t\t\t" + 
           (index === length - 1 ?
-            "\n\t\t\t\t" + 
+            "\r\n\t\t\t\t" + 
               (guard((context != null) ? context['feeds:disableRSS'] : null) ?
                 "" :
-                "\n\t\t\t\t" + 
+                "\r\n\t\t\t\t" + 
                   (guard((context != null) ? context['rssFeedUrl'] : null) ?
                     "<a target=\"_blank\" href=\"" + 
                       __escape(guard((context != null) ? context['rssFeedUrl'] : null)) + 
                       "\" itemprop=\"item\"><i class=\"fa fa-rss-square\"></i></a>" :
                     "")) + 
-              "\n\t\t\t\t" :
+              "\r\n\t\t\t\t" :
             "") + 
-          "\n\t\t\t</span>\n\t\t" + 
+          "\r\n\t\t\t</span>\r\n\t\t" + 
           (index === length - 1 ?
             "" :
             "</a>") + 
-          "\n\t</li>\n\t";
+          "\r\n\t</li>\r\n\t";
       }, function alt() {
         return "";
       });
@@ -82,9 +82,9 @@
       var value = context;
       return iter(guard((context != null) ? context['errors'] : null), function each(key0, index, length, value) {
         var key = key0;
-        return "\n\t\t\t\t<li>" + 
+        return "\r\n\t\t\t\t<li>" + 
           __escape(guard(value)) + 
-          "</li>\n\t\t\t\t";
+          "</li>\r\n\t\t\t\t";
       }, function alt() {
         return "";
       });
@@ -94,9 +94,9 @@
       var value = context;
       return iter(guard((context != null) ? context['sections'] : null), function each(key0, index, length, value) {
         var key = key0;
-        return "\n\t<div class=\"row\">\n\t\t<div class=\"col-xs-12 col-sm-8 col-sm-offset-2\">\n\t\t\t<div class=\"panel panel-default\">\n\t\t\t\t<div class=\"panel-body\">\n\t\t\t\t\t" + 
+        return "\r\n\t<div class=\"row\">\r\n\t\t<div class=\"col-xs-12 col-sm-8 col-sm-offset-2\">\r\n\t\t\t<div class=\"panel panel-default\">\r\n\t\t\t\t<div class=\"panel-body\">\r\n\t\t\t\t\t" + 
           __escape(guard(value)) + 
-          "\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n\t";
+          "\r\n\t\t\t\t</div>\r\n\t\t\t</div>\r\n\t\t</div>\r\n\t</div>\r\n\t";
       }, function alt() {
         return "";
       });

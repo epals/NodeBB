@@ -10,15 +10,15 @@
     var __escape = helpers.__escape;
     var value = context;
     return (guard((context != null) ? context['error'] : null) ?
-        "\n<div class=\"alert alert-danger\">\n\t<strong>" + 
+        "\r\n<div class=\"alert alert-danger\">\r\n\t<strong>" + 
           __escape(guard((context != null) ? context['error'] : null)) + 
-          "</strong>\n\t<p>[[notifications:email-confirm-error-message]]</p>\n" :
-        "\n<div class=\"alert alert-success\">\n\t<strong>[[notifications:email-confirmed]]</strong>\n\t<p>[[notifications:email-confirmed-message]]</p>\n") + 
-      "\n\t<p>\n\t\t<a href=\"" + 
+          "</strong>\r\n\t<p>[[notifications:email-confirm-error-message]]</p>\r\n" :
+        "\r\n<div class=\"alert alert-success\">\r\n\t<strong>[[notifications:email-confirmed]]</strong>\r\n\t<p>[[notifications:email-confirmed-message]]</p>\r\n") + 
+      "\r\n\t<p>\r\n\t\t<a href=\"" + 
       __escape(guard((context != null && context['config'] != null) ? context['config']['relative_path'] : null)) + 
       "/\">[[notifications:back_to_home, " + 
       __escape(guard((context != null && context['config'] != null) ? context['config']['siteTitle'] : null)) + 
-      "]]</a>\n\t</p>\n</div>\n";
+      "]]</a>\r\n\t</p>\r\n</div>\r\n";
   }
 
   compiled.blocks = {

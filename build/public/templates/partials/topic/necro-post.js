@@ -9,9 +9,9 @@
   function compiled(helpers, context, guard, iter, helper) {
     var __escape = helpers.__escape;
     var value = context;
-    return "<li component=\"topic/necro-post\" class=\"necro-post timeline-event\">\n\t<span class=\"timeline-text\">" + 
+    return "<li component=\"topic/necro-post\" class=\"necro-post timeline-event\">\r\n\t<span class=\"timeline-text\">" + 
       __escape(guard((context != null) ? context['text'] : null)) + 
-      "</span>\n</li>";
+      "</span>\r\n</li>";
   }
 
   compiled.blocks = {

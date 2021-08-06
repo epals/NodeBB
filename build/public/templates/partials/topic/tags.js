@@ -18,11 +18,11 @@
       var value = context;
       return iter(guard((context != null) ? context['tags'] : null), function each(key0, index, length, value) {
         var key = key0;
-        return "\n<a href=\"" + 
+        return "\r\n<a href=\"" + 
           __escape(guard((context != null && context['config'] != null) ? context['config']['relative_path'] : null)) + 
           "/tags/" + 
           __escape(guard((context != null && context['tags'] != null && context['tags'][key0] != null) ? context['tags'][key0]['value'] : null)) + 
-          "\">\n    <span class=\"tag tag-item\" data-tag=\"" + 
+          "\">\r\n    <span class=\"tag tag-item\" data-tag=\"" + 
           __escape(guard((context != null && context['tags'] != null && context['tags'][key0] != null) ? context['tags'][key0]['value'] : null)) + 
           "\" style=\"" + 
           (guard((context != null && context['tags'] != null && context['tags'][key0] != null) ? context['tags'][key0]['color'] : null) ?
@@ -37,7 +37,7 @@
             "") + 
           "\">" + 
           __escape(guard((context != null && context['tags'] != null && context['tags'][key0] != null) ? context['tags'][key0]['valueEscaped'] : null)) + 
-          "</span>\n</a>\n";
+          "</span>\r\n</a>\r\n";
       }, function alt() {
         return "";
       });

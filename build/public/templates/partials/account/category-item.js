@@ -13,15 +13,15 @@
       __escape(guard((context != null) ? context['cid'] : null)) + 
       "\" data-parent-cid=\"" + 
       __escape(guard((context != null) ? context['parentCid'] : null)) + 
-      "\" class=\"row clearfix\">\n\t<meta itemprop=\"name\" content=\"" + 
+      "\" class=\"row clearfix\">\r\n\t<meta itemprop=\"name\" content=\"" + 
       __escape(guard((context != null) ? context['name'] : null)) + 
-      "\">\n\n\t<div class=\"content col-xs-12 col-md-10 col-sm-12 depth-" + 
+      "\">\r\n\r\n\t<div class=\"content col-xs-12 col-md-10 col-sm-12 depth-" + 
       __escape(guard((context != null) ? context['depth'] : null)) + 
-      "\">\n\t\t<div class=\"icon pull-left\" style=\"" + 
+      "\">\r\n\t\t<div class=\"icon pull-left\" style=\"" + 
       __escape(helper(context, helpers, 'generateCategoryBackground', [guard(value)])) + 
-      "\">\n\t\t\t<i class=\"fa fa-fw " + 
+      "\">\r\n\t\t\t<i class=\"fa fa-fw " + 
       __escape(guard((context != null) ? context['icon'] : null)) + 
-      "\"></i>\n\t\t</div>\n\n\t\t<h2 class=\"title\">\n\t\t\t" + 
+      "\"></i>\r\n\t\t</div>\r\n\r\n\t\t<h2 class=\"title\">\r\n\t\t\t" + 
       (guard((context != null) ? context['isSection'] : null) ?
         "\r\n<span class=\"category-title\">" + 
           __escape(guard((context != null) ? context['name'] : null)) + 
@@ -43,13 +43,13 @@
           "\r\n" + 
           __escape(guard((context != null) ? context['name'] : null)) + 
           "\r\n</a>\r\n") + 
-      "\n\t\t</h2>\n\t\t<div>\n\t\t\t" + 
+      "\r\n\t\t</h2>\r\n\t\t<div>\r\n\t\t\t" + 
       (guard((context != null) ? context['descriptionParsed'] : null) ?
-        "\n\t\t\t<div class=\"description\">\n\t\t\t\t" + 
+        "\r\n\t\t\t<div class=\"description\">\r\n\t\t\t\t" + 
           __escape(guard((context != null) ? context['descriptionParsed'] : null)) + 
-          "\n\t\t\t</div>\n\t\t\t" :
+          "\r\n\t\t\t</div>\r\n\t\t\t" :
         "") + 
-      "\n\t\t</div>\n\t</div>\n\n\t" + 
+      "\r\n\t\t</div>\r\n\t</div>\r\n\r\n\t" + 
       (guard((context != null && context['config'] != null) ? context['config']['loggedIn'] : null) ?
         "\r\n<div class=\"btn-group topic-watch-dropdown bottom-sheet\" component=\"topic/watch\">\r\n\r\n\t<button class=\"btn btn-default dropdown-toggle\" data-toggle=\"dropdown\" type=\"button\">\r\n\t\t<span component=\"category/watching/menu\" " + 
           (guard((context != null) ? context['isWatched'] : null) ?
@@ -77,7 +77,7 @@
             "") + 
           "\"></i><i class=\"fa fa-fw fa-eye-slash\"></i> [[category:ignoring]]<p class=\"help-text\"><small>[[category:ignoring.description]]</small></p></a></li>\r\n\t</ul>\r\n</div>\r\n" :
         "") + 
-      "\n</li>\n";
+      "\r\n</li>\r\n";
   }
 
   compiled.blocks = {

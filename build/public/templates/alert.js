@@ -13,25 +13,25 @@
       __escape(guard((context != null) ? context['alert_id'] : null)) + 
       "\" class=\"alert alert-dismissable alert-" + 
       __escape(guard((context != null) ? context['type'] : null)) + 
-      " clearfix\" component=\"toaster/toast\">\n\t<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-hidden=\"true\">&times;</button>\n\n\t" + 
+      " clearfix\" component=\"toaster/toast\">\r\n\t<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-hidden=\"true\">&times;</button>\r\n\r\n\t" + 
       (guard((context != null) ? context['image'] : null) ?
-        "\n\t<img src=\"" + 
+        "\r\n\t<img src=\"" + 
           __escape(guard((context != null) ? context['image'] : null)) + 
-          "\">\n\t" :
+          "\">\r\n\t" :
         "") + 
-      "\n\n\t" + 
+      "\r\n\r\n\t" + 
       (guard((context != null) ? context['title'] : null) ?
-        "\n\t<strong>" + 
+        "\r\n\t<strong>" + 
           __escape(guard((context != null) ? context['title'] : null)) + 
-          "</strong>\n\t" :
+          "</strong>\r\n\t" :
         "") + 
-      "\n\n\t" + 
+      "\r\n\r\n\t" + 
       (guard((context != null) ? context['message'] : null) ?
-        "\n\t<p>" + 
+        "\r\n\t<p>" + 
           __escape(guard((context != null) ? context['message'] : null)) + 
-          "</p>\n\t" :
+          "</p>\r\n\t" :
         "") + 
-      "\n</div>\n";
+      "\r\n</div>\r\n";
   }
 
   compiled.blocks = {

@@ -9,7 +9,7 @@
   function compiled(helpers, context, guard, iter, helper) {
     var __escape = helpers.__escape;
     var value = context;
-    return "<div class=\"category\">\r\n\t<div component=\"category\" class=\"topic-list\" itemscope itemtype=\"http://www.schema.org/ItemList\" data-nextstart=\"" + 
+    return "<div class=\"category\">\n\t<div component=\"category\" class=\"topic-list\" itemscope itemtype=\"http://www.schema.org/ItemList\" data-nextstart=\"" + 
       __escape(guard((context != null) ? context['nextStart'] : null)) + 
       "\" data-set=\"" + 
       __escape(guard((context != null) ? context['set'] : null)) + 
@@ -19,7 +19,7 @@
         "") + 
       "\r\n\t" + 
       compiled.blocks['topics'](helpers, context, guard, iter, helper) + 
-      "\r\n</div>\r\n</div>\r\n";
+      "\r\n</div>\n</div>\n";
   }
 
   compiled.blocks = {

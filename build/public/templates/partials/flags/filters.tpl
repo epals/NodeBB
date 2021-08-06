@@ -27,6 +27,7 @@
 			<fieldset>
 				<div class="form-group">
 					<label for="filter-cid">[[flags:filter-cid]]</label>
+					<div class="input-group">
 					<div component="category/dropdown" class="btn-group category-dropdown-container bottom-sheet">
    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
     {{{ if selectedCategory }}}<span class="fa-stack" style="{function.generateCategoryBackground, selectedCategory}"><i class="fa fa-fw fa-stack-1x {selectedCategory.icon}" style="color: {selectedCategory.color};"></i></span> <span class="visible-sm-inline visible-md-inline visible-lg-inline">{selectedCategory.name}</span>{{{ else }}}
@@ -48,6 +49,7 @@
     {{{end}}}
 </ul>
 </div>
+					</div>
 				</div>
 				<div class="form-group">
 					<label for="sort">[[flags:sort]]</label>

@@ -9,7 +9,7 @@
   function compiled(helpers, context, guard, iter, helper) {
     var __escape = helpers.__escape;
     var value = context;
-    return "<label>Amount of Users to display:</label>\r\n<input type=\"text\" class=\"form-control\" name=\"numUsers\" placeholder=\"16\" />\r\n";
+    return "<label>Amount of Users to display:</label>\n<input type=\"text\" class=\"form-control\" name=\"numUsers\" placeholder=\"16\" />\n";
   }
 
   compiled.blocks = {

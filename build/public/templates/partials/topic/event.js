@@ -11,24 +11,24 @@
     var value = context;
     return "<li component=\"topic/event\" class=\"timeline-event\" data-topic-event-id=\"" + 
       __escape(guard((context != null) ? context['id'] : null)) + 
-      "\">\n\t<div class=\"timeline-badge\">\n\t\t<i class=\"fa " + 
+      "\">\r\n\t<div class=\"timeline-badge\">\r\n\t\t<i class=\"fa " + 
       (guard((context != null) ? context['icon'] : null) ?
         __escape(guard((context != null) ? context['icon'] : null)) :
         "fa-circle") + 
-      "\"></i>\n\t</div>\n\t<span class=\"timeline-text\">\n\t\t" + 
+      "\"></i>\r\n\t</div>\r\n\t<span class=\"timeline-text\">\r\n\t\t" + 
       (guard((context != null) ? context['href'] : null) ?
-        "\n\t\t<a href=\"" + 
+        "\r\n\t\t<a href=\"" + 
           __escape(guard((context != null && context['config'] != null) ? context['config']['relative_path'] : null)) + 
           __escape(guard((context != null) ? context['href'] : null)) + 
           "\">" + 
           __escape(guard((context != null) ? context['text'] : null)) + 
-          "</a>&nbsp;\n\t\t" :
-        "\n\t\t" + 
+          "</a>&nbsp;\r\n\t\t" :
+        "\r\n\t\t" + 
           __escape(guard((context != null) ? context['text'] : null)) + 
-          "&nbsp;\n\t\t") + 
-      "\n\t</span>\n\n\t" + 
+          "&nbsp;\r\n\t\t") + 
+      "\r\n\t</span>\r\n\r\n\t" + 
       (guard((context != null) ? context['user'] : null) ?
-        "\n\t\t" + 
+        "\r\n\t\t" + 
           (guard((context != null && context['user'] != null) ? context['user']['system'] : null) ?
             "" :
             "<span><a href=\"" + 
@@ -40,15 +40,15 @@
               "&nbsp;" + 
               __escape(guard((context != null && context['user'] != null) ? context['user']['username'] : null)) + 
               "</a></span>&nbsp;") + 
-          "\n\t\t" + 
+          "\r\n\t\t" + 
           (guard((context != null && context['user'] != null) ? context['user']['system'] : null) ?
             "<span class=\"timeline-text\">[[global:system-user]]</span>&nbsp;" :
             "") + 
-          "\n\t" :
-        "\n\t\t<span class=\"timeline-text\">[[global:unknown-user]]</span>&nbsp;\n\t") + 
-      "\n\n\t<span class=\"timeago timeline-text\" title=\"" + 
+          "\r\n\t" :
+        "\r\n\t\t<span class=\"timeline-text\">[[global:unknown-user]]</span>&nbsp;\r\n\t") + 
+      "\r\n\r\n\t<span class=\"timeago timeline-text\" title=\"" + 
       __escape(guard((context != null) ? context['timestampISO'] : null)) + 
-      "\"></span>\n</li>";
+      "\"></span>\r\n</li>";
   }
 
   compiled.blocks = {

@@ -11,17 +11,17 @@
     var value = context;
     return "<h3>[[global:upvoters]] <small>(" + 
       __escape(guard((context != null) ? context['upvoteCount'] : null)) + 
-      ")</small></h3>\n" + 
+      ")</small></h3>\r\n" + 
       compiled.blocks['upvoters'](helpers, context, guard, iter, helper) + 
-      "\n" + 
+      "\r\n" + 
       (guard((context != null) ? context['showDownvotes'] : null) ?
-        "\n<h3>[[global:downvoters]] <small>(" + 
+        "\r\n<h3>[[global:downvoters]] <small>(" + 
           __escape(guard((context != null) ? context['downvoteCount'] : null)) + 
-          ")</small></h3>\n" + 
+          ")</small></h3>\r\n" + 
           compiled.blocks['downvoters'](helpers, context, guard, iter, helper) + 
-          "\n" :
+          "\r\n" :
         "") + 
-      "\n";
+      "\r\n";
   }
 
   compiled.blocks = {
@@ -30,13 +30,13 @@
       var value = context;
       return iter(guard((context != null) ? context['upvoters'] : null), function each(key0, index, length, value) {
         var key = key0;
-        return "\n<a href=\"" + 
+        return "\r\n<a href=\"" + 
           __escape(guard((context != null && context['config'] != null) ? context['config']['relative_path'] : null)) + 
           "/user/" + 
           __escape(guard((context != null && context['upvoters'] != null && context['upvoters'][key0] != null) ? context['upvoters'][key0]['userslug'] : null)) + 
           "\">" + 
           __escape(helper(context, helpers, 'buildAvatar', [guard((context != null && context['upvoters'] != null) ? context['upvoters'][key0] : null), "sm", guard((context != null) ? context['false'] : null)])) + 
-          "</a>\n";
+          "</a>\r\n";
       }, function alt() {
         return "";
       });
@@ -46,13 +46,13 @@
       var value = context;
       return iter(guard((context != null) ? context['downvoters'] : null), function each(key0, index, length, value) {
         var key = key0;
-        return "\n<a href=\"" + 
+        return "\r\n<a href=\"" + 
           __escape(guard((context != null && context['config'] != null) ? context['config']['relative_path'] : null)) + 
           "/user/" + 
           __escape(guard((context != null && context['downvoters'] != null && context['downvoters'][key0] != null) ? context['downvoters'][key0]['userslug'] : null)) + 
           "\">" + 
           __escape(helper(context, helpers, 'buildAvatar', [guard((context != null && context['downvoters'] != null) ? context['downvoters'][key0] : null), "sm", guard((context != null) ? context['false'] : null)])) + 
-          "</a>\n";
+          "</a>\r\n";
       }, function alt() {
         return "";
       });
